@@ -2,8 +2,8 @@ export const meta = { title: 'Caisse & encaissements', order: 4, category: 'modu
 
 # Caisse et encaissements
 
-Le module Caisse couvre le suivi des espèces, des encaissements Mobile Money, et la gestion quotidienne du
-fonds de caisse. Il garantit la traçabilité totale des flux monétaires en accord avec les exigences OHADA.
+Le module Caisse couvre le suivi des espèces, des encaissements et la gestion quotidienne du fonds de
+caisse. Il garantit la traçabilité totale des flux monétaires en accord avec les exigences OHADA.
 
 ## Ouverture de caisse
 
@@ -19,16 +19,11 @@ solde de caisse. Une vue temps réel est accessible depuis **Caisse → Solde du
 Pour les flux non liés à une vente, comme un dépôt en banque ou un retrait personnel du dirigeant, utilisez
 **Caisse → Mouvement libre** en précisant la nature.
 
-## Mobile Money
+## Encaissements dématérialisés
 
-Les encaissements Mobile Money (Orange Money, MTN MoMo) ne s&apos;ajoutent pas au tiroir-caisse mais à un
-compte virtuel dédié dans BIRDY. Une réconciliation hebdomadaire avec les relevés des opérateurs vérifie
-qu&apos;aucune transaction n&apos;a été oubliée.
-
-<Callout variant="info" title="Comptes Mobile Money">
-Chaque opérateur Mobile Money a son propre compte comptable (par exemple 521-OM pour Orange Money,
-521-MTN pour MTN MoMo). BIRDY génère automatiquement ces comptes au paramétrage initial.
-</Callout>
+Les encaissements par virement, carte bancaire ou tout autre canal dématérialisé n&apos;alimentent pas le
+tiroir-caisse mais un compte de trésorerie dédié dans BIRDY. Une réconciliation hebdomadaire avec les
+relevés bancaires vérifie qu&apos;aucune transaction n&apos;a été oubliée.
 
 ## Arrêté de caisse
 

@@ -29,18 +29,12 @@ Trois méthodes :
 Les modes acceptés se configurent dans **Paramètres → Caisse** :
 
 - Espèces (avec rendu monnaie automatique)
-- Mobile Money — Orange Money, MTN MoMo
 - Carte bancaire (terminal externe)
 - Chèque
 - Crédit client (compte 411)
 - Bons d&apos;achat / cartes cadeaux
 
 Le client peut payer en plusieurs fois (paiement mixte).
-
-<Callout variant="tip" title="Mobile Money">
-Sur les terminaux compatibles, BIRDY peut générer un code USSD que le client compose directement. La
-transaction est confirmée par webhook et le ticket s&apos;imprime automatiquement.
-</Callout>
 
 ## Tickets et factures
 
@@ -57,11 +51,6 @@ Si la connexion Internet tombe, le POS continue de fonctionner. Toutes les vente
 dans une base SQLite chiffrée et synchronisées dès que le réseau revient. Le caissier voit en haut à droite
 un indicateur de l&apos;état réseau.
 
-<Callout variant="warning" title="Mobile Money en mode hors ligne">
-Les paiements Mobile Money exigent une connexion. En cas de coupure, basculez sur les espèces ou différez
-l&apos;encaissement.
-</Callout>
-
 ## Retours et remboursements
 
 Pour traiter un retour, ouvrez la facture initiale via **Ventes → Historique**, cliquez sur **Retour
@@ -70,7 +59,7 @@ partiel** ou **Retour total**, sélectionnez les articles concernés. BIRDY gén
 - Un avoir lié à la facture initiale
 - Un mouvement de stock entrant
 - Une écriture comptable d&apos;annulation
-- Le remboursement (espèces, Mobile Money, ou avoir client)
+- Le remboursement (espèces, virement ou avoir client)
 
 ## Promotions et remises
 
