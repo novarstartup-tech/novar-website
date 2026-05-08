@@ -23,7 +23,6 @@ const SECTIONS: Section[] = [
       { label: 'POS tactile rapide', solo: true, pro: true, ent: true },
       { label: 'Tickets de caisse', solo: true, pro: true, ent: true },
       { label: 'Factures conformes', solo: true, pro: true, ent: true },
-      { label: 'Mobile Money (Orange · MTN)', solo: true, pro: true, ent: true },
       { label: 'Cartes de fidélité', solo: false, pro: true, ent: true },
       { label: 'Devis & bons de commande', solo: false, pro: true, ent: true },
       { label: 'Promotions & remises avancées', solo: false, pro: true, ent: true },
@@ -80,7 +79,6 @@ const SECTIONS: Section[] = [
     rows: [
       { label: 'API REST documentée', solo: false, pro: false, ent: true },
       { label: 'Webhooks', solo: false, pro: false, ent: true },
-      { label: 'Connecteurs Mobile Money avancés', solo: false, pro: true, ent: true },
       { label: 'Export Excel/CSV', solo: true, pro: true, ent: true },
     ],
   },
@@ -97,37 +95,57 @@ const SECTIONS: Section[] = [
 ];
 
 function Cell({ value }: { value: boolean | string }) {
-  if (value === true) return <Check className="mx-auto h-4 w-4 text-novar-blue dark:text-novar-cyan" />;
-  if (value === false) return <X className="mx-auto h-4 w-4 text-slate-300 dark:text-slate-600" />;
-  return <span className="text-sm text-slate-700 dark:text-slate-300">{value}</span>;
+  if (value === true) return <Check className="mx-auto h-4 w-4 text-novar-accent" />;
+  if (value === false) return <X className="mx-auto h-4 w-4 text-novar-line" />;
+  return <span className="text-sm text-novar-ink-soft">{value}</span>;
 }
 
 export function ComparisonTable() {
   return (
-    <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
-      <table className="w-full text-sm min-w-[600px]">
-        <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
+    <div className="overflow-x-auto rounded-2xl border border-novar-line bg-white shadow-soft">
+      <table className="w-full text-sm min-w-[640px]">
+        <thead className="bg-novar-surface-2 sticky top-0">
           <tr>
-            <th className="px-4 py-3 text-left font-semibold text-slate-900 dark:text-white">Fonctionnalité</th>
-            <th className="px-4 py-3 text-center font-semibold text-slate-900 dark:text-white">Solo</th>
-            <th className="px-4 py-3 text-center font-semibold text-novar-cyan">Pro</th>
-            <th className="px-4 py-3 text-center font-semibold text-slate-900 dark:text-white">Enterprise</th>
+            <th className="px-5 py-3.5 text-left font-display font-semibold text-novar-ink">
+              Fonctionnalité
+            </th>
+            <th className="px-5 py-3.5 text-center font-display font-semibold text-novar-ink">
+              Solo
+            </th>
+            <th className="px-5 py-3.5 text-center font-display font-semibold text-novar-accent">
+              Pro
+            </th>
+            <th className="px-5 py-3.5 text-center font-display font-semibold text-novar-ink">
+              Enterprise
+            </th>
           </tr>
         </thead>
         <tbody>
           {SECTIONS.map((section) => (
             <Fragment key={section.title}>
               <tr>
-                <td colSpan={4} className="bg-slate-100/60 dark:bg-slate-900/60 px-4 py-2 font-display font-semibold text-slate-900 dark:text-white">
+                <td
+                  colSpan={4}
+                  className="bg-novar-surface-3 px-5 py-2.5 font-display text-xs font-semibold uppercase tracking-wider text-novar-ink"
+                >
                   {section.title}
                 </td>
               </tr>
               {section.rows.map((row) => (
-                <tr key={`${section.title}-${row.label}`} className="border-t border-slate-200 dark:border-slate-800">
-                  <td className="px-4 py-2.5 text-slate-700 dark:text-slate-300">{row.label}</td>
-                  <td className="px-4 py-2.5 text-center"><Cell value={row.solo} /></td>
-                  <td className="px-4 py-2.5 text-center"><Cell value={row.pro} /></td>
-                  <td className="px-4 py-2.5 text-center"><Cell value={row.ent} /></td>
+                <tr
+                  key={`${section.title}-${row.label}`}
+                  className="border-t border-novar-line"
+                >
+                  <td className="px-5 py-3 text-novar-ink-soft">{row.label}</td>
+                  <td className="px-5 py-3 text-center">
+                    <Cell value={row.solo} />
+                  </td>
+                  <td className="px-5 py-3 text-center">
+                    <Cell value={row.pro} />
+                  </td>
+                  <td className="px-5 py-3 text-center">
+                    <Cell value={row.ent} />
+                  </td>
                 </tr>
               ))}
             </Fragment>
