@@ -22,14 +22,22 @@ export function Hero() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg sm:text-xl text-slate-300 leading-relaxed">{SITE.description}</p>
           <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Link href="/produits/birdy-erp" className="inline-flex items-center justify-center gap-2 rounded-lg bg-novar-cyan px-6 py-3 text-sm font-semibold text-novar-cosmic shadow-lg shadow-novar-cyan/20 hover:bg-novar-cyan-glow transition-colors">
-              Découvrir BIRDY ERP <ArrowRight className="h-4 w-4" />
+            <Link href="/produits" className="inline-flex items-center justify-center gap-2 rounded-lg bg-novar-cyan px-6 py-3 text-sm font-semibold text-novar-cosmic shadow-lg shadow-novar-cyan/20 hover:bg-novar-cyan-glow transition-colors">
+              Découvrir nos produits <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/services/sur-mesure" className="inline-flex items-center justify-center gap-2 rounded-lg border border-novar-cyan/40 bg-transparent px-6 py-3 text-sm font-semibold text-novar-cyan hover:bg-novar-cyan/10 transition-colors">
-              Discuter d&apos;un projet sur mesure
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-lg border border-novar-cyan/40 bg-transparent px-6 py-3 text-sm font-semibold text-novar-cyan hover:bg-novar-cyan/10 transition-colors">
+              Discuter d&apos;un projet B2B
             </Link>
           </div>
-          <p className="mt-6 text-sm text-slate-400">Essai gratuit de 30 jours · Hébergement local · Support en français</p>
+          <div className="mt-8 flex flex-wrap gap-x-3 gap-y-2 text-xs text-slate-400">
+            <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />BIRDY ERP en production</span>
+            <span className="text-slate-600">·</span>
+            <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />FEEDORA en production</span>
+            <span className="text-slate-600">·</span>
+            <span>Solutions sur mesure</span>
+            <span className="text-slate-600">·</span>
+            <span>Fintech B2B</span>
+          </div>
         </div>
       </div>
     </section>

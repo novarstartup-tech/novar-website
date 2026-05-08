@@ -1,10 +1,10 @@
-import { Boxes, Wrench, ShoppingCart, Utensils } from 'lucide-react';
+import { Boxes, Wrench, ShoppingCart, Utensils, Bird, Banknote } from 'lucide-react';
 import { FeatureCard } from '@/components/FeatureCard';
 import { CtaBanner } from '@/components/CtaBanner';
 
 export const metadata = {
   title: 'Produits',
-  description: 'Le catalogue NOVAR : BIRDY ERP, solutions sur mesure, et notre roadmap produits.',
+  description: 'Le catalogue NOVAR : BIRDY ERP, FEEDORA, solutions sur mesure et fintech B2B pour PME africaines.',
 };
 
 export default function ProduitsPage() {
@@ -13,41 +13,59 @@ export default function ProduitsPage() {
       <section className="bg-novar-cosmic py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-20" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <span className="text-sm font-semibold text-novar-cyan uppercase tracking-wider">Catalogue</span>
+          <span className="text-sm font-semibold text-novar-cyan uppercase tracking-wider">Catalogue B2B</span>
           <h1 className="mt-2 font-display text-4xl sm:text-5xl font-bold text-white">Nos produits</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
-            BIRDY ERP est notre produit phare, disponible aujourd&apos;hui. D&apos;autres logiciels métiers
-            arrivent en 2026 — restez informé.
+            NOVAR développe des produits B2B globaux pour les PME africaines, des
+            solutions fintech sur mesure, et accompagne les entreprises qui ont
+            un besoin métier spécifique. Deux produits phares en production
+            aujourd&apos;hui : <strong className="text-novar-cyan">BIRDY ERP</strong>{' '}
+            et <strong className="text-novar-cyan">FEEDORA</strong>.
           </p>
         </div>
       </section>
 
       <section className="py-20 bg-white dark:bg-novar-cosmic">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <FeatureCard
               icon={Boxes}
               title="BIRDY ERP"
-              description="Logiciel de gestion intégré : POS, stock, achats, compta OHADA, paie. Disponible aujourd'hui."
+              description="ERP intégré pour PME OHADA : POS, stock, achats, compta SYSCOHADA, RH/paie, multi-devises. Hors ligne par défaut."
               href="/produits/birdy-erp"
-              badge="Disponible"
+              badge="Phare"
+            />
+            <FeatureCard
+              icon={Bird}
+              title="FEEDORA"
+              description="Plateforme d'optimisation nutritionnelle pour volailles. Formulation intelligente, multi-pays, rapports PDF. SaaS B2B en production."
+              href="/produits/feedora"
+              badge="En production"
             />
             <FeatureCard
               icon={Wrench}
               title="Solutions sur mesure"
-              description="Logiciels métiers développés pour votre entreprise. Cahier des charges, design, dev, déploiement."
+              description="Vous avez un problème métier précis ? Nous concevons et développons une solution B2B adaptée : web, mobile, desktop, API."
               href="/services/sur-mesure"
+              badge="Sur devis"
+            />
+            <FeatureCard
+              icon={Banknote}
+              title="Solutions fintech"
+              description="Intégrations Mobile Money (Orange, Wave, MTN), passerelles bancaires, plateformes de paiement marchand pour acteurs OHADA."
+              href="/contact"
+              badge="Sur devis"
             />
             <FeatureCard
               icon={ShoppingCart}
               title="Novar Caisse Cloud"
-              description="Solution de caisse SaaS pour boutiques et chaînes. Multi-points de vente, multi-utilisateurs."
+              description="Caisse SaaS multi-magasins, dashboard consolidé, sync temps réel pour chaînes de boutiques."
               badge="Q3 2026"
             />
             <FeatureCard
               icon={Utensils}
               title="Novar Restaurant POS"
-              description="POS spécialisé restauration : commandes en salle, cuisine connectée, gestion des tables."
+              description="POS spécialisé restauration : commandes salle, cuisine connectée, livraison, fidélité."
               badge="Q4 2026"
             />
           </div>
