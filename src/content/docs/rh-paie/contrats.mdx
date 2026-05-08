@@ -1,0 +1,100 @@
+export const meta = { title: 'Contrats & avenants', order: 2, category: 'rh-paie' };
+
+# Contrats et avenants
+
+Le module Contrats vous aide à éditer, suivre et archiver les contrats de travail et leurs avenants. Il
+intègre des modèles conformes au Code du travail guinéen et reste flexible pour vos clauses spécifiques.
+
+## Types de contrats
+
+BIRDY supporte les principaux types reconnus en Guinée :
+
+- **CDI** — Contrat à durée indéterminée
+- **CDD** — Contrat à durée déterminée (durée maximale 2 ans renouvelable)
+- **Contrat de travail temporaire** — par l&apos;intermédiaire d&apos;une agence d&apos;intérim
+- **Contrat d&apos;apprentissage** — pour les jeunes en formation
+- **Contrat de stage** — non rémunéré ou avec gratification
+
+Chaque type a ses propres règles : durée maximale, période d&apos;essai, indemnités de précarité, conditions
+de rupture.
+
+## Édition d&apos;un contrat
+
+Depuis la fiche employé, cliquez sur **Nouveau contrat**. Le formulaire se pré-remplit avec les informations
+de l&apos;employé. Complétez :
+
+- Type de contrat
+- Date de début (et de fin pour CDD)
+- Période d&apos;essai (1 à 3 mois selon la convention collective applicable)
+- Lieu de travail principal
+- Fonction et qualification
+- Salaire mensuel brut et avantages en nature
+- Horaire de travail (40 ou 48 h selon la branche)
+- Convention collective applicable
+
+## Modèles personnalisables
+
+BIRDY fournit trois modèles types :
+
+- CDI cadre
+- CDI non-cadre
+- CDD
+
+Ces modèles sont éditables dans **Paramètres → Modèles → Contrats**. Vous pouvez ajouter vos clauses
+spécifiques (mobilité, non-concurrence, confidentialité, propriété intellectuelle).
+
+<Callout variant="tip" title="Validation juridique">
+Avant de mettre en production un modèle modifié, faites-le valider par un avocat ou un conseil RH. Une
+clause mal rédigée peut être annulée en cas de contentieux.
+</Callout>
+
+## Avenants
+
+Tout changement substantiel (poste, salaire, lieu, horaire) nécessite un **avenant** signé par les deux
+parties. Depuis le contrat, cliquez sur **Nouvel avenant** :
+
+- Indiquez la date d&apos;effet
+- Précisez l&apos;article modifié et la nouvelle rédaction
+- Joignez le document signé une fois prêt
+
+L&apos;avenant prend automatiquement effet dans la paie à partir de sa date d&apos;application.
+
+## Période d&apos;essai
+
+BIRDY rappelle automatiquement la fin de la période d&apos;essai 7 jours avant son terme. Le manager peut
+alors décider :
+
+- De confirmer l&apos;embauche (action par défaut, automatique)
+- De prolonger la période d&apos;essai (si la convention l&apos;autorise)
+- De rompre le contrat avec préavis réglementaire
+
+## Rupture de contrat
+
+Quatre motifs principaux :
+
+1. **Démission** — initiative du salarié, préavis selon ancienneté
+2. **Licenciement** — initiative de l&apos;employeur, motif obligatoire
+3. **Rupture conventionnelle** — accord mutuel formalisé
+4. **Fin de CDD** — automatique à la date prévue
+
+À la rupture, BIRDY génère :
+
+- Solde de tout compte (STC)
+- Certificat de travail
+- Attestation employeur pour la CNSS
+- Reçu pour solde de tout compte
+
+## Archivage
+
+Les contrats et avenants sont conservés au minimum 5 ans après la fin du contrat (recommandé : 10 ans pour
+sécurité prud&apos;hommes). BIRDY archive automatiquement les documents avec horodatage et empreinte
+SHA-256.
+
+## Statistiques
+
+Le tableau de bord RH affiche :
+
+- Répartition CDI / CDD
+- Contrats arrivant à échéance dans les 30 jours
+- Taux de transformation CDD → CDI
+- Ancienneté moyenne par département

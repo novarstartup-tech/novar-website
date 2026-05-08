@@ -1,0 +1,79 @@
+export const meta = { title: 'Écritures manuelles', order: 2, category: 'ohada' };
+
+# Écritures manuelles
+
+La majorité des écritures sont générées automatiquement par BIRDY (ventes, achats, paie, mobile money). Mais
+certaines opérations exigent une saisie manuelle : à-nouveaux, opérations diverses, régularisations,
+amortissements, provisions.
+
+## Accéder à la saisie
+
+**Comptabilité → Écritures → Nouvelle écriture manuelle**. Ou Ctrl+Shift+E depuis n&apos;importe quel écran.
+
+## Structure d&apos;une écriture
+
+Toute écriture respecte le principe fondamental : **somme des débits = somme des crédits**. BIRDY vérifie
+l&apos;équilibre en temps réel et refuse la validation tant que le total n&apos;est pas équilibré.
+
+Exemple — paiement d&apos;une facture d&apos;électricité :
+
+<CodeBlock language="text" code={`Date : 15/04/2026
+Journal : OD (Opérations diverses)
+Pièce : ELEC-202604
+
+  6051 Électricité            Débit  : 1 200 000
+  4456 TVA déductible         Débit  :   216 000
+     521 Banque                  Crédit : 1 416 000
+
+Libellé : Facture EDG du 30/03/2026 N° EDG-12345`} />
+
+## Journaux
+
+Les écritures se classent par **journal** :
+
+- **VE** — Ventes
+- **AC** — Achats
+- **TR** — Trésorerie (caisse, banque)
+- **OD** — Opérations diverses
+- **AN** — À-nouveaux (ouverture d&apos;exercice)
+- **CL** — Clôture
+- **Pa** — Paie
+
+Chaque journal a sa propre numérotation séquentielle.
+
+## Modèles d&apos;écritures
+
+Pour les opérations récurrentes (loyer, abonnements, salaires types), créez des **modèles** depuis
+**Comptabilité → Modèles**. À l&apos;utilisation, vous ne saisissez que les variables (date, montant, libellé)
+et BIRDY génère l&apos;écriture complète.
+
+<Callout variant="tip" title="Modèles pour amortissements">
+Les amortissements mensuels gagnent énormément à être paramétrés en modèles. Une seule saisie initiale
+puis génération automatique chaque mois.
+</Callout>
+
+## Modification et suppression
+
+Tant que l&apos;écriture n&apos;est pas verrouillée (clôture mensuelle), elle peut être modifiée. Toute
+modification est tracée dans le journal d&apos;audit. Une fois verrouillée, seule une **contre-passation**
+(écriture inverse avec libellé explicite) peut corriger une erreur.
+
+## Pièces jointes
+
+Chaque écriture peut recevoir des pièces jointes (facture scannée, justificatif, ordre de virement). Les
+pièces sont chiffrées et stockées localement. En cas de contrôle fiscal, vous présentez l&apos;écriture et
+sa pièce justificative en un clic.
+
+## Pré-validation
+
+Pour les sociétés avec procédure de contrôle interne, activez la **pré-validation** : les écritures saisies
+par les opérateurs apparaissent en statut « En attente » jusqu&apos;à validation par le chef-comptable. La
+validation peut être effectuée en lot.
+
+## Imports
+
+Pour les imports massifs (par exemple migration depuis un ancien logiciel), utilisez **Comptabilité →
+Imports → Écritures**. Le format CSV attendu est documenté dans le modèle téléchargeable depuis l&apos;écran.
+
+BIRDY valide chaque ligne (compte existant, équilibre par numéro de pièce, format de date) et signale les
+erreurs avant intégration.

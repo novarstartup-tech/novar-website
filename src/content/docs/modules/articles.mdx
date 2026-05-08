@@ -1,0 +1,82 @@
+export const meta = { title: 'Articles & catégories', order: 1, category: 'modules' };
+
+# Articles et catégories
+
+Le module Articles est la fondation de BIRDY : chaque vente, chaque achat, chaque mouvement de stock fait
+référence à un article. Bien structurer votre catalogue dès le départ vous évite des heures de réorganisation
+plus tard.
+
+## Création d&apos;un article
+
+Depuis **Stock → Articles → Nouvel article**, le formulaire vous demande :
+
+- **Référence interne** : code unique court (ex : `RIZ-25KG-LOC`). Si vous ne savez pas quoi mettre, BIRDY peut
+  générer une référence séquentielle automatique.
+- **Désignation** : libellé qui apparaîtra sur les factures.
+- **Code-barres** : optionnel mais fortement recommandé pour le POS.
+- **Catégorie** : permet de regrouper et filtrer (ex : Alimentaire, Hygiène, Boissons).
+- **Unité de vente** : pièce, kilo, litre, mètre, etc.
+- **Prix d&apos;achat HT** : permet de calculer la marge.
+- **Prix de vente HT** : avec ou sans TVA selon votre paramétrage.
+- **Taux de TVA** : 18 % par défaut en Guinée, ajustable par article.
+- **Compte comptable** : compte de classe 7 (vente) et de classe 6 (achat) à associer.
+
+<Callout variant="info" title="TVA par article">
+Certains produits sont exonérés de TVA en Guinée (médicaments essentiels, certains produits agricoles).
+Vérifiez avec votre comptable avant de paramétrer un article exonéré.
+</Callout>
+
+## Catégories
+
+Les catégories suivent une hiérarchie à plusieurs niveaux. Exemple :
+
+- Alimentaire
+  - Céréales
+    - Riz
+    - Mil
+  - Huiles
+- Hygiène
+  - Savons
+  - Produits ménagers
+
+L&apos;arbre des catégories est utilisé pour :
+
+- Filtrer rapidement les listes
+- Générer des rapports de vente par famille
+- Définir des règles de promotion par catégorie
+
+## Variantes
+
+Pour les articles avec déclinaisons (taille, couleur), activez **Variantes** sur la fiche article. Chaque
+variante a sa propre référence, son propre stock, son propre code-barres. Le prix peut différer ou hériter
+du parent.
+
+## Stock par dépôt
+
+Si votre plan le permet (Pro et Enterprise), chaque article a un stock distinct par dépôt. La fiche article
+affiche un tableau récapitulatif des quantités disponibles, en commande, en transfert.
+
+<CodeBlock language="text" code={`Article : RIZ-25KG-LOC
+─────────────────────────────────
+Dépôt principal     : 142 sacs
+Boutique Madina     :  18 sacs
+En commande         :  50 sacs (ETA 12/05)
+Réservé client      :   8 sacs
+─────────────────────────────────
+Disponible vente    : 152 sacs`} />
+
+## Import en masse
+
+Pour les catalogues importants, utilisez l&apos;import Excel/CSV. Téléchargez le modèle depuis **Articles →
+Importer**, remplissez-le, ré-importez. BIRDY valide chaque ligne et signale les erreurs avant validation.
+
+## Photos
+
+Chaque article peut recevoir jusqu&apos;à cinq photos (format JPEG ou PNG, 2 Mo max chacune). Les photos
+s&apos;affichent au POS pour aider les vendeurs à reconnaître rapidement les produits.
+
+## Articles désactivés
+
+Les articles ne peuvent jamais être supprimés (intégrité comptable et historique). En revanche, vous pouvez
+les **désactiver** pour qu&apos;ils n&apos;apparaissent plus dans les écrans de saisie. L&apos;historique reste
+consultable.

@@ -1,0 +1,92 @@
+export const meta = { title: 'Authentification MFA', order: 1, category: 'securite' };
+
+# Authentification multi-facteurs (MFA)
+
+L&apos;authentification multi-facteurs ajoute une couche de sécurité au mot de passe en exigeant un second
+élément de vérification (un code temporaire de 6 chiffres). C&apos;est la mesure la plus efficace pour
+empêcher la compromission d&apos;un compte, même en cas de fuite de mot de passe.
+
+## Pourquoi activer MFA
+
+- Un mot de passe peut être deviné, hameçonné ou volé via un keylogger
+- Avec MFA, l&apos;attaquant a aussi besoin de votre téléphone ou de votre clé physique
+- Les comptes administrateurs sont les plus exposés : ils ont accès aux écritures comptables et aux soldes
+
+<Callout variant="warning" title="Obligatoire pour les administrateurs">
+À partir de la version 1.4 de BIRDY, le MFA est obligatoire pour tous les comptes ayant le rôle
+administrateur. Cette mesure protège votre comptabilité contre les compromissions.
+</Callout>
+
+## Méthodes supportées
+
+BIRDY accepte trois mécanismes MFA :
+
+1. **TOTP** (Time-based One-Time Password) via une app comme Google Authenticator, Authy, 1Password
+2. **SMS** vers le numéro de téléphone enregistré
+3. **Clé physique FIDO2** (YubiKey, SoloKey)
+
+La méthode TOTP est recommandée : pas de coût SMS, fonctionne hors ligne, plus sécurisée.
+
+## Activation pas à pas
+
+<Steps>
+  <Step title="Accéder aux paramètres de sécurité">
+    Cliquez sur votre avatar en haut à droite, puis sur **Mon profil → Sécurité**.
+  </Step>
+  <Step title="Choisir la méthode">
+    Sélectionnez TOTP. Un QR code s&apos;affiche.
+  </Step>
+  <Step title="Scanner le QR code">
+    Avec votre application d&apos;authentification (Google Authenticator par exemple), scannez le code.
+    L&apos;app affiche un code à 6 chiffres qui change toutes les 30 secondes.
+  </Step>
+  <Step title="Vérifier">
+    Saisissez le code actuel dans BIRDY pour confirmer que la liaison fonctionne.
+  </Step>
+  <Step title="Sauvegarder les codes de récupération">
+    BIRDY génère 10 codes de récupération à usage unique. Conservez-les en lieu sûr (gestionnaire de mots
+    de passe, coffre-fort physique). Ils permettent de récupérer l&apos;accès si vous perdez votre téléphone.
+  </Step>
+</Steps>
+
+## Connexion avec MFA
+
+Lors de chaque connexion :
+
+1. E-mail + mot de passe
+2. BIRDY vous demande le code MFA
+3. Saisissez le code généré par votre app
+4. Accès accordé
+
+Vous pouvez cocher « Cet appareil est de confiance » pour ne pas être redemandé pendant 30 jours sur le même
+poste. **N&apos;activez jamais cette option sur un ordinateur partagé.**
+
+## En cas de perte du téléphone
+
+Trois recours :
+
+- Utilisez l&apos;un de vos codes de récupération
+- Demandez à un administrateur de votre société de réinitialiser votre MFA
+- Contactez le support NOVAR pour une réinitialisation manuelle (vérification d&apos;identité requise)
+
+## MFA pour les opérations sensibles
+
+En plus de la connexion, certaines opérations exigent une re-confirmation MFA même pour un utilisateur déjà
+connecté :
+
+- Modification du compte bancaire d&apos;un fournisseur
+- Validation d&apos;une paie
+- Suppression d&apos;une écriture comptable
+- Export massif de données
+- Changement de configuration sensible
+
+Cette mesure (appelée **step-up authentication**) limite les dégâts si la session est compromise.
+
+## Bonnes pratiques
+
+- Utilisez un gestionnaire de mots de passe (Bitwarden, 1Password) pour stocker mots de passe et codes de
+  récupération
+- N&apos;envoyez jamais vos codes MFA par e-mail, SMS ou téléphone
+- Méfiez-vous des appels prétendus du « support technique » qui demandent votre code MFA — c&apos;est une
+  arnaque
+- Testez régulièrement vos codes de récupération pour vérifier qu&apos;ils fonctionnent

@@ -1,0 +1,95 @@
+export const meta = { title: 'Congés & absences', order: 5, category: 'rh-paie' };
+
+# Congés et absences
+
+BIRDY tient automatiquement le compteur de congés payés de chaque salarié et trace toutes les absences
+(maladie, maternité, congé sans solde, formation). Le module respecte la législation guinéenne en matière de
+durée minimale de congés et de procédure de demande.
+
+## Congés payés
+
+En Guinée, le Code du travail prévoit un minimum de 30 jours ouvrables de congés payés par an pour les
+salariés ayant accompli 12 mois de travail effectif (soit 2,5 jours par mois). Certaines conventions
+collectives prévoient des durées supérieures.
+
+### Acquisition
+
+À chaque mois travaillé, le salarié acquiert 2,5 jours de congés. BIRDY met à jour automatiquement le
+compteur en début de mois. Le compteur est consultable à tout moment depuis :
+
+- La fiche employé (vue RH)
+- Le portail libre-service du salarié (si activé)
+- Les rapports de masse salariale
+
+### Demande de congés
+
+Le salarié soumet sa demande depuis son portail (ou la transmet à son manager qui la saisit dans BIRDY) :
+
+1. Sélection des dates souhaitées
+2. Indication du motif (légal pour les congés non rémunérés)
+3. Validation du manager direct
+4. Validation RH si nécessaire (congés supérieurs à 15 jours par exemple)
+
+<Callout variant="info" title="Règle de prévenance">
+Le Code du travail recommande un délai de prévenance d&apos;au moins 2 mois pour les congés annuels. BIRDY
+peut signaler automatiquement les demandes ne respectant pas ce délai.
+</Callout>
+
+## Types d&apos;absences
+
+BIRDY distingue plusieurs types d&apos;absences, chacun avec ses règles propres :
+
+- **Congés payés annuels** — décomptés du compteur, payés
+- **Congés exceptionnels familiaux** — mariage, naissance, décès, payés selon convention
+- **Maladie** — sur présentation d&apos;un certificat médical, indemnisation CNSS
+- **Maternité** — 14 semaines minimum en Guinée, payées
+- **Paternité** — 3 jours rémunérés
+- **Congé sans solde** — sur demande, non payé, non décompté du compteur
+- **Formation** — peut être payé selon le dispositif
+- **Absence injustifiée** — entraîne retenue sur salaire et procédure disciplinaire
+
+## Calendrier équipe
+
+Une vue calendaire (par mois ou par trimestre) montre les absences de toute l&apos;équipe ou d&apos;un
+département. Cela facilite la coordination des départs et évite que tous les comptables prennent leurs
+congés en même temps.
+
+## Solde et report
+
+Les congés non pris dans l&apos;année peuvent être :
+
+- **Reportés** sur l&apos;année suivante (limité par la convention)
+- **Indemnisés** à la sortie du salarié (obligatoire)
+- **Imposés** par l&apos;employeur si le compteur dépasse un seuil
+
+BIRDY alerte les managers à partir d&apos;octobre des soldes anormalement élevés.
+
+## Maladie et arrêts de travail
+
+Pour un arrêt maladie :
+
+1. Le salarié transmet le certificat médical à son employeur dans les 48 heures
+2. L&apos;employeur transmet à la CNSS si l&apos;arrêt dépasse 3 jours
+3. BIRDY enregistre l&apos;arrêt et calcule la déduction de salaire si applicable
+4. La CNSS verse les indemnités journalières (sous conditions)
+
+## Maternité
+
+Le congé maternité en Guinée est de 14 semaines (6 avant l&apos;accouchement, 8 après). Pendant cette
+période :
+
+- Le salaire est versé à 100 % par la CNSS dans la limite du plafond
+- L&apos;employeur peut compléter pour maintenir le salaire intégral
+- Le contrat de travail est suspendu mais protégé contre le licenciement
+
+## Reporting
+
+Pour le pilotage RH :
+
+- Taux d&apos;absentéisme global et par département
+- Distribution des motifs d&apos;absence
+- Coût global de l&apos;absentéisme (jours × coût moyen journalier)
+- Salariés ayant cumulé plus de 15 jours d&apos;arrêt maladie sur 12 mois
+
+Ces indicateurs aident à identifier d&apos;éventuels problèmes (sur-charge de travail, climat dégradé,
+ergonomie) à corriger.

@@ -1,0 +1,85 @@
+export const meta = { title: 'Caisse & encaissements', order: 4, category: 'modules' };
+
+# Caisse et encaissements
+
+Le module Caisse couvre le suivi des espèces, des encaissements Mobile Money, et la gestion quotidienne du
+fonds de caisse. Il garantit la traçabilité totale des flux monétaires en accord avec les exigences OHADA.
+
+## Ouverture de caisse
+
+Chaque journée commence par l&apos;ouverture de la caisse. Le caissier saisit le fonds initial (espèces
+disponibles dans le tiroir-caisse) et le système enregistre l&apos;heure d&apos;ouverture et l&apos;identité
+de l&apos;utilisateur.
+
+## Encaissements en cours de journée
+
+Tous les encaissements (ventes au comptant, règlements clients, dépôts) s&apos;ajoutent automatiquement au
+solde de caisse. Une vue temps réel est accessible depuis **Caisse → Solde du jour**.
+
+Pour les flux non liés à une vente, comme un dépôt en banque ou un retrait personnel du dirigeant, utilisez
+**Caisse → Mouvement libre** en précisant la nature.
+
+## Mobile Money
+
+Les encaissements Mobile Money (Orange Money, MTN MoMo) ne s&apos;ajoutent pas au tiroir-caisse mais à un
+compte virtuel dédié dans BIRDY. Une réconciliation hebdomadaire avec les relevés des opérateurs vérifie
+qu&apos;aucune transaction n&apos;a été oubliée.
+
+<Callout variant="info" title="Comptes Mobile Money">
+Chaque opérateur Mobile Money a son propre compte comptable (par exemple 521-OM pour Orange Money,
+521-MTN pour MTN MoMo). BIRDY génère automatiquement ces comptes au paramétrage initial.
+</Callout>
+
+## Arrêté de caisse
+
+En fin de journée, le caissier exécute un **arrêté de caisse** :
+
+1. Comptage physique des espèces dans le tiroir
+2. Saisie du montant compté dans BIRDY
+3. Comparaison automatique avec le solde théorique
+4. Justification des écarts éventuels
+5. Validation par le superviseur si l&apos;écart dépasse un seuil
+
+L&apos;écart de caisse (positif ou négatif) génère une écriture sur les comptes 758 (différence en plus) ou
+658 (différence en moins).
+
+## Dépôts en banque
+
+Les dépôts d&apos;espèces en banque s&apos;enregistrent depuis **Caisse → Dépôt banque**. BIRDY génère
+automatiquement les écritures :
+
+<CodeBlock language="text" code={`521 Banque                       Débit : 5 000 000
+   571 Caisse principale          Crédit : 5 000 000
+Libellé : Dépôt espèces du 12/05/2026`} />
+
+## Plusieurs caisses
+
+Pour les magasins avec plusieurs points de vente, vous pouvez créer plusieurs caisses (une par poste). Chaque
+caisse a son propre solde, son propre arrêté de fin de journée, son propre journal.
+
+## Plafond de caisse
+
+Pour respecter les bonnes pratiques de sécurité, paramétrez un plafond au-delà duquel BIRDY alerte le
+gérant : par exemple 10 000 000 GNF. L&apos;alerte invite à effectuer un dépôt en banque.
+
+## Rapport quotidien
+
+Le rapport **Z de caisse** récapitule pour chaque journée :
+
+- Solde d&apos;ouverture
+- Encaissements par mode de paiement
+- Décaissements (rendus, remboursements, dépôts banque)
+- Solde théorique
+- Solde compté
+- Écart
+
+Ce rapport est imprimable et archivable. Il sert de pièce justificative en cas de contrôle fiscal.
+
+## Délégation et permissions
+
+Tous les utilisateurs ne peuvent pas accéder à toutes les caisses. Les permissions se définissent dans
+**Paramètres → Utilisateurs → Rôles**. Trois rôles types existent par défaut :
+
+- **Caissier** : ouvre et ferme sa caisse, encaisse, ne voit pas les autres caisses.
+- **Superviseur** : voit toutes les caisses, valide les arrêtés, régularise les écarts.
+- **Comptable** : lecture seule sur les caisses, accès aux écritures associées.

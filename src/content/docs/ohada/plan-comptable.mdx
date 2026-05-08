@@ -1,0 +1,79 @@
+export const meta = { title: 'Plan comptable SYSCOHADA', order: 1, category: 'ohada' };
+
+# Plan comptable SYSCOHADA
+
+BIRDY pré-installe le plan comptable SYSCOHADA révisé en vigueur depuis le 1er janvier 2018. Il est
+applicable dans tous les États membres de l&apos;OHADA, dont la Guinée. Le plan compte plus de 700 comptes
+classés en neuf classes principales.
+
+## Les neuf classes
+
+- **Classe 1** : Comptes de ressources durables (capital, réserves, emprunts)
+- **Classe 2** : Comptes d&apos;actifs immobilisés (terrains, bâtiments, matériel)
+- **Classe 3** : Comptes de stocks
+- **Classe 4** : Comptes de tiers (clients, fournisseurs, État, personnel)
+- **Classe 5** : Comptes de trésorerie (caisse, banque, valeurs mobilières)
+- **Classe 6** : Comptes de charges
+- **Classe 7** : Comptes de produits
+- **Classe 8** : Comptes des autres charges et produits HAO
+- **Classe 9** : Comptes analytiques (optionnel)
+
+## Hiérarchie
+
+Chaque compte se déclare en cinq niveaux. Exemple pour le compte 411 :
+
+- 4 — Classe (tiers)
+- 41 — Compte principal (clients et fournisseurs)
+- 411 — Sous-compte (clients)
+- 4111 — Compte divisionnaire (clients ordinaires)
+- 41112 — Compte auxiliaire (clients secteur public, par exemple)
+
+BIRDY autorise jusqu&apos;à neuf caractères pour les sous-comptes auxiliaires, ce qui couvre largement les
+besoins des PME.
+
+## Création de comptes
+
+L&apos;administrateur peut créer des sous-comptes depuis **Comptabilité → Plan comptable → Nouveau compte**.
+Trois informations obligatoires :
+
+- Numéro de compte (cohérent avec la classification SYSCOHADA)
+- Libellé clair
+- Sens habituel (débiteur ou créditeur)
+
+<Callout variant="warning" title="Comptes officiels">
+Les comptes principaux à trois chiffres (411, 401, 521, etc.) ne doivent pas être modifiés. Travaillez
+toujours sur des sous-comptes auxiliaires pour préserver la conformité OHADA.
+</Callout>
+
+## Comptes auxiliaires
+
+Pour chaque tiers (client, fournisseur, employé), BIRDY génère automatiquement un compte auxiliaire. Cela
+permet le grand-livre auxiliaire et le suivi détaillé des encours par partenaire commercial.
+
+Exemple :
+
+- 411-DIA001 : DIALLO SARL
+- 411-CAM002 : CAMARA & FILS
+- 401-SOC001 : SOCIETE GENERALE GUINEE
+
+## Verrouillage des écritures
+
+À la clôture mensuelle, l&apos;administrateur peut **verrouiller** les périodes pour empêcher toute saisie
+ou modification a posteriori. Cette mesure est obligatoire pour respecter les exigences de l&apos;OHADA en
+matière d&apos;intangibilité des écritures comptables.
+
+## Recherche
+
+La recherche dans le plan comptable accepte :
+
+- Le numéro complet ou partiel (`411`, `4111`)
+- Le libellé (`clients`, `fournisseurs`)
+- Le sous-compte auxiliaire (`DIA001`)
+
+Les résultats incluent le solde courant en plus du libellé pour faciliter la sélection.
+
+## Imports & exports
+
+Le plan comptable peut être exporté en CSV pour archivage ou audit. Il est également possible d&apos;importer
+des plans personnalisés de groupes ou d&apos;associations professionnelles spécifiques (BTP, agro-alimentaire,
+santé) qui surchargent le plan SYSCOHADA standard.

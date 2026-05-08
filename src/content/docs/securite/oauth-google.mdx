@@ -1,0 +1,97 @@
+export const meta = { title: 'Connexion Google', order: 2, category: 'securite' };
+
+# Connexion via Google (OAuth 2.0)
+
+BIRDY supporte la connexion via votre compte Google grâce au protocole OAuth 2.0 avec PKCE. Cette méthode
+combine sécurité et confort : pas de mot de passe à mémoriser, double authentification déjà active sur
+votre compte Google.
+
+## Avantages
+
+- **Pas de mot de passe BIRDY à gérer** : un mot de passe Google de qualité protège plusieurs services
+- **MFA hérité** : si votre compte Google a la 2FA, elle protège aussi BIRDY
+- **Désactivation immédiate** : retirer un employé du Workspace désactive automatiquement son accès BIRDY
+- **Audit centralisé** : Google Workspace log toutes les connexions
+
+## Activation pour la société
+
+L&apos;administrateur active la connexion Google depuis **Paramètres → Authentification → Google OAuth** :
+
+1. Cliquer sur « Activer Google OAuth »
+2. Indiquer le ou les domaines autorisés (ex : `votreentreprise.gn`)
+3. Optionnellement, restreindre à certains comptes ou groupes Google
+4. Sauvegarder
+
+Une fois activé, l&apos;écran de connexion BIRDY affiche un bouton « Continuer avec Google » à côté du
+formulaire e-mail/mot de passe traditionnel.
+
+## Première connexion d&apos;un utilisateur
+
+<Steps>
+  <Step title="Cliquer sur « Continuer avec Google »">
+    L&apos;utilisateur est redirigé vers la page de connexion Google.
+  </Step>
+  <Step title="S'authentifier auprès de Google">
+    E-mail, mot de passe, et éventuellement code 2FA.
+  </Step>
+  <Step title="Autoriser BIRDY">
+    Google demande à l&apos;utilisateur d&apos;autoriser BIRDY à accéder à son nom et à son adresse e-mail.
+  </Step>
+  <Step title="Création / liaison du compte BIRDY">
+    Si l&apos;e-mail correspond à un compte BIRDY existant, ils sont liés. Sinon, BIRDY peut créer un compte
+    en mode invité, à valider par un administrateur.
+  </Step>
+</Steps>
+
+## Sécurité technique
+
+L&apos;intégration utilise OAuth 2.0 + PKCE (Proof Key for Code Exchange) selon la RFC 7636 :
+
+- Pas de stockage de secret côté client
+- Vérification d&apos;authenticité du callback
+- Tokens à durée limitée (1 heure pour l&apos;access token)
+- Refresh token chiffré dans le coffre-fort BIRDY local
+
+<Callout variant="info" title="Loopback PKCE pour desktop">
+BIRDY étant une application desktop Tauri, l&apos;OAuth utilise un serveur de loopback temporaire (RFC 8252)
+sur un port aléatoire de localhost. Aucune information ne transite par un serveur tiers en dehors du flow
+Google standard.
+</Callout>
+
+## Déconnexion d&apos;un utilisateur
+
+Pour révoquer l&apos;accès d&apos;un employé :
+
+- **Côté Google Workspace** : suspendre ou supprimer le compte → l&apos;accès BIRDY tombe automatiquement
+  à la prochaine tentative
+- **Côté BIRDY** : désactiver le compte BIRDY rattaché à l&apos;e-mail Google
+- **Côté utilisateur** : depuis les paramètres de sécurité Google, révoquer l&apos;accès accordé à BIRDY
+
+## Connexion mixte
+
+Vous pouvez combiner connexion Google et connexion par e-mail/mot de passe au sein de la même société. Par
+exemple, les administrateurs et les comptables utilisent Google, les caissiers utilisent un mot de passe
+local (ils n&apos;ont pas forcément de compte Google professionnel).
+
+## Limitation des domaines
+
+Pour empêcher des employés d&apos;utiliser leur Gmail personnel pour se connecter, restreignez la connexion
+aux domaines de votre société. Si quelqu&apos;un essaie avec un autre domaine (`@gmail.com` par exemple),
+l&apos;accès est refusé même si l&apos;authentification Google réussit.
+
+## Microsoft 365
+
+Une intégration similaire avec Microsoft 365 (Azure Active Directory) est disponible en plan Enterprise.
+Le principe est identique : OAuth 2.0 + PKCE, restriction par tenant Azure.
+
+## Logs
+
+Toutes les connexions OAuth sont enregistrées dans le journal d&apos;audit avec :
+
+- Méthode (Google, Microsoft, e-mail/MDP)
+- Adresse IP source
+- User-Agent
+- Date et heure
+- Succès ou échec
+
+En cas de connexion suspecte, vous pouvez identifier rapidement la source.

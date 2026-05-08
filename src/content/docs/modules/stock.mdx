@@ -1,0 +1,89 @@
+export const meta = { title: 'Gestion du stock', order: 3, category: 'modules' };
+
+# Gestion du stock
+
+Le module Stock vous offre une vision en temps réel des quantités disponibles, en commande, réservées et
+en transfert. Il alimente automatiquement la comptabilité avec une valorisation au coût moyen pondéré (CMP)
+ou en FIFO selon votre paramétrage.
+
+## Méthodes de valorisation
+
+BIRDY supporte deux méthodes :
+
+- **CMP** (Coût Moyen Pondéré) : la valeur unitaire est recalculée à chaque entrée. Recommandé pour les biens
+  fongibles (matières premières, produits homogènes).
+- **FIFO** (First In First Out) : les premières entrées sont les premières sorties. Recommandé pour les
+  produits à péremption ou les lots traçables.
+
+La méthode se choisit par article ou par catégorie. Une fois définie, elle ne peut être changée qu&apos;à
+la clôture d&apos;exercice.
+
+## Mouvements de stock
+
+Tous les mouvements sont enregistrés et consultables dans le journal des mouvements :
+
+- Entrées sur achat
+- Sorties sur vente
+- Transferts inter-dépôts
+- Retours fournisseurs
+- Retours clients
+- Inventaires (régularisations)
+- Pertes et casse
+
+Chaque mouvement génère automatiquement les écritures comptables correspondantes (compte 31 pour les stocks
+de marchandises, 6037 pour les variations).
+
+## Inventaires physiques
+
+Pour rapprocher le stock théorique du stock réel, BIRDY propose deux types d&apos;inventaires :
+
+1. **Inventaire complet** : toutes les références sont comptées en une seule opération. Recommandé une à
+   deux fois par an, idéalement en fin d&apos;exercice.
+2. **Inventaire tournant** : un sous-ensemble d&apos;articles est compté à intervalles réguliers selon leur
+   classe ABC. Permet de maintenir la précision sans bloquer l&apos;activité.
+
+<Steps>
+  <Step title="Préparer">
+    Imprimez les feuilles d&apos;inventaire depuis BIRDY. Chaque feuille liste les articles d&apos;un dépôt.
+  </Step>
+  <Step title="Compter">
+    Sur le terrain, vos magasiniers reportent les quantités physiques observées sur les feuilles.
+  </Step>
+  <Step title="Saisir">
+    Reportez les quantités dans BIRDY. Les écarts s&apos;affichent en rouge avec leur valorisation.
+  </Step>
+  <Step title="Valider">
+    Le superviseur examine les écarts importants, demande éventuellement un recompte, puis valide.
+  </Step>
+  <Step title="Comptabiliser">
+    BIRDY génère automatiquement les écritures de régularisation (601/603 ou 758/737 selon le sens).
+  </Step>
+</Steps>
+
+## Alertes de stock
+
+Pour chaque article, vous pouvez définir un **seuil minimum** et un **seuil de réapprovisionnement**. Quand
+le stock disponible passe sous le seuil, une alerte apparaît dans le tableau de bord et un e-mail
+hebdomadaire récapitule les articles à recommander.
+
+<Callout variant="tip" title="Réapprovisionnement automatique">
+En plan Enterprise, BIRDY peut générer automatiquement les bons de commande fournisseurs quand les seuils
+sont atteints, en se basant sur le délai d&apos;approvisionnement et la consommation moyenne.
+</Callout>
+
+## Multi-dépôts et transferts
+
+Si votre plan le permet, vous pouvez gérer plusieurs dépôts (boutique principale, boutique secondaire,
+entrepôt, magasin de transit). Les transferts internes ne génèrent pas d&apos;écritures comptables (le stock
+total ne change pas) mais sont tracés dans le journal des mouvements.
+
+## Traçabilité
+
+Pour les produits sensibles (lots, dates de péremption, numéros de série), activez la traçabilité sur la
+fiche article. Chaque entrée et sortie devra alors préciser le lot ou le numéro de série concerné.
+
+## Dépréciation
+
+Pour les stocks lents, BIRDY peut calculer automatiquement une dépréciation en fin d&apos;exercice selon
+des règles personnalisables (par exemple : 50 % pour les articles invendus depuis 12 mois). L&apos;écriture
+de provision (compte 39) est générée automatiquement.

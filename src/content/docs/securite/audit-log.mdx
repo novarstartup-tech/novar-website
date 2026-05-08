@@ -1,0 +1,111 @@
+export const meta = { title: "Journal d'audit", order: 4, category: 'securite' };
+
+# Journal d&apos;audit
+
+Le journal d&apos;audit (audit log) enregistre toutes les actions sensibles effectuées dans BIRDY. C&apos;est
+un outil indispensable pour la traçabilité, les enquêtes internes, les contrôles fiscaux et les certifications
+de sécurité.
+
+## Ce qui est tracé
+
+Le journal capture, sans exception :
+
+- **Connexions** : succès, échecs, déconnexions, sources IP
+- **Modifications de données** : qui a modifié quoi, quand, ancienne et nouvelle valeur
+- **Suppressions** : cas exceptionnels (les écritures comptables ne sont jamais supprimées mais
+  contre-passées)
+- **Exports** : qui a exporté la liasse fiscale, le FEC, les fiches de paie ?
+- **Modifications de droits** : changement de rôle, ajout/retrait d&apos;administrateur
+- **Modifications de configuration** : taux de TVA, plan comptable, paramètres MFA
+- **Tentatives suspectes** : MFA échoué, mot de passe brut force, accès refusé
+
+## Format d&apos;une entrée
+
+Chaque entrée du journal contient :
+
+<CodeBlock language="json" code={`{
+  "timestamp": "2026-04-28T14:35:22.341Z",
+  "userId": "user_a8f9b2c1",
+  "userEmail": "comptable@diallo-sarl.gn",
+  "action": "ECRITURE_VALIDEE",
+  "entity": "Ecriture",
+  "entityId": "ECR-2026-04-1234",
+  "ipAddress": "41.205.x.x",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0...)",
+  "details": {
+    "journal": "OD",
+    "montant": 1416000,
+    "pieceRef": "ELEC-202604"
+  }
+}`} />
+
+## Consultation
+
+L&apos;administrateur accède au journal via **Paramètres → Sécurité → Journal d&apos;audit**. Filtres
+disponibles :
+
+- Plage de dates
+- Utilisateur
+- Type d&apos;action
+- Entité concernée
+- Adresse IP
+
+Les résultats sont exportables en CSV pour analyse externe.
+
+## Rétention
+
+Le journal d&apos;audit est conservé indéfiniment dans la base de données. Pour les sociétés soumises à des
+exigences spécifiques (certifications ISO, audit DGI), les entrées au-delà de 5 ans peuvent être archivées
+sur stockage externe.
+
+<Callout variant="warning" title="Intégrité du journal">
+Le journal d&apos;audit ne peut être ni modifié ni supprimé, même par un administrateur. Chaque entrée est
+horodatée et chaînée par hachage SHA-256 à la précédente, garantissant l&apos;intégrité du journal sur la
+durée.
+</Callout>
+
+## Détection d&apos;anomalies
+
+BIRDY analyse automatiquement le journal pour détecter des comportements suspects :
+
+- Connexions à des heures inhabituelles
+- Connexions depuis une nouvelle adresse IP géographiquement éloignée
+- Multiples échecs MFA consécutifs
+- Volume d&apos;exports anormal
+- Modifications massives en peu de temps
+
+Les alertes sont envoyées par e-mail à l&apos;administrateur.
+
+## Cas d&apos;usage
+
+### Enquête interne
+
+Un manager constate une vente effacée. Recherche dans le journal :
+
+- Filtre par entité « Vente »
+- Période : la semaine dernière
+- Action : « SUPPRESSION_VENTE »
+
+Le journal montre l&apos;identité de l&apos;auteur, la pièce concernée, l&apos;heure et l&apos;adresse IP.
+
+### Contrôle fiscal
+
+Le contrôleur DGI demande qui a passé une écriture en particulier. Recherche par EntityID. Le journal
+fournit immédiatement la réponse documentée et signée numériquement.
+
+### Audit de certification
+
+Lors d&apos;une certification ISO 27001, l&apos;auditeur vérifie que toutes les actions sensibles sont
+tracées. L&apos;export du journal sur la période demandée constitue une preuve recevable.
+
+## Anonymisation et RGPD
+
+Pour les contraintes de protection des données personnelles, certaines informations peuvent être
+anonymisées dans les exports (par exemple les adresses IP au-delà de 12 mois). Cette politique se configure
+dans **Paramètres → Sécurité → Politique de rétention**.
+
+## Surveillance temps réel
+
+Pour les sociétés sensibles, BIRDY peut envoyer en temps réel les événements critiques vers un système SIEM
+externe (Splunk, ELK, SigNoz) via le format syslog ou un webhook HTTP. Cette intégration s&apos;active dans
+**Paramètres → Intégrations → Sécurité**.

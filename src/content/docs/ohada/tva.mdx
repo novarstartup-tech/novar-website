@@ -1,0 +1,102 @@
+export const meta = { title: 'Déclaration de TVA', order: 6, category: 'ohada' };
+
+# Déclaration de TVA
+
+En Guinée, la TVA est régie par le Code Général des Impôts. Le taux normal est de 18 %. Certains biens et
+services sont exonérés ou soumis à un taux réduit. BIRDY automatise le calcul, la déclaration et le suivi
+des paiements.
+
+## Mécanisme général
+
+La TVA fonctionne en trois temps :
+
+1. **TVA collectée** : vous facturez la TVA à vos clients (compte 4431)
+2. **TVA déductible** : vous payez la TVA sur vos achats (compte 4456)
+3. **TVA à reverser** : la différence est due à l&apos;État (compte 4441)
+
+Si la TVA déductible dépasse la TVA collectée, vous obtenez un **crédit de TVA** reportable ou
+remboursable.
+
+## Périodicité
+
+Selon votre chiffre d&apos;affaires, la déclaration peut être :
+
+- **Mensuelle** : pour la majorité des entreprises industrielles et commerciales
+- **Trimestrielle** : pour les petites entreprises sous certains seuils
+
+La fréquence est définie au paramétrage de la société et peut être modifiée en début d&apos;exercice.
+
+## Calcul automatique
+
+BIRDY centralise tous les flux générant de la TVA :
+
+- Factures clients émises
+- Factures fournisseurs reçues
+- Avoirs reçus et émis
+- Imports avec TVA à l&apos;importation
+- Régularisations manuelles
+
+Le total déclarable est consolidé dans **Comptabilité → TVA → Préparation déclaration**.
+
+## Génération de la déclaration
+
+<Steps>
+  <Step title="Choix de la période">
+    Sélectionnez le mois ou le trimestre à déclarer.
+  </Step>
+  <Step title="Vérification des écritures">
+    BIRDY liste toutes les écritures impactant la TVA et permet de les vérifier ligne par ligne.
+  </Step>
+  <Step title="Production du formulaire">
+    Le formulaire officiel DGI Guinée est rempli automatiquement avec les montants calculés.
+  </Step>
+  <Step title="Validation">
+    Le comptable valide. Les écritures de centralisation TVA sont alors passées (4431 et 4456 vers 4441).
+  </Step>
+  <Step title="Téléversement">
+    Export PDF pour signature et téléversement sur le portail e-services de la DGI.
+  </Step>
+</Steps>
+
+## Comptes principaux
+
+<CodeBlock language="text" code={`4431  TVA facturée (collectée sur ventes)
+4432  TVA facturée sur prestations
+4441  TVA due à l'État
+4452  TVA récupérable sur immobilisations
+4456  TVA récupérable sur biens et services
+4458  TVA à régulariser
+4459  Crédit de TVA reportable`} />
+
+## Crédit de TVA
+
+Si vos achats imposables dépassent vos ventes (cas fréquent en début d&apos;activité ou lors d&apos;un gros
+investissement), vous obtenez un crédit de TVA. Deux options :
+
+- **Report** sur la déclaration suivante : option par défaut, automatique
+- **Remboursement** : sur demande motivée, soumise à validation DGI
+
+## TVA à l&apos;importation
+
+Les importations sont taxées à la frontière par les Douanes. La TVA payée est récupérable au même titre que
+celle payée sur les achats locaux. BIRDY enregistre les déclarations en douane (DDI) et impute la TVA dans
+le compte 4456 dédié.
+
+## Pénalités
+
+Le retard de déclaration ou de paiement entraîne des pénalités :
+
+- 10 % du montant dû en cas de retard de déclaration
+- Intérêts de retard de 1 % par mois entamé
+- Sanctions plus lourdes en cas de fraude avérée
+
+<Callout variant="warning" title="Échéances strictes">
+La TVA est due au plus tard le 15 du mois suivant la période déclarée. BIRDY rappelle les échéances à venir
+et peut envoyer des alertes automatiques au dirigeant et au comptable cinq jours avant la date limite.
+</Callout>
+
+## Contrôle DGI
+
+En cas de contrôle, vous devrez justifier chaque ligne de TVA déductible par une facture conforme (NIF du
+fournisseur, mention « TVA » distincte, libellé clair). BIRDY conserve toutes les factures scannées en
+pièces jointes des écritures correspondantes — vous les retrouvez en un clic.

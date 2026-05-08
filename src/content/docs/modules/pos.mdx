@@ -1,0 +1,92 @@
+export const meta = { title: 'POS / Ventes', order: 2, category: 'modules' };
+
+# POS et ventes
+
+Le POS (Point of Sale) de BIRDY est conçu pour être rapide même sur des terminaux modestes. L&apos;objectif :
+moins de cinq secondes entre l&apos;arrivée du client en caisse et l&apos;impression du ticket.
+
+## Lancer le POS
+
+Trois façons d&apos;ouvrir le POS :
+
+- Bouton **Vendre** sur le tableau de bord
+- Raccourci Ctrl+Shift+P
+- Menu **Ventes → Nouvelle vente au POS**
+
+L&apos;écran s&apos;ouvre en plein écran avec un grand champ code-barres en haut, une liste d&apos;articles
+ajoutés à droite, et un clavier numérique en bas.
+
+## Ajouter un article
+
+Trois méthodes :
+
+1. **Scan code-barres** : passez la douchette devant le produit, l&apos;article est ajouté avec quantité 1.
+2. **Recherche tactile** : tapez quelques lettres de la désignation, sélectionnez dans la liste.
+3. **Catalogue visuel** : naviguez par catégorie avec photos.
+
+## Modes de paiement
+
+Les modes acceptés se configurent dans **Paramètres → Caisse** :
+
+- Espèces (avec rendu monnaie automatique)
+- Mobile Money — Orange Money, MTN MoMo
+- Carte bancaire (terminal externe)
+- Chèque
+- Crédit client (compte 411)
+- Bons d&apos;achat / cartes cadeaux
+
+Le client peut payer en plusieurs fois (paiement mixte).
+
+<Callout variant="tip" title="Mobile Money">
+Sur les terminaux compatibles, BIRDY peut générer un code USSD que le client compose directement. La
+transaction est confirmée par webhook et le ticket s&apos;imprime automatiquement.
+</Callout>
+
+## Tickets et factures
+
+Au choix du caissier :
+
+- **Ticket de caisse** : impression rapide, format 80 mm. Pas de mention RCCM/NIF du client.
+- **Facture** : format A4 avec mentions complètes. Le client est sélectionné dans la base ou créé à la volée.
+
+Les tickets et factures portent un numéro séquentiel par exercice, conformément aux exigences fiscales.
+
+## Fonctionnement hors ligne
+
+Si la connexion Internet tombe, le POS continue de fonctionner. Toutes les ventes sont stockées localement
+dans une base SQLite chiffrée et synchronisées dès que le réseau revient. Le caissier voit en haut à droite
+un indicateur de l&apos;état réseau.
+
+<Callout variant="warning" title="Mobile Money en mode hors ligne">
+Les paiements Mobile Money exigent une connexion. En cas de coupure, basculez sur les espèces ou différez
+l&apos;encaissement.
+</Callout>
+
+## Retours et remboursements
+
+Pour traiter un retour, ouvrez la facture initiale via **Ventes → Historique**, cliquez sur **Retour
+partiel** ou **Retour total**, sélectionnez les articles concernés. BIRDY génère :
+
+- Un avoir lié à la facture initiale
+- Un mouvement de stock entrant
+- Une écriture comptable d&apos;annulation
+- Le remboursement (espèces, Mobile Money, ou avoir client)
+
+## Promotions et remises
+
+Les remises s&apos;appliquent au niveau ligne (un article) ou au niveau total. Trois types :
+
+- Remise en pourcentage
+- Remise en valeur fixe
+- Prix spécial (annule le prix catalogue)
+
+Les remises supérieures à un seuil défini par l&apos;administrateur (par défaut 10 %) nécessitent une
+validation par un superviseur.
+
+## Rapports POS
+
+Trois rapports clés accessibles depuis **Ventes → Rapports** :
+
+- **Z de caisse** : récapitulatif des ventes du jour, par mode de paiement, par caissier.
+- **Top articles** : meilleurs vendeurs sur la période sélectionnée.
+- **Marges** : marge brute par article, par catégorie, par caissier.

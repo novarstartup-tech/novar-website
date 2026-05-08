@@ -1,0 +1,86 @@
+export const meta = { title: 'Lettrage', order: 7, category: 'ohada' };
+
+# Lettrage
+
+Le lettrage consiste à associer des écritures qui se compensent : une facture et son règlement, un avoir et
+sa contrepartie, un acompte et sa facture définitive. C&apos;est un travail comptable essentiel pour
+identifier les soldes ouverts et anciens.
+
+## À quoi sert le lettrage
+
+Sans lettrage, votre grand-livre clients accumule des centaines d&apos;écritures, et il devient impossible
+de savoir lesquelles sont déjà soldées. Avec un bon lettrage :
+
+- Vous identifiez immédiatement les factures impayées
+- Vous calculez précisément les retards et les délais moyens
+- Vous justifiez les soldes en fin d&apos;exercice
+- Vous facilitez les rapprochements lors des contrôles fiscaux
+
+## Lettrage automatique
+
+BIRDY propose un lettrage automatique pour les cas simples : un règlement reçu d&apos;un client correspond
+exactement à une ou plusieurs factures. L&apos;algorithme cherche les combinaisons qui totalisent le montant
+reçu.
+
+Trois stratégies disponibles :
+
+- **Stricte** : lettre uniquement les correspondances exactes (montant et tiers)
+- **Tolérante** : accepte les écarts de quelques GNF dus aux arrondis
+- **Manuelle** : aucun lettrage automatique, l&apos;opérateur valide tout
+
+## Lettrage manuel
+
+Pour les cas complexes, le lettrage manuel se fait depuis **Comptabilité → Lettrage → Compte client/fournisseur**.
+
+L&apos;écran présente toutes les écritures non lettrées du compte. Cochez celles à associer, BIRDY calcule
+le total. Si débit = crédit, le lettrage est validé et un **code de lettrage** unique est attribué.
+
+<CodeBlock language="text" code={`Lettrage manuel — DIALLO SARL (411-DIA001)
+─────────────────────────────────────────────
+☑ F2026-014   Vente du 12/04        5 200 000 D
+☑ F2026-022   Vente du 25/04        4 800 000 D
+☑ F2026-041   Vente du 10/05        2 000 000 D
+☑ R2026-058   Encaissement 15/05  −12 000 000 C
+
+Total Débit  : 12 000 000
+Total Crédit : 12 000 000
+Solde        :          0  ← Équilibré, lettrage possible
+
+Code lettrage : AAA`} />
+
+## Délettrage
+
+Une erreur a été commise ? Le délettrage est possible tant que la période n&apos;est pas verrouillée. Il
+annule simplement le code de lettrage attribué, sans supprimer les écritures.
+
+## Lettrage partiel
+
+Quand un règlement ne couvre qu&apos;une partie d&apos;une facture, BIRDY peut effectuer un **lettrage
+partiel**. La partie soldée reçoit un code, la partie restante demeure ouverte avec un libellé indiquant le
+solde.
+
+## Pré-lettrage par référence
+
+Si vos clients indiquent les références des factures qu&apos;ils règlent (idéal mais pas systématique),
+BIRDY peut effectuer un pré-lettrage automatique en s&apos;appuyant sur la référence. Le comptable n&apos;a
+plus qu&apos;à valider.
+
+## Suivi du taux de lettrage
+
+Un indicateur clé : le **taux de lettrage** (proportion d&apos;écritures lettrées vs non lettrées). Un taux
+inférieur à 90 % en fin de mois indique généralement un retard de saisie ou des paiements non identifiés.
+
+<Callout variant="tip" title="Bonnes pratiques">
+Lettrez au minimum chaque fin de mois, avant la clôture mensuelle. Un lettrage à jour fait gagner des heures
+lors de la production de la liasse fiscale.
+</Callout>
+
+## Lettrage et contentieux
+
+Pour les factures en contentieux (impayées sans espoir de recouvrement), une procédure spécifique s&apos;applique :
+
+1. Provision pour dépréciation des créances douteuses (compte 491)
+2. Si la perte est définitive : passage en charge (compte 651)
+3. Lettrage final entre la facture et l&apos;écriture de perte
+
+Cette procédure est documentée pas à pas dans la documentation avancée.

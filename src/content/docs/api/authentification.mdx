@@ -1,0 +1,125 @@
+export const meta = { title: 'Authentification API', order: 2, category: 'api' };
+
+# Authentification API
+
+L&apos;API BIRDY supporte deux mécanismes d&apos;authentification : la **clé API** (pour les intégrations
+serveur à serveur) et **OAuth 2.0** (pour les applications tierces qui agissent au nom d&apos;un utilisateur
+final).
+
+## Clé API
+
+Méthode simple et adaptée aux scénarios où votre script ou serveur appelle l&apos;API BIRDY pour son propre
+compte.
+
+### Génération
+
+Dans BIRDY, accédez à **Paramètres → API → Clés**. Cliquez sur **Nouvelle clé**. Précisez :
+
+- Un nom descriptif (par exemple « Site e-commerce production »)
+- Les **scopes** autorisés (lecture, écriture, lecture comptabilité, etc.)
+- Optionnellement, une liste blanche d&apos;IP autorisées
+- Une durée de validité (jusqu&apos;à 1 an)
+
+La clé est affichée **une seule fois**. Notez-la immédiatement et stockez-la en lieu sûr (gestionnaire de
+secrets, variables d&apos;environnement chiffrées).
+
+<Callout variant="warning" title="Sécurité de la clé">
+Une clé API divulguée donne un accès direct à vos données. Ne l&apos;intégrez jamais dans le code source
+public, ne la partagez jamais par e-mail ou messagerie. Utilisez des secrets managers (1Password, Vault,
+AWS Secrets Manager, GitHub Actions secrets).
+</Callout>
+
+### Utilisation
+
+Ajoutez l&apos;en-tête `Authorization` à chaque requête :
+
+<CodeBlock language="bash" code={`curl -X GET "https://api.birdy.novar.gn/v1/articles" \\
+  -H "Authorization: Bearer sk_live_abc123def456ghi789..."`} />
+
+### Rotation des clés
+
+Pour limiter l&apos;impact d&apos;une éventuelle fuite, faites tourner vos clés régulièrement :
+
+1. Générez une nouvelle clé avec les mêmes scopes
+2. Mettez à jour vos applications pour utiliser la nouvelle clé
+3. Vérifiez que tout fonctionne en production
+4. Révoquez l&apos;ancienne clé
+
+La rotation tous les 90 jours est une bonne pratique.
+
+## OAuth 2.0
+
+Méthode adaptée aux **applications tierces** qui doivent agir au nom d&apos;un utilisateur final BIRDY (par
+exemple une application mobile partenaire qui consulte les factures du client).
+
+### Flow d&apos;autorisation
+
+BIRDY supporte le flow Authorization Code avec PKCE :
+
+<Steps>
+  <Step title="Inscription de l'application">
+    Le développeur tiers crée son application dans le portail développeur BIRDY. Il obtient un client_id et
+    un client_secret.
+  </Step>
+  <Step title="Redirection de l'utilisateur">
+    L&apos;utilisateur est dirigé vers l&apos;URL d&apos;autorisation BIRDY avec les scopes demandés.
+  </Step>
+  <Step title="Consentement utilisateur">
+    BIRDY affiche les permissions demandées. L&apos;utilisateur autorise ou refuse.
+  </Step>
+  <Step title="Échange du code">
+    BIRDY redirige vers l&apos;application avec un code temporaire. L&apos;application l&apos;échange contre
+    un access_token et un refresh_token.
+  </Step>
+  <Step title="Appels API">
+    L&apos;application utilise l&apos;access_token dans les requêtes API.
+  </Step>
+</Steps>
+
+### Durées de vie
+
+- **Access token** : 1 heure
+- **Refresh token** : 30 jours, rotation automatique à chaque utilisation
+- **Code d&apos;autorisation** : 10 minutes, à usage unique
+
+### Scopes
+
+Liste des scopes disponibles :
+
+- `articles:read` / `articles:write`
+- `clients:read` / `clients:write`
+- `factures:read` / `factures:write`
+- `compta:read` / `compta:write` (sensible)
+- `paie:read` (très sensible, accès limité)
+- `audit:read` (très sensible, accès limité)
+
+Le principe du **moindre privilège** s&apos;applique : ne demandez que les scopes nécessaires à votre
+application.
+
+## Sécurité réseau
+
+- **TLS 1.3** obligatoire
+- Certificate pinning recommandé pour les apps mobiles
+- Réjection automatique des requêtes HTTP non chiffrées
+- HSTS activé sur le domaine API
+
+## Audit des appels API
+
+Toutes les requêtes API sont enregistrées dans le journal d&apos;audit avec :
+
+- Clé ou client_id ayant initié la requête
+- Endpoint appelé
+- Code de réponse
+- Adresse IP source
+- Latence
+
+Ce journal permet de détecter les comportements anormaux (volume excessif, scopes non utilisés, latence
+élevée).
+
+## Révocation immédiate
+
+En cas de soupçon de compromission :
+
+- **Clé API** : révoquez-la depuis **Paramètres → API → Clés**. Effet immédiat.
+- **OAuth** : révoquez le refresh_token de l&apos;application. Les access_tokens en cours expireront sous 1 h.
+- **Compte utilisateur** : la suspension du compte invalide tous ses tokens OAuth en cours.

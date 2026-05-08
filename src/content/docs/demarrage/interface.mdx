@@ -1,0 +1,93 @@
+export const meta = {
+  title: "Tour de l'interface",
+  description: 'Comprendre la disposition générale de BIRDY ERP.',
+  order: 4,
+  category: 'demarrage',
+};
+
+# Tour de l&apos;interface
+
+L&apos;interface de BIRDY est conçue pour rester lisible même sur des écrans modestes (1024×768) et reste
+performante sur des machines à 4 Go de RAM. Cette page décrit les zones principales et les raccourcis
+fondamentaux pour gagner en productivité.
+
+## Disposition générale
+
+L&apos;écran se divise en quatre zones :
+
+1. **Barre supérieure** : recherche globale, notifications, profil utilisateur, sélecteur de société.
+2. **Menu latéral gauche** : navigation par module (Tableau de bord, Ventes, Achats, Stock, Compta, RH, Paramètres).
+3. **Zone centrale** : contenu actif (liste, formulaire, rapport).
+4. **Panneau d&apos;actions à droite** (contextuel) : actions rapides liées à l&apos;écran courant.
+
+Le menu latéral est repliable via Ctrl+B pour libérer de l&apos;espace sur les listes longues.
+
+## Recherche globale
+
+La barre de recherche située en haut accepte plusieurs syntaxes :
+
+- `client:Diallo` — chercher uniquement parmi les clients
+- `facture:F2026-001` — accéder directement à une facture
+- `article:RIZ` — chercher dans les articles
+- `compte:411` — chercher dans le plan comptable
+
+La recherche est fulltext et fonctionne hors ligne grâce à un index local SQLite.
+
+## Raccourcis clavier essentiels
+
+<ApiTable rows={[
+  { name: 'Ctrl+K', type: 'Global', description: 'Ouvrir la palette de commandes' },
+  { name: 'Ctrl+N', type: 'Listes', description: 'Créer un nouvel élément' },
+  { name: 'Ctrl+S', type: 'Formulaires', description: 'Enregistrer' },
+  { name: 'Ctrl+B', type: 'Global', description: 'Replier/déplier le menu latéral' },
+  { name: 'F2', type: 'Listes', description: 'Renommer / éditer la ligne sélectionnée' },
+  { name: 'Échap', type: 'Modaux', description: 'Fermer le formulaire en cours' },
+  { name: 'Ctrl+Shift+P', type: 'Global', description: 'Ouvrir une nouvelle vente au POS' },
+  { name: 'Ctrl+Shift+F', type: 'Global', description: 'Émettre une facture' },
+]} />
+
+## Mode sombre
+
+BIRDY propose un mode sombre activable depuis **Paramètres → Préférences → Apparence**. Les utilisateurs qui
+travaillent de longues heures rapportent moins de fatigue oculaire avec ce mode.
+
+## Plusieurs sociétés
+
+Si vous gérez plusieurs sociétés (plan Enterprise), un sélecteur en haut à droite permet de basculer
+instantanément. Chaque société dispose de sa propre base, de son propre plan comptable et de ses propres
+utilisateurs.
+
+<Callout variant="tip" title="Astuce productivité">
+Vous pouvez ouvrir simultanément deux sociétés dans deux fenêtres BIRDY distinctes via Ctrl+Shift+N. Pratique
+pour comparer ou consolider rapidement.
+</Callout>
+
+## Tableau de bord
+
+Au démarrage, le tableau de bord affiche les indicateurs clés du jour :
+
+- Chiffre d&apos;affaires du jour, du mois, comparaison avec le mois précédent
+- Nombre de tickets émis
+- Top 5 articles vendus
+- Solde de caisse en cours
+- Alertes (stock bas, factures en retard, écritures non lettrées)
+
+Chaque widget est cliquable pour accéder au détail. La disposition est personnalisable par utilisateur via
+le bouton **Personnaliser le tableau de bord** en haut à droite.
+
+## Notifications et bandeau d&apos;information
+
+Les notifications apparaissent en haut à droite. Elles incluent :
+
+- Nouvelles versions disponibles
+- Échéances de facturation client à relancer
+- Anomalies détectées (saisies suspectes, soldes négatifs, écritures déséquilibrées)
+
+Le bandeau jaune en haut signale les opérations critiques en cours (sauvegarde longue, import volumineux,
+synchronisation hors ligne).
+
+## Aide contextuelle
+
+Un bouton « ? » en haut à droite ouvre l&apos;aide contextuelle. Le contenu affiché correspond à l&apos;écran
+sur lequel vous travaillez actuellement. Vous pouvez aussi accéder directement à cette documentation en
+ligne via Ctrl+? sur n&apos;importe quel écran.

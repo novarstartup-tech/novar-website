@@ -1,0 +1,94 @@
+export const meta = { title: 'Liasse fiscale', order: 3, category: 'ohada' };
+
+# Liasse fiscale
+
+La liasse fiscale est l&apos;ensemble des états financiers annuels que toute entreprise OHADA doit produire
+et déposer auprès des autorités fiscales (DGI Guinée). BIRDY génère automatiquement la liasse complète à
+partir de votre comptabilité.
+
+## États composants la liasse
+
+Le SYSCOHADA révisé impose les états suivants :
+
+1. **Bilan** — Actif et Passif à la date de clôture
+2. **Compte de résultat** — Charges et Produits de l&apos;exercice
+3. **TAFIRE** — Tableau Financier des Ressources et Emplois
+4. **Notes annexes** — Détails et explications obligatoires
+5. **État des immobilisations**
+6. **État des amortissements**
+7. **État des provisions**
+8. **Créances et dettes au bilan**
+
+Pour les petites entreprises (système minimal de trésorerie ou système allégé), certains états peuvent être
+simplifiés. BIRDY adapte la liasse selon le système comptable choisi à la création de la société.
+
+## Génération
+
+**Comptabilité → Liasse fiscale → Nouvelle liasse**. Précisez :
+
+- L&apos;exercice concerné
+- La date de clôture (généralement 31/12)
+- Le système comptable applicable (normal, allégé, minimal de trésorerie)
+
+BIRDY exécute alors les contrôles automatiques :
+
+- Toutes les écritures sont équilibrées
+- Aucune écriture en attente de validation
+- Plan comptable cohérent
+- Comptes de produits et charges totalisés correctement
+- Inventaires de fin d&apos;exercice saisis
+
+<Callout variant="warning" title="Avant de générer">
+Effectuez d&apos;abord la **clôture provisoire** : passation des écritures d&apos;ajustement (provisions,
+amortissements, à-nouveaux). La liasse générée sur des comptes non clôturés provisoirement contiendra des
+incohérences.
+</Callout>
+
+## Aperçu et corrections
+
+L&apos;aperçu HTML de la liasse permet de naviguer entre les états et de cliquer sur n&apos;importe quel
+montant pour voir les écritures sources. Cette traçabilité est précieuse en cas de question lors du contrôle.
+
+Si vous détectez une anomalie (par exemple un montant qui ne correspond pas à la réalité), vous pouvez :
+
+- Modifier la pièce comptable source (si la période n&apos;est pas verrouillée)
+- Passer une écriture de régularisation
+- Re-générer la liasse
+
+## Formats d&apos;export
+
+Une fois la liasse validée, BIRDY l&apos;exporte aux formats suivants :
+
+- **PDF** — pour archivage et impression
+- **Excel** — pour modifications complémentaires si autorisées
+- **XML format DGI** — pour téléversement direct sur le portail e-services de la DGI Guinée
+
+<CodeBlock language="xml" code={`<?xml version="1.0" encoding="UTF-8"?>
+<liasse>
+  <societe nif="123456789" rccm="GN-CONK-2024-A-1234"/>
+  <exercice>
+    <debut>2026-01-01</debut>
+    <fin>2026-12-31</fin>
+  </exercice>
+  <bilan>
+    <actif>...</actif>
+    <passif>...</passif>
+  </bilan>
+  ...
+</liasse>`} />
+
+## Calendrier
+
+La liasse fiscale doit être déposée auprès de la DGI :
+
+- Au plus tard 4 mois après la clôture pour les sociétés à exercice fiscal coïncidant avec l&apos;année civile
+- Date limite habituelle : 30 avril N+1
+- Pénalités en cas de retard : 5 % du montant dû par mois de retard
+
+BIRDY rappelle automatiquement les échéances dans le tableau de bord à partir de mars.
+
+## Conservation
+
+La liasse et toutes les pièces justificatives doivent être conservées au minimum 10 ans. BIRDY archive
+automatiquement chaque liasse validée dans un dossier non modifiable, avec horodatage et empreinte SHA-256
+pour garantir l&apos;intégrité.

@@ -1,0 +1,93 @@
+export const meta = { title: 'TAFIRE', order: 4, category: 'ohada' };
+
+# TAFIRE — Tableau financier des ressources et emplois
+
+Le TAFIRE est un état financier obligatoire dans le système comptable OHADA normal. Il analyse les flux
+financiers de l&apos;exercice : d&apos;où viennent les ressources, comment elles ont été utilisées. C&apos;est
+l&apos;équivalent OHADA du tableau de financement français.
+
+## Objectif
+
+Le TAFIRE répond à la question : « Comment l&apos;entreprise a-t-elle financé ses investissements et son
+besoin en fonds de roulement durant l&apos;exercice ? ». Il met en évidence :
+
+- La capacité d&apos;autofinancement (CAFG)
+- Les ressources externes mobilisées (emprunts, augmentations de capital)
+- Les emplois (acquisitions d&apos;immobilisations, remboursements, distributions)
+- L&apos;impact sur la trésorerie nette
+
+## Structure simplifiée
+
+Le tableau se lit en deux grandes parties :
+
+**Ressources stables**
+- Capacité d&apos;autofinancement globale (CAFG)
+- Cessions ou réductions d&apos;actifs immobilisés
+- Augmentations des ressources stables (capital, emprunts)
+
+**Emplois stables**
+- Distributions de dividendes
+- Acquisitions ou augmentations d&apos;actifs immobilisés
+- Réductions des ressources stables (remboursements)
+
+L&apos;**excédent ou insuffisance de ressources stables (E.R.S. ou I.R.S.)** correspond à la différence et
+explique l&apos;évolution du fonds de roulement.
+
+## Génération automatique
+
+BIRDY génère le TAFIRE automatiquement lors de la production de la liasse fiscale. Les calculs s&apos;appuient
+sur :
+
+- Le compte de résultat de l&apos;exercice
+- Les variations de comptes d&apos;immobilisations entre N-1 et N
+- Les variations de comptes de capitaux et dettes financières
+- Les flux de trésorerie
+
+<Callout variant="info" title="Comptabilité de référence">
+Le TAFIRE n&apos;est obligatoire que pour les entreprises soumises au système normal SYSCOHADA. Pour le
+système allégé ou le système minimal de trésorerie, il peut être omis.
+</Callout>
+
+## Vérifications
+
+À la production, BIRDY effectue plusieurs contrôles :
+
+- Le total des ressources est-il cohérent avec la trésorerie variation ?
+- Les variations d&apos;immobilisations sont-elles documentées par des pièces ?
+- Les amortissements de l&apos;exercice correspondent-ils aux écritures passées ?
+
+Les anomalies sont signalées en jaune (avertissement) ou en rouge (bloquant). Les blocages doivent être
+résolus avant validation.
+
+## Lecture par le dirigeant
+
+Le TAFIRE est utile au-delà de l&apos;obligation fiscale. Il répond à des questions stratégiques :
+
+- L&apos;activité génère-t-elle assez de trésorerie pour financer la croissance ?
+- L&apos;endettement augmente-t-il anormalement ?
+- La politique de distribution est-elle soutenable ?
+
+Une CAFG positive et stable est un bon indicateur de santé financière.
+
+## Exemple chiffré
+
+<CodeBlock language="text" code={`TAFIRE simplifié — Exercice 2026
+─────────────────────────────────────────────
+RESSOURCES STABLES
+  CAFG                                42 000 000
+  Cessions d'immobilisations           5 000 000
+  Augmentation de capital             20 000 000
+  Nouveaux emprunts                   30 000 000
+  ────────────────────────────────────
+  TOTAL                               97 000 000
+
+EMPLOIS STABLES
+  Distributions dividendes             8 000 000
+  Acquisitions d'immobilisations      55 000 000
+  Remboursements d'emprunts           18 000 000
+  ────────────────────────────────────
+  TOTAL                               81 000 000
+
+Excédent de ressources (E.R.S.)     +16 000 000`} />
+
+Cet excédent finance le besoin en fonds de roulement et augmente la trésorerie de l&apos;entreprise.

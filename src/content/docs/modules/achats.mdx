@@ -1,0 +1,101 @@
+export const meta = { title: 'Achats & approvisionnement', order: 6, category: 'modules' };
+
+# Achats et approvisionnement
+
+Le module Achats couvre le cycle complet : demande, bon de commande, réception, facturation, paiement. Chaque
+étape génère automatiquement les écritures comptables et met à jour le stock.
+
+## Cycle d&apos;achat
+
+<Steps>
+  <Step title="Demande d'achat">
+    Un magasinier ou un chef de service exprime un besoin. La demande peut être manuelle ou générée
+    automatiquement par les seuils de réapprovisionnement.
+  </Step>
+  <Step title="Bon de commande">
+    Le service achats consolide les demandes, négocie avec le fournisseur, émet le bon de commande.
+  </Step>
+  <Step title="Réception">
+    À la livraison, le magasinier compare le contenu avec le bon de commande et saisit le bon de réception.
+    Les écarts sont signalés.
+  </Step>
+  <Step title="Facture fournisseur">
+    À réception de la facture, elle est rapprochée du bon de réception. Les écarts de prix ou de quantité
+    génèrent des alertes.
+  </Step>
+  <Step title="Paiement">
+    Le paiement est planifié selon le délai accordé. Une fois exécuté, le lettrage solde la facture.
+  </Step>
+</Steps>
+
+## Bons de commande
+
+Chaque bon de commande (BC) précise :
+
+- Fournisseur (sélection ou création à la volée)
+- Date de commande et date de livraison souhaitée
+- Liste des articles avec quantités et prix négociés
+- Conditions de paiement
+- Mode de livraison
+- Validité de l&apos;offre
+
+Les BC sont numérotés séquentiellement par exercice. Ils peuvent être exportés en PDF pour envoi au
+fournisseur.
+
+## Statuts
+
+Un bon de commande passe par les statuts suivants :
+
+- **Brouillon** : modifiable, pas encore envoyé
+- **Envoyé** : transmis au fournisseur, en attente de confirmation
+- **Confirmé** : accusé de réception du fournisseur
+- **Reçu partiellement** : une partie de la commande livrée
+- **Reçu intégralement** : commande soldée
+- **Annulé** : abandon avec motif
+
+## Réceptions
+
+À la réception, le magasinier :
+
+1. Pointe les articles physiquement reçus
+2. Saisit les quantités effectivement livrées
+3. Note les éventuels défauts ou dommages
+4. Valide la réception
+
+Les écritures comptables sont automatiquement passées :
+
+<CodeBlock language="text" code={`6011 Achats marchandises          Débit : 8 500 000
+4456 TVA déductible              Débit : 1 530 000
+   401 Fournisseur                  Crédit : 10 030 000`} />
+
+## Écarts de réception
+
+Si la quantité reçue diffère du bon de commande, BIRDY propose deux choix :
+
+- **Reliquat à recevoir** : le BC reste ouvert pour la quantité manquante
+- **Solde forcé** : le BC est clos malgré l&apos;écart, qui est documenté
+
+<Callout variant="warning" title="Validation des écarts">
+Les écarts de prix supérieurs à 5 % entre BC et facture nécessitent une validation par un superviseur. Cette
+règle se configure dans **Paramètres → Achats**.
+</Callout>
+
+## Avoirs fournisseurs
+
+Si un fournisseur émet un avoir (retour de marchandise, remise commerciale a posteriori), saisissez-le
+depuis **Achats → Avoirs**. Il est automatiquement rapproché de la facture concernée et lettré.
+
+## Échéancier des paiements
+
+L&apos;écran **Achats → À payer** affiche toutes les factures fournisseurs en attente de règlement, classées
+par échéance. Les factures en retard apparaissent en rouge. Vous pouvez générer un fichier de virements
+groupés au format SEPA ou bancaire local.
+
+## Statistiques achats
+
+- Top fournisseurs sur la période
+- Évolution des prix d&apos;achat par article
+- Délais moyens de livraison par fournisseur
+- Taux de service (commandes livrées dans les délais)
+
+Ces indicateurs aident à négocier et à arbitrer entre fournisseurs.

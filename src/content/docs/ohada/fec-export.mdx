@@ -1,0 +1,89 @@
+export const meta = { title: 'Export FEC', order: 5, category: 'ohada' };
+
+# Export FEC — Fichier des Écritures Comptables
+
+Le FEC est un format standardisé d&apos;export de toutes les écritures comptables d&apos;un exercice. Il est
+exigé par les administrations fiscales lors des contrôles. BIRDY produit un FEC conforme en moins d&apos;une
+minute.
+
+## Format réglementaire
+
+Le FEC est un fichier texte délimité par tabulations, encodé en UTF-8 ou ISO-8859-1, comportant 18 colonnes
+obligatoires :
+
+<ApiTable rows={[
+  { name: 'JournalCode', type: 'string', required: true, description: "Code du journal de l'écriture" },
+  { name: 'JournalLib', type: 'string', required: true, description: 'Libellé du journal' },
+  { name: 'EcritureNum', type: 'string', required: true, description: "Numéro séquentiel de l'écriture" },
+  { name: 'EcritureDate', type: 'date', required: true, description: 'Date de comptabilisation' },
+  { name: 'CompteNum', type: 'string', required: true, description: 'Numéro de compte' },
+  { name: 'CompteLib', type: 'string', required: true, description: 'Libellé du compte' },
+  { name: 'CompAuxNum', type: 'string', required: false, description: "Numéro de compte auxiliaire" },
+  { name: 'CompAuxLib', type: 'string', required: false, description: "Libellé du compte auxiliaire" },
+  { name: 'PieceRef', type: 'string', required: true, description: 'Référence de la pièce justificative' },
+  { name: 'PieceDate', type: 'date', required: true, description: 'Date de la pièce' },
+  { name: 'EcritureLib', type: 'string', required: true, description: "Libellé de l'écriture" },
+  { name: 'Debit', type: 'decimal', required: true, description: 'Montant débit (0 si crédit)' },
+  { name: 'Credit', type: 'decimal', required: true, description: 'Montant crédit (0 si débit)' },
+  { name: 'EcritureLet', type: 'string', required: false, description: 'Code de lettrage' },
+  { name: 'DateLet', type: 'date', required: false, description: 'Date de lettrage' },
+  { name: 'ValidDate', type: 'date', required: true, description: 'Date de validation' },
+  { name: 'Montantdevise', type: 'decimal', required: false, description: 'Montant en devise étrangère' },
+  { name: 'Idevise', type: 'string', required: false, description: 'Code devise (ISO 4217)' },
+]} />
+
+## Génération
+
+**Comptabilité → Exports → FEC**. Sélectionnez :
+
+- L&apos;exercice (par défaut le précédent ou le courant)
+- La période (souvent l&apos;exercice complet)
+- Les journaux à inclure (par défaut tous)
+- Le format d&apos;encodage (UTF-8 recommandé)
+
+BIRDY génère le fichier en quelques secondes, même sur des bases importantes (centaines de milliers de
+lignes).
+
+## Nom de fichier
+
+Le format de nommage exigé est :
+
+```
+SIRET_ou_NIF + FEC + AAAAMMJJ + .txt
+```
+
+Exemple pour une société guinéenne avec NIF 123456789 dont l&apos;exercice clôt le 31/12/2026 :
+`123456789FEC20261231.txt`.
+
+## Contrôles d&apos;intégrité
+
+Avant export, BIRDY vérifie :
+
+- Toutes les écritures sont équilibrées (Débit = Crédit par numéro de pièce)
+- Aucune écriture sans libellé
+- Aucun compte non référencé dans le plan comptable
+- Les dates sont dans la période demandée
+- Les montants sont cohérents (pas de négatif anormal)
+
+<Callout variant="warning" title="Format strict">
+Le FEC est rigoureusement contrôlé par les algorithmes des administrations fiscales. Une virgule au lieu
+d&apos;un point décimal, un encodage incorrect, ou un séparateur autre que la tabulation peuvent entraîner
+le rejet du fichier. BIRDY respecte strictement le format réglementaire.
+</Callout>
+
+## Pendant un contrôle
+
+En cas de contrôle fiscal, l&apos;administration peut demander le FEC sur place ou par e-mail. Avec BIRDY,
+le délai de production est inférieur à 5 minutes y compris la copie sur clé USB. Cela rassure le contrôleur
+et démontre la qualité du système comptable utilisé.
+
+## Archivage
+
+Chaque FEC produit est automatiquement archivé dans un dossier dédié, avec sa date de génération et son
+empreinte SHA-256. L&apos;archive est consultable depuis **Comptabilité → Exports → Historique**.
+
+## Conservation
+
+La législation impose la conservation des FEC durant 10 ans. BIRDY conserve les fichiers tant que la base
+de la société est active. Pour une sécurité supplémentaire, exportez périodiquement vers un disque externe
+ou un service de stockage chiffré.

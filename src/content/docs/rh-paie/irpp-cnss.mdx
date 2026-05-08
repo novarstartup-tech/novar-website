@@ -1,0 +1,115 @@
+export const meta = { title: 'IRPP & CNSS Guinée', order: 4, category: 'rh-paie' };
+
+# IRPP & CNSS Guinée
+
+Toute entreprise guinéenne employant des salariés est tenue de :
+
+- Retenir l&apos;IRPP à la source sur les salaires versés et le reverser à la DGI
+- Affilier ses salariés à la CNSS et reverser les cotisations correspondantes
+
+BIRDY automatise les calculs et la production des déclarations, mais le suivi mensuel reste de votre
+responsabilité.
+
+## CNSS — Caisse Nationale de Sécurité Sociale
+
+La CNSS guinéenne couvre :
+
+- Les pensions de retraite
+- Les prestations familiales
+- Les accidents du travail et maladies professionnelles
+- Certaines prestations en nature
+
+Les taux varient selon la branche d&apos;activité (les industries à risque cotisent davantage pour la branche
+AT/MP). BIRDY applique le taux configuré au paramétrage initial.
+
+### Affiliation d&apos;un nouveau salarié
+
+Tout nouvel embauché doit être affilié à la CNSS dans les 8 jours suivant son embauche. BIRDY produit le
+formulaire d&apos;immatriculation à transmettre à la CNSS, pré-rempli avec les informations de la fiche
+employé.
+
+### Déclaration trimestrielle
+
+La déclaration de cotisations CNSS est trimestrielle. À l&apos;issue de chaque trimestre :
+
+1. BIRDY consolide les bulletins du trimestre
+2. Calcule les bases plafonnées et les cotisations dues
+3. Génère le bordereau au format CNSS
+4. Produit le détail nominatif employé par employé
+
+Le paiement doit intervenir au plus tard le 15 du mois suivant le trimestre clos.
+
+<Callout variant="warning" title="Pénalités CNSS">
+Le retard de déclaration ou de paiement entraîne des pénalités progressives : 5 % la première fois, 10 % en
+cas de récidive, plus des intérêts moratoires. Les régularisations a posteriori sont soumises à validation
+de la CNSS.
+</Callout>
+
+## IRPP — Impôt sur le revenu des personnes physiques
+
+L&apos;IRPP est calculé chaque mois sur le salaire imposable. L&apos;employeur est **collecteur** : il retient
+l&apos;impôt à la source et le reverse à la DGI au plus tard le 15 du mois suivant.
+
+### Calcul mensuel
+
+Le calcul tient compte :
+
+- Du salaire brut imposable (hors certains avantages exclus)
+- Des charges déductibles (cotisations CNSS partie salarié)
+- Du barème progressif par tranches
+- Des abattements pour charges de famille (parts fiscales)
+
+<CodeBlock language="text" code={`Exemple — salarié marié, 2 enfants à charge
+Salaire brut imposable mensuel : 4 500 000 GNF
+Cotisations CNSS salarié      : -225 000 GNF
+─────────────────────────────────────────────
+Salaire imposable             : 4 275 000 GNF
+Nombre de parts               : 2,5
+─────────────────────────────────────────────
+Quotient                      : 1 710 000 GNF / mois
+                              = 20 520 000 GNF / an
+
+Application du barème annuel :
+  Tranche 0–12M    × 0 %  =          0
+  Tranche 12M–36M  × 10 % =  2 052 000
+  Tranche 36M–60M  × 15 % =          0
+  ───────────────────────────────────
+  IRPP annuel total    : 2 052 000 × 2,5 parts = 5 130 000 GNF
+  IRPP mensuel         : 427 500 GNF`} />
+
+### Déclaration mensuelle
+
+La déclaration mensuelle d&apos;IRPP doit comporter :
+
+- Liste nominative des salariés
+- Salaire brut versé à chacun
+- IRPP retenu
+- Total à reverser
+
+Le formulaire est généré automatiquement par BIRDY au format DGI Guinée.
+
+### Régularisation annuelle
+
+En fin d&apos;année, BIRDY produit le **récapitulatif annuel** détaillé pour chaque salarié. Ce document
+sert :
+
+- De justificatif pour le salarié pour sa déclaration personnelle
+- De pièce de référence pour la DGI lors d&apos;un contrôle
+
+## Évolution des barèmes
+
+Les barèmes IRPP et les taux CNSS évoluent régulièrement par lois de finances. BIRDY met à jour les
+paramètres dans les jours suivant la publication officielle. Vous recevez une notification dans
+l&apos;application et par e-mail. La mise à jour s&apos;applique aux paies non encore validées.
+
+## Audit et contrôle
+
+En cas de contrôle DGI ou CNSS, vous devez fournir :
+
+- Le détail des bulletins de paie
+- Les déclarations mensuelles ou trimestrielles
+- Les justificatifs de paiement
+- Les contrats des salariés
+
+Tous ces éléments sont accessibles depuis BIRDY en quelques clics, ce qui facilite considérablement
+l&apos;exercice.

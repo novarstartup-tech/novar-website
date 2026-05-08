@@ -1,0 +1,101 @@
+export const meta = { title: 'Sauvegardes', order: 3, category: 'securite' };
+
+# Sauvegardes
+
+Une sauvegarde fiable est votre dernière ligne de défense contre les pannes matérielles, les attaques
+ransomware, les erreurs humaines et les sinistres physiques. BIRDY automatise les sauvegardes et chiffre
+les copies, mais vous devez vérifier régulièrement leur validité.
+
+## Stratégie 3-2-1
+
+La règle d&apos;or des sauvegardes professionnelles :
+
+- **3** copies de vos données
+- **2** supports différents (disque local + cloud)
+- **1** copie hors site (chez vous, dans un coffre-fort, ou cloud chiffré)
+
+BIRDY met en œuvre cette stratégie avec :
+
+- La base de données active (compteur 1)
+- Une sauvegarde locale automatique sur disque secondaire (compteur 2, support différent)
+- Une sauvegarde cloud chiffrée (compteur 3, hors site)
+
+## Sauvegarde automatique locale
+
+Par défaut, BIRDY effectue une sauvegarde quotidienne sur disque local à 2 h du matin. Le fichier est :
+
+- Compressé (gain de 60 à 80 % sur la taille brute)
+- Chiffré avec AES-256
+- Nommé avec horodatage : `birdy-backup-2026-04-28-02-00.bak.enc`
+
+L&apos;emplacement par défaut est `%APPDATA%\NOVAR\BIRDY\backups`. Pour plus de sécurité, configurez un
+chemin sur un disque physique distinct ou un partage réseau (NAS).
+
+## Sauvegarde cloud chiffrée
+
+À partir du plan Pro, BIRDY peut envoyer une copie hebdomadaire vers un stockage cloud (par défaut un
+service géré par NOVAR à Conakry, mais vous pouvez configurer S3, Backblaze, OVH ou autre).
+
+Le fichier est chiffré côté client (AES-256-GCM) avec une clé que vous seul connaissez. Même NOVAR ne peut
+pas déchiffrer vos données.
+
+<Callout variant="warning" title="Protégez votre clé">
+Si vous perdez votre clé de chiffrement de sauvegarde, vos sauvegardes cloud sont inutilisables. Conservez
+la clé hors de BIRDY (gestionnaire de mots de passe, coffre-fort physique). Une copie chez votre comptable
+peut être judicieuse.
+</Callout>
+
+## Restauration
+
+Pour restaurer une sauvegarde :
+
+1. Lancez BIRDY
+2. À l&apos;écran d&apos;accueil, choisissez **Restaurer une sauvegarde**
+3. Sélectionnez le fichier (local ou cloud)
+4. Saisissez la clé de chiffrement
+5. Confirmez le remplacement de la base actuelle (irréversible)
+
+La restauration prend 2 à 30 minutes selon la taille de la base.
+
+## Test de restauration
+
+Une sauvegarde non testée n&apos;est pas une sauvegarde. Au moins une fois par trimestre :
+
+1. Créez un environnement de test (peut être une autre machine)
+2. Restaurez votre dernière sauvegarde
+3. Vérifiez quelques transactions, soldes, listes
+4. Documentez le résultat (succès, durée, anomalies)
+
+Si vous découvrez un problème lors d&apos;un test, vous avez le temps de corriger. Si vous le découvrez
+en plein incident réel, c&apos;est trop tard.
+
+## Calendrier recommandé
+
+- **Quotidienne** locale : automatique, configurable
+- **Hebdomadaire** cloud : automatique, dimanche à 23 h
+- **Mensuelle** archivage long terme : copie sur disque externe à conserver hors du bureau
+- **Annuelle** : copie complète après clôture, conservée 10 ans
+
+## Que sauvegarder précisément
+
+BIRDY sauvegarde par défaut :
+
+- Base de données comptable et opérationnelle
+- Configuration de la société
+- Plan comptable personnalisé
+- Modèles de documents
+- Pièces jointes (factures scannées, contrats, justificatifs)
+- Logs d&apos;audit
+
+Les paramètres de chaque utilisateur (préférences UI) ne sont pas sauvegardés car triviaux à reconfigurer.
+
+## Sauvegarde avant mise à jour
+
+Avant chaque mise à jour majeure de BIRDY (changement de version mineure ou majeure), une sauvegarde
+automatique est créée. En cas de problème post-mise à jour, vous pouvez revenir en arrière en quelques
+minutes.
+
+## Plans de continuité
+
+Pour les entreprises soumises à des exigences réglementaires de continuité d&apos;activité, NOVAR fournit
+sur demande un document de PCA (Plan de Continuité d&apos;Activité) modèle, à adapter à votre contexte.

@@ -1,0 +1,99 @@
+export const meta = { title: 'Paie mensuelle', order: 3, category: 'rh-paie' };
+
+# Paie mensuelle
+
+La paie est sans doute le processus le plus délicat du module RH : tout retard ou erreur a un impact
+immédiat sur la motivation des équipes. BIRDY automatise 95 % du calcul, vous laissant le contrôle final.
+
+## Cycle mensuel
+
+<Steps>
+  <Step title="Pointage / saisie des éléments variables">
+    Heures supplémentaires, primes exceptionnelles, retenues, congés, absences.
+  </Step>
+  <Step title="Pré-calcul">
+    BIRDY exécute le calcul de tous les bulletins en mode brouillon.
+  </Step>
+  <Step title="Vérification">
+    Le responsable paie ou le comptable contrôle. Les anomalies sont signalées (variation anormale, écart
+    avec mois précédent, erreur de cotisation).
+  </Step>
+  <Step title="Validation">
+    Une fois validé, les bulletins sont figés et les écritures comptables passées automatiquement.
+  </Step>
+  <Step title="Versement">
+    Génération des fichiers de virements bancaires ou Mobile Money pour le paiement aux salariés.
+  </Step>
+  <Step title="Déclarations">
+    Production des déclarations CNSS et IRPP à transmettre aux administrations.
+  </Step>
+</Steps>
+
+## Éléments du bulletin
+
+Un bulletin de paie en Guinée comprend typiquement :
+
+- **Salaire de base** (heures normales × taux horaire)
+- **Heures supplémentaires** (majorées de 25 %, 50 % ou 100 % selon les cas)
+- **Primes** (ancienneté, transport, panier, fonction, exceptionnelle)
+- **Avantages en nature** (logement, voiture, téléphone)
+- **Indemnités** (déplacement, déplacement, intempéries)
+
+Total = **Salaire brut**
+
+Cotisations salariales :
+- CNSS salarié
+- IRPP retenu à la source
+
+Net à payer = Salaire brut − Cotisations − Acomptes − Saisies
+
+## Cotisations CNSS
+
+Les cotisations CNSS Guinée s&apos;appliquent sur l&apos;assiette plafonnée :
+
+- **Part employeur** : 18 % (incluant accidents du travail)
+- **Part salarié** : 5 %
+- **Plafond** : variable, vérifiez le taux en vigueur sur le site CNSS
+
+BIRDY met à jour automatiquement les barèmes lors des évolutions réglementaires. Vous êtes notifié à chaque
+mise à jour.
+
+## IRPP — Impôt sur le revenu des personnes physiques
+
+L&apos;IRPP est calculé selon un barème progressif par tranches. BIRDY tient compte de :
+
+- Le nombre de parts (situation familiale)
+- Les abattements forfaitaires
+- Les réductions d&apos;impôt (souscription, dons)
+
+<CodeBlock language="text" code={`Barème IRPP Guinée (extrait illustratif)
+─────────────────────────────────────────
+Tranche 1 :       0 –   1 000 000 GNF →  0 %
+Tranche 2 : 1 000 001 –   3 000 000 GNF → 10 %
+Tranche 3 : 3 000 001 –   5 000 000 GNF → 15 %
+Tranche 4 : 5 000 001 – 10 000 000 GNF → 20 %
+Tranche 5 : > 10 000 000 GNF             → 30 %`} />
+
+## Édition des bulletins
+
+Les bulletins sont produits en PDF, imprimables ou envoyés par e-mail à chaque salarié. Le format respecte
+les mentions légales obligatoires : identité de l&apos;employeur, identité du salarié, période, détail des
+éléments, totaux, mentions Code du travail.
+
+## Acomptes
+
+Les acomptes versés en cours de mois sont déduits du net à payer du bulletin. BIRDY trace tous les
+versements et propose une réconciliation automatique.
+
+## Régularisations
+
+Pour les corrections rétroactives (rappel de salaire, prime tardive), BIRDY génère un bulletin
+**rectificatif** signalé comme tel et lié au bulletin initial.
+
+## Rapports paie
+
+- État détaillé de la masse salariale du mois
+- Évolution sur 12 mois
+- Répartition par département
+- Heures supplémentaires par service
+- Récapitulatif annuel pour la déclaration des données sociales

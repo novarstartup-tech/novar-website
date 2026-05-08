@@ -1,0 +1,116 @@
+export const meta = { title: "Vue d'ensemble de l'API", order: 1, category: 'api' };
+
+# API BIRDY — Vue d&apos;ensemble
+
+L&apos;API REST de BIRDY (disponible en plan Enterprise) permet d&apos;intégrer votre ERP avec d&apos;autres
+systèmes : site e-commerce, application mobile métier, outils analytiques, automates métier. Elle suit les
+conventions REST standards et utilise JSON comme format d&apos;échange.
+
+## Caractéristiques
+
+- **REST** sur HTTPS uniquement (TLS 1.3 minimum)
+- **Authentification** par clé API ou OAuth 2.0
+- **Format** : JSON pour requêtes et réponses
+- **Versionnement** : `/v1/`, `/v2/`, etc.
+- **Pagination** : par curseur sur les listes longues
+- **Rate limiting** : 100 requêtes/minute par défaut, ajustable
+
+## URL de base
+
+<CodeBlock language="text" code={`Production : https://api.birdy.novar.gn/v1
+Sandbox    : https://sandbox-api.birdy.novar.gn/v1`} />
+
+L&apos;environnement sandbox utilise des données de test renouvelées chaque nuit, idéal pour développer et
+tester sans risque.
+
+## Premier appel
+
+Récupérer la liste des articles :
+
+<CodeBlock language="bash" code={`curl -X GET "https://api.birdy.novar.gn/v1/articles" \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Accept: application/json"`} />
+
+Réponse :
+
+<CodeBlock language="json" code={`{
+  "data": [
+    {
+      "id": "art_a1b2c3",
+      "reference": "RIZ-25KG-LOC",
+      "designation": "Riz local 25 kg",
+      "prix_ht": 280000,
+      "tva": 18,
+      "stock": 142,
+      "categorie": { "id": "cat_x1", "nom": "Céréales" }
+    }
+  ],
+  "pagination": {
+    "total": 1247,
+    "next_cursor": "art_a1b2c3"
+  }
+}`} />
+
+## Endpoints principaux
+
+<ApiTable rows={[
+  { name: 'GET /articles', type: 'liste', description: 'Lister les articles' },
+  { name: 'POST /articles', type: 'création', description: 'Créer un article' },
+  { name: 'GET /articles/:id', type: 'détail', description: 'Détail d\'un article' },
+  { name: 'PATCH /articles/:id', type: 'mise à jour', description: 'Modifier un article' },
+  { name: 'GET /clients', type: 'liste', description: 'Lister les clients' },
+  { name: 'POST /factures', type: 'création', description: 'Émettre une facture' },
+  { name: 'GET /factures/:id', type: 'détail', description: 'Détail d\'une facture' },
+  { name: 'POST /reglements', type: 'création', description: 'Enregistrer un règlement' },
+  { name: 'GET /stock/mouvements', type: 'liste', description: 'Journal des mouvements de stock' },
+  { name: 'GET /comptabilite/grand-livre', type: 'rapport', description: 'Grand-livre comptable' },
+]} />
+
+## Codes de réponse
+
+- **200** OK — succès
+- **201** Created — ressource créée
+- **400** Bad Request — données invalides
+- **401** Unauthorized — clé API manquante ou invalide
+- **403** Forbidden — autorisations insuffisantes
+- **404** Not Found — ressource inexistante
+- **409** Conflict — règle métier violée (par exemple solde insuffisant)
+- **422** Unprocessable Entity — données mal formées
+- **429** Too Many Requests — rate limit dépassé
+- **500** Internal Server Error — erreur serveur
+
+## Webhooks
+
+BIRDY peut notifier votre système d&apos;événements en temps réel via webhooks HTTP POST :
+
+- `vente.creee`
+- `facture.payee`
+- `stock.bas`
+- `paie.validee`
+- `tva.declaree`
+
+La signature du webhook est vérifiable via une clé partagée pour confirmer l&apos;origine du message.
+
+## SDK
+
+Des SDK officiels sont disponibles pour :
+
+- JavaScript / TypeScript (Node.js et navigateur)
+- Python 3.10+
+- PHP 8.1+
+
+Exemples et code source sur GitHub : `github.com/novar-gn/birdy-sdk`.
+
+## Limites et quotas
+
+Les quotas varient par plan :
+
+- Pro : 1 000 requêtes par jour, pas d&apos;API publique (réservée aux intégrations natives)
+- Enterprise : 100 000 requêtes par jour, accès API complet, webhooks illimités
+
+Au-delà des quotas, contactez-nous pour des forfaits sur mesure.
+
+## Sandbox et clés de test
+
+Demandez votre accès sandbox depuis **Paramètres → API → Environnement de test**. Les clés sandbox commencent
+par `sk_test_` et n&apos;impactent jamais vos données de production.

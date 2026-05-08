@@ -1,0 +1,88 @@
+export const meta = {
+  title: 'Première utilisation',
+  description: 'Créer votre société et configurer BIRDY pour la première fois.',
+  order: 2,
+  category: 'demarrage',
+};
+
+# Première utilisation
+
+Une fois BIRDY installé, le premier lancement déclenche un assistant qui vous guide pour créer votre société.
+Cette configuration prend environ quinze minutes et reste modifiable par la suite. Préparez à l&apos;avance les
+informations administratives de votre entreprise pour gagner du temps.
+
+## Création de la société
+
+Dans l&apos;écran d&apos;accueil, cliquez sur **Nouvelle société**. Le formulaire vous demande :
+
+- **Raison sociale** : exactement comme inscrite au RCCM (registre du commerce).
+- **Forme juridique** : SARL, SA, EURL, entreprise individuelle, etc.
+- **Numéro RCCM** : numéro d&apos;immatriculation au registre du commerce de Conakry.
+- **NIF** : Numéro d&apos;Identification Fiscale délivré par la DGI.
+- **Adresse complète** : siège social, ville, quartier, BP éventuelle.
+- **Devise principale** : généralement le Franc guinéen (GNF) — modifiable plus tard.
+- **Exercice comptable** : date de début et date de clôture (en général 1er janvier — 31 décembre).
+
+<Callout variant="warning" title="Données fiscales">
+Le NIF et le RCCM apparaissent sur toutes les factures et déclarations. Saisissez-les avec soin : une erreur
+nécessitera une correction manuelle de tous les documents émis avec ces données.
+</Callout>
+
+## Choix du plan comptable
+
+BIRDY pré-installe le plan comptable SYSCOHADA révisé applicable depuis 2018. Vous avez trois options :
+
+1. **Plan comptable standard** : adapté à 90 % des PME guinéennes. C&apos;est le choix recommandé.
+2. **Plan comptable étendu** : tous les sous-comptes auxiliaires détaillés, utile pour les groupes.
+3. **Plan comptable personnalisé** : import depuis un fichier CSV ou création manuelle.
+
+Pour la grande majorité des entreprises, optez pour le plan standard. Vous pourrez créer ou modifier des
+comptes ultérieurement depuis le module Comptabilité.
+
+## Configuration de la TVA
+
+Si votre société est assujettie à la TVA, indiquez votre taux principal (généralement 18 % en Guinée) et la
+fréquence de vos déclarations (mensuelle ou trimestrielle). BIRDY génère automatiquement les écritures de TVA
+collectée et déductible à chaque facture.
+
+<CodeBlock language="json" code={`{
+  "tva": {
+    "tauxPrincipal": 18,
+    "tauxReduit": 0,
+    "frequence": "mensuelle",
+    "dateLimiteDeclaration": 15
+  }
+}`} />
+
+## Premier utilisateur administrateur
+
+Le premier compte créé est automatiquement administrateur. Renseignez :
+
+- Adresse e-mail (servira pour la connexion et la récupération de mot de passe)
+- Mot de passe robuste (12 caractères minimum, mélange de majuscules, minuscules, chiffres, symboles)
+- Activation optionnelle de la double authentification (MFA) — fortement recommandée pour les administrateurs
+
+## Données initiales
+
+L&apos;assistant propose ensuite d&apos;importer ou de créer vos données de base :
+
+- **Articles** : import depuis Excel/CSV ou saisie manuelle. Vous pouvez démarrer avec 0 article et les
+  ajouter au fur et à mesure des ventes.
+- **Clients & fournisseurs** : import recommandé si vous migrez depuis un autre logiciel.
+- **Stock initial** : si vous démarrez avec un stock existant, saisissez les quantités au moment de l&apos;ouverture
+  pour que la valorisation soit correcte.
+- **Soldes comptables initiaux** : saisie des soldes à la date d&apos;ouverture pour les comptes (clients,
+  fournisseurs, banque, capital).
+
+<Callout variant="tip" title="Conseil de mise en place">
+Si vous démarrez en cours d&apos;année, choisissez une date d&apos;ouverture le 1er du mois. Cela facilite les
+rapprochements et les comparaisons mensuelles ultérieures.
+</Callout>
+
+## Vérification finale
+
+L&apos;écran récapitulatif affiche tous les paramètres saisis. Vérifiez attentivement avant de cliquer sur
+**Créer la société**. La majorité des paramètres restent modifiables, mais certains comme l&apos;exercice
+comptable ne peuvent plus être changés une fois des écritures saisies.
+
+Vous arrivez ensuite sur le tableau de bord principal de BIRDY. Voir [Tour de l&apos;interface](/docs/demarrage/interface).

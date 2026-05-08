@@ -1,0 +1,86 @@
+export const meta = { title: 'Tiers (clients & fournisseurs)', order: 5, category: 'modules' };
+
+# Tiers — clients et fournisseurs
+
+Les **tiers** désignent l&apos;ensemble des partenaires commerciaux : clients, fournisseurs, sous-traitants,
+mais aussi parfois employés et associés. BIRDY centralise ces fiches pour faciliter la facturation, le suivi
+des règlements et les rapprochements comptables.
+
+## Fiche client
+
+Une fiche client contient :
+
+- **Informations légales** : raison sociale, NIF, RCCM, forme juridique
+- **Coordonnées** : adresse, téléphone, e-mail, contact principal
+- **Conditions commerciales** : délai de paiement (30, 45, 60 jours), remise habituelle, plafond de crédit
+- **Compte comptable auxiliaire** : compte 411XXXX rattaché automatiquement
+- **Historique** : factures, règlements, avoirs, encours, retards
+
+Les clients particuliers (sans NIF) sont supportés mais leurs factures ne peuvent pas servir de pièces
+justificatives B2B pour la TVA.
+
+## Encours client
+
+L&apos;**encours** est le total des factures émises mais non encore payées. Pour chaque client, BIRDY affiche :
+
+- Encours total
+- Encours en retard (au-delà du délai accordé)
+- Plafond de crédit configuré
+- Disponible avant blocage
+
+<Callout variant="warning" title="Blocage automatique">
+Si l&apos;encours dépasse le plafond, BIRDY peut bloquer toute nouvelle vente à crédit jusqu&apos;à
+régularisation. Cette protection s&apos;active dans **Paramètres → Risque client**.
+</Callout>
+
+## Relances clients
+
+Trois niveaux de relance configurables :
+
+1. **Niveau 1** — relance amiable, e-mail automatique 7 jours après échéance
+2. **Niveau 2** — relance formelle, courrier signé du dirigeant
+3. **Niveau 3** — mise en demeure avant contentieux
+
+L&apos;écran **Ventes → Recouvrement** affiche la liste des factures à relancer, classées par ancienneté.
+
+## Fiche fournisseur
+
+Symétrique à la fiche client :
+
+- Informations légales et coordonnées
+- Conditions de paiement convenues
+- Compte 401XXXX rattaché
+- Historique des achats, des paiements, des avoirs
+- Délai moyen de livraison
+
+## Règlements et lettrage
+
+Quand vous encaissez un règlement client ou réglez un fournisseur, BIRDY propose automatiquement le
+**lettrage** : associer le règlement aux factures concernées. Le lettrage permet de connaître à tout moment
+les factures soldées et celles encore ouvertes.
+
+<CodeBlock language="text" code={`Règlement client : 12 000 000 GNF reçu de DIALLO SARL
+─────────────────────────────────────────────────────
+Sélection des factures à solder :
+  ☑ F2026-014    5 200 000 GNF (échue 30/04)
+  ☑ F2026-022    4 800 000 GNF (échue 12/05)
+  ☑ F2026-041    2 000 000 GNF (échéance 15/06)
+─────────────────────────────────────────────────────
+Total lettré       : 12 000 000 GNF
+Reliquat           :        0 GNF`} />
+
+## Sous-comptes par tiers
+
+Chaque tiers a un sous-compte auxiliaire dans la classe 411 (clients) ou 401 (fournisseurs). Le numéro est
+généré automatiquement (par exemple `411DIA001` pour DIALLO SARL). Cette structure permet de produire un
+grand-livre auxiliaire détaillé.
+
+## Import et nettoyage
+
+L&apos;import de masse depuis Excel est supporté. BIRDY détecte les doublons potentiels (même NIF, même
+téléphone, désignations proches) et propose une fusion assistée.
+
+## Géolocalisation
+
+Pour chaque tiers, vous pouvez enregistrer une coordonnée GPS afin d&apos;optimiser les tournées de livraison.
+Une carte filtre les tiers par quartier de Conakry ou par préfecture.

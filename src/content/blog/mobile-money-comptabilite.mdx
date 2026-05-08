@@ -1,0 +1,110 @@
+export const meta = {
+  title: "Comment intégrer Mobile Money à votre comptabilité sans douleur",
+  description: "Orange Money et MTN MoMo représentent jusqu'à 60% des paiements en Guinée. Voici comment BIRDY automatise leur traitement comptable.",
+  date: '2026-03-22',
+  author: 'Djerno',
+  readTime: 5,
+};
+
+# Comment intégrer Mobile Money à votre comptabilité sans douleur
+
+Mobile Money est devenu le moyen de paiement de référence pour des millions de Guinéens. Pour une PME, cela
+signifie qu&apos;une part croissante des encaissements arrive via Orange Money ou MTN MoMo plutôt qu&apos;en
+espèces ou par virement bancaire. Mais comment traduire ces flux dans votre comptabilité OHADA sans vous
+arracher les cheveux ?
+
+## La problématique
+
+Mobile Money pose trois défis comptables :
+
+1. **Transactions instantanées et nombreuses** — un commerçant peut recevoir 50 à 100 paiements MoMo par
+   jour, chacun étant une petite somme
+2. **Frais opérateur** — les opérateurs prélèvent une commission qui doit être comptabilisée séparément
+3. **Réconciliation** — il faut s&apos;assurer que le total comptabilisé correspond à ce que l&apos;opérateur
+   a effectivement crédité sur votre compte
+
+Faite manuellement, cette comptabilisation prend des heures par semaine et génère des erreurs.
+
+## Comptes comptables dédiés
+
+La première étape est d&apos;ouvrir des sous-comptes spécifiques :
+
+- **521-OM** : Orange Money
+- **521-MTN** : MTN MoMo
+- **6275-OM** : Frais Orange Money
+- **6275-MTN** : Frais MTN MoMo
+
+Ces comptes apparaissent dans votre plan comptable et permettent un suivi distinct par opérateur. BIRDY les
+crée automatiquement au paramétrage initial si vous activez Mobile Money.
+
+## Écriture type
+
+Pour une vente de 100 000 GNF encaissée via Orange Money :
+
+```
+521-OM Orange Money              Débit  : 99 000  (montant net après commission)
+6275-OM Frais Orange Money       Débit  :  1 000  (commission opérateur 1 %)
+   707 Vente de marchandises        Crédit : 84 745
+   4431 TVA collectée               Crédit : 15 255
+```
+
+L&apos;équilibre est respecté et chaque flux est traçable. Mais imaginez passer cette écriture 50 fois par
+jour, à la main : impossible.
+
+## Automatisation BIRDY
+
+BIRDY détecte automatiquement les paiements Mobile Money de deux manières :
+
+1. **Au POS** : quand le caissier sélectionne « Orange Money » comme mode de paiement et confirme la
+   transaction, l&apos;écriture comptable se passe automatiquement avec le bon découpage commission/montant
+   net.
+
+2. **Via webhook opérateur** : si votre compte marchand est intégré (Pro et Enterprise), Orange/MTN nous
+   notifient en temps réel des paiements reçus. BIRDY rapproche automatiquement avec les ventes en attente.
+
+## Réconciliation hebdomadaire
+
+Une fois par semaine, lancez la **réconciliation Mobile Money** depuis Comptabilité → Réconciliations.
+BIRDY télécharge le relevé de l&apos;opérateur (ou vous l&apos;importez en CSV) et compare ligne par ligne
+avec ses propres écritures.
+
+Trois cas possibles :
+
+- **Match parfait** : la majorité des cas, rien à faire
+- **Écart de quelques GNF** : généralement des arrondis sur les commissions, BIRDY propose la régularisation
+  automatique
+- **Manquant** : une transaction reçue côté opérateur sans écriture BIRDY, ou inversement. À investiguer.
+
+## Pièges à éviter
+
+**Confondre solde Mobile Money et caisse**. Le compte 521-OM n&apos;est pas le tiroir-caisse. Beaucoup de
+commerçants font cette erreur et se retrouvent avec un solde de caisse qui ne correspond plus à la réalité.
+
+**Oublier les frais**. Si vous ne comptabilisez que le montant net reçu, vous sous-déclarez votre chiffre
+d&apos;affaires (bonjour la TVA mal calculée). Les frais opérateur doivent toujours être passés en charge
+distincte.
+
+**Négliger les remboursements**. Quand un client se fait rembourser sur Mobile Money, c&apos;est un
+décaissement à comptabiliser explicitement. Ne le passez pas par contraction simple sur le compte de vente.
+
+## Préparation aux contrôles fiscaux
+
+L&apos;administration fiscale s&apos;intéresse de plus en plus aux flux Mobile Money. Lors d&apos;un
+contrôle, vous devez pouvoir présenter :
+
+- L&apos;historique complet des transactions Mobile Money de la période
+- Les justificatifs (relevés opérateur)
+- Les écritures comptables associées
+- La cohérence avec votre déclaration de TVA
+
+BIRDY archive automatiquement tous ces éléments. En cas de contrôle, vous fournissez l&apos;export en
+quelques minutes.
+
+## Conclusion
+
+Mobile Money, bien intégré, n&apos;est pas un casse-tête comptable mais un avantage compétitif : vous
+encaissez plus rapidement, sécurisez les paiements et améliorez votre trésorerie. Avec BIRDY, vous bénéficiez
+de cette intégration sans renoncer à la rigueur comptable. Le tout en respectant scrupuleusement les
+exigences OHADA.
+
+— Djerno

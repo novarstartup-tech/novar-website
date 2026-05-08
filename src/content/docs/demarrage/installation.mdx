@@ -1,0 +1,86 @@
+export const meta = {
+  title: 'Installation',
+  description: 'Installer BIRDY ERP sur Windows en moins de 10 minutes.',
+  order: 1,
+  category: 'demarrage',
+};
+
+# Installation
+
+Cette page vous guide pour installer BIRDY ERP sur un poste Windows. La procédure prend en moyenne dix minutes,
+incluant la création de votre compte société et la configuration initiale du plan comptable. Aucune connaissance
+technique n&apos;est requise — un assistant graphique vous accompagne à chaque étape.
+
+## Prérequis
+
+Avant de commencer, vérifiez que votre poste répond aux exigences minimales :
+
+- Windows 10 ou Windows 11 (édition 64 bits)
+- Processeur Intel ou AMD à 2 GHz minimum, idéalement 4 cœurs
+- 4 Go de RAM minimum (8 Go recommandés pour les bases volumineuses)
+- 500 Mo d&apos;espace disque pour l&apos;application, plus 2 Go pour vos données
+- Connexion Internet pour le téléchargement initial et l&apos;activation de la licence
+- Privilèges administrateur sur le poste pour l&apos;installation
+
+<Callout variant="info" title="Hors ligne après installation">
+Une fois installé, BIRDY fonctionne entièrement hors ligne. La connexion n&apos;est nécessaire que pour les
+mises à jour, les sauvegardes cloud et certaines intégrations comme Mobile Money.
+</Callout>
+
+## Étape 1 — Téléchargement
+
+Rendez-vous sur la page [Téléchargements](/telechargements) et cliquez sur le bouton « Télécharger BIRDY pour
+Windows ». Le système détecte automatiquement votre OS et propose la bonne version.
+
+Le fichier d&apos;installation pèse environ 142 Mo. Vous obtenez un exécutable nommé `BIRDY-Setup-x.y.z.exe` où
+`x.y.z` correspond à la version la plus récente (par exemple 1.4.2).
+
+Pour les utilisateurs avec une connexion limitée, nous proposons aussi un installeur sur clé USB sur demande
+auprès de notre support.
+
+## Étape 2 — Vérification de la signature
+
+Avant d&apos;exécuter le fichier, vérifiez son intégrité en comparant son empreinte SHA-256 avec celle publiée
+sur la page Téléchargements. Cette étape protège contre les téléchargements corrompus ou altérés.
+
+Sous PowerShell :
+
+<CodeBlock language="powershell" code={`Get-FileHash -Algorithm SHA256 .\\BIRDY-Setup-1.4.2.exe`} />
+
+L&apos;empreinte affichée doit correspondre exactement à celle indiquée dans le tableau des versions. En cas
+d&apos;écart, ne lancez pas l&apos;installation et contactez notre support.
+
+## Étape 3 — Lancement de l&apos;installeur
+
+Double-cliquez sur l&apos;exécutable. Windows affichera un avertissement SmartScreen : cliquez sur « Informations
+complémentaires » puis « Exécuter quand même ». Notre exécutable est signé avec un certificat Authenticode
+NOVAR, vous pouvez le vérifier en consultant les propriétés du fichier (onglet « Signatures numériques »).
+
+L&apos;assistant d&apos;installation propose les options suivantes :
+
+1. **Emplacement** : par défaut `C:\Program Files\NOVAR\BIRDY`. Modifiable.
+2. **Raccourci bureau** : recommandé pour un accès rapide.
+3. **Démarrage automatique** : option pour lancer BIRDY au démarrage de Windows.
+4. **Composants optionnels** : module RH/Paie, connecteurs Mobile Money, exports avancés.
+
+<Callout variant="tip" title="Installation silencieuse">
+Pour un déploiement en masse sur plusieurs postes, utilisez le mode silencieux :
+`BIRDY-Setup-1.4.2.exe /S /D=C:\BIRDY`. Consultez la documentation de déploiement pour les options complètes.
+</Callout>
+
+## Étape 4 — Premier lancement
+
+Au premier démarrage, BIRDY vous propose deux choix : **Créer une nouvelle société** ou **Restaurer une
+sauvegarde existante**. Si vous installez BIRDY pour la première fois, choisissez la création.
+
+Voir la suite dans [Première utilisation](/docs/demarrage/premiere-utilisation).
+
+## En cas de problème
+
+- Le fichier ne se télécharge pas : vérifiez votre antivirus, certains bloquent les exécutables.
+- L&apos;installation échoue avec « Accès refusé » : exécutez en tant qu&apos;administrateur.
+- BIRDY ne démarre pas : vérifiez que `Microsoft Edge WebView2 Runtime` est installé.
+- Erreur de licence : connectez-vous à Internet et relancez l&apos;application.
+
+Pour toute autre difficulté, contactez djernomahamoudoudiallo@gmail.com en joignant les logs d&apos;installation
+situés dans `%APPDATA%\NOVAR\BIRDY\logs`.

@@ -1,0 +1,94 @@
+export const meta = { title: 'Gestion des employés', order: 1, category: 'rh-paie' };
+
+# Gestion des employés
+
+Le module RH centralise tous les renseignements administratifs et contractuels de votre personnel. Une fiche
+employé bien remplie alimente automatiquement le module Paie pour des bulletins corrects.
+
+## Création d&apos;une fiche employé
+
+**RH → Employés → Nouveau salarié**. Saisissez :
+
+- **État civil** : nom, prénom, date et lieu de naissance, sexe, nationalité
+- **Identification** : numéro de pièce d&apos;identité, numéro CNSS, numéro NIF si applicable
+- **Coordonnées** : adresse, téléphone, e-mail, contact d&apos;urgence
+- **Situation familiale** : marié, célibataire, nombre d&apos;enfants à charge
+- **Coordonnées bancaires** : RIB ou numéro de compte Mobile Money pour le versement du salaire
+
+## Affectation organisationnelle
+
+Chaque employé est rattaché à :
+
+- Une **société** (si vous gérez plusieurs sociétés)
+- Un **département** (Production, Commercial, Administration, etc.)
+- Un **poste** (Vendeur, Comptable, Magasinier, etc.)
+- Un **manager direct**
+
+Cette structure organisationnelle permet de générer des organigrammes, des reportings par département et
+des consolidations de la masse salariale.
+
+## Documents administratifs
+
+Joignez à chaque fiche les documents requis :
+
+- CNI ou passeport
+- Attestation CNSS
+- Diplômes et certifications
+- Contrat de travail signé
+- Casier judiciaire si exigé par votre métier
+
+Tous les documents sont chiffrés et stockés localement. Seuls les utilisateurs avec permission RH peuvent y
+accéder.
+
+<Callout variant="warning" title="Confidentialité">
+Les données RH contiennent des informations personnelles sensibles. Limitez les accès aux personnes
+strictement autorisées et activez la double authentification pour tous les comptes ayant accès au module.
+</Callout>
+
+## Statuts
+
+Un employé peut être dans plusieurs statuts :
+
+- **Actif** : en poste, perçoit un salaire
+- **Suspendu** : congé sans solde, suspension disciplinaire
+- **En congé** : congés payés, maternité, maladie longue durée
+- **Sorti** : a quitté l&apos;entreprise (démission, licenciement, retraite)
+
+Le passage en statut « Sorti » nécessite la saisie de la date et du motif de sortie. Les bulletins ne sont
+plus produits, mais l&apos;historique reste consultable indéfiniment.
+
+## Historique des évolutions
+
+Toute modification de la fiche est tracée : changement de poste, augmentation, changement de département,
+mariage. L&apos;historique permet de retracer la carrière d&apos;un salarié et sert de référence en cas de
+litige.
+
+## Recherche et filtres
+
+L&apos;écran liste accepte les filtres suivants :
+
+- Par département ou poste
+- Par statut (actif, sorti, suspendu)
+- Par tranche d&apos;ancienneté
+- Par âge
+- Par sexe (pour les statistiques RH)
+
+Les listes filtrées sont exportables en Excel pour vos analyses.
+
+## Promotion
+
+Quand un salarié est promu, ne créez pas une nouvelle fiche : utilisez **Évolution** dans la fiche existante.
+Cela conserve l&apos;ancienneté, les soldes de congés acquis et l&apos;historique salarial.
+
+## Indicateurs RH
+
+Le tableau de bord RH affiche :
+
+- Effectif total et par département
+- Pyramide des âges
+- Ancienneté moyenne
+- Turnover (taux de rotation) sur 12 mois
+- Masse salariale brute et nette
+
+Ces indicateurs sont précieux pour piloter la politique RH et négocier avec les partenaires sociaux ou
+financiers.

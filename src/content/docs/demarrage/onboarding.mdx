@@ -1,0 +1,77 @@
+export const meta = {
+  title: "Parcours d'onboarding",
+  description: "Les sept étapes recommandées pour bien démarrer avec BIRDY.",
+  order: 3,
+  category: 'demarrage',
+};
+
+# Parcours d&apos;onboarding
+
+Au-delà de la création de la société, nous recommandons un parcours en sept étapes pour configurer
+correctement votre instance BIRDY avant la mise en production. Ce parcours est conçu pour qu&apos;une PME
+guinéenne typique (5 à 30 salariés) puisse opérer normalement sous une semaine.
+
+<Steps>
+  <Step title="1. Compléter le profil société">
+    Logo, en-tête de facture, mentions légales, conditions de paiement par défaut. Ces informations
+    s&apos;impriment sur tous vos documents commerciaux.
+  </Step>
+  <Step title="2. Importer vos articles">
+    Préparez un fichier Excel avec une ligne par article (référence, désignation, prix HT, taux de TVA,
+    catégorie). BIRDY accepte jusqu&apos;à 50 000 lignes par import.
+  </Step>
+  <Step title="3. Importer vos clients et fournisseurs">
+    Format CSV ou Excel. Les NIF sont importants pour les écritures comptables conformes OHADA.
+  </Step>
+  <Step title="4. Saisir le stock initial">
+    Inventaire physique recommandé. La date d&apos;ouverture du stock conditionne la valorisation comptable.
+  </Step>
+  <Step title="5. Créer les comptes utilisateurs">
+    Définissez les rôles (administrateur, comptable, vendeur, magasinier) et invitez les utilisateurs par
+    e-mail.
+  </Step>
+  <Step title="6. Tester un cycle complet">
+    Émettez une facture, encaissez-la, vérifiez l&apos;écriture comptable générée, contrôlez le stock.
+  </Step>
+  <Step title="7. Activer les sauvegardes">
+    Sauvegarde quotidienne automatique sur disque local ET sauvegarde cloud chiffrée chaque semaine.
+  </Step>
+</Steps>
+
+## Délais réalistes
+
+D&apos;expérience, voici les délais constatés chez nos clients :
+
+- Jour 1 : installation et création société
+- Jours 2 à 3 : import des articles et tiers
+- Jour 4 : saisie du stock initial
+- Jour 5 : formation des utilisateurs (en interne ou avec NOVAR)
+- Jours 6 à 7 : tests en double saisie avec votre ancien système
+- Semaine 2 : bascule progressive en production
+
+<Callout variant="info" title="Accompagnement NOVAR">
+Pour les sociétés qui le souhaitent, nous proposons un accompagnement de mise en place complet : audit
+initial, paramétrage avancé, formation sur site à Conakry, support prioritaire pendant le premier mois.
+Voir nos [services de conseil](/services/conseil).
+</Callout>
+
+## Erreurs fréquentes à éviter
+
+- Démarrer en pleine période de fortes ventes : préférez un mois calme pour limiter le stress.
+- Sauter la saisie du stock initial : les valorisations seront fausses pendant des mois.
+- Ne pas former les utilisateurs : un mauvais usage du POS génère des écritures erronées difficiles à corriger.
+- Oublier les sauvegardes : un crash matériel peut effacer plusieurs semaines de données.
+- Importer un plan comptable d&apos;un autre logiciel sans validation : risques de doublons et d&apos;erreurs.
+
+## Validation finale
+
+Avant le passage en production, exécutez la check-list de validation accessible depuis **Paramètres →
+Diagnostic**. Elle vérifie automatiquement :
+
+- Cohérence du plan comptable
+- Soldes d&apos;ouverture équilibrés
+- Configuration TVA valide
+- Sauvegardes activées
+- Au moins un administrateur avec MFA
+
+Une fois tous les voyants au vert, votre instance est prête.
