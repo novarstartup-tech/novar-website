@@ -4,7 +4,7 @@ import { FeatureCard } from '@/components/FeatureCard';
 
 export const metadata = {
   title: 'Téléchargements',
-  description: 'Téléchargez BIRDY ERP pour Windows. Versions Mac et Linux bientôt disponibles. Mises à jour automatiques signées.',
+  description: 'Téléchargez BIRDY pour Windows. Versions Mac et Linux bientôt disponibles. Mises à jour automatiques signées.',
 };
 
 const VERSIONS = [
@@ -23,7 +23,8 @@ export default function TelechargementsPage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-white">Téléchargements</h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-slate-300">
-            Installez BIRDY ERP sur votre poste de travail. Mises à jour automatiques signées numériquement.
+            Installez BIRDY (notre plateforme de gestion de stock) sur votre
+            poste de travail. Mises à jour automatiques signées numériquement.
           </p>
           <div className="mt-10 flex justify-center">
             <DownloadButton />

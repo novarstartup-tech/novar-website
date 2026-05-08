@@ -5,10 +5,15 @@ import { SITE } from '@/lib/site';
 
 const COLS = [
   { title: 'Produits', links: [
-    { label: 'BIRDY ERP', href: '/produits/birdy-erp' },
-    { label: 'Solutions sur mesure', href: '/services/sur-mesure' },
+    { label: 'BIRDY', href: '/produits/birdy-erp' },
+    { label: 'FEEDORA', href: '/produits/feedora' },
     { label: 'Roadmap', href: '/produits' },
     { label: 'Tarifs', href: '/tarifs' },
+  ]},
+  { title: 'Services', links: [
+    { label: 'Solutions fintech', href: '/services/sur-mesure' },
+    { label: 'Sur mesure', href: '/services/sur-mesure' },
+    { label: 'Conseil', href: '/services/conseil' },
   ]},
   { title: 'Entreprise', links: [
     { label: 'À propos', href: '/a-propos' },
@@ -34,7 +39,7 @@ export function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-novar-cosmic">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-6">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="inline-block">
               <NovarLogo className="h-8 w-auto dark:hidden" />

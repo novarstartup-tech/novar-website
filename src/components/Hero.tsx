@@ -16,27 +16,27 @@ export function Hero() {
             Conakry, Guinée — Entreprise de logiciels
           </div>
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white">
-            Solutions technologiques
+            Solutions fintech
             <br />
-            <span className="gradient-text-cyan">pour startups et PME</span>
+            <span className="gradient-text-cyan">pour startups et PME africaines</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg sm:text-xl text-slate-300 leading-relaxed">{SITE.description}</p>
           <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Link href="/produits" className="inline-flex items-center justify-center gap-2 rounded-lg bg-novar-cyan px-6 py-3 text-sm font-semibold text-novar-cosmic shadow-lg shadow-novar-cyan/20 hover:bg-novar-cyan-glow transition-colors">
-              Découvrir nos produits <ArrowRight className="h-4 w-4" />
+            <Link href="/services/sur-mesure" className="inline-flex items-center justify-center gap-2 rounded-lg bg-novar-cyan px-6 py-3 text-sm font-semibold text-novar-cosmic shadow-lg shadow-novar-cyan/20 hover:bg-novar-cyan-glow transition-colors">
+              Discuter d&apos;un projet fintech <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-lg border border-novar-cyan/40 bg-transparent px-6 py-3 text-sm font-semibold text-novar-cyan hover:bg-novar-cyan/10 transition-colors">
-              Discuter d&apos;un projet B2B
+            <Link href="/produits" className="inline-flex items-center justify-center gap-2 rounded-lg border border-novar-cyan/40 bg-transparent px-6 py-3 text-sm font-semibold text-novar-cyan hover:bg-novar-cyan/10 transition-colors">
+              Voir nos produits
             </Link>
           </div>
           <div className="mt-8 flex flex-wrap gap-x-3 gap-y-2 text-xs text-slate-400">
-            <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />BIRDY ERP en production</span>
+            <span>Mobile Money</span>
             <span className="text-slate-600">·</span>
-            <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />FEEDORA en production</span>
+            <span>Passerelles bancaires</span>
             <span className="text-slate-600">·</span>
-            <span>Solutions sur mesure</span>
+            <span>Paiement marchand</span>
             <span className="text-slate-600">·</span>
-            <span>Fintech B2B</span>
+            <span>Logiciels métiers verticaux</span>
           </div>
         </div>
       </div>

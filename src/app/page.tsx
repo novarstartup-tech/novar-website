@@ -2,12 +2,13 @@ import Link from 'next/link';
 import {
   Sparkles,
   Wifi,
-  ScrollText,
+  Banknote,
   Boxes,
+  Bird,
   Wrench,
   Compass,
   ArrowRight,
-  Calculator,
+  CreditCard,
   ShieldCheck,
   Smartphone,
 } from 'lucide-react';
@@ -32,21 +33,23 @@ export default function HomePage() {
               Du contexte africain au code de production
             </h2>
             <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
-              Nous concevons des outils qui tiennent compte des réalités locales : connexion intermittente,
-              normes OHADA, paiements mobiles, multi-devises. Pas de copier-coller d&apos;outils étrangers
-              mal adaptés.
+              NOVAR conçoit des solutions fintech B2B qui tiennent compte des
+              réalités locales : Mobile Money, passerelles bancaires
+              ouest-africaines, multi-devises (GNF, XOF, USD, EUR), connexion
+              intermittente. Pas de copier-coller d&apos;outils étrangers mal
+              adaptés.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             <FeatureCard
-              icon={Sparkles}
-              title="Sur mesure"
-              description="Chaque solution est pensée pour votre métier. Audit, architecture, développement, intégration : nous prenons en charge la chaîne complète."
+              icon={Banknote}
+              title="Fintech B2B"
+              description="Intégrations Mobile Money (Orange, MTN, Wave), passerelles bancaires, plateformes de paiement marchand, wallets B2B. La fintech est notre cœur de métier."
             />
             <FeatureCard
-              icon={ScrollText}
-              title="OHADA natif"
-              description="SYSCOHADA révisé, liasse fiscale, FEC, TAFIRE, IRPP & CNSS Guinée. La conformité n'est pas une option ajoutée — elle est intégrée dès la conception."
+              icon={Sparkles}
+              title="Sur mesure"
+              description="Audit, architecture, développement, intégration : nous prenons en charge la chaîne complète pour transformer vos besoins métier en outils performants."
             />
             <FeatureCard
               icon={Wifi}
@@ -62,24 +65,28 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-sm font-semibold text-novar-blue dark:text-novar-cyan uppercase tracking-wider">
-              Notre catalogue
+              Notre offre
             </span>
             <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
               Trois façons de travailler avec NOVAR
             </h2>
+            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
+              Au-delà de notre activité fintech principale, nous éditons aussi
+              des plateformes métier verticales pour des secteurs précis.
+            </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             <FeatureCard
-              icon={Boxes}
-              title="BIRDY ERP"
-              description="Notre logiciel de gestion intégré. POS, stock, achats, comptabilité OHADA, RH/paie. Disponible immédiatement, en abonnement mensuel."
-              href="/produits/birdy-erp"
-              badge="Disponible"
+              icon={Banknote}
+              title="Solutions fintech"
+              description="Mobile Money · Passerelles bancaires · Paiement marchand · Wallets B2B. Conçues pour startups et PME africaines."
+              href="/services/sur-mesure"
+              badge="Cœur de métier"
             />
             <FeatureCard
               icon={Wrench}
-              title="Solutions sur mesure"
-              description="Vous avez un besoin spécifique ? Nous concevons et développons des logiciels métiers à votre image, depuis le cahier des charges jusqu'à la mise en production."
+              title="Logiciels sur mesure"
+              description="Vous avez un besoin spécifique ? Nous concevons et développons des logiciels métiers à votre image, du cahier des charges à la mise en production."
               href="/services/sur-mesure"
             />
             <FeatureCard
@@ -92,49 +99,84 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BIRDY highlights */}
+      {/* Plateformes métier */}
       <section className="py-20 bg-white dark:bg-novar-cosmic">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <span className="text-sm font-semibold text-novar-blue dark:text-novar-cyan uppercase tracking-wider">
+              Plateformes verticales
+            </span>
+            <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
+              Deux produits B2B en production
+            </h2>
+            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
+              NOVAR édite également des plateformes métier indépendantes pour
+              répondre à des besoins sectoriels précis.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <FeatureCard
+              icon={Boxes}
+              title="BIRDY"
+              description="Plateforme de gestion de stock pour boutiques et PME. Suivi des entrées/sorties, multi-dépôts, alertes seuils, hors ligne par défaut. Conçu pour le marché ouest-africain."
+              href="/produits/birdy-erp"
+              badge="En production"
+            />
+            <FeatureCard
+              icon={Bird}
+              title="FEEDORA"
+              description="Plateforme de gestion et formulation alimentaire pour fermes avicoles. Calcul de rations équilibrées, multi-pays (CI, Mali, Sénégal, Bénin, Guinée), rapports PDF. SaaS B2B."
+              href="/produits/feedora"
+              badge="En production"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Fintech highlights */}
+      <section className="py-20 bg-slate-50 dark:bg-novar-cosmic-2/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <span className="text-sm font-semibold text-novar-blue dark:text-novar-cyan uppercase tracking-wider">
-                BIRDY ERP
+                Solutions fintech
               </span>
               <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
-                L&apos;ERP pensé pour la PME guinéenne
+                La fintech B2B, pensée pour l&apos;Afrique
               </h2>
               <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
-                BIRDY couvre l&apos;ensemble de vos opérations : ventes au comptoir, gestion du stock, achats,
-                trésorerie, comptabilité OHADA, paie. Un seul outil, en français, optimisé pour fonctionner
-                avec une connexion limitée.
+                Nous concevons et déployons les briques fintech dont les
+                startups et PME africaines ont besoin : agrégation Mobile
+                Money, passerelles bancaires, plateformes de paiement
+                marchand, wallets et facilités de crédit court terme.
               </p>
               <ul className="mt-6 space-y-3 text-slate-700 dark:text-slate-300">
                 <li className="flex items-start gap-3">
-                  <Calculator className="h-5 w-5 text-novar-cyan mt-0.5 flex-shrink-0" />
-                  <span>Comptabilité SYSCOHADA révisé · liasse fiscale · TAFIRE · FEC</span>
+                  <Smartphone className="h-5 w-5 text-novar-cyan mt-0.5 flex-shrink-0" />
+                  <span>Mobile Money : Orange Money · MTN MoMo · Wave · agrégation unifiée</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Smartphone className="h-5 w-5 text-novar-cyan mt-0.5 flex-shrink-0" />
-                  <span>Mobile Money intégré (Orange Money · MTN MoMo)</span>
+                  <CreditCard className="h-5 w-5 text-novar-cyan mt-0.5 flex-shrink-0" />
+                  <span>Passerelles bancaires & cartes (visa / mastercard local)</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <ShieldCheck className="h-5 w-5 text-novar-cyan mt-0.5 flex-shrink-0" />
-                  <span>Sauvegardes chiffrées · MFA · journal d&apos;audit complet</span>
+                  <span>Sécurité bancaire · chiffrement bout-en-bout · journal d&apos;audit</span>
                 </li>
               </ul>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <Link
-                  href="/produits/birdy-erp"
+                  href="/services/sur-mesure"
                   className="inline-flex items-center justify-center gap-2 rounded-lg bg-novar-cosmic px-5 py-3 text-sm font-semibold text-white hover:bg-slate-900 dark:bg-novar-cyan dark:text-novar-cosmic dark:hover:bg-novar-cyan-glow transition-colors"
                 >
-                  Explorer BIRDY
+                  Voir nos services
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  href="/tarifs"
+                  href="/contact"
                   className="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100 dark:border-slate-700 dark:text-white dark:hover:bg-slate-800 transition-colors"
                 >
-                  Voir les tarifs
+                  Discuter d&apos;un projet
                 </Link>
               </div>
             </div>
@@ -142,9 +184,9 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-grid opacity-30" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <Boxes className="mx-auto h-16 w-16 text-novar-cyan opacity-60" />
-                  <div className="mt-4 font-display text-2xl font-bold text-white">BIRDY ERP</div>
-                  <div className="text-slate-400 text-sm mt-1">Aperçu de l&apos;application</div>
+                  <Banknote className="mx-auto h-16 w-16 text-novar-cyan opacity-60" />
+                  <div className="mt-4 font-display text-2xl font-bold text-white">Fintech B2B</div>
+                  <div className="text-slate-400 text-sm mt-1">Mobile Money · Banque · Paiement marchand</div>
                 </div>
               </div>
             </div>

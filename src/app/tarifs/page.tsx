@@ -5,7 +5,7 @@ import { ComparisonTable } from '@/components/ComparisonTable';
 
 export const metadata = {
   title: 'Tarifs',
-  description: 'Trois plans pour BIRDY ERP : Solo, Pro, Enterprise. Et une offre sur mesure pour les besoins spécifiques.',
+  description: 'Tarifs BIRDY (gestion de stock) — Solo, Pro, Enterprise. Et une offre sur mesure pour la fintech B2B et les logiciels spécifiques.',
 };
 
 export default function TarifsPage() {
@@ -14,13 +14,14 @@ export default function TarifsPage() {
       <section className="bg-novar-cosmic py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-20" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-sm font-semibold text-novar-cyan uppercase tracking-wider">Tarifs BIRDY ERP</span>
+          <span className="text-sm font-semibold text-novar-cyan uppercase tracking-wider">Tarifs BIRDY</span>
           <h1 className="mt-2 font-display text-4xl sm:text-5xl font-bold text-white">
             Des prix simples, en GNF
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-slate-300">
-            Pas de coûts cachés, pas de modules payants à empiler. Vous payez en francs guinéens.
-            30 jours d&apos;essai gratuit, sans carte bancaire.
+            Tarification de notre plateforme de gestion de stock BIRDY. Pas de
+            coûts cachés. 30 jours d&apos;essai gratuit, sans carte bancaire.
+            Pour la fintech sur mesure, nous établissons un devis dédié.
           </p>
         </div>
       </section>

@@ -12,7 +12,7 @@ const STEPS = [
   { icon: Search, title: '1. Audit & cadrage', desc: 'Nous analysons vos processus actuels, vos contraintes et vos objectifs pour définir un périmètre clair et un budget réaliste.' },
   { icon: Layers, title: '2. Architecture', desc: 'Choix des technologies, modélisation des données, schéma d\'intégration avec vos outils existants. Vous validez avant la première ligne de code.' },
   { icon: Code, title: '3. Développement', desc: 'Sprints courts, démos régulières, code source livré. Tests automatisés et code review systématique.' },
-  { icon: Plug, title: '4. Intégration', desc: 'Connexion à vos systèmes existants : ERP, mobile money, CRM, e-commerce. APIs, webhooks, imports/exports.' },
+  { icon: Plug, title: '4. Intégration', desc: 'Connexion à vos systèmes existants : Mobile Money, banques, CRM, e-commerce, ERP. APIs, webhooks, imports/exports.' },
   { icon: Wrench, title: '5. Maintenance', desc: 'Formation des équipes, support continu, évolutions fonctionnelles, monitoring 24/7. Vous n\'êtes jamais seul.' },
 ];
 
@@ -23,10 +23,12 @@ export default function SurMesurePage() {
         <div className="absolute inset-0 bg-grid opacity-20" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <span className="text-sm font-semibold text-novar-cyan uppercase tracking-wider">Services</span>
-          <h1 className="mt-2 font-display text-4xl sm:text-5xl font-bold text-white">Solutions sur mesure</h1>
+          <h1 className="mt-2 font-display text-4xl sm:text-5xl font-bold text-white">Solutions fintech & sur mesure</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
-            BIRDY ne couvre pas votre cas ? Vous avez un métier spécifique, une intégration particulière,
-            un workflow unique ? Nous concevons et développons des logiciels à votre image.
+            Notre cœur de métier : les solutions fintech B2B pour startups et
+            PME africaines — Mobile Money, passerelles bancaires, paiement
+            marchand, wallets. Nous prenons aussi en charge des projets
+            logiciels métiers sur cahier des charges.
           </p>
         </div>
       </section>

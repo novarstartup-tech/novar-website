@@ -1,14 +1,12 @@
 import Link from 'next/link';
 import {
-  ShoppingCart,
   Boxes,
+  Warehouse,
+  History,
+  AlertTriangle,
+  Barcode,
   Truck,
-  Wallet,
-  BookOpen,
-  Users,
   Globe,
-  FileText,
-  FileSpreadsheet,
   Smartphone,
   ArrowRight,
 } from 'lucide-react';
@@ -16,21 +14,52 @@ import { FeatureCard } from '@/components/FeatureCard';
 import { CtaBanner } from '@/components/CtaBanner';
 
 export const metadata = {
-  title: 'BIRDY ERP — Logiciel de gestion OHADA',
-  description: 'BIRDY est l\'ERP complet pour PME guinéennes : POS, stock, achats, compta OHADA, RH/paie, multi-devises.',
+  title: 'BIRDY — Plateforme de gestion de stock',
+  description:
+    "BIRDY est la plateforme de gestion de stock pour boutiques et PME africaines : entrées/sorties, multi-dépôts, alertes seuils, code-barres, hors ligne par défaut.",
 };
 
 const MODULES = [
-  { icon: ShoppingCart, title: 'POS / Ventes', desc: 'Caisse tactile rapide, factures conformes, tickets de caisse, multi-modes de paiement, fonctionnement hors ligne.' },
-  { icon: Boxes, title: 'Stock & articles', desc: 'Articles illimités, code-barres, étiquettes, inventaires tournants, alertes de réapprovisionnement, multi-dépôts.' },
-  { icon: Truck, title: 'Achats', desc: 'Bons de commande fournisseurs, bons de réception, contrôle des écarts, échéancier de paiements.' },
-  { icon: Wallet, title: 'Caisse & banque', desc: 'Suivi en temps réel des encaissements, arrêté de caisse, rapprochement bancaire, multi-comptes.' },
-  { icon: BookOpen, title: 'Comptabilité OHADA', desc: 'Plan SYSCOHADA révisé, écritures manuelles, lettrage, journaux, balance, grand-livre, bilan, compte de résultat.' },
-  { icon: Users, title: 'RH & Paie', desc: 'Employés, contrats, bulletins de paie, IRPP & CNSS Guinée, congés, ordres de virement.' },
-  { icon: Globe, title: 'Multi-devises', desc: 'GNF · USD · EUR · CFA. Taux de change manuels ou automatiques, conversion en temps réel sur tous les documents.' },
-  { icon: FileText, title: 'Liasse fiscale', desc: 'Génération automatisée des états annuels conformes DGI Guinée. TAFIRE inclus.' },
-  { icon: FileSpreadsheet, title: 'Export FEC', desc: 'Fichier des Écritures Comptables au format réglementaire, prêt pour les contrôles fiscaux.' },
-  { icon: Smartphone, title: 'Mobile Money', desc: 'Encaissements Orange Money et MTN MoMo intégrés. Réconciliation automatique avec les écritures comptables.' },
+  {
+    icon: Boxes,
+    title: 'Catalogue articles',
+    desc: "Articles illimités avec code-barres, photos, catégories, unités multiples (carton, sachet, kg). Import / export Excel.",
+  },
+  {
+    icon: Warehouse,
+    title: 'Multi-dépôts',
+    desc: "Suivez le stock dans plusieurs entrepôts, boutiques ou véhicules. Transferts inter-dépôts tracés.",
+  },
+  {
+    icon: History,
+    title: 'Mouvements détaillés',
+    desc: "Historique complet : entrées, sorties, ajustements, transferts, inventaires. Chaque mouvement est horodaté et signé.",
+  },
+  {
+    icon: AlertTriangle,
+    title: 'Alertes seuils',
+    desc: "Définissez un stock minimum par article. Alertes visuelles dès que vous descendez sous le seuil de réapprovisionnement.",
+  },
+  {
+    icon: Barcode,
+    title: 'Code-barres',
+    desc: "Saisie rapide via lecteur code-barres USB ou caméra. Génération et impression d'étiquettes EAN-13.",
+  },
+  {
+    icon: Truck,
+    title: 'Réceptions fournisseurs',
+    desc: "Bons de commande, réceptions partielles ou totales, contrôle des écarts. Traçabilité de bout en bout.",
+  },
+  {
+    icon: Globe,
+    title: 'Multi-devises',
+    desc: "GNF, XOF, USD, EUR. Coût d'achat enregistré dans la devise d'origine, conversion automatique.",
+  },
+  {
+    icon: Smartphone,
+    title: "Hors ligne d'abord",
+    desc: "BIRDY tourne sans Internet. Synchronisation automatique dès que la connexion revient.",
+  },
 ];
 
 export default function BirdyErpPage() {
@@ -41,24 +70,23 @@ export default function BirdyErpPage() {
         <div className="absolute -top-20 right-0 h-96 w-96 rounded-full bg-novar-cyan/20 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-novar-cyan/30 bg-novar-cyan/10 px-3 py-1 text-xs font-medium text-novar-cyan mb-6">
-              <span className="h-1.5 w-1.5 rounded-full bg-novar-cyan animate-pulse" />
-              Disponible aujourd&apos;hui
-            </div>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white">
-              BIRDY ERP
+            <span className="text-sm font-semibold text-novar-cyan uppercase tracking-wider">Produit Novar</span>
+            <h1 className="mt-2 font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white">
+              BIRDY
             </h1>
-            <p className="mt-4 text-xl text-slate-300">
-              Le logiciel de gestion intégré pour les PME guinéennes.
+            <p className="mt-3 text-xl text-novar-cyan font-medium">
+              Plateforme de gestion de stock pour PME africaines
             </p>
-            <p className="mt-4 max-w-2xl text-base text-slate-400 leading-relaxed">
-              Ventes, stock, comptabilité OHADA, paie, mobile money. Un seul outil, en français, qui fonctionne
-              même quand Internet est capricieux. Conçu à Conakry pour le terrain africain.
+            <p className="mt-6 max-w-2xl text-lg text-slate-300 leading-relaxed">
+              Suivez votre stock en temps réel, gérez plusieurs dépôts, recevez
+              des alertes de réapprovisionnement et travaillez hors ligne. BIRDY
+              est conçu à Conakry pour le terrain ouest-africain — boutiques,
+              grossistes, distributeurs.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <Link
                 href="/demo"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-novar-cyan px-6 py-3 text-sm font-semibold text-novar-cosmic hover:bg-novar-cyan-glow"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-novar-cyan px-6 py-3 text-sm font-semibold text-novar-cosmic shadow-lg shadow-novar-cyan/20 hover:bg-novar-cyan-glow"
               >
                 Réserver une démo <ArrowRight className="h-4 w-4" />
               </Link>
@@ -75,6 +103,18 @@ export default function BirdyErpPage() {
                 Voir les tarifs
               </Link>
             </div>
+            <div className="mt-8 flex flex-wrap gap-x-3 gap-y-2 text-xs text-slate-400">
+              <span className="inline-flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                En production
+              </span>
+              <span className="text-slate-600">·</span>
+              <span>Windows · macOS · Linux</span>
+              <span className="text-slate-600">·</span>
+              <span>Hors ligne par défaut</span>
+              <span className="text-slate-600">·</span>
+              <span>Multi-utilisateurs</span>
+            </div>
           </div>
         </div>
       </section>
@@ -83,14 +123,15 @@ export default function BirdyErpPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-sm font-semibold text-novar-blue dark:text-novar-cyan uppercase tracking-wider">
-              Modules
+              Fonctionnalités
             </span>
             <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
-              Tout ce dont votre PME a besoin
+              Tout ce qu&apos;il faut pour piloter votre stock
             </h2>
             <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
-              Dix modules natifs, intégrés depuis le premier jour. Pas de plugins payants à empiler, pas de
-              modules tiers à configurer.
+              BIRDY se concentre sur une seule chose : la gestion de stock,
+              faite proprement. Pas de modules superflus, pas de plugins
+              payants à empiler.
             </p>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -106,45 +147,46 @@ export default function BirdyErpPage() {
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <span className="text-sm font-semibold text-novar-blue dark:text-novar-cyan uppercase tracking-wider">
-                Conformité OHADA
+                Conçu pour l&apos;Afrique
               </span>
               <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
-                La comptabilité guinéenne, sans douleur
+                Hors ligne d&apos;abord, multi-devises, multi-dépôts
               </h2>
               <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
-                BIRDY génère automatiquement votre bilan, votre compte de résultat, votre TAFIRE et votre
-                liasse fiscale au format DGI Guinée. Le FEC est exportable en un clic pour les contrôles
-                fiscaux.
+                Internet capricieux ? BIRDY continue de fonctionner. Vos
+                vendeurs scannent, vendent, réceptionnent — la base se
+                synchronise dès que la connexion revient. Une seule licence
+                couvre tous vos points de vente et entrepôts.
               </p>
               <ul className="mt-6 space-y-2 text-slate-700 dark:text-slate-300">
-                <li>· Plan comptable SYSCOHADA révisé pré-installé</li>
-                <li>· Lettrage automatique et manuel</li>
-                <li>· Déclarations TVA et acomptes IS</li>
-                <li>· Journaux paramétrables</li>
-                <li>· Clôture annuelle assistée</li>
+                <li>· Base SQLite locale chiffrée — vos données restent chez vous</li>
+                <li>· Multi-utilisateurs avec rôles (vendeur, magasinier, gérant)</li>
+                <li>· Sauvegardes automatiques chiffrées</li>
+                <li>· Interface française pensée pour le terrain</li>
+                <li>· Support installation et formation</li>
               </ul>
             </div>
-            <div className="rounded-xl border border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-novar-cosmic">
+            <div className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-novar-cosmic">
               <div className="space-y-3 font-mono text-sm">
                 <div className="flex justify-between text-slate-600 dark:text-slate-400">
-                  <span>Compte 411 — Clients</span>
-                  <span className="text-novar-blue dark:text-novar-cyan">12 450 000 GNF</span>
+                  <span>Riz parfumé 25 kg</span>
+                  <span className="text-novar-blue dark:text-novar-cyan">142 sacs</span>
                 </div>
                 <div className="flex justify-between text-slate-600 dark:text-slate-400">
-                  <span>Compte 401 — Fournisseurs</span>
-                  <span>−4 320 000 GNF</span>
+                  <span>Huile palme 5 L</span>
+                  <span className="text-amber-500">28 bidons ⚠</span>
                 </div>
                 <div className="flex justify-between text-slate-600 dark:text-slate-400">
-                  <span>Compte 521 — Banque</span>
-                  <span className="text-novar-blue dark:text-novar-cyan">28 100 000 GNF</span>
+                  <span>Sucre en poudre 1 kg</span>
+                  <span className="text-novar-blue dark:text-novar-cyan">516 sachets</span>
                 </div>
                 <div className="flex justify-between text-slate-600 dark:text-slate-400">
-                  <span>Compte 4456 — TVA déductible</span>
-                  <span>1 240 000 GNF</span>
+                  <span>Lait concentré 410 g</span>
+                  <span className="text-rose-500">0 boîtes ✕</span>
                 </div>
                 <div className="border-t border-slate-200 dark:border-slate-700 pt-3 flex justify-between font-semibold text-slate-900 dark:text-white">
-                  <span>Résultat de l&apos;exercice</span>
-                  <span className="text-novar-blue dark:text-novar-cyan">+18 920 000 GNF</span>
+                  <span>Valeur totale stock</span>
+                  <span className="text-novar-blue dark:text-novar-cyan">42 580 000 GNF</span>
                 </div>
               </div>
             </div>

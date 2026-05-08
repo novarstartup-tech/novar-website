@@ -11,8 +11,10 @@ export default function DemoPage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-white">Réserver une démo</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
-            30 minutes en visio pour découvrir BIRDY ERP en direct, posez toutes vos questions, partez avec
-            une recommandation de plan.
+            30 minutes en visio pour découvrir nos solutions fintech B2B,
+            BIRDY (gestion de stock) ou FEEDORA (formulation alimentaire
+            avicole) en direct. Posez toutes vos questions, repartez avec une
+            recommandation adaptée.
           </p>
         </div>
       </section>

@@ -27,18 +27,23 @@ export default function AProposPage() {
               Notre mission
             </span>
             <h2 className="mt-2 font-display text-3xl font-bold text-slate-900 dark:text-white">
-              Rendre la technologie utile aux PME africaines
+              Démocratiser la fintech B2B en Afrique
             </h2>
             <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-              Trop d&apos;outils numériques sont conçus loin de l&apos;Afrique, pour des marchés et des
-              réglementations différentes. Le résultat : des PME guinéennes qui paient cher pour des
-              logiciels qu&apos;elles utilisent à 30 % de leurs capacités, parce que le reste ne correspond
-              pas à leur réalité.
+              Trop de startups et PME africaines passent des mois à intégrer
+              elles-mêmes Mobile Money, des passerelles bancaires fragmentées,
+              des plateformes de paiement marchand mal documentées. Le résultat :
+              des projets retardés, des coûts qui explosent, des équipes
+              techniques épuisées avant même la mise en production.
             </p>
             <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-              NOVAR existe pour combler ce vide. Nous concevons des outils qui parlent la langue locale,
-              respectent les normes OHADA, intègrent Mobile Money, fonctionnent hors ligne. Des outils
-              pensés ici, pour ici.
+              NOVAR existe pour combler ce vide. Nous concevons les briques
+              fintech B2B dont les entreprises africaines ont besoin :
+              agrégation Mobile Money, passerelles bancaires unifiées,
+              plateformes de paiement marchand, wallets B2B. En parallèle, nous
+              éditons quelques plateformes métier verticales (BIRDY pour la
+              gestion de stock, FEEDORA pour la formulation alimentaire
+              avicole) pour les secteurs où aucun outil adapté n&apos;existe.
             </p>
           </div>
         </div>
@@ -80,17 +85,21 @@ export default function AProposPage() {
                 Notre vision
               </span>
               <h2 className="mt-2 font-display text-3xl font-bold text-slate-900 dark:text-white">
-                Un catalogue de logiciels métiers pour l&apos;Afrique
+                Devenir la fintech B2B de référence en Afrique de l&apos;Ouest
               </h2>
               <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
-                BIRDY ERP est notre premier produit. D&apos;autres suivront : caisse cloud pour les chaînes
-                de boutiques, POS spécialisé restauration, application mobile de gestion. À chaque fois,
-                la même exigence : adapté au terrain africain, conforme OHADA, abordable.
+                Notre roadmap fintech : Novar Pay (passerelle Mobile Money
+                unifiée), Novar Wallet (wallet marchand B2B), Novar Lend
+                (facilité de crédit court terme PME), intégration directe avec
+                les banques guinéennes et ouest-africaines. À chaque fois, la
+                même exigence : sécurité bancaire, multi-devises, adapté au
+                terrain africain.
               </p>
               <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
-                À long terme, nous voulons devenir la référence régionale des logiciels métiers : la PME
-                guinéenne, ivoirienne, sénégalaise ou camerounaise qui cherche un outil de gestion pense
-                d&apos;abord à NOVAR.
+                À long terme, nous voulons devenir la référence régionale en
+                infrastructure fintech B2B : la startup ou la PME africaine qui
+                cherche à intégrer un paiement, lancer un wallet ou demander
+                un crédit pense d&apos;abord à NOVAR.
               </p>
               <div className="mt-6 flex gap-3">
                 <Link
@@ -120,8 +129,8 @@ export default function AProposPage() {
                   <div className="text-xs text-slate-400">Pays de base</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">OHADA</div>
-                  <div className="text-xs text-slate-400">Conformité native</div>
+                  <div className="text-2xl font-bold text-white">Fintech</div>
+                  <div className="text-xs text-slate-400">Cœur de métier</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-white">17</div>

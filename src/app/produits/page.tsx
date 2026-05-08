@@ -1,4 +1,4 @@
-import { Boxes, Wrench, ShoppingCart, Utensils, Bird, Banknote } from 'lucide-react';
+import { Boxes, Bird } from 'lucide-react';
 import { FeatureCard } from '@/components/FeatureCard';
 import { CtaBanner } from '@/components/CtaBanner';
 
@@ -13,61 +13,59 @@ export default function ProduitsPage() {
       <section className="bg-novar-cosmic py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-20" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <span className="text-sm font-semibold text-novar-cyan uppercase tracking-wider">Catalogue B2B</span>
-          <h1 className="mt-2 font-display text-4xl sm:text-5xl font-bold text-white">Nos produits</h1>
+          <span className="text-sm font-semibold text-novar-cyan uppercase tracking-wider">Produits Novar</span>
+          <h1 className="mt-2 font-display text-4xl sm:text-5xl font-bold text-white">Nos plateformes B2B verticales</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
-            NOVAR développe des produits B2B globaux pour les PME africaines, des
-            solutions fintech sur mesure, et accompagne les entreprises qui ont
-            un besoin métier spécifique. Deux produits phares en production
-            aujourd&apos;hui : <strong className="text-novar-cyan">BIRDY ERP</strong>{' '}
-            et <strong className="text-novar-cyan">FEEDORA</strong>.
+            En parallèle de notre activité fintech, NOVAR édite des plateformes
+            métiers indépendantes pour des secteurs précis. Deux produits sont
+            en production aujourd&apos;hui — <strong className="text-novar-cyan">BIRDY</strong> pour
+            la gestion de stock et <strong className="text-novar-cyan">FEEDORA</strong> pour la formulation alimentaire avicole.
           </p>
         </div>
       </section>
 
       <section className="py-20 bg-white dark:bg-novar-cosmic">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             <FeatureCard
               icon={Boxes}
-              title="BIRDY ERP"
-              description="ERP intégré pour PME OHADA : POS, stock, achats, compta SYSCOHADA, RH/paie, multi-devises. Hors ligne par défaut."
+              title="BIRDY"
+              description="Plateforme de gestion de stock pour boutiques et PME. Suivi des entrées/sorties, multi-dépôts, alertes seuils, hors ligne par défaut. Conçu pour le marché ouest-africain."
               href="/produits/birdy-erp"
-              badge="Phare"
+              badge="En production"
             />
             <FeatureCard
               icon={Bird}
               title="FEEDORA"
-              description="Plateforme d'optimisation nutritionnelle pour volailles. Formulation intelligente, multi-pays, rapports PDF. SaaS B2B en production."
+              description="Plateforme de gestion et formulation alimentaire pour fermes avicoles. Calcul de rations équilibrées, multi-pays (CI, Mali, Sénégal, Bénin, Guinée), rapports PDF. SaaS B2B."
               href="/produits/feedora"
               badge="En production"
             />
-            <FeatureCard
-              icon={Wrench}
-              title="Solutions sur mesure"
-              description="Vous avez un problème métier précis ? Nous concevons et développons une solution B2B adaptée : web, mobile, desktop, API."
-              href="/services/sur-mesure"
-              badge="Sur devis"
-            />
-            <FeatureCard
-              icon={Banknote}
-              title="Solutions fintech"
-              description="Intégrations Mobile Money (Orange, Wave, MTN), passerelles bancaires, plateformes de paiement marchand pour acteurs OHADA."
-              href="/contact"
-              badge="Sur devis"
-            />
-            <FeatureCard
-              icon={ShoppingCart}
-              title="Novar Caisse Cloud"
-              description="Caisse SaaS multi-magasins, dashboard consolidé, sync temps réel pour chaînes de boutiques."
-              badge="Q3 2026"
-            />
-            <FeatureCard
-              icon={Utensils}
-              title="Novar Restaurant POS"
-              description="POS spécialisé restauration : commandes salle, cuisine connectée, livraison, fidélité."
-              badge="Q4 2026"
-            />
+          </div>
+
+          <div className="mt-10 rounded-xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-novar-cosmic-2/30">
+            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white">
+              Vous cherchez une solution fintech ou un logiciel sur mesure ?
+            </h2>
+            <p className="mt-2 max-w-2xl text-slate-600 dark:text-slate-400">
+              Au-delà de nos produits, NOVAR conçoit des solutions fintech B2B
+              (Mobile Money, passerelles bancaires, paiement marchand) et des
+              logiciels métiers sur cahier des charges.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a
+                href="/services/sur-mesure"
+                className="inline-flex items-center gap-2 rounded-lg bg-novar-cyan px-5 py-2.5 text-sm font-semibold text-novar-cosmic hover:bg-novar-cyan-glow"
+              >
+                Voir nos services
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              >
+                Nous contacter
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -77,10 +75,10 @@ export default function ProduitsPage() {
           <h2 className="font-display text-3xl font-bold text-slate-900 dark:text-white mb-8">Roadmap publique</h2>
           <div className="rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-novar-cosmic overflow-hidden">
             <div className="divide-y divide-slate-200 dark:divide-slate-800">
-              <RoadmapRow quarter="Q2 2026" status="En cours" items={['BIRDY ERP — Module RH/Paie complet', 'Liasse fiscale Guinée — DGI 2026', 'Sauvegardes cloud chiffrées Ed25519']} />
-              <RoadmapRow quarter="Q3 2026" status="Planifié" items={['Novar Caisse Cloud — bêta privée', 'API publique BIRDY v1', 'SSO Google + Microsoft']} />
-              <RoadmapRow quarter="Q4 2026" status="Planifié" items={['Novar Restaurant POS — bêta', 'Application mobile BIRDY Pocket', 'Marketplace de plugins']} />
-              <RoadmapRow quarter="2027" status="Exploration" items={['BIRDY analytics avancées (BI)', 'Intégration banques guinéennes', 'Module e-commerce']} />
+              <RoadmapRow quarter="Q2 2026" status="En cours" items={['BIRDY — Mobile companion (lecture stock + scan)', 'FEEDORA — module Bovins (vaches laitières)', 'Sauvegardes cloud chiffrées Ed25519']} />
+              <RoadmapRow quarter="Q3 2026" status="Planifié" items={['Novar Pay — passerelle Mobile Money unifiée', 'BIRDY — synchronisation multi-magasins', 'API publique BIRDY v1']} />
+              <RoadmapRow quarter="Q4 2026" status="Planifié" items={['Novar Wallet — wallet marchand B2B', 'FEEDORA — analytics performance lots', 'Intégration banques guinéennes']} />
+              <RoadmapRow quarter="2027" status="Exploration" items={['Novar Lend — facilité de crédit court terme PME', 'BIRDY analytics avancées', 'Marketplace plugins fintech']} />
             </div>
           </div>
         </div>
