@@ -7,12 +7,13 @@ const schema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   company: z.string().optional(),
-  topic: z.enum(['birdy', 'sur-mesure', 'conseil', 'support', 'autre']),
+  topic: z.enum(['birdy', 'feedora', 'sur-mesure', 'conseil', 'support', 'autre']),
   message: z.string().min(10),
 });
 
 const TOPIC_LABELS: Record<z.infer<typeof schema>['topic'], string> = {
-  birdy: 'Renseignement BIRDY ERP',
+  birdy: 'Renseignement BIRDY (ERP OHADA)',
+  feedora: 'Renseignement FEEDORA (formulation avicole)',
   'sur-mesure': 'Projet sur mesure',
   conseil: 'Conseil & accompagnement',
   support: 'Support technique',
