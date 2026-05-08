@@ -1,116 +1,201 @@
-import { Boxes, Bird } from 'lucide-react';
-import { FeatureCard } from '@/components/FeatureCard';
+import Link from 'next/link';
+import { Boxes, Bird, ArrowRight } from 'lucide-react';
 import { CtaBanner } from '@/components/CtaBanner';
 
 export const metadata = {
   title: 'Produits',
-  description: 'Le catalogue NOVAR : BIRDY ERP, FEEDORA, solutions sur mesure et fintech B2B pour PME africaines.',
+  description:
+    "Le catalogue NOVAR : BIRDY (ERP & gestion comptable OHADA pour PME africaines) et FEEDORA (formulation alimentaire pour fermes avicoles). Deux produits SaaS B2B en production.",
 };
 
 export default function ProduitsPage() {
   return (
     <>
-      <section className="bg-novar-cosmic py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-20" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <span className="text-sm font-semibold text-novar-cyan uppercase tracking-wider">Produits Novar</span>
-          <h1 className="mt-2 font-display text-4xl sm:text-5xl font-bold text-white">Nos plateformes B2B verticales</h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-300">
-            En parallèle de notre activité fintech, NOVAR édite des plateformes
-            métiers indépendantes pour des secteurs précis. Deux produits sont
-            en production aujourd&apos;hui — <strong className="text-novar-cyan">BIRDY</strong> pour
-            la gestion de stock et <strong className="text-novar-cyan">FEEDORA</strong> pour la formulation alimentaire avicole.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white dark:bg-novar-cosmic">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-2">
-            <FeatureCard
-              icon={Boxes}
-              title="BIRDY"
-              description="Plateforme de gestion de stock pour boutiques et PME. Suivi des entrées/sorties, multi-dépôts, alertes seuils, hors ligne par défaut. Conçu pour le marché ouest-africain."
-              href="/produits/birdy-erp"
-              badge="En production"
-            />
-            <FeatureCard
-              icon={Bird}
-              title="FEEDORA"
-              description="Plateforme de gestion et formulation alimentaire pour fermes avicoles. Calcul de rations équilibrées, multi-pays (CI, Mali, Sénégal, Bénin, Guinée), rapports PDF. SaaS B2B."
-              href="/produits/feedora"
-              badge="En production"
-            />
-          </div>
-
-          <div className="mt-10 rounded-xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-novar-cosmic-2/30">
-            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white">
-              Vous cherchez une solution fintech ou un logiciel sur mesure ?
-            </h2>
-            <p className="mt-2 max-w-2xl text-slate-600 dark:text-slate-400">
-              Au-delà de nos produits, NOVAR conçoit des solutions fintech B2B
-              (Mobile Money, passerelles bancaires, paiement marchand) et des
-              logiciels métiers sur cahier des charges.
+      <section className="bg-white border-b border-novar-line">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
+          <div className="max-w-3xl">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
+              Catalogue NOVAR
+            </span>
+            <h1 className="mt-4 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink leading-[1.1]">
+              Nos produits SaaS B2B.
+            </h1>
+            <p className="mt-6 text-lg text-novar-muted leading-relaxed">
+              NOVAR édite deux plateformes B2B en production. Chacune
+              s&apos;adresse à un secteur précis et résout un problème métier
+              concret. Pour les besoins qui sortent du cadre, nous proposons
+              du développement sur mesure.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <a
-                href="/services/sur-mesure"
-                className="inline-flex items-center gap-2 rounded-lg bg-novar-cyan px-5 py-2.5 text-sm font-semibold text-novar-cosmic hover:bg-novar-cyan-glow"
-              >
-                Voir nos services
-              </a>
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-              >
-                Nous contacter
-              </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-16 md:pt-24">
+          <div className="rounded-3xl border border-novar-line bg-novar-surface-2 p-8 sm:p-12 md:p-16">
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-novar-line bg-white px-3 py-1 text-xs font-medium text-novar-muted">
+                  <span className="h-1.5 w-1.5 rounded-full bg-novar-accent" />
+                  En production
+                </div>
+                <h2 className="mt-5 font-display text-3xl sm:text-4xl font-bold tracking-tight text-novar-ink">
+                  BIRDY
+                </h2>
+                <p className="mt-2 text-lg font-medium text-novar-accent">
+                  ERP & gestion comptable OHADA
+                </p>
+                <p className="mt-5 text-novar-muted leading-relaxed">
+                  Un logiciel de gestion complet pour les PME africaines :
+                  facturation, comptabilité OHADA, paie, stocks. Tout est
+                  centralisé, en français, conçu pour fonctionner même avec
+                  une connexion limitée.
+                </p>
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                  <Link href="/produits/birdy-erp" className="btn-primary">
+                    Découvrir BIRDY <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link href="/tarifs" className="btn-ghost">
+                    Voir les tarifs
+                  </Link>
+                </div>
+              </div>
+              <div className="rounded-2xl border border-novar-line bg-white p-6 shadow-soft">
+                <div className="flex items-center gap-3 pb-4 border-b border-novar-line">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-novar-surface-2 text-novar-ink">
+                    <Boxes className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-novar-ink">Modules BIRDY</div>
+                    <div className="text-xs text-novar-muted">Tous inclus</div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3 mt-4 text-sm">
+                  {[
+                    'Facturation',
+                    'Comptabilité OHADA',
+                    'Paie & RH',
+                    'Stocks & articles',
+                    'Achats',
+                    'Caisse',
+                    'Multi-devises',
+                    'Hors ligne',
+                  ].map((m) => (
+                    <div key={m} className="text-novar-ink-soft">· {m}</div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50 dark:bg-novar-cosmic-2/30">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-display text-3xl font-bold text-slate-900 dark:text-white mb-8">Roadmap publique</h2>
-          <div className="rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-novar-cosmic overflow-hidden">
-            <div className="divide-y divide-slate-200 dark:divide-slate-800">
-              <RoadmapRow quarter="Q2 2026" status="En cours" items={['BIRDY — Mobile companion (lecture stock + scan)', 'FEEDORA — module Bovins (vaches laitières)', 'Sauvegardes cloud chiffrées Ed25519']} />
-              <RoadmapRow quarter="Q3 2026" status="Planifié" items={['Novar Pay — passerelle Mobile Money unifiée', 'BIRDY — synchronisation multi-magasins', 'API publique BIRDY v1']} />
-              <RoadmapRow quarter="Q4 2026" status="Planifié" items={['Novar Wallet — wallet marchand B2B', 'FEEDORA — analytics performance lots', 'Intégration banques guinéennes']} />
-              <RoadmapRow quarter="2027" status="Exploration" items={['Novar Lend — facilité de crédit court terme PME', 'BIRDY analytics avancées', 'Marketplace plugins fintech']} />
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-12 md:pt-16">
+          <div className="rounded-3xl border border-novar-line bg-novar-surface-2 p-8 sm:p-12 md:p-16">
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+              <div className="lg:order-2">
+                <div className="inline-flex items-center gap-2 rounded-full border border-novar-line bg-white px-3 py-1 text-xs font-medium text-novar-muted">
+                  <span className="h-1.5 w-1.5 rounded-full bg-novar-accent" />
+                  En production
+                </div>
+                <h2 className="mt-5 font-display text-3xl sm:text-4xl font-bold tracking-tight text-novar-ink">
+                  FEEDORA
+                </h2>
+                <p className="mt-2 text-lg font-medium text-novar-accent">
+                  Formulation alimentaire pour fermes avicoles
+                </p>
+                <p className="mt-5 text-novar-muted leading-relaxed">
+                  Une application B2B AgriTech pour aider les éleveurs et
+                  nutritionnistes à formuler des aliments pour volailles
+                  équilibrés, économiques et performants. Calcul en temps
+                  réel, alertes nutritionnelles, rapports professionnels.
+                </p>
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                  <Link href="/produits/feedora" className="btn-primary">
+                    Découvrir FEEDORA <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <a
+                    href="https://feedora-cyan.vercel.app/"
+                    target="_blank"
+                    rel="noopener"
+                    className="btn-ghost"
+                  >
+                    Accéder à l&apos;application
+                  </a>
+                </div>
+              </div>
+              <div className="lg:order-1 rounded-2xl border border-novar-line bg-white p-6 shadow-soft">
+                <div className="flex items-center gap-3 pb-4 border-b border-novar-line">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-novar-surface-2 text-novar-ink">
+                    <Bird className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-novar-ink">Spéculations</div>
+                    <div className="text-xs text-novar-muted">Toutes phases d&apos;élevage</div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3 mt-4 text-sm">
+                  {[
+                    'Poulet de chair',
+                    'Pondeuse',
+                    'Dinde',
+                    'Reproducteurs',
+                    'Pré-démarrage',
+                    'Finition',
+                    'Standards zootech.',
+                    'Multi-pays',
+                  ].map((m) => (
+                    <div key={m} className="text-novar-ink-soft">· {m}</div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-novar-cosmic">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-12 md:pt-16 pb-24 md:pb-32">
+          <div className="rounded-3xl border-2 border-dashed border-novar-line p-8 sm:p-12">
+            <div className="max-w-3xl">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-muted">
+                Au-delà de nos produits
+              </span>
+              <h2 className="mt-4 font-display text-2xl sm:text-3xl font-bold tracking-tight text-novar-ink">
+                Vous avez un besoin métier que nos produits ne couvrent pas&nbsp;?
+              </h2>
+              <p className="mt-5 text-novar-muted leading-relaxed">
+                NOVAR conçoit aussi des solutions logicielles sur mesure pour
+                les entreprises ayant des besoins d&apos;automatisation
+                spécifiques. Décrivez-nous votre problème, nous concevrons la
+                solution adaptée.
+              </p>
+              <div className="mt-7 flex flex-col sm:flex-row gap-3">
+                <Link href="/services/sur-mesure" className="btn-primary">
+                  Voir notre méthode <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link href="/contact" className="btn-ghost">
+                  Nous contacter
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 md:pb-32">
           <CtaBanner
-            title="Une idée de logiciel à concrétiser ?"
-            description="Nous transformons les idées en outils performants. Parlons-en."
+            title="Une idée à concrétiser ?"
+            description="Premier échange gratuit. Nous vous orientons vers le bon produit ou un projet sur mesure, en toute transparence."
             primaryHref="/contact"
+            primaryLabel="Nous contacter"
             secondaryHref="/services/sur-mesure"
             secondaryLabel="Voir nos services"
           />
         </div>
       </section>
     </>
-  );
-}
-
-function RoadmapRow({ quarter, status, items }: { quarter: string; status: string; items: string[] }) {
-  return (
-    <div className="grid grid-cols-[120px_1fr] sm:grid-cols-[160px_120px_1fr] gap-4 px-6 py-5">
-      <div className="font-display font-semibold text-slate-900 dark:text-white">{quarter}</div>
-      <div className="hidden sm:block">
-        <span className="rounded-full bg-novar-cyan/10 px-2 py-0.5 text-xs font-medium text-novar-cyan">
-          {status}
-        </span>
-      </div>
-      <ul className="space-y-1 text-sm text-slate-700 dark:text-slate-300">
-        {items.map((it) => <li key={it}>· {it}</li>)}
-      </ul>
-    </div>
   );
 }

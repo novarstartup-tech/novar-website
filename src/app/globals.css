@@ -3,34 +3,80 @@
 @tailwind utilities;
 
 :root {
+  /* === NOVAR — palette light & premium ============================ */
+  --novar-ink: #0B1220;        /* CTA primaire & titres forts (navy profond) */
+  --novar-ink-soft: #1F2937;   /* texte body fort */
+  --novar-muted: #64748B;      /* texte secondaire (slate-500) */
+  --novar-line: #E5E7EB;       /* bordures subtiles */
+  --novar-surface: #FFFFFF;
+  --novar-surface-2: #F8FAFC;  /* sections alternées */
+  --novar-surface-3: #F1F5F9;  /* hover doux */
+
+  /* Accents très peu saturés */
+  --novar-accent: #0891B2;     /* cyan-600 — élégant, pas flashy */
+  --novar-accent-soft: #ECFEFF; /* cyan-50 — wash subtil */
+  --novar-blue: #1E40AF;       /* bleu profond pour highlights */
+
+  /* Aliases legacy (pour ne pas casser les composants) */
   --novar-cosmic: #0B1220;
-  --novar-cyan: #1FD4E2;
-  --novar-cyan-glow: #22E5F4;
-  --novar-blue: #3B82F6;
+  --novar-cyan: #0891B2;
+  --novar-cyan-glow: #0E7490;
 }
 
 html { scroll-behavior: smooth; }
-body { @apply bg-white text-slate-900 antialiased; font-feature-settings: "cv11", "ss01"; }
-.dark body { @apply bg-novar-cosmic text-slate-100; }
+body {
+  @apply bg-white text-slate-900 antialiased;
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-::selection { background: var(--novar-cyan); color: var(--novar-cosmic); }
+::selection { background: var(--novar-ink); color: #fff; }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.3); border-radius: 5px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.5); }
-*:focus-visible { outline: 2px solid var(--novar-cyan); outline-offset: 2px; }
+::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.25); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.4); }
+*:focus-visible { outline: 2px solid var(--novar-accent); outline-offset: 2px; }
 
-.gradient-cyan { background: linear-gradient(135deg, #1FD4E2 0%, #3B82F6 100%); }
-.gradient-text-cyan {
-  background: linear-gradient(135deg, #22E5F4 0%, #3B82F6 100%);
+/* Surfaces aérées — utilisées comme classes utilitaires premium */
+.surface-quiet { @apply bg-white; }
+.surface-alt { background: var(--novar-surface-2); }
+
+/* Boutons primaire / secondaire premium (peuvent être appliqués en .btn-*) */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors;
+  background: var(--novar-ink);
+  color: #fff;
+}
+.btn-primary:hover { background: #060B16; }
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border px-5 py-3 text-sm font-semibold transition-colors;
+  border-color: var(--novar-line);
+  color: var(--novar-ink);
+  background: #fff;
+}
+.btn-ghost:hover { background: var(--novar-surface-3); }
+
+/* Headline gradient discret — navy → accent */
+.gradient-text-novar {
+  background: linear-gradient(135deg, #0B1220 0%, #0891B2 120%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
+
+/* Grille de fond très très subtile, light only */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(31, 212, 226, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(31, 212, 226, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Dotted soft pattern (alternative aux blobs flashy) */
+.bg-dots {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
 }

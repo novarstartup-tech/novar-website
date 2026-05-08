@@ -5,19 +5,21 @@ type Props = { icon?: LucideIcon; title: string; description: string; href?: str
 
 export function FeatureCard({ icon: Icon, title, description, href, badge }: Props) {
   const inner = (
-    <div className="group relative h-full rounded-xl border border-slate-200 bg-white p-6 transition-all hover:border-novar-cyan/40 hover:shadow-lg dark:border-slate-800 dark:bg-novar-cosmic-2 dark:hover:border-novar-cyan/40">
+    <div className="group relative h-full rounded-2xl border border-novar-line bg-white p-7 transition-all hover:border-novar-ink/20 hover:shadow-lifted">
       {badge && (
-        <span className="absolute right-4 top-4 rounded-full bg-novar-cyan/10 px-2 py-0.5 text-xs font-medium text-novar-cyan">{badge}</span>
+        <span className="absolute right-5 top-5 rounded-full bg-novar-accent-soft px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-novar-accent">
+          {badge}
+        </span>
       )}
       {Icon && (
-        <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-novar-cyan/10 text-novar-cyan">
+        <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-novar-surface-2 text-novar-ink ring-1 ring-novar-line">
           <Icon className="h-5 w-5" />
         </div>
       )}
-      <h3 className="font-display text-lg font-semibold text-slate-900 dark:text-white">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{description}</p>
+      <h3 className="font-display text-lg font-semibold text-novar-ink">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-novar-muted">{description}</p>
       {href && (
-        <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-novar-blue dark:text-novar-cyan group-hover:gap-2 transition-all">
+        <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-novar-ink group-hover:gap-2 transition-all">
           En savoir plus <ArrowRight className="h-3.5 w-3.5" />
         </span>
       )}

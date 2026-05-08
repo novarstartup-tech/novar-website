@@ -1,59 +1,59 @@
 import Link from 'next/link';
 import {
+  ArrowRight,
+  ReceiptText,
+  BookOpen,
+  Users,
   Boxes,
-  Warehouse,
-  History,
-  AlertTriangle,
-  Barcode,
   Truck,
+  Wallet,
   Globe,
   Smartphone,
-  ArrowRight,
+  CheckCircle2,
 } from 'lucide-react';
-import { FeatureCard } from '@/components/FeatureCard';
 import { CtaBanner } from '@/components/CtaBanner';
 
 export const metadata = {
-  title: 'BIRDY — Plateforme de gestion de stock',
+  title: 'BIRDY — ERP & gestion comptable OHADA',
   description:
-    "BIRDY est la plateforme de gestion de stock pour boutiques et PME africaines : entrées/sorties, multi-dépôts, alertes seuils, code-barres, hors ligne par défaut.",
+    "BIRDY est l'ERP et le logiciel de gestion comptable OHADA complet pour PME africaines : facturation, comptabilité, paie, stocks. Moderne, en français, sans douleur.",
 };
 
 const MODULES = [
   {
+    icon: ReceiptText,
+    title: 'Facturation',
+    desc: "Devis, factures, avoirs, relances clients. Numérotation conforme, modèles personnalisables, envoi par email en un clic.",
+  },
+  {
+    icon: BookOpen,
+    title: 'Comptabilité OHADA',
+    desc: "Plan SYSCOHADA révisé, écritures manuelles, lettrage, journaux, balance, grand-livre, bilan, compte de résultat. Liasse fiscale et FEC inclus.",
+  },
+  {
+    icon: Users,
+    title: 'Paie & RH',
+    desc: "Employés, contrats, bulletins de paie, calcul automatique IRPP & CNSS, congés, ordres de virement.",
+  },
+  {
     icon: Boxes,
-    title: 'Catalogue articles',
-    desc: "Articles illimités avec code-barres, photos, catégories, unités multiples (carton, sachet, kg). Import / export Excel.",
-  },
-  {
-    icon: Warehouse,
-    title: 'Multi-dépôts',
-    desc: "Suivez le stock dans plusieurs entrepôts, boutiques ou véhicules. Transferts inter-dépôts tracés.",
-  },
-  {
-    icon: History,
-    title: 'Mouvements détaillés',
-    desc: "Historique complet : entrées, sorties, ajustements, transferts, inventaires. Chaque mouvement est horodaté et signé.",
-  },
-  {
-    icon: AlertTriangle,
-    title: 'Alertes seuils',
-    desc: "Définissez un stock minimum par article. Alertes visuelles dès que vous descendez sous le seuil de réapprovisionnement.",
-  },
-  {
-    icon: Barcode,
-    title: 'Code-barres',
-    desc: "Saisie rapide via lecteur code-barres USB ou caméra. Génération et impression d'étiquettes EAN-13.",
+    title: 'Stocks & articles',
+    desc: "Articles illimités, multi-dépôts, code-barres, alertes seuils, inventaires tournants. Mouvements tracés.",
   },
   {
     icon: Truck,
-    title: 'Réceptions fournisseurs',
-    desc: "Bons de commande, réceptions partielles ou totales, contrôle des écarts. Traçabilité de bout en bout.",
+    title: 'Achats fournisseurs',
+    desc: "Commandes, réceptions partielles ou totales, factures fournisseur, échéancier de paiements.",
+  },
+  {
+    icon: Wallet,
+    title: 'Caisse & banque',
+    desc: "Sessions de caisse, encaissements en temps réel, rapprochement bancaire multi-comptes, arrêté de caisse.",
   },
   {
     icon: Globe,
     title: 'Multi-devises',
-    desc: "GNF, XOF, USD, EUR. Coût d'achat enregistré dans la devise d'origine, conversion automatique.",
+    desc: "GNF, XOF, USD, EUR et plus. Taux de change manuels ou automatiques, conversion en temps réel sur tous les documents.",
   },
   {
     icon: Smartphone,
@@ -65,128 +65,152 @@ const MODULES = [
 export default function BirdyErpPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-novar-cosmic py-20">
-        <div className="absolute inset-0 bg-grid opacity-20" />
-        <div className="absolute -top-20 right-0 h-96 w-96 rounded-full bg-novar-cyan/20 blur-3xl" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Hero — light, premium */}
+      <section className="relative overflow-hidden bg-white border-b border-novar-line">
+        <div className="absolute inset-0 bg-dots opacity-50" aria-hidden />
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
           <div className="max-w-3xl">
-            <span className="text-sm font-semibold text-novar-cyan uppercase tracking-wider">Produit Novar</span>
-            <h1 className="mt-2 font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
+              Produit NOVAR
+            </span>
+            <h1 className="mt-4 font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-novar-ink leading-[1.05]">
               BIRDY
             </h1>
-            <p className="mt-3 text-xl text-novar-cyan font-medium">
-              Plateforme de gestion de stock pour PME africaines
+            <p className="mt-4 text-xl sm:text-2xl font-medium text-novar-ink-soft">
+              L&apos;ERP et la gestion comptable OHADA, sans douleur.
             </p>
-            <p className="mt-6 max-w-2xl text-lg text-slate-300 leading-relaxed">
-              Suivez votre stock en temps réel, gérez plusieurs dépôts, recevez
-              des alertes de réapprovisionnement et travaillez hors ligne. BIRDY
-              est conçu à Conakry pour le terrain ouest-africain — boutiques,
-              grossistes, distributeurs.
+            <p className="mt-6 max-w-2xl text-lg text-novar-muted leading-relaxed">
+              BIRDY est un logiciel de gestion comptable OHADA complet pour
+              les PME africaines. Facturation, comptabilité, paie, stocks —
+              tout est centralisé dans un outil moderne, en français, qui
+              s&apos;installe en quelques minutes.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/demo"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-novar-cyan px-6 py-3 text-sm font-semibold text-novar-cosmic shadow-lg shadow-novar-cyan/20 hover:bg-novar-cyan-glow"
-              >
+            <div className="mt-10 flex flex-col sm:flex-row gap-3">
+              <Link href="/demo" className="btn-primary">
                 Réserver une démo <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link
-                href="/telechargements"
-                className="inline-flex items-center justify-center rounded-lg border border-novar-cyan/40 px-6 py-3 text-sm font-semibold text-novar-cyan hover:bg-novar-cyan/10"
-              >
+              <Link href="/telechargements" className="btn-ghost">
                 Télécharger
               </Link>
-              <Link
-                href="/tarifs"
-                className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
-              >
+              <Link href="/tarifs" className="btn-ghost">
                 Voir les tarifs
               </Link>
             </div>
-            <div className="mt-8 flex flex-wrap gap-x-3 gap-y-2 text-xs text-slate-400">
+            <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-wider text-novar-muted">
               <span className="inline-flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                <span className="h-1.5 w-1.5 rounded-full bg-novar-accent" />
                 En production
               </span>
-              <span className="text-slate-600">·</span>
+              <span className="text-novar-line">·</span>
               <span>Windows · macOS · Linux</span>
-              <span className="text-slate-600">·</span>
-              <span>Hors ligne par défaut</span>
-              <span className="text-slate-600">·</span>
+              <span className="text-novar-line">·</span>
+              <span>SYSCOHADA révisé</span>
+              <span className="text-novar-line">·</span>
               <span>Multi-utilisateurs</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-novar-cosmic">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <span className="text-sm font-semibold text-novar-blue dark:text-novar-cyan uppercase tracking-wider">
-              Fonctionnalités
+      {/* Modules */}
+      <section className="surface-alt">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+          <div className="max-w-3xl">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
+              Modules
             </span>
-            <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
-              Tout ce qu&apos;il faut pour piloter votre stock
+            <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-novar-ink leading-tight">
+              Tout ce dont une PME a besoin.
             </h2>
-            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
-              BIRDY se concentre sur une seule chose : la gestion de stock,
-              faite proprement. Pas de modules superflus, pas de plugins
-              payants à empiler.
+            <p className="mt-5 text-lg text-novar-muted leading-relaxed">
+              Huit modules natifs, intégrés depuis le premier jour. Pas de
+              plugins payants à empiler, pas de modules tiers à configurer —
+              tout est inclus.
             </p>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {MODULES.map((m) => (
-              <FeatureCard key={m.title} icon={m.icon} title={m.title} description={m.desc} />
-            ))}
+
+          <div className="mt-14 grid gap-px bg-novar-line rounded-3xl overflow-hidden border border-novar-line sm:grid-cols-2 lg:grid-cols-4">
+            {MODULES.map((m) => {
+              const Icon = m.icon;
+              return (
+                <div key={m.title} className="bg-white p-7 transition-all hover:bg-novar-surface-2">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-novar-surface-2 text-novar-ink ring-1 ring-novar-line">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 font-display text-base font-semibold text-novar-ink">
+                    {m.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-novar-muted">
+                    {m.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50 dark:bg-novar-cosmic-2/30">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+      {/* Comptabilité OHADA — focus */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <div>
-              <span className="text-sm font-semibold text-novar-blue dark:text-novar-cyan uppercase tracking-wider">
-                Conçu pour l&apos;Afrique
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
+                Conformité OHADA native
               </span>
-              <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
-                Hors ligne d&apos;abord, multi-devises, multi-dépôts
+              <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold tracking-tight text-novar-ink leading-tight">
+                La comptabilité africaine, sans complexité.
               </h2>
-              <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
-                Internet capricieux ? BIRDY continue de fonctionner. Vos
-                vendeurs scannent, vendent, réceptionnent — la base se
-                synchronise dès que la connexion revient. Une seule licence
-                couvre tous vos points de vente et entrepôts.
+              <p className="mt-6 text-lg text-novar-muted leading-relaxed">
+                BIRDY génère automatiquement votre bilan, votre compte de
+                résultat, votre TAFIRE et votre liasse fiscale au format
+                local. Le FEC est exportable en un clic pour les contrôles
+                fiscaux.
               </p>
-              <ul className="mt-6 space-y-2 text-slate-700 dark:text-slate-300">
-                <li>· Base SQLite locale chiffrée — vos données restent chez vous</li>
-                <li>· Multi-utilisateurs avec rôles (vendeur, magasinier, gérant)</li>
-                <li>· Sauvegardes automatiques chiffrées</li>
-                <li>· Interface française pensée pour le terrain</li>
-                <li>· Support installation et formation</li>
+              <ul className="mt-8 space-y-4">
+                {[
+                  'Plan comptable SYSCOHADA révisé pré-installé',
+                  'Lettrage automatique et manuel',
+                  "Déclarations TVA et acomptes d'impôt",
+                  'Journaux paramétrables',
+                  'Clôture annuelle assistée',
+                  'Export FEC réglementaire',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-novar-ink-soft">
+                    <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-novar-accent mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
-            <div className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-novar-cosmic">
+            <div className="rounded-3xl border border-novar-line bg-novar-surface-2 p-8 sm:p-12 shadow-soft">
               <div className="space-y-3 font-mono text-sm">
-                <div className="flex justify-between text-slate-600 dark:text-slate-400">
-                  <span>Riz parfumé 25 kg</span>
-                  <span className="text-novar-blue dark:text-novar-cyan">142 sacs</span>
+                <div className="text-xs font-semibold uppercase tracking-wider text-novar-muted mb-3">
+                  Balance générale — Exercice 2026
                 </div>
-                <div className="flex justify-between text-slate-600 dark:text-slate-400">
-                  <span>Huile palme 5 L</span>
-                  <span className="text-amber-500">28 bidons ⚠</span>
+                <div className="flex justify-between text-novar-muted">
+                  <span>Compte 411 — Clients</span>
+                  <span className="text-novar-ink font-semibold">12 450 000 GNF</span>
                 </div>
-                <div className="flex justify-between text-slate-600 dark:text-slate-400">
-                  <span>Sucre en poudre 1 kg</span>
-                  <span className="text-novar-blue dark:text-novar-cyan">516 sachets</span>
+                <div className="flex justify-between text-novar-muted">
+                  <span>Compte 401 — Fournisseurs</span>
+                  <span>−4 320 000 GNF</span>
                 </div>
-                <div className="flex justify-between text-slate-600 dark:text-slate-400">
-                  <span>Lait concentré 410 g</span>
-                  <span className="text-rose-500">0 boîtes ✕</span>
+                <div className="flex justify-between text-novar-muted">
+                  <span>Compte 521 — Banque</span>
+                  <span className="text-novar-ink font-semibold">28 100 000 GNF</span>
                 </div>
-                <div className="border-t border-slate-200 dark:border-slate-700 pt-3 flex justify-between font-semibold text-slate-900 dark:text-white">
-                  <span>Valeur totale stock</span>
-                  <span className="text-novar-blue dark:text-novar-cyan">42 580 000 GNF</span>
+                <div className="flex justify-between text-novar-muted">
+                  <span>Compte 4456 — TVA déductible</span>
+                  <span>1 240 000 GNF</span>
+                </div>
+                <div className="flex justify-between text-novar-muted">
+                  <span>Compte 6011 — Achats marchandises</span>
+                  <span>9 300 000 GNF</span>
+                </div>
+                <div className="border-t border-novar-line pt-4 mt-4 flex justify-between font-semibold text-novar-ink">
+                  <span>Résultat de l&apos;exercice</span>
+                  <span className="text-novar-accent">+18 920 000 GNF</span>
                 </div>
               </div>
             </div>
@@ -194,8 +218,8 @@ export default function BirdyErpPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-novar-cosmic">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 md:pb-32">
           <CtaBanner
             title="Prêt à essayer BIRDY ?"
             description="30 jours gratuits, sans carte bancaire. Installation guidée en moins de 30 minutes."

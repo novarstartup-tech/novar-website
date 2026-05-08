@@ -1,42 +1,47 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { StarField } from './StarField';
-import { SITE } from '@/lib/site';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-novar-cosmic dark:bg-novar-cosmic">
-      <StarField />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-novar-cosmic/80" />
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[600px] w-[1000px] rounded-full bg-novar-cyan/10 blur-3xl" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40">
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-novar-cyan/30 bg-novar-cyan/10 px-3 py-1 text-xs font-medium text-novar-cyan mb-6">
-            <span className="h-1.5 w-1.5 rounded-full bg-novar-cyan animate-pulse" />
-            Conakry, Guinée — Entreprise de logiciels
+    <section className="relative overflow-hidden bg-white">
+      {/* Wash subtil derrière le hero — aucun gradient flashy, juste de la profondeur */}
+      <div className="absolute inset-x-0 top-0 h-[640px] bg-gradient-to-b from-novar-surface-2 to-white" aria-hidden />
+      <div className="absolute inset-0 bg-dots opacity-60" aria-hidden />
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-28 pb-24 md:pt-36 md:pb-32 lg:pt-40 lg:pb-36">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-novar-line bg-white px-3 py-1 text-xs font-medium text-novar-muted shadow-soft">
+            <span className="h-1.5 w-1.5 rounded-full bg-novar-accent" />
+            SaaS Studio · Conakry, Guinée
           </div>
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white">
-            Solutions fintech
+
+          <h1 className="mt-7 font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-novar-ink leading-[1.05]">
+            Numériser, automatiser,
             <br />
-            <span className="gradient-text-cyan">pour startups et PME africaines</span>
+            <span className="gradient-text-novar">optimiser les secteurs traditionnels.</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg sm:text-xl text-slate-300 leading-relaxed">{SITE.description}</p>
-          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Link href="/services/sur-mesure" className="inline-flex items-center justify-center gap-2 rounded-lg bg-novar-cyan px-6 py-3 text-sm font-semibold text-novar-cosmic shadow-lg shadow-novar-cyan/20 hover:bg-novar-cyan-glow transition-colors">
-              Discuter d&apos;un projet fintech <ArrowRight className="h-4 w-4" />
+
+          <p className="mx-auto mt-7 max-w-2xl text-lg sm:text-xl text-novar-muted leading-relaxed">
+            NOVAR conçoit des produits SaaS B2B et des solutions logicielles
+            sur mesure pour transformer la manière dont les entreprises
+            africaines opèrent — sans douleur, sans friction.
+          </p>
+
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link href="/contact" className="btn-primary">
+              Discuter d&apos;un projet <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/produits" className="inline-flex items-center justify-center gap-2 rounded-lg border border-novar-cyan/40 bg-transparent px-6 py-3 text-sm font-semibold text-novar-cyan hover:bg-novar-cyan/10 transition-colors">
-              Voir nos produits
+            <Link href="/produits" className="btn-ghost">
+              Découvrir nos produits
             </Link>
           </div>
-          <div className="mt-8 flex flex-wrap gap-x-3 gap-y-2 text-xs text-slate-400">
-            <span>Mobile Money</span>
-            <span className="text-slate-600">·</span>
-            <span>Passerelles bancaires</span>
-            <span className="text-slate-600">·</span>
-            <span>Paiement marchand</span>
-            <span className="text-slate-600">·</span>
-            <span>Logiciels métiers verticaux</span>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs uppercase tracking-wider text-novar-muted">
+            <span>SaaS B2B</span>
+            <span className="text-novar-line">·</span>
+            <span>Développement sur mesure</span>
+            <span className="text-novar-line">·</span>
+            <span>OHADA · Multi-devises</span>
           </div>
         </div>
       </div>

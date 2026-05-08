@@ -1,10 +1,10 @@
 export const SITE = {
   name: 'NOVAR',
   legalName: 'NOVAR',
-  baseline: 'Solutions fintech pour startups et PME africaines',
+  baseline: "SaaS Studio — Numériser, automatiser, optimiser",
   description:
-    "NOVAR conçoit et déploie des solutions fintech B2B pour les startups et les PME africaines : intégrations Mobile Money, passerelles bancaires, plateformes de paiement marchand, et logiciels métiers verticaux. Nous transformons les besoins financiers des entreprises africaines en outils performants.",
-  category: 'Entreprise de fintech B2B',
+    "NOVAR est un SaaS Studio. Nous numérisons, automatisons et optimisons les opérations des secteurs traditionnels — d'une part en créant nos propres produits SaaS B2B (BIRDY, FEEDORA), d'autre part en concevant des solutions d'automatisation sur mesure pour les entreprises.",
+  category: 'SaaS Studio',
   city: 'Conakry',
   country: 'Guinée',
   email: 'djernomahamoudoudiallo@gmail.com',
@@ -18,7 +18,7 @@ export const NAV = [
     label: 'Produits',
     href: '/produits',
     children: [
-      { label: 'BIRDY', href: '/produits/birdy-erp', desc: 'Plateforme de gestion de stock' },
+      { label: 'BIRDY', href: '/produits/birdy-erp', desc: 'ERP & gestion comptable OHADA pour PME africaines' },
       { label: 'FEEDORA', href: '/produits/feedora', desc: 'Formulation alimentaire pour fermes avicoles' },
     ],
   },
@@ -26,8 +26,7 @@ export const NAV = [
     label: 'Services',
     href: '/services/sur-mesure',
     children: [
-      { label: 'Solutions fintech', href: '/services/sur-mesure', desc: 'Mobile Money · Passerelles bancaires · Plateformes paiement' },
-      { label: 'Développement sur mesure', href: '/services/sur-mesure', desc: 'Logiciels B2B métiers spécifiques' },
+      { label: 'Développement sur mesure', href: '/services/sur-mesure', desc: 'Automatisation & logiciels métiers spécifiques' },
       { label: 'Conseil & accompagnement', href: '/services/conseil', desc: 'Stratégie technologique et formation' },
     ],
   },

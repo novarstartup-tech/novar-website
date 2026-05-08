@@ -10,20 +10,20 @@ export function CtaBanner({
   secondaryHref?: string; secondaryLabel?: string;
 }) {
   return (
-    <section className="relative overflow-hidden rounded-2xl bg-novar-cosmic px-6 py-12 sm:px-10 sm:py-16">
-      <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-novar-cyan/20 blur-3xl" />
-      <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-novar-blue/20 blur-3xl" />
-      <div className="relative flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+    <section className="relative overflow-hidden rounded-3xl border border-novar-line bg-novar-surface-2 px-6 py-14 sm:px-12 sm:py-20">
+      <div className="relative flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
         <div className="max-w-2xl">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-white">{title}</h2>
-          {description && <p className="mt-2 text-slate-300">{description}</p>}
+          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-novar-ink">
+            {title}
+          </h2>
+          {description && <p className="mt-3 text-lg text-novar-muted">{description}</p>}
         </div>
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-shrink-0">
-          <Link href={primaryHref} className="inline-flex items-center justify-center gap-2 rounded-lg bg-novar-cyan px-5 py-3 text-sm font-semibold text-novar-cosmic hover:bg-novar-cyan-glow transition-colors">
+          <Link href={primaryHref} className="btn-primary">
             {primaryLabel} <ArrowRight className="h-4 w-4" />
           </Link>
           {secondaryHref && secondaryLabel && (
-            <Link href={secondaryHref} className="inline-flex items-center justify-center rounded-lg border border-white/20 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors">
+            <Link href={secondaryHref} className="btn-ghost">
               {secondaryLabel}
             </Link>
           )}
