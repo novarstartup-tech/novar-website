@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ChevronDown, ArrowRight } from 'lucide-react';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata = {
   title: 'Foire aux questions',
@@ -55,23 +56,12 @@ const FAQS: FAQ[] = [
 export default function FaqPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-white">
-        <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-novar-surface-2 to-white" aria-hidden />
-        <div className="absolute inset-0 bg-dots opacity-50" aria-hidden />
-        <div className="relative mx-auto max-w-5xl px-6 lg:px-8 pt-24 pb-16 md:pt-28 md:pb-20">
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-            Foire aux questions
-          </span>
-          <h1 className="mt-5 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink">
-            Vos questions, nos réponses.
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-novar-muted leading-relaxed">
-            10 questions fréquentes sur NOVAR, BIRDY et FEEDORA. Si la vôtre
-            n&apos;y figure pas, écrivez-nous : nous répondons sous 24 heures.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        tone="emerald"
+        eyebrow="Foire aux questions"
+        title="Vos questions, nos réponses."
+        description="10 questions fréquentes sur NOVAR, BIRDY et FEEDORA. Si la vôtre n'y figure pas, écrivez-nous : nous répondons sous 24 heures."
+      />
 
       {/* QUESTIONS */}
       <section className="bg-white pb-20">

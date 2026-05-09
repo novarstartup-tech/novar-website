@@ -1,5 +1,6 @@
 import { Mail, MapPin, Facebook, Clock } from 'lucide-react';
 import { ContactForm } from '@/components/ContactForm';
+import { PageHero } from '@/components/PageHero';
 import { SITE } from '@/lib/site';
 
 export const metadata = {
@@ -10,24 +11,12 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <>
-      {/* HERO — light premium */}
-      <section className="relative overflow-hidden bg-white">
-        <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-novar-surface-2 to-white" aria-hidden />
-        <div className="absolute inset-0 bg-dots opacity-50" aria-hidden />
-        <div className="relative mx-auto max-w-5xl px-6 lg:px-8 pt-24 pb-16 md:pt-28 md:pb-20">
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-            Parlons de votre projet
-          </span>
-          <h1 className="mt-5 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink">
-            Nous sommes à l&apos;écoute.
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-novar-muted leading-relaxed">
-            Une question sur BIRDY, un besoin de logiciel sur mesure, une mission
-            de conseil ? Décrivez-nous votre contexte — nous répondons sous
-            24 heures ouvrées.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        tone="cyan"
+        eyebrow="Parlons de votre projet"
+        title="Nous sommes à l'écoute."
+        description="Une question sur BIRDY, un besoin de logiciel sur mesure, une mission de conseil ? Décrivez-nous votre contexte — nous répondons sous 24 heures ouvrées."
+      />
 
       {/* FORM + INFOS — grille 2 cols */}
       <section className="bg-white py-20">

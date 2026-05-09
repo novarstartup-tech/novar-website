@@ -12,6 +12,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-novar-line bg-white/85 backdrop-blur-xl">
+      {/* Liseré dégradé sous la bordure — accent visuel subtle pour signature premium */}
+      <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-novar-accent/40 to-transparent" aria-hidden />
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo + nav desktop */}
         <div className="flex items-center gap-8">

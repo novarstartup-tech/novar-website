@@ -1,6 +1,7 @@
 import { CheckCircle2, ShieldCheck, Cpu, HardDrive, Wifi } from 'lucide-react';
 import { DownloadButton } from '@/components/DownloadButton';
 import { FeatureCard } from '@/components/FeatureCard';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata = {
   title: 'Téléchargements',
@@ -19,26 +20,18 @@ const VERSIONS = [
 export default function TelechargementsPage() {
   return (
     <>
-      <section className="bg-white border-b border-novar-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-              Téléchargements
-            </span>
-            <h1 className="mt-4 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink leading-[1.1]">
-              Installez BIRDY.
-            </h1>
-            <p className="mt-6 text-lg text-novar-muted leading-relaxed">
-              BIRDY, notre ERP OHADA, s&apos;installe sur votre poste de
-              travail. Mises à jour automatiques signées numériquement.
-            </p>
-            <div className="mt-10 flex justify-center">
-              <DownloadButton />
-            </div>
-            <p className="mt-4 text-sm text-novar-muted">Version 1.4.2 — 142 MB — Windows 10/11 (x64)</p>
-          </div>
+      <PageHero
+        tone="cyan"
+        eyebrow="Téléchargements"
+        title="Installez BIRDY."
+        description="BIRDY, notre ERP OHADA, s'installe sur votre poste de travail. Mises à jour automatiques signées numériquement."
+        centered
+      >
+        <div className="flex flex-col items-center gap-3">
+          <DownloadButton />
+          <p className="text-sm text-novar-muted">Version 1.4.2 — 142 MB — Windows 10/11 (x64)</p>
         </div>
-      </section>
+      </PageHero>
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20">

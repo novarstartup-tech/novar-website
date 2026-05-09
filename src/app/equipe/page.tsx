@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Mail, Briefcase, MapPin, ArrowRight } from 'lucide-react';
 import { CtaBanner } from '@/components/CtaBanner';
+import { PageHero } from '@/components/PageHero';
 import { SITE } from '@/lib/site';
 
 export const metadata = {
@@ -35,26 +36,12 @@ const OPEN_ROLES = [
 export default function EquipePage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-white">
-        <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-novar-surface-2 to-white" aria-hidden />
-        <div className="absolute inset-0 bg-dots opacity-50" aria-hidden />
-        <div className="relative mx-auto max-w-5xl px-6 lg:px-8 pt-24 pb-16 md:pt-28 md:pb-20">
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-            L&apos;équipe
-          </span>
-          <h1 className="mt-5 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink">
-            Une équipe à taille humaine,
-            <br />
-            ancrée à Conakry.
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-novar-muted leading-relaxed">
-            NOVAR a été fondée à Conakry. Nous construisons nos produits avec
-            un engagement long terme et une obsession pour les besoins réels
-            des entreprises africaines.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        tone="violet"
+        eyebrow="L'équipe"
+        title="Une équipe à taille humaine, ancrée à Conakry."
+        description="NOVAR a été fondée à Conakry. Nous construisons nos produits avec un engagement long terme et une obsession pour les besoins réels des entreprises africaines."
+      />
 
       {/* FONDATEUR */}
       <section className="bg-white py-20">

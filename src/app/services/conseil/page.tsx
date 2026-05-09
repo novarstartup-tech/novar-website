@@ -1,6 +1,7 @@
 import { GraduationCap, ClipboardCheck, Layers, Users } from 'lucide-react';
 import { FeatureCard } from '@/components/FeatureCard';
 import { CtaBanner } from '@/components/CtaBanner';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata = {
   title: 'Conseil & accompagnement',
@@ -10,20 +11,15 @@ export const metadata = {
 export default function ConseilPage() {
   return (
     <>
-      <section className="bg-novar-cosmic py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-20" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <span className="text-sm font-semibold text-novar-cyan uppercase tracking-wider">Services</span>
-          <h1 className="mt-2 font-display text-4xl sm:text-5xl font-bold text-white">Conseil & accompagnement</h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-300">
-            Vous avez un projet technologique mais vous ne savez pas par où commencer ? Nous vous aidons
-            à clarifier vos besoins, choisir les bonnes briques et former vos équipes.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        tone="violet"
+        eyebrow="Services"
+        title="Conseil & accompagnement."
+        description="Vous avez un projet technologique mais vous ne savez pas par où commencer ? Nous vous aidons à clarifier vos besoins, choisir les bonnes briques et former vos équipes."
+      />
 
-      <section className="py-20 bg-white dark:bg-novar-cosmic">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-6 md:grid-cols-2">
             <FeatureCard
               icon={ClipboardCheck}
@@ -49,10 +45,10 @@ export default function ConseilPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-novar-cosmic">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white pb-24 md:pb-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <CtaBanner
-            title="Discutons de vos enjeux"
+            title="Discutons de vos enjeux."
             description="Premier échange gratuit pour comprendre votre situation et voir si nous pouvons vous aider."
             primaryHref="/contact"
           />

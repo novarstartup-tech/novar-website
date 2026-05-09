@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Boxes, Bird, ArrowRight } from 'lucide-react';
 import { CtaBanner } from '@/components/CtaBanner';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata = {
   title: 'Produits',
@@ -11,24 +12,12 @@ export const metadata = {
 export default function ProduitsPage() {
   return (
     <>
-      <section className="bg-white border-b border-novar-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-              Catalogue NOVAR
-            </span>
-            <h1 className="mt-4 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink leading-[1.1]">
-              Nos produits SaaS B2B.
-            </h1>
-            <p className="mt-6 text-lg text-novar-muted leading-relaxed">
-              NOVAR édite deux plateformes B2B en production. Chacune
-              s&apos;adresse à un secteur précis et résout un problème métier
-              concret. Pour les besoins qui sortent du cadre, nous proposons
-              du développement sur mesure.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        tone="cyan"
+        eyebrow="Catalogue NOVAR"
+        title="Nos produits SaaS B2B."
+        description="NOVAR édite deux plateformes B2B en production. Chacune s'adresse à un secteur précis et résout un problème métier concret. Pour les besoins qui sortent du cadre, nous proposons du développement sur mesure."
+      />
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-16 md:pt-24">

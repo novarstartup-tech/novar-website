@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, Users, Target, Globe, MapPin } from 'lucide-react';
 import { FeatureCard } from '@/components/FeatureCard';
 import { CtaBanner } from '@/components/CtaBanner';
+import { PageHero } from '@/components/PageHero';
 import { SITE } from '@/lib/site';
 
 export const metadata = { title: 'À propos' };
@@ -9,21 +10,12 @@ export const metadata = { title: 'À propos' };
 export default function AProposPage() {
   return (
     <>
-      <section className="bg-white border-b border-novar-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-              À propos
-            </span>
-            <h1 className="mt-4 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink leading-[1.1]">
-              Un SaaS Studio basé à Conakry.
-            </h1>
-            <p className="mt-6 text-lg text-novar-muted leading-relaxed">
-              {SITE.description}
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        tone="violet"
+        eyebrow="À propos"
+        title="Un SaaS Studio basé à Conakry."
+        description={SITE.description}
+      />
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">

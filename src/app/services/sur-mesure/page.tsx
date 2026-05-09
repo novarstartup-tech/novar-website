@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Search, Layers, Code, Plug, Wrench, ArrowRight } from 'lucide-react';
 import { FeatureCard } from '@/components/FeatureCard';
 import { CtaBanner } from '@/components/CtaBanner';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata = {
   title: 'Développement sur mesure',
@@ -20,22 +21,12 @@ const STEPS = [
 export default function SurMesurePage() {
   return (
     <>
-      <section className="bg-white border-b border-novar-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">Services</span>
-            <h1 className="mt-4 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink leading-[1.1]">
-              Développement sur mesure.
-            </h1>
-            <p className="mt-6 text-lg text-novar-muted leading-relaxed">
-              Pour les entreprises ayant des besoins d&apos;automatisation
-              spécifiques que nos produits ne couvrent pas. NOVAR conçoit et
-              développe la solution logicielle qui correspond exactement à
-              votre métier.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        tone="amber"
+        eyebrow="Services"
+        title="Développement sur mesure."
+        description="Pour les entreprises ayant des besoins d'automatisation spécifiques que nos produits ne couvrent pas. NOVAR conçoit et développe la solution logicielle qui correspond exactement à votre métier."
+      />
 
       <section className="surface-alt">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">

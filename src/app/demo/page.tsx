@@ -1,29 +1,18 @@
 import { ContactForm } from '@/components/ContactForm';
 import { Calendar, Video, Headphones } from 'lucide-react';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata = { title: 'Réserver une démo' };
 
 export default function DemoPage() {
   return (
     <>
-      <section className="bg-white border-b border-novar-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-              Démo
-            </span>
-            <h1 className="mt-4 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink leading-[1.1]">
-              Réserver une démo.
-            </h1>
-            <p className="mt-6 text-lg text-novar-muted leading-relaxed">
-              30 minutes en visio pour découvrir nos produits SaaS B2B
-              (BIRDY ou FEEDORA) ou discuter d&apos;un projet sur mesure.
-              Posez toutes vos questions, repartez avec une recommandation
-              adaptée.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        tone="cyan"
+        eyebrow="Démo"
+        title="Réserver une démo."
+        description="30 minutes en visio pour découvrir nos produits SaaS B2B (BIRDY ou FEEDORA) ou discuter d'un projet sur mesure. Posez toutes vos questions, repartez avec une recommandation adaptée."
+      />
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">

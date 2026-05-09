@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PricingTable } from '@/components/PricingTable';
 import { ComparisonTable } from '@/components/ComparisonTable';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata = {
   title: 'Tarifs',
@@ -12,24 +13,13 @@ export const metadata = {
 export default function TarifsPage() {
   return (
     <>
-      <section className="bg-white border-b border-novar-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-              Tarifs
-            </span>
-            <h1 className="mt-4 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink leading-[1.1]">
-              Des prix simples, en GNF.
-            </h1>
-            <p className="mt-6 text-lg text-novar-muted leading-relaxed">
-              Tarification de notre ERP BIRDY. Pas de coûts cachés, pas de
-              modules payants à empiler. 30 jours d&apos;essai gratuit, sans
-              carte bancaire. Pour le développement sur mesure, nous
-              établissons un devis dédié.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        tone="cyan"
+        eyebrow="Tarifs"
+        title="Des prix simples, en GNF."
+        description="Tarification de notre ERP BIRDY. Pas de coûts cachés, pas de modules payants à empiler. 30 jours d'essai gratuit, sans carte bancaire. Pour le développement sur mesure, nous établissons un devis dédié."
+        centered
+      />
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20">

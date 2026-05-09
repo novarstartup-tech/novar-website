@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PageHero } from '@/components/PageHero';
 import { SITE } from '@/lib/site';
 
 export const metadata = {
@@ -10,20 +11,12 @@ export const metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-white">
-        <div className="absolute inset-x-0 top-0 h-[320px] bg-gradient-to-b from-novar-surface-2 to-white" aria-hidden />
-        <div className="relative mx-auto max-w-3xl px-6 lg:px-8 pt-20 pb-10">
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-            Légal
-          </span>
-          <h1 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-novar-ink">
-            Politique de confidentialité
-          </h1>
-          <p className="mt-4 text-sm text-novar-muted">
-            Dernière mise à jour : 9 mai 2026 · Version 1.1
-          </p>
-        </div>
-      </section>
+      <PageHero
+        tone="slate"
+        eyebrow="Légal"
+        title="Politique de confidentialité"
+        description="Dernière mise à jour : 9 mai 2026 · Version 1.1"
+      />
 
       <article className="mx-auto max-w-3xl px-6 lg:px-8 pb-20">
         <div className="prose prose-slate max-w-none prose-headings:font-display prose-headings:tracking-tight prose-h2:text-novar-ink prose-h2:mt-10 prose-h2:text-2xl prose-p:text-novar-ink-soft prose-p:leading-relaxed prose-li:text-novar-ink-soft prose-strong:text-novar-ink prose-a:text-novar-accent">
