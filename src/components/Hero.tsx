@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
+import { HeroBackdrop } from './HeroBackdrop';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -12,9 +13,7 @@ const fadeUp = {
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-white">
-      {/* Wash subtil derrière le hero */}
-      <div className="absolute inset-x-0 top-0 h-[640px] bg-gradient-to-b from-novar-surface-2 to-white" aria-hidden />
-      <div className="absolute inset-0 bg-dots opacity-60" aria-hidden />
+      <HeroBackdrop />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-28 pb-24 md:pt-36 md:pb-32 lg:pt-40 lg:pb-36">
         <motion.div
@@ -29,10 +28,11 @@ export function Hero() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-novar-line bg-white px-3 py-1 text-xs font-medium text-novar-muted shadow-soft"
+            className="inline-flex items-center gap-2 rounded-full border border-novar-line bg-white/85 backdrop-blur-sm px-3.5 py-1.5 text-xs font-medium text-novar-muted shadow-soft"
           >
+            <Sparkles className="h-3.5 w-3.5 text-novar-accent" />
             <motion.span
-              animate={{ scale: [1, 1.4, 1], opacity: [1, 0.6, 1] }}
+              animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
               className="h-1.5 w-1.5 rounded-full bg-novar-accent"
             />
@@ -73,19 +73,31 @@ export function Hero() {
             </Link>
           </motion.div>
 
+          {/* Stats / Pills sous CTA */}
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs uppercase tracking-wider text-novar-muted"
+            className="mt-14 grid grid-cols-3 gap-6 max-w-2xl mx-auto"
           >
-            <span>SaaS B2B</span>
-            <span className="text-novar-line">·</span>
-            <span>Développement sur mesure</span>
-            <span className="text-novar-line">·</span>
-            <span>OHADA · Multi-devises</span>
+            <Stat value="2" label="Produits SaaS B2B" />
+            <Stat value="OHADA" label="Conformité native" />
+            <Stat value="100%" label="Conçu pour l'Afrique" />
           </motion.div>
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="text-center">
+      <div className="font-display text-2xl sm:text-3xl font-bold text-novar-ink tabular-nums">
+        {value}
+      </div>
+      <div className="mt-1 text-xs uppercase tracking-wider text-novar-muted">
+        {label}
+      </div>
+    </div>
   );
 }

@@ -12,6 +12,52 @@ const ICON_MAP = {
   plug: Plug,
 } as const;
 
+type Tone = 'cyan' | 'amber' | 'violet' | 'emerald' | 'neutral';
+
+const TONES: Record<Tone, {
+  iconBg: string;
+  iconText: string;
+  ring: string;
+  hoverBorder: string;
+  wash: string;
+}> = {
+  cyan: {
+    iconBg: 'bg-cyan-50',
+    iconText: 'text-cyan-700',
+    ring: 'ring-cyan-200',
+    hoverBorder: 'group-hover:border-cyan-300',
+    wash: 'from-cyan-50/60',
+  },
+  amber: {
+    iconBg: 'bg-amber-50',
+    iconText: 'text-amber-700',
+    ring: 'ring-amber-200',
+    hoverBorder: 'group-hover:border-amber-300',
+    wash: 'from-amber-50/60',
+  },
+  violet: {
+    iconBg: 'bg-violet-50',
+    iconText: 'text-violet-700',
+    ring: 'ring-violet-200',
+    hoverBorder: 'group-hover:border-violet-300',
+    wash: 'from-violet-50/60',
+  },
+  emerald: {
+    iconBg: 'bg-emerald-50',
+    iconText: 'text-emerald-700',
+    ring: 'ring-emerald-200',
+    hoverBorder: 'group-hover:border-emerald-300',
+    wash: 'from-emerald-50/60',
+  },
+  neutral: {
+    iconBg: 'bg-novar-surface-2',
+    iconText: 'text-novar-ink',
+    ring: 'ring-novar-line',
+    hoverBorder: 'group-hover:border-novar-ink/20',
+    wash: 'from-slate-50/60',
+  },
+};
+
 type Props = {
   icon: keyof typeof ICON_MAP;
   title: string;
@@ -19,14 +65,15 @@ type Props = {
   href: string;
   cta: string;
   index?: number;
+  tone?: Tone;
 };
 
 /**
- * ApproachCard — card avec hover lift + arrow nudge.
- * Variante simple de ProductSpotlight pour les sections "modele" / "services".
+ * ApproachCard — card avec hover lift + icone coloree par contexte.
  */
-export function ApproachCard({ icon, title, description, href, cta, index = 0 }: Props) {
+export function ApproachCard({ icon, title, description, href, cta, index = 0, tone = 'neutral' }: Props) {
   const Icon = ICON_MAP[icon];
+  const t = TONES[tone];
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -38,16 +85,16 @@ export function ApproachCard({ icon, title, description, href, cta, index = 0 }:
         <motion.div
           whileHover={{ y: -4 }}
           transition={{ duration: 0.25 }}
-          className="relative h-full overflow-hidden rounded-2xl border border-novar-line bg-white p-8 transition-all duration-300 group-hover:border-novar-ink/20 group-hover:shadow-lifted"
+          className={`relative h-full overflow-hidden rounded-2xl border border-novar-line bg-white p-8 transition-all duration-300 ${t.hoverBorder} group-hover:shadow-lifted`}
         >
           <div
-            className="absolute inset-0 -z-10 bg-gradient-to-br from-novar-accent-soft/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            className={`absolute inset-0 -z-10 bg-gradient-to-br ${t.wash} via-white to-white opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
             aria-hidden
           />
           <motion.div
             whileHover={{ rotate: -4, scale: 1.05 }}
             transition={{ duration: 0.3 }}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-novar-surface-2 text-novar-ink ring-1 ring-novar-line"
+            className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${t.iconBg} ${t.iconText} ring-1 ${t.ring}`}
           >
             <Icon className="h-5 w-5" />
           </motion.div>
@@ -57,7 +104,7 @@ export function ApproachCard({ icon, title, description, href, cta, index = 0 }:
           <p className="mt-3 text-sm leading-relaxed text-novar-muted">
             {description}
           </p>
-          <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-novar-ink transition-all group-hover:gap-2">
+          <span className={`mt-6 inline-flex items-center gap-1 text-sm font-medium ${t.iconText} transition-all group-hover:gap-2`}>
             {cta} <ArrowRight className="h-3.5 w-3.5" />
           </span>
         </motion.div>

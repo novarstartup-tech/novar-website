@@ -39,6 +39,7 @@ export default function HomePage() {
                 href="/produits"
                 cta="Voir nos produits"
                 index={0}
+                tone="cyan"
               />
               <ApproachCard
                 icon="wrench"
@@ -47,6 +48,7 @@ export default function HomePage() {
                 href="/services/sur-mesure"
                 cta="Discuter d'un projet"
                 index={1}
+                tone="amber"
               />
             </div>
           </div>
@@ -132,18 +134,18 @@ export default function HomePage() {
 
           <div className="mx-auto mt-16 grid max-w-5xl gap-px bg-novar-line rounded-2xl overflow-hidden border border-novar-line sm:grid-cols-3">
             {[
-              { step: '01', icon: Search, title: 'Cadrage', desc: 'Audit métier, périmètre, budget, calendrier — tout est aligné avant la première ligne de code.' },
-              { step: '02', icon: Code, title: 'Construction', desc: 'Sprints courts, démos régulières, code source livré. Vous restez aux commandes du projet.' },
-              { step: '03', icon: Plug, title: 'Mise en production', desc: 'Déploiement, formation des équipes, monitoring continu. Maintenance évolutive incluse.' },
+              { step: '01', icon: Search, title: 'Cadrage', desc: 'Audit métier, périmètre, budget, calendrier — tout est aligné avant la première ligne de code.', bg: 'bg-violet-50', text: 'text-violet-700', ring: 'ring-violet-200' },
+              { step: '02', icon: Code, title: 'Construction', desc: 'Sprints courts, démos régulières, code source livré. Vous restez aux commandes du projet.', bg: 'bg-cyan-50', text: 'text-cyan-700', ring: 'ring-cyan-200' },
+              { step: '03', icon: Plug, title: 'Mise en production', desc: 'Déploiement, formation des équipes, monitoring continu. Maintenance évolutive incluse.', bg: 'bg-emerald-50', text: 'text-emerald-700', ring: 'ring-emerald-200' },
             ].map((s) => {
               const Icon = s.icon;
               return (
                 <div key={s.step} className="bg-white p-8 sm:p-10 transition-colors hover:bg-novar-surface-2">
                   <div className="flex items-center gap-3">
-                    <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-novar-surface-2 text-novar-ink ring-1 ring-novar-line">
+                    <div className={`inline-flex h-9 w-9 items-center justify-center rounded-lg ${s.bg} ${s.text} ring-1 ${s.ring}`}>
                       <Icon className="h-4 w-4" />
                     </div>
-                    <div className="font-mono text-xs font-semibold uppercase tracking-wider text-novar-accent">
+                    <div className={`font-mono text-xs font-semibold uppercase tracking-wider ${s.text}`}>
                       {s.step}
                     </div>
                   </div>
