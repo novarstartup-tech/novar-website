@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Linkedin, Mail, MapPin, ArrowUpRight } from 'lucide-react';
+import { Facebook, Linkedin, Mail, MapPin, Phone, MessageCircle, ArrowUpRight } from 'lucide-react';
 import { NovarLogo } from './NovarLogo';
 import { SITE } from '@/lib/site';
 
@@ -69,7 +69,33 @@ export function Footer() {
                   {SITE.email}
                 </a>
               </div>
+              <div className="flex items-center gap-2">
+                <Phone className="h-4 w-4 flex-shrink-0 text-novar-accent" />
+                <a href={SITE.phoneHref} className="hover:text-novar-ink transition-colors">
+                  {SITE.phone}
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <MessageCircle className="h-4 w-4 flex-shrink-0 text-emerald-600" />
+                <a
+                  href={SITE.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="hover:text-novar-ink transition-colors"
+                >
+                  {SITE.whatsapp}
+                </a>
+              </div>
               <div className="flex items-center gap-3 mt-4">
+                <a
+                  href={SITE.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="WhatsApp"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-novar-line bg-white text-novar-ink transition-all hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 hover:-translate-y-0.5 hover:shadow-soft"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                </a>
                 <a
                   href={SITE.facebook}
                   target="_blank"

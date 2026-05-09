@@ -8,6 +8,13 @@ export const SITE = {
   city: 'Conakry',
   country: 'Guinée',
   email: 'novar.startup@gmail.com',
+  // Telephone affiche (format international avec espaces)
+  phone: '+82 10 3410 9515',
+  // Lien tel: (sans espaces, sans le +)
+  phoneHref: 'tel:+821034109515',
+  // WhatsApp : numero Guinée pour discussions rapides
+  whatsapp: '+224 629 55 95 15',
+  whatsappHref: 'https://wa.me/224629559515',
   facebook: 'https://www.facebook.com/profile.php?id=61587571164695',
   linkedin: 'https://www.linkedin.com/company/111847101/',
   url: 'https://novar.gn',

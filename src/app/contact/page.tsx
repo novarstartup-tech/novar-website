@@ -1,4 +1,4 @@
-import { Mail, MapPin, Facebook, Clock } from 'lucide-react';
+import { Mail, MapPin, Facebook, Linkedin, Phone, MessageCircle, Clock } from 'lucide-react';
 import { ContactForm } from '@/components/ContactForm';
 import { PageHero } from '@/components/PageHero';
 import { SITE } from '@/lib/site';
@@ -59,6 +59,36 @@ export default function ContactPage() {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
+                    <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700">
+                      <MessageCircle className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <div className="text-xs uppercase tracking-wider text-novar-muted">WhatsApp</div>
+                      <a
+                        href={SITE.whatsappHref}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="font-medium text-novar-ink hover:text-emerald-700 transition-colors"
+                      >
+                        {SITE.whatsapp}
+                      </a>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-novar-line bg-white text-novar-ink">
+                      <Phone className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <div className="text-xs uppercase tracking-wider text-novar-muted">Téléphone</div>
+                      <a
+                        href={SITE.phoneHref}
+                        className="font-medium text-novar-ink hover:text-novar-accent transition-colors"
+                      >
+                        {SITE.phone}
+                      </a>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
                     <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-novar-line bg-white text-novar-ink">
                       <Facebook className="h-4 w-4" />
                     </span>
@@ -71,6 +101,22 @@ export default function ContactPage() {
                         className="font-medium text-novar-ink hover:text-novar-accent transition-colors"
                       >
                         Page officielle NOVAR
+                      </a>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-novar-line bg-white text-novar-ink">
+                      <Linkedin className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <div className="text-xs uppercase tracking-wider text-novar-muted">LinkedIn</div>
+                      <a
+                        href={SITE.linkedin}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="font-medium text-novar-ink hover:text-novar-accent transition-colors"
+                      >
+                        Page entreprise
                       </a>
                     </div>
                   </li>
