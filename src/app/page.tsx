@@ -4,12 +4,17 @@ import { Hero } from '@/components/Hero';
 import { CtaBanner } from '@/components/CtaBanner';
 import { ProductSpotlight } from '@/components/ProductSpotlight';
 import { ApproachCard } from '@/components/ApproachCard';
+import { StatsSection } from '@/components/StatsSection';
+import { UseCases } from '@/components/UseCases';
 import { SITE } from '@/lib/site';
 
 export default function HomePage() {
   return (
     <>
       <Hero />
+
+      {/* === Stats animées (counter Motion) ============================ */}
+      <StatsSection />
 
       {/* === Notre modèle ============================================== */}
       <section className="bg-white">
@@ -112,6 +117,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* === Cas d'usage concrets ===================================== */}
+      <UseCases />
 
       {/* === Services sur mesure ======================================= */}
       <section className="bg-white">
