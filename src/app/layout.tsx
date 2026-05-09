@@ -3,6 +3,7 @@ import { Inter, Bricolage_Grotesque, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/JsonLd';
 import { SITE } from '@/lib/site';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     description: SITE.description,
     url: SITE.url,
     siteName: SITE.name,
-    locale: 'fr_FR',
+    locale: 'fr_GN',
     type: 'website',
   },
   twitter: { card: 'summary_large_image', title: `${SITE.name} — ${SITE.baseline}`, description: SITE.description },
@@ -29,21 +30,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const orgJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SITE.legalName,
-    url: SITE.url,
-    logo: `${SITE.url}/og.png`,
-    description: SITE.description,
-    sameAs: [SITE.facebook],
-    address: { '@type': 'PostalAddress', addressLocality: SITE.city, addressCountry: SITE.country },
-    contactPoint: { '@type': 'ContactPoint', email: SITE.email, contactType: 'customer support', areaServed: 'GN', availableLanguage: ['fr'] },
-  };
   return (
     <html lang="fr" className={`${inter.variable} ${bricolage.variable} ${jetbrains.variable}`}>
       <body className="font-sans">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+        {/* JSON-LD structured data: Organization + WebSite (SearchAction) */}
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
         <div className="flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">{children}</main>
