@@ -38,7 +38,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="inline-block">
-              <NovarLogo className="h-8 w-auto" />
+              <NovarLogo className="h-6 w-auto" />
             </Link>
             <p className="mt-5 text-sm leading-relaxed text-novar-muted max-w-xs">
               {SITE.baseline}.

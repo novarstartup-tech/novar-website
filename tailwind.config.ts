@@ -11,6 +11,16 @@ const config: Config = {
   ],
   // Light-only — no dark mode for the public site (premium, sober)
   darkMode: 'class',
+  // Safelist : couleurs contextuelles utilisees dynamiquement par ProductSpotlight
+  // (BIRDY = cyan navy = confiance, FEEDORA = emerald = AgriTech).
+  // Sans cette liste, Tailwind JIT pourrait les purger en prod.
+  safelist: [
+    'from-cyan-50', 'from-emerald-50',
+    'ring-cyan-200', 'ring-emerald-200',
+    'ring-cyan-500', 'ring-emerald-500',
+    'text-cyan-700', 'text-emerald-700',
+    'bg-cyan-600', 'bg-emerald-600',
+  ],
   theme: {
     extend: {
       colors: {

@@ -13,9 +13,11 @@ type Action = {
   primary?: boolean;
 };
 
+type LogoVariant = 'birdy' | 'feedora';
+
 type Props = {
-  /** Logo variant — chooses the image to display. */
-  logoVariant: 'birdy' | 'feedora';
+  /** Logo variant — chooses image + color theme. */
+  logoVariant: LogoVariant;
   /** Product name (BIRDY, FEEDORA, ...) */
   name: string;
   /** Tagline (1 line) */
@@ -32,16 +34,40 @@ type Props = {
   index?: number;
 };
 
-const LOGO_SRC: Record<Props['logoVariant'], string> = {
-  birdy: '/logos/birdy-icon-512.png',
-  feedora: '/logos/feedora.png',
+/**
+ * Theme par produit — neuropsychologie contextuelle :
+ * - BIRDY (compta OHADA, ERP) : navy + cyan profond → confiance, expertise, serieux financier
+ * - FEEDORA (AgriTech avicole) : emeraude + lime doux → croissance, vitalite, naturel
+ */
+const THEMES: Record<LogoVariant, {
+  src: string;
+  ring: string;
+  accent: string;       // tailwind text-* class for tagline + bullet dots
+  badgeDot: string;     // bg-* for badge pulse dot
+  washFrom: string;     // gradient-from-*
+  hoverBorder: string;  // ring color on hover
+  bulletDot: string;    // bg color for bullets
+}> = {
+  birdy: {
+    src: '/logos/birdy-icon-512.png',
+    ring: 'ring-cyan-200',
+    accent: 'text-cyan-700',
+    badgeDot: 'bg-cyan-600',
+    washFrom: 'from-cyan-50',
+    hoverBorder: 'ring-cyan-500',
+    bulletDot: 'bg-cyan-600',
+  },
+  feedora: {
+    src: '/logos/feedora.png',
+    ring: 'ring-emerald-200',
+    accent: 'text-emerald-700',
+    badgeDot: 'bg-emerald-600',
+    washFrom: 'from-emerald-50',
+    hoverBorder: 'ring-emerald-500',
+    bulletDot: 'bg-emerald-600',
+  },
 };
 
-/**
- * ProductSpotlight — card produit avec hover reveal.
- * Au survol : la card s'eleve, le panneau detaille (description + bullets) se deploie,
- * les CTAs apparaissent. Mobile : tout est visible par defaut.
- */
 export function ProductSpotlight({
   logoVariant,
   name,
@@ -53,6 +79,7 @@ export function ProductSpotlight({
   index = 0,
 }: Props) {
   const [hovered, setHovered] = useState(false);
+  const theme = THEMES[logoVariant];
 
   return (
     <motion.div
@@ -74,9 +101,9 @@ export function ProductSpotlight({
         transition={{ duration: 0.3, ease: 'easeOut' }}
         className="relative h-full overflow-hidden rounded-3xl border border-novar-line bg-white p-8 sm:p-10"
       >
-        {/* Wash de fond subtil au hover */}
+        {/* Wash de fond contextuel — couleur theme produit */}
         <motion.div
-          className="absolute inset-0 -z-10 bg-gradient-to-br from-novar-accent-soft to-transparent"
+          className={`absolute inset-0 -z-10 bg-gradient-to-br ${theme.washFrom} via-white to-white`}
           initial={{ opacity: 0 }}
           animate={{ opacity: hovered ? 1 : 0 }}
           transition={{ duration: 0.4 }}
@@ -87,18 +114,18 @@ export function ProductSpotlight({
           <motion.div
             animate={{ scale: hovered ? 1.05 : 1 }}
             transition={{ duration: 0.3 }}
-            className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-novar-surface-2 ring-1 ring-novar-line overflow-hidden"
+            className={`relative flex h-12 w-12 items-center justify-center rounded-xl bg-white ring-1 ${theme.ring} overflow-hidden shadow-soft`}
           >
             <Image
-              src={LOGO_SRC[logoVariant]}
+              src={theme.src}
               alt={name}
-              width={48}
-              height={48}
+              width={36}
+              height={36}
               style={{ objectFit: 'contain' }}
             />
           </motion.div>
           <span className="inline-flex items-center gap-1.5 rounded-full border border-novar-line bg-white px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-novar-muted">
-            <span className="h-1.5 w-1.5 rounded-full bg-novar-accent" />
+            <span className={`h-1.5 w-1.5 rounded-full ${theme.badgeDot}`} />
             {badge}
           </span>
         </div>
@@ -107,7 +134,7 @@ export function ProductSpotlight({
         <h3 className="mt-7 font-display text-3xl sm:text-4xl font-bold tracking-tight text-novar-ink">
           {name}
         </h3>
-        <p className="mt-2 text-base font-medium text-novar-accent">
+        <p className={`mt-2 text-base font-medium ${theme.accent}`}>
           {tagline}
         </p>
 
@@ -130,7 +157,7 @@ export function ProductSpotlight({
               transition={{ duration: 0.25, delay: i * 0.04 }}
               className="flex items-start gap-2"
             >
-              <span className="mt-1 h-1 w-1 flex-shrink-0 rounded-full bg-novar-accent" />
+              <span className={`mt-1 h-1 w-1 flex-shrink-0 rounded-full ${theme.bulletDot}`} />
               <span>{b}</span>
             </motion.li>
           ))}
@@ -161,11 +188,11 @@ export function ProductSpotlight({
           )}
         </div>
 
-        {/* Bordure cyan qui s'illumine au hover */}
+        {/* Bordure colorée qui s'illumine au hover (couleur produit) */}
         <motion.div
-          className="pointer-events-none absolute inset-0 rounded-3xl ring-2 ring-novar-accent"
+          className={`pointer-events-none absolute inset-0 rounded-3xl ring-2 ${theme.hoverBorder}`}
           initial={{ opacity: 0 }}
-          animate={{ opacity: hovered ? 0.25 : 0 }}
+          animate={{ opacity: hovered ? 0.3 : 0 }}
           transition={{ duration: 0.3 }}
         />
       </motion.div>

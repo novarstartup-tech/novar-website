@@ -16,7 +16,7 @@ export function Header() {
         {/* Logo + nav desktop */}
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center" aria-label="NOVAR – Accueil">
-            <NovarLogo className="h-7 w-auto" />
+            <NovarLogo className="h-6 w-auto" />
           </Link>
           <nav className="hidden lg:flex items-center gap-1">
             {NAV.map((item) => (

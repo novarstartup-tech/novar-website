@@ -7,7 +7,7 @@ type Props = { variant?: 'on-light' | 'on-dark'; className?: string };
  * `variant` est conservé pour compat API mais le PNG officiel a son propre fond,
  * on l'affiche tel quel.
  */
-export function NovarLogo({ className = 'h-8 w-auto' }: Props) {
+export function NovarLogo({ className = 'h-6 w-auto' }: Props) {
   return (
     <Image
       src="/logos/novar.png"
