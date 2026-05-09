@@ -2,8 +2,8 @@ type Props = { variant?: 'on-light' | 'on-dark'; className?: string };
 
 /**
  * NovarLogo — version SVG inline TRANSPARENTE.
- * Reproduit la marque NOVAR (texte sobre + ornement losange/etoile au centre).
- * Aucun fond : s'integre dans n'importe quel header/footer/card.
+ * Texte sobre + ornement orbital (anneau + astre) au centre.
+ * Aucune connotation religieuse : pas de croix, pas d'etoile a 4 branches.
  *
  * Variantes :
  *  - on-light (defaut) : encre navy + accent cyan-700
@@ -33,12 +33,30 @@ export function NovarLogo({ variant = 'on-light', className = 'h-6 w-auto' }: Pr
       >
         N
       </text>
-      {/* Ornement central : losange-etoile, evoque l'orbite cosmique du logo officiel */}
-      <circle cx="62" cy="28" r="18" stroke={fg} strokeWidth="3" fill="none" opacity="0.85" />
-      <path
-        d="M62 12 L65 25 L78 28 L65 31 L62 44 L59 31 L46 28 L59 25 Z"
-        fill={accent}
-      />
+
+      {/* Ornement orbital — anneau elliptique + astre au centre.
+          Evoque "nova" (etoile, mouvement orbital), neutre. */}
+      <g transform="translate(62, 28)">
+        {/* Orbite elliptique inclinee */}
+        <ellipse
+          cx="0"
+          cy="0"
+          rx="18"
+          ry="7"
+          stroke={fg}
+          strokeWidth="2"
+          fill="none"
+          opacity="0.55"
+          transform="rotate(-22)"
+        />
+        {/* Anneau exterieur fin */}
+        <circle cx="0" cy="0" r="16" stroke={accent} strokeWidth="1.5" fill="none" opacity="0.4" />
+        {/* Astre (planete / nova) — disque plein decentre legerement */}
+        <circle cx="0" cy="0" r="6" fill={accent} />
+        {/* Point lumineux secondaire (compagnon) sur l'orbite */}
+        <circle cx="14" cy="-5" r="2" fill={accent} opacity="0.7" />
+      </g>
+
       {/* VAR */}
       <text
         x="88"
@@ -56,7 +74,7 @@ export function NovarLogo({ variant = 'on-light', className = 'h-6 w-auto' }: Pr
 }
 
 /**
- * NovarMark — variante carree (juste l'ornement central).
+ * NovarMark — variante carree (juste l'ornement orbital).
  * Pour favicons / app icons / coins compactes.
  */
 export function NovarMark({ size = 40, className = '' }: { size?: number; className?: string }) {
@@ -71,8 +89,24 @@ export function NovarMark({ size = 40, className = '' }: { size?: number; classN
       aria-label="NOVAR"
     >
       <rect x="0" y="0" width="80" height="80" rx="14" fill="#0B1220" />
-      <circle cx="40" cy="40" r="22" stroke="#FFFFFF" strokeWidth="2.5" fill="none" opacity="0.6" />
-      <path d="M40 14 L43 36 L62 40 L43 44 L40 66 L37 44 L18 40 L37 36 Z" fill="#67E8F9" />
+      {/* Orbite inclinee */}
+      <ellipse
+        cx="40"
+        cy="40"
+        rx="26"
+        ry="10"
+        stroke="#FFFFFF"
+        strokeWidth="2"
+        fill="none"
+        opacity="0.55"
+        transform="rotate(-22 40 40)"
+      />
+      {/* Anneau exterieur */}
+      <circle cx="40" cy="40" r="22" stroke="#67E8F9" strokeWidth="1.8" fill="none" opacity="0.45" />
+      {/* Astre central */}
+      <circle cx="40" cy="40" r="9" fill="#67E8F9" />
+      {/* Compagnon */}
+      <circle cx="58" cy="33" r="3" fill="#67E8F9" opacity="0.8" />
     </svg>
   );
 }
