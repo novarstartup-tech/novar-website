@@ -15,10 +15,15 @@ const config: Config = {
   // (BIRDY = cyan navy = confiance, FEEDORA = emerald = AgriTech).
   // Sans cette liste, Tailwind JIT pourrait les purger en prod.
   safelist: [
-    'from-cyan-50', 'from-emerald-50',
+    // gradients washes
+    'from-cyan-50', 'from-cyan-50/60',
+    'from-emerald-50', 'from-emerald-50/60',
+    // rings/borders dynamiques
     'ring-cyan-200', 'ring-emerald-200',
     'ring-cyan-500', 'ring-emerald-500',
+    // text accent par produit
     'text-cyan-700', 'text-emerald-700',
+    // badges / dots
     'bg-cyan-600', 'bg-emerald-600',
   ],
   theme: {

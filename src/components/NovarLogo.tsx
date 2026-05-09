@@ -3,20 +3,19 @@ import Image from 'next/image';
 type Props = { variant?: 'on-light' | 'on-dark'; className?: string };
 
 /**
- * NovarLogo — utilise le logo officiel raster fourni (public/logos/novar.png).
- * `variant` est conservé pour compat API mais le PNG officiel a son propre fond,
- * on l'affiche tel quel.
+ * NovarLogo — utilise le logo officiel raster (public/logos/novar.png, 822x497).
+ * Aucun style inline : on laisse `className` (ex h-6 w-auto) controler la taille.
+ * Le PNG a son propre fond noir, on l'affiche tel quel.
  */
 export function NovarLogo({ className = 'h-6 w-auto' }: Props) {
   return (
     <Image
       src="/logos/novar.png"
       alt="NOVAR"
-      width={240}
-      height={56}
+      width={822}
+      height={497}
       priority
       className={className}
-      style={{ width: 'auto', height: '100%' }}
     />
   );
 }

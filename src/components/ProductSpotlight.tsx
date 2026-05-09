@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
+import { ProductBackdrop } from './ProductBackdrop';
 
 type Action = {
   label: string;
@@ -104,10 +105,20 @@ export function ProductSpotlight({
         {/* Wash de fond contextuel — couleur theme produit */}
         <motion.div
           className={`absolute inset-0 -z-10 bg-gradient-to-br ${theme.washFrom} via-white to-white`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: hovered ? 1 : 0 }}
+          initial={{ opacity: 0.3 }}
+          animate={{ opacity: hovered ? 1 : 0.4 }}
           transition={{ duration: 0.4 }}
         />
+
+        {/* Backdrop visuel contextuel (volaille pour FEEDORA, finance pour BIRDY) */}
+        <motion.div
+          className="pointer-events-none absolute inset-0 -z-10"
+          initial={{ opacity: 0.5 }}
+          animate={{ opacity: hovered ? 0.9 : 0.55 }}
+          transition={{ duration: 0.4 }}
+        >
+          <ProductBackdrop variant={logoVariant} />
+        </motion.div>
 
         {/* Header — logo + badge */}
         <div className="flex items-start justify-between gap-4">

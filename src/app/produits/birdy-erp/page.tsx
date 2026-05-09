@@ -12,6 +12,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { CtaBanner } from '@/components/CtaBanner';
+import { ProductBackdrop } from '@/components/ProductBackdrop';
 
 export const metadata = {
   title: 'BIRDY — ERP & gestion comptable OHADA',
@@ -65,18 +66,21 @@ const MODULES = [
 export default function BirdyErpPage() {
   return (
     <>
-      {/* Hero — light, premium */}
-      <section className="relative overflow-hidden bg-white border-b border-novar-line">
-        <div className="absolute inset-0 bg-dots opacity-50" aria-hidden />
+      {/* Hero — palette cyan navy (confiance, expertise comptable) */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-cyan-50/60 via-white to-white border-b border-novar-line">
+        <div className="absolute inset-0 bg-dots opacity-40" aria-hidden />
+        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+          <ProductBackdrop variant="birdy" />
+        </div>
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
           <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-              Produit NOVAR
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">
+              Produit NOVAR · ERP OHADA
             </span>
             <h1 className="mt-4 font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-novar-ink leading-[1.05]">
               BIRDY
             </h1>
-            <p className="mt-4 text-xl sm:text-2xl font-medium text-novar-ink-soft">
+            <p className="mt-4 text-xl sm:text-2xl font-medium text-cyan-700">
               L&apos;ERP et la gestion comptable OHADA, sans douleur.
             </p>
             <p className="mt-6 max-w-2xl text-lg text-novar-muted leading-relaxed">
@@ -98,7 +102,7 @@ export default function BirdyErpPage() {
             </div>
             <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-wider text-novar-muted">
               <span className="inline-flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-novar-accent" />
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-600" />
                 En production
               </span>
               <span className="text-novar-line">·</span>
@@ -116,7 +120,7 @@ export default function BirdyErpPage() {
       <section className="surface-alt">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
           <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">
               Modules
             </span>
             <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-novar-ink leading-tight">
@@ -155,7 +159,7 @@ export default function BirdyErpPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">
                 Conformité OHADA native
               </span>
               <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold tracking-tight text-novar-ink leading-tight">
@@ -177,7 +181,7 @@ export default function BirdyErpPage() {
                   'Export FEC réglementaire',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-novar-ink-soft">
-                    <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-novar-accent mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-cyan-700 mt-0.5" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -210,7 +214,7 @@ export default function BirdyErpPage() {
                 </div>
                 <div className="border-t border-novar-line pt-4 mt-4 flex justify-between font-semibold text-novar-ink">
                   <span>Résultat de l&apos;exercice</span>
-                  <span className="text-novar-accent">+18 920 000 GNF</span>
+                  <span className="text-cyan-700">+18 920 000 GNF</span>
                 </div>
               </div>
             </div>
