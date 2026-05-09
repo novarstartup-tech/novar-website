@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Mail, MapPin } from 'lucide-react';
+import { Facebook, Linkedin, Mail, MapPin } from 'lucide-react';
 import { NovarLogo } from './NovarLogo';
 import { SITE } from '@/lib/site';
 
@@ -54,14 +54,26 @@ export function Footer() {
                   {SITE.email}
                 </a>
               </div>
-              <a
-                href={SITE.facebook}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 mt-2 text-sm font-medium text-novar-ink hover:underline"
-              >
-                <Facebook className="h-4 w-4" />Facebook
-              </a>
+              <div className="flex items-center gap-3 mt-3">
+                <a
+                  href={SITE.facebook}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="Facebook"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-novar-line bg-white text-novar-ink transition-all hover:border-novar-ink/30 hover:-translate-y-0.5 hover:shadow-soft"
+                >
+                  <Facebook className="h-4 w-4" />
+                </a>
+                <a
+                  href={SITE.linkedin}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="LinkedIn"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-novar-line bg-white text-novar-ink transition-all hover:border-novar-ink/30 hover:-translate-y-0.5 hover:shadow-soft"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+              </div>
             </div>
           </div>
           {COLS.map((col) => (

@@ -136,7 +136,7 @@ export function ContactForm() {
           <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
           <span>
             Une erreur est survenue. Vous pouvez nous écrire directement à
-            djernomahamoudoudiallo@gmail.com.
+            novar.startup@gmail.com.
           </span>
         </div>
       )}

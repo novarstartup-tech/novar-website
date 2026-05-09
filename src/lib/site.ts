@@ -7,8 +7,9 @@ export const SITE = {
   category: 'SaaS Studio',
   city: 'Conakry',
   country: 'Guinée',
-  email: 'djernomahamoudoudiallo@gmail.com',
+  email: 'novar.startup@gmail.com',
   facebook: 'https://www.facebook.com/profile.php?id=61587571164695',
+  linkedin: 'https://www.linkedin.com/company/111847101/',
   url: 'https://novar.gn',
   founder: 'Djerno',
 } as const;

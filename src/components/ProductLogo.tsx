@@ -6,64 +6,42 @@ type Props = {
 };
 
 /**
- * Logo officiel BIRDY — fichier SVG copie depuis le repo BIRDY ERP v2
- * (public/birdy.svg du projet originel).
+ * Logo officiel BIRDY — icone de l'application BIRDY ERP (PNG 512x512).
+ * Source : src-tauri/crates/birdy-app/icons/icon.png du repo BIRDY.
  */
 export function BirdyLogo({ className = '', size = 40 }: Props) {
   return (
     <Image
-      src="/logos/birdy.svg"
+      src="/logos/birdy-icon-512.png"
       alt="BIRDY"
       width={size}
       height={size}
       className={className}
       priority={false}
+      style={{ objectFit: 'contain' }}
     />
   );
 }
 
 /**
- * Logo officiel BIRDY (PNG haute resolution, pour les zones haute densite).
+ * Alias hi-res — meme image source.
  */
 export function BirdyLogoPng({ className = '', size = 64 }: Props) {
-  return (
-    <Image
-      src="/logos/birdy-icon.png"
-      alt="BIRDY"
-      width={size}
-      height={size}
-      className={className}
-    />
-  );
+  return <BirdyLogo className={className} size={size} />;
 }
 
 /**
- * Logo FEEDORA (placeholder SVG en attendant le fichier officiel
- * recupere depuis https://feedora-cyan.vercel.app/).
- *
- * Gabarit : grain de mais stylise + nom en mono.
- * Quand le vrai logo arrivera, remplacer par <Image src="/logos/feedora.svg" />.
+ * Logo officiel FEEDORA (PNG fourni par Djerno).
  */
 export function FeedoraLogo({ className = '', size = 40 }: Props) {
   return (
-    <svg
-      viewBox="0 0 80 80"
+    <Image
+      src="/logos/feedora.png"
+      alt="FEEDORA"
       width={size}
       height={size}
       className={className}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="FEEDORA"
-    >
-      <rect x="0" y="0" width="80" height="80" rx="16" fill="#0891B2" />
-      {/* Grain de mais stylise */}
-      <ellipse cx="40" cy="40" rx="14" ry="22" fill="#F8FAFC" />
-      <ellipse cx="35" cy="32" rx="2.5" ry="3.5" fill="#0891B2" opacity="0.3" />
-      <ellipse cx="45" cy="32" rx="2.5" ry="3.5" fill="#0891B2" opacity="0.3" />
-      <ellipse cx="35" cy="40" rx="2.5" ry="3.5" fill="#0891B2" opacity="0.3" />
-      <ellipse cx="45" cy="40" rx="2.5" ry="3.5" fill="#0891B2" opacity="0.3" />
-      <ellipse cx="35" cy="48" rx="2.5" ry="3.5" fill="#0891B2" opacity="0.3" />
-      <ellipse cx="45" cy="48" rx="2.5" ry="3.5" fill="#0891B2" opacity="0.3" />
-    </svg>
+      style={{ objectFit: 'contain' }}
+    />
   );
 }
