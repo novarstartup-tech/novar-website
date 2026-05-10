@@ -56,8 +56,9 @@ export default function DemoPage() {
                     <div className="font-semibold text-novar-ink">Suivi gratuit</div>
                     <div className="mt-1 text-sm text-novar-muted leading-relaxed">
                       Après la démo, vous recevez un récapitulatif écrit et
-                      un accès à un essai gratuit de 30 jours, sans
-                      engagement.
+                      le lien direct pour télécharger BIRDY. L&apos;outil est
+                      entièrement gratuit, vous l&apos;installez quand
+                      vous voulez.
                     </div>
                   </div>
                 </li>

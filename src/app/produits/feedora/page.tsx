@@ -55,24 +55,32 @@ const FEATURES = [
 export default function FeedoraPage() {
   return (
     <>
-      {/* Hero light — palette emeraude (AgriTech vivant) */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-emerald-50/60 via-white to-white border-b border-novar-line">
-        <div className="absolute inset-0 bg-dots opacity-40" aria-hidden />
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+      {/* Hero — palette emeraude (AgriTech vivant), photo backdrop +
+          voile sombre gauche pour la lisibilité du texte. */}
+      <section className="relative overflow-hidden border-b border-slate-800/40 bg-slate-950">
+        <div className="absolute inset-0" aria-hidden>
           <ProductBackdrop variant="feedora" />
         </div>
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(8,15,30,0.92) 0%, rgba(8,15,30,0.80) 35%, rgba(8,15,30,0.30) 70%, rgba(8,15,30,0.00) 100%)',
+          }}
+        />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
           <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-              Produit NOVAR · AgriTech
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">
+              Produit NOVAR · AgriTech B2B
             </span>
-            <h1 className="mt-4 font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-novar-ink leading-[1.05]">
+            <h1 className="mt-4 font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.05]">
               FEEDORA
             </h1>
-            <p className="mt-4 text-xl sm:text-2xl font-medium text-emerald-700">
+            <p className="mt-4 text-xl sm:text-2xl font-medium text-emerald-300">
               Formulation alimentaire pour fermes avicoles.
             </p>
-            <p className="mt-6 max-w-2xl text-lg text-novar-muted leading-relaxed">
+            <p className="mt-6 max-w-2xl text-lg text-slate-300 leading-relaxed">
               Application professionnelle B2B AgriTech, conçue pour aider les
               éleveurs et nutritionnistes à formuler des aliments pour
               volailles équilibrés, économiques et performants. En production
@@ -83,24 +91,27 @@ export default function FeedoraPage() {
                 href="https://feedora-cyan.vercel.app/"
                 target="_blank"
                 rel="noopener"
-                className="btn-primary"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-all hover:bg-emerald-400 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(52,211,153,0.35)]"
               >
                 Accéder à FEEDORA <ExternalLink className="h-4 w-4" />
               </a>
-              <Link href="/contact" className="btn-ghost">
-                Demander une démo guidée <ArrowRight className="h-4 w-4" />
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-900/40 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-slate-800/60"
+              >
+                Demander une démo <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-wider text-novar-muted">
+            <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-wider text-slate-400">
               <span className="inline-flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                 En production
               </span>
-              <span className="text-novar-line">·</span>
+              <span className="text-slate-700">·</span>
               <span>SaaS Web</span>
-              <span className="text-novar-line">·</span>
+              <span className="text-slate-700">·</span>
               <span>Multi-utilisateurs</span>
-              <span className="text-novar-line">·</span>
+              <span className="text-slate-700">·</span>
               <span>Multi-pays</span>
             </div>
           </div>

@@ -12,8 +12,8 @@ type FAQ = { q: string; a: string };
 
 const FAQS: FAQ[] = [
   {
-    q: 'Existe-t-il un essai gratuit pour BIRDY ?',
-    a: "Oui. Tous les plans BIRDY ouvrent droit à 30 jours d'essai gratuit, sans carte bancaire. À la fin de la période, vous décidez librement de continuer, de changer de plan, ou de partir avec vos données.",
+    q: 'Combien coûte BIRDY ?',
+    a: "Rien. BIRDY est un logiciel propriétaire distribué gratuitement (freeware). Vous le téléchargez, vous l'installez, vous l'utilisez pour votre activité — personnelle ou commerciale — sans abonnement, sans carte bancaire, sans limite de durée. Le code source reste la propriété de NOVAR. Voir l'EULA.",
   },
   {
     q: 'BIRDY est-il vraiment conforme OHADA ?',
@@ -33,23 +33,23 @@ const FAQS: FAQ[] = [
   },
   {
     q: 'Quel niveau de support est inclus ?',
-    a: "Tous les plans incluent la documentation en ligne, les tutoriels et le support par e-mail. Les plans supérieurs ouvrent un support prioritaire avec un SLA de réponse. Pour les déploiements Enterprise, un account manager dédié est rattaché à votre dossier.",
+    a: "BIRDY étant gratuit, le support standard est communautaire : documentation publique, tutoriels, et e-mail (réponse sous 48h). Pour du support prioritaire, de la formation sur site, ou de l'accompagnement comptable dédié, NOVAR propose des prestations sur devis depuis la page Services.",
   },
   {
     q: 'BIRDY peut-il fonctionner hors ligne ?',
-    a: "Oui. Les modules de vente (POS), la caisse, les encaissements et la consultation des données métier fonctionnent sans connexion. La synchronisation se fait dès que la connexion revient. Internet n'est requis que pour les sauvegardes cloud, les mises à jour et certaines intégrations.",
+    a: "Oui, c'est même son design par défaut. BIRDY tourne entièrement en local sur votre poste, dans une base SQLite chiffrée. Aucune connexion Internet n'est requise pour l'usage quotidien : ventes, caisse, comptabilité, paie. Internet n'est utile que pour les mises à jour, l'envoi d'e-mails (factures clients) et l'authentification Google si vous l'activez.",
   },
   {
     q: 'Comment mes données sont-elles sauvegardées ?',
-    a: "BIRDY effectue des sauvegardes locales quotidiennes chiffrées en AES-256. Les plans Pro et Enterprise ajoutent des sauvegardes cloud hebdomadaires (chez OVH ou AWS Africa selon votre choix). Stratégie 3-2-1 documentée. Vous pouvez aussi exporter à tout moment l'intégralité de votre base.",
+    a: "BIRDY conserve vos données dans une base SQLite locale. Les secrets sensibles (mots de passe SMTP, clés API, secrets MFA) sont chiffrés AES-256-GCM avec une clé master stockée dans le coffre-fort de l'OS (Windows Credential Manager / macOS Keychain). Vous pouvez exporter à tout moment l'intégralité de votre base via le module Sauvegardes intégré.",
   },
   {
     q: 'BIRDY supporte-t-il plusieurs utilisateurs simultanés ?',
-    a: "Oui. Le plan Solo est limité à un utilisateur. Le plan Pro permet jusqu'à 5 utilisateurs avec des rôles distincts (gérant, comptable, caissier, etc.). Le plan Enterprise propose des utilisateurs illimités, multi-sociétés, et une gestion fine des permissions par rôle.",
+    a: "Oui, sans limite. Vous créez autant d'utilisateurs que nécessaire (gérant, comptable, caissier, vendeur, RH…) avec des rôles et permissions distincts. Authentification Argon2id, sessions tokens 30 jours, MFA TOTP optionnel, audit log systématique. Aucun surcoût par utilisateur.",
   },
   {
     q: 'Comment se passent les mises à jour ?',
-    a: "Les mises à jour sont automatiques et sans interruption de service. Chaque évolution réglementaire OHADA, chaque nouvelle fonctionnalité, chaque correctif est livré sans intervention de votre part. Vous pouvez consulter l'historique des versions dans votre espace client.",
+    a: "Les nouvelles versions sont publiées sur la page Téléchargements. Vous installez la mise à jour quand vous voulez — votre base de données reste intacte entre les versions. NOVAR publie les évolutions réglementaires OHADA (taux IRPP, CNSS, plan comptable…) en continu.",
   },
 ];
 
