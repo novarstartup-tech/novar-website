@@ -45,7 +45,7 @@ const TEAM: TeamMember[] = [
     shortRole: 'Direction & Vision',
     name: 'DIALLO Djerno M.',
     photo: '/team/1.jpg',
-    bio: "Fonde et dirige NOVAR depuis Conakry. Trace la vision produit, négocie les partenariats, garde le cap stratégique.",
+    bio: "De Conakry, pour toute l'Afrique.",
     accent: 'cyan',
     email: SITE.email,
     location: 'Conakry, Guinée',
@@ -55,7 +55,7 @@ const TEAM: TeamMember[] = [
     shortRole: 'Architecture & Backend',
     name: 'DIALLO M. Bobo',
     photo: '/team/2.jpg',
-    bio: "Architecte l'ingénierie de BIRDY et FEEDORA. Garant de la robustesse, de la sécurité et de la performance — du Rust au Tauri.",
+    bio: "Le code propre est un acte de respect.",
     accent: 'violet',
   },
   {
@@ -63,7 +63,7 @@ const TEAM: TeamMember[] = [
     shortRole: 'FEEDORA & Agronomie',
     name: 'DIABY Abdoulaye',
     photo: '/team/3.jpg',
-    bio: "Pilote FEEDORA et l'expertise zootechnique. Pont entre éleveurs, nutritionnistes et l'équipe produit.",
+    bio: "De la science dans chaque ration.",
     accent: 'emerald',
   },
   {
@@ -71,7 +71,7 @@ const TEAM: TeamMember[] = [
     shortRole: 'Design & Acquisition',
     name: 'KABA L. Yériba',
     photo: '/team/4.jpg',
-    bio: "Définit l'expérience utilisateur de bout en bout. Orchestre l'acquisition et la cohérence visuelle des produits NOVAR.",
+    bio: "Donner envie. Faire revenir.",
     accent: 'amber',
   },
 ];
