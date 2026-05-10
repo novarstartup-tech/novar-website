@@ -6,9 +6,20 @@ import { AppWindow, CircleDollarSign, MapPinned } from 'lucide-react';
 
 /**
  * Inline SVG of the African continent silhouette. Lucide doesn't ship
- * a "continent" icon, so we draw a simplified shape that's
- * unmistakably Africa and color it via `currentColor` so it inherits
- * the tone color like any other Lucide icon.
+ * a "continent" icon. The path below traces a recognizable Africa :
+ *
+ * - Wide top  : Maghreb + Sahara horn extending east toward Egypt /
+ *               Sinai (peak around x≈17 / y≈3.5).
+ * - Bulge SW  : West-Africa coast (Senegal -> Gulf of Guinea), the
+ *               iconic widening.
+ * - Sharp E.  : Horn of Africa pinched between Ethiopia and Somalia
+ *               (point near x≈18 / y≈10).
+ * - Pointed S : Cape of Good Hope tapering to a single vertex
+ *               (x≈12.5 / y≈21.5).
+ * - Madagascar: tiny island offset SE (separate sub-path).
+ *
+ * Drawn at viewBox 24×24 to match the lucide grid, fills via
+ * `currentColor` so it tints with the parent's text color.
  */
 function AfricaIcon({ className }: { className?: string }) {
   return (
@@ -19,8 +30,41 @@ function AfricaIcon({ className }: { className?: string }) {
       stroke="none"
       aria-hidden="true"
     >
-      <path d="M14.6 2.2c-1.4-.5-3.5-.4-4.6.4-1 .7-2 .8-3 1.1-.9.3-1.7 1.1-1.8 2.1-.1.8.4 1.6 1 2.1.5.5.7 1.3.4 2-.4 1-.6 2-.4 3 .2.9.7 1.6 1 2.5.4.9.4 2 0 2.9-.3.7-.8 1.3-.9 2-.1.7.4 1.6 1.2 1.7.6.1 1.2-.3 1.7-.7.5-.5.9-1 1.5-1.4.7-.4 1.6-.5 2.4-.7.8-.2 1.6-.7 2-1.4.5-1 .2-2.1-.1-3.1-.3-1-.5-2.1-.2-3.1.4-1.3 1.3-2.4 1.6-3.7.3-1.1.1-2.4-.5-3.4-.4-.6-.9-1.1-1.3-1.7-.3-.4-.6-.9-.5-1.4.1-.5.7-.9 1.1-.5 0 0-.4-.4-1.1-.7Z" />
-      <path d="M19.4 6.2c.4-.3.5-.9.2-1.3-.2-.4-.7-.6-1.1-.4-.4.2-.6.7-.4 1.1.2.4.5.7 1 .7.1 0 .2 0 .3-.1Z" opacity="0.85" />
+      {/* Mainland Africa */}
+      <path
+        d="M9 2.6
+           C10.6 2.4 12.4 2.5 14 2.9
+           L15.7 3.4
+           L17.2 4.5
+           L17.7 6
+           L16.9 7.4
+           L16.2 8.6
+           L17.1 9.4
+           L17.6 10.6
+           C 17.7 11.3 17.4 11.9 16.8 12.2
+           L 16.0 12.6
+           L 15.6 13.8
+           L 15.1 15.1
+           L 14.5 16.5
+           L 13.9 18
+           L 13.2 19.6
+           L 12.5 21.4
+           L 11.7 20.4
+           L 10.9 19
+           L 10.2 17.4
+           L 9.6 15.8
+           L 9.1 14.2
+           L 8.5 12.5
+           L 7.9 10.9
+           L 7.3 9.3
+           L 6.7 7.7
+           L 6.5 6.3
+           L 7.1 5
+           L 8 4
+           Z"
+      />
+      {/* Madagascar */}
+      <ellipse cx="19.6" cy="14.8" rx="0.7" ry="1.7" opacity="0.85" />
     </svg>
   );
 }
