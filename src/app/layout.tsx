@@ -14,9 +14,27 @@ export const metadata: Metadata = {
   title: { default: `${SITE.name} — ${SITE.baseline}`, template: `%s — ${SITE.name}` },
   description: SITE.description,
   metadataBase: new URL(SITE.url),
-  keywords: ['NOVAR', 'BIRDY ERP', 'OHADA', 'Guinée', 'Conakry', 'logiciel sur mesure', 'PME', 'startup'],
+  alternates: { canonical: '/' },
+  keywords: [
+    'NOVAR',
+    'BIRDY ERP',
+    'FEEDORA',
+    'OHADA',
+    'Guinée',
+    'Conakry',
+    'comptabilité OHADA',
+    'logiciel sur mesure',
+    'SaaS Studio',
+    'PME',
+    'startup',
+    'SYSCOHADA',
+    'liasse fiscale',
+  ],
   authors: [{ name: SITE.founder }],
   creator: SITE.name,
+  publisher: SITE.legalName,
+  applicationName: SITE.name,
+  generator: 'Next.js',
   openGraph: {
     title: `${SITE.name} — ${SITE.baseline}`,
     description: SITE.description,
@@ -25,8 +43,36 @@ export const metadata: Metadata = {
     locale: 'fr_GN',
     type: 'website',
   },
-  twitter: { card: 'summary_large_image', title: `${SITE.name} — ${SITE.baseline}`, description: SITE.description },
-  robots: { index: true, follow: true },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${SITE.name} — ${SITE.baseline}`,
+    description: SITE.description,
+    creator: '@novar_startup',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: '/logos/novar.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/logos/novar.png' }],
+  },
+  category: 'technology',
+  formatDetection: { email: false, telephone: false, address: false },
+  verification: {
+    // À remplir quand Djerno aura récupéré les codes :
+    // google: 'XXXXXXXXXXXXXXXXXX',
+    // other: { 'msvalidate.01': 'XXXXXXXX' },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
