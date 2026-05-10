@@ -45,7 +45,7 @@ const TEAM: TeamMember[] = [
     shortRole: 'Direction & Vision',
     name: 'DIALLO Djerno M.',
     photo: '/team/1.jpg',
-    bio: "De Conakry, pour toute l'Afrique.",
+    bio: "Il y a du génie dans chaque entreprise africaine — notre métier, c'est de le matérialiser en logiciel.",
     accent: 'cyan',
     email: SITE.email,
     location: 'Conakry, Guinée',
@@ -55,7 +55,7 @@ const TEAM: TeamMember[] = [
     shortRole: 'Architecture & Backend',
     name: 'DIALLO M. Bobo',
     photo: '/team/2.jpg',
-    bio: "Le code propre est un acte de respect.",
+    bio: "Un code solide aujourd'hui, c'est un produit qui tient dans dix ans — la robustesse n'est pas négociable.",
     accent: 'violet',
   },
   {
@@ -63,7 +63,7 @@ const TEAM: TeamMember[] = [
     shortRole: 'FEEDORA & Agronomie',
     name: 'DIABY Abdoulaye',
     photo: '/team/3.jpg',
-    bio: "De la science dans chaque ration.",
+    bio: "L'éleveur connaît son terrain mieux que personne — nous lui donnons les chiffres pour décider sans hésiter.",
     accent: 'emerald',
   },
   {
@@ -71,7 +71,7 @@ const TEAM: TeamMember[] = [
     shortRole: 'Design & Acquisition',
     name: 'KABA L. Yériba',
     photo: '/team/4.jpg',
-    bio: "Donner envie. Faire revenir.",
+    bio: "Un utilisateur ne lit pas de mode d'emploi — notre travail, c'est de rendre l'évidence évidente.",
     accent: 'amber',
   },
 ];
