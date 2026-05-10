@@ -30,12 +30,14 @@ export function ProductBackdrop({ variant }: { variant: Variant }) {
 }
 
 /**
- * Set this to `true` once `public/products/feedora-bg.jpg` is in place.
- * It's a build-time toggle (not a runtime check) so we don't ship an
- * extra HTTP probe on every page render.
+ * Set the `USE_*_PHOTO` flag to `true` once the matching file exists
+ * in `public/products/`. These are build-time toggles (not runtime
+ * checks) so we don't ship an extra HTTP probe on every render.
  */
 const USE_FEEDORA_PHOTO = true;
 const FEEDORA_PHOTO_PATH = '/products/feedora-bg.jpg';
+const USE_BIRDY_PHOTO = true;
+const BIRDY_PHOTO_PATH = '/products/birdy-bg.jpg';
 
 function FeedoraBackdrop() {
   return (
@@ -144,6 +146,37 @@ function FeedoraSvgDecor() {
 }
 
 function BirdyBackdrop() {
+  return (
+    <div className="absolute inset-0 h-full w-full overflow-hidden">
+      {USE_BIRDY_PHOTO && (
+        <>
+          <img
+            src={BIRDY_PHOTO_PATH}
+            alt=""
+            aria-hidden
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-25"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = 'none';
+            }}
+          />
+          {/* Cyan / navy veil — tints the photo into BIRDY brand colors. */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(135deg, rgba(8,47,73,0.55) 0%, rgba(8,145,178,0.30) 50%, rgba(0,0,0,0.55) 100%)',
+            }}
+          />
+        </>
+      )}
+      <BirdySvgDecor />
+    </div>
+  );
+}
+
+function BirdySvgDecor() {
   return (
     <svg
       viewBox="0 0 600 400"
