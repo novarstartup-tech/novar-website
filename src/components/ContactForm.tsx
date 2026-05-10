@@ -3,15 +3,29 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
 
+/**
+ * ContactForm — formulaire B2B avec garde-fous anti-spam Tier 1.
+ *
+ * 1. Honeypot `website` (champ caché aux humains, visible aux bots) :
+ *    si rempli, on simule un succès côté UI mais on ne POST jamais.
+ *    99 % des bots remplissent tous les champs sans regarder le CSS.
+ * 2. Timing trap : on enregistre `mountedAt`. Un humain met >2 secondes
+ *    pour remplir le formulaire ; un bot remplit en <500ms. Si la durée
+ *    est suspecte, même traitement que le honeypot.
+ * 3. Validation Zod côté client + serveur (double rideau).
+ * 4. Le serveur applique un rate limit IP-based supplémentaire.
+ */
 const schema = z.object({
   name: z.string().min(2, 'Veuillez saisir votre nom'),
   email: z.string().email('Adresse e-mail invalide'),
   company: z.string().optional(),
   topic: z.enum(['birdy', 'feedora', 'sur-mesure', 'conseil', 'support', 'autre']),
   message: z.string().min(10, 'Décrivez votre demande en quelques mots'),
+  // Honeypot : champ caché. S'il est rempli côté client, c'est un bot.
+  website: z.string().max(0, '').optional(),
 });
 type FormValues = z.infer<typeof schema>;
 
@@ -29,17 +43,39 @@ export function ContactForm() {
     reset,
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { topic: 'birdy' },
+    defaultValues: { topic: 'birdy', website: '' },
   });
   const [status, setStatus] = useState<'idle' | 'ok' | 'error'>('idle');
+  const mountedAt = useRef<number>(Date.now());
+
+  useEffect(() => {
+    mountedAt.current = Date.now();
+  }, []);
 
   async function onSubmit(values: FormValues) {
     setStatus('idle');
+
+    // Garde-fou 1 — honeypot rempli : on fake un succès, on ne POST jamais.
+    if (values.website && values.website.length > 0) {
+      setStatus('ok');
+      reset();
+      return;
+    }
+
+    // Garde-fou 2 — soumission anormalement rapide (<2s) : très probablement
+    // un bot. Même traitement silencieux qu'un honeypot trip.
+    const elapsed = Date.now() - mountedAt.current;
+    if (elapsed < 2000) {
+      setStatus('ok');
+      reset();
+      return;
+    }
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, _elapsed: elapsed }),
       });
       if (!res.ok) throw new Error('Erreur serveur');
       setStatus('ok');
@@ -92,6 +128,38 @@ export function ContactForm() {
           placeholder="Nom de votre société"
           {...register('company')}
           className={inputClass}
+        />
+      </div>
+
+      {/*
+        Honeypot — champ caché aux humains via aria-hidden + tabIndex=-1 +
+        position absolute hors viewport. Les bots qui parsent le HTML brut
+        rempliront tous les champs sans regarder le CSS et déclencheront
+        notre garde-fou côté handler.
+
+        Pas de display:none — certains bots détectent et skipent les champs
+        cachés. La technique "off-screen positioning" est plus efficace.
+      */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          left: '-10000px',
+          top: 'auto',
+          width: '1px',
+          height: '1px',
+          overflow: 'hidden',
+        }}
+      >
+        <label htmlFor="website">
+          Site web (ne pas remplir — réservé aux robots)
+        </label>
+        <input
+          id="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register('website')}
         />
       </div>
 

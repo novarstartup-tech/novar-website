@@ -44,9 +44,9 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="mt-7 font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-novar-ink leading-[1.05]"
           >
-            Numériser, automatiser,
+            Le logiciel qui propulse
             <br />
-            <span className="gradient-text-novar">optimiser les secteurs traditionnels.</span>
+            <span className="gradient-text-novar">les entreprises africaines.</span>
           </motion.h1>
 
           <motion.p
@@ -54,9 +54,10 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="mx-auto mt-7 max-w-2xl text-lg sm:text-xl text-novar-muted leading-relaxed"
           >
-            NOVAR conçoit des produits SaaS B2B et des solutions logicielles
-            sur mesure pour transformer la manière dont les entreprises
-            africaines opèrent — sans douleur, sans friction.
+            ERP OHADA, AgriTech avicole, automatisations sur mesure. NOVAR
+            conçoit des outils gratuits pour les PME et des solutions
+            logicielles taillées pour les organisations qui veulent gagner en
+            vitesse, en précision et en marge — partout en Afrique.
           </motion.p>
 
           <motion.div
@@ -64,12 +65,12 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3"
           >
-            <Link href="/contact" className="btn-primary group">
-              Discuter d&apos;un projet{' '}
+            <Link href="/telechargements" className="btn-primary group">
+              Télécharger BIRDY gratuitement{' '}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
-            <Link href="/produits" className="btn-ghost">
-              Découvrir nos produits
+            <Link href="/services/sur-mesure" className="btn-ghost">
+              Lancer un projet sur mesure
             </Link>
           </motion.div>
 
@@ -79,9 +80,9 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="mt-14 grid grid-cols-3 gap-6 max-w-2xl mx-auto"
           >
-            <Stat value="2" label="Produits SaaS B2B" />
+            <Stat value="2" label="Produits B2B gratuits" />
             <Stat value="OHADA" label="Conformité native" />
-            <Stat value="100%" label="Conçu pour l'Afrique" />
+            <Stat value="100%" label="Conçu en Afrique" />
           </motion.div>
         </motion.div>
       </div>

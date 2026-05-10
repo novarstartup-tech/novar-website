@@ -1,0 +1,21 @@
+Contact: mailto:novar.startup@gmail.com
+Contact: https://novar.gn/contact
+Expires: 2027-05-10T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://novar.gn/.well-known/security.txt
+Policy: https://novar.gn/securite
+
+# NOVAR — Coordination de divulgation responsable
+#
+# Si vous avez identifié une vulnérabilité de sécurité sur l'un de nos
+# produits (BIRDY ERP, FEEDORA) ou sur ce site web (novar.gn), merci
+# de nous contacter via les canaux ci-dessus.
+#
+# Nous nous engageons à :
+#   - Accuser réception sous 48 heures ouvrées
+#   - Vous tenir informé pendant l'investigation
+#   - Créditer publiquement les chercheurs en sécurité (avec accord)
+#   - Ne pas engager de poursuites contre les recherches faites en bonne
+#     foi conformément à cette politique
+#
+# Merci de votre contribution à un écosystème logiciel africain plus sûr.

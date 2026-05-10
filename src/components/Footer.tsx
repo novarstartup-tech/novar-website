@@ -27,6 +27,7 @@ const COLS = [
   { title: 'Légal', accent: 'slate', links: [
     { label: 'CGV', href: '/legal/cgv' },
     { label: 'Confidentialité', href: '/legal/privacy' },
+    { label: 'Sécurité', href: '/securite' },
     { label: 'Contact', href: '/contact' },
   ]},
 ] as const;

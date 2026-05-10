@@ -25,33 +25,33 @@ export default function HomePage() {
                 Notre modèle
               </span>
               <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-novar-ink leading-tight">
-                Un SaaS Studio à double approche.
+                Studio logiciel à double moteur.
               </h2>
               <p className="mt-6 text-lg text-novar-muted leading-relaxed">
-                NOVAR ne se contente pas d&apos;une seule façon de créer de la
-                valeur. Nous combinons l&apos;édition de produits SaaS B2B
-                pensés pour des secteurs précis et le développement de
-                solutions sur mesure pour les entreprises qui ont des besoins
-                d&apos;automatisation singuliers.
+                Nous éditons des produits B2B accessibles à toute
+                l&apos;Afrique, distribués gratuitement, et nous concevons
+                des solutions logicielles sur mesure pour les entreprises qui
+                veulent gagner en vitesse, en précision et en marge. Un seul
+                partenaire technologique, deux leviers de transformation.
               </p>
             </div>
 
             <div className="lg:col-span-7 grid gap-6 sm:grid-cols-2">
               <ApproachCard
                 icon="layers"
-                title="Produits SaaS B2B"
-                description="Des plateformes packagées pour des secteurs entiers. Vous vous abonnez, vous démarrez en quelques minutes, vous bénéficiez de toutes les améliorations à venir."
+                title="Produits B2B gratuits"
+                description="Des plateformes prêtes à l'emploi pour des secteurs entiers — ERP OHADA, AgriTech avicole. Vous téléchargez, vous installez, vous démarrez en quelques minutes. Aucun abonnement, aucune carte bancaire, mises à jour à vie."
                 href="/produits"
-                cta="Voir nos produits"
+                cta="Découvrir nos produits"
                 index={0}
                 tone="cyan"
               />
               <ApproachCard
                 icon="wrench"
                 title="Développement sur mesure"
-                description="Votre besoin métier ne rentre dans aucune case ? Nous concevons et développons une solution logicielle taillée pour vous, du cahier des charges à la mise en production."
+                description="Votre besoin métier ne rentre dans aucune case ? Nous concevons, développons et déployons la solution taillée pour vous — du cadrage stratégique à la mise en production, code source livré."
                 href="/services/sur-mesure"
-                cta="Discuter d'un projet"
+                cta="Lancer un projet"
                 index={1}
                 tone="amber"
               />
@@ -60,18 +60,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* === Nos produits SaaS — BIRDY + FEEDORA cote a cote interactifs */}
+      {/* === Nos produits — BIRDY + FEEDORA cote a cote interactifs */}
       <section id="produits" className="surface-alt">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-              Nos produits SaaS
+              Nos produits
             </span>
             <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-novar-ink leading-tight">
-              Deux plateformes B2B en production.
+              Deux plateformes B2B,<br />gratuites, en production.
             </h2>
             <p className="mt-5 text-lg text-novar-muted leading-relaxed">
-              Survolez chaque produit pour découvrir ses bénéfices.
+              ERP OHADA pour PME et SaaS AgriTech pour fermes avicoles. Mêmes
+              standards d&apos;ingénierie que les meilleurs logiciels mondiaux,
+              pensés pour le terrain africain.
             </p>
           </div>
 
@@ -79,8 +81,8 @@ export default function HomePage() {
             <ProductSpotlight
               logoVariant="birdy"
               name="BIRDY"
-              tagline="ERP & gestion comptable OHADA"
-              description="Logiciel de gestion complet pour PME africaines : facturation, comptabilité OHADA, paie, stocks. En français, hors ligne, multi-devises."
+              tagline="ERP & gestion comptable OHADA — gratuit"
+              description="L'ERP que les PME africaines attendaient : facturation, comptabilité OHADA, paie, stocks, caisse. En français, hors ligne, multi-devises. Installation en moins de 30 minutes."
               bullets={[
                 'Facturation conforme',
                 'Comptabilité OHADA · FEC',
@@ -90,16 +92,16 @@ export default function HomePage() {
                 'Fonctionne hors ligne',
               ]}
               actions={[
-                { label: 'Découvrir BIRDY', href: '/produits/birdy-erp', primary: true },
-                { label: 'Voir les tarifs', href: '/tarifs' },
+                { label: 'Télécharger gratuitement', href: '/telechargements', primary: true },
+                { label: 'Découvrir BIRDY', href: '/produits/birdy-erp' },
               ]}
               index={0}
             />
             <ProductSpotlight
               logoVariant="feedora"
               name="FEEDORA"
-              tagline="Formulation alimentaire pour fermes avicoles"
-              description="Application B2B AgriTech pour aider éleveurs et nutritionnistes à formuler des aliments équilibrés, économiques et performants."
+              tagline="Formulation avicole — gratuit"
+              description="Le SaaS AgriTech qui aide éleveurs et nutritionnistes à formuler des rations équilibrées, économiques et performantes. Multi-pays, multi-devises, accessible partout."
               bullets={[
                 'Formulation intelligente',
                 'Coût/kg & coût/tonne',
@@ -129,14 +131,15 @@ export default function HomePage() {
               Développement sur mesure
             </span>
             <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-novar-ink leading-tight">
-              Un problème d&apos;automatisation ?<br />
-              Nous concevons la solution.
+              Un défi d&apos;automatisation ?<br />
+              Nous livrons la solution.
             </h2>
             <p className="mt-6 text-lg text-novar-muted leading-relaxed">
-              Si votre besoin métier ne rentre dans aucune case, parlons-en.
-              Nos équipes prennent en charge l&apos;intégralité du projet : audit,
-              architecture, développement, intégration, mise en production et
-              maintenance.
+              Logiciel métier, intégration complexe, application mobile,
+              automatisation back-office. NOVAR prend en charge l&apos;intégralité
+              du projet — cadrage, architecture, développement, mise en
+              production, maintenance — avec un code propre, livré, et un
+              accompagnement long terme.
             </p>
           </div>
 
@@ -180,10 +183,10 @@ export default function HomePage() {
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 md:pb-32">
           <CtaBanner
-            title="Discutons de votre projet."
-            description="Premier échange gratuit de 30 minutes. Vous repartez avec une recommandation claire — produit SaaS, sur mesure, ou rien du tout si ce n'est pas pertinent."
+            title="Parlons de votre projet."
+            description="Un premier échange de 30 minutes, sans engagement. Vous repartez avec une recommandation claire et exploitable — choix produit, périmètre sur mesure, ou simple orientation si ce n'est pas le bon moment."
             primaryHref="/contact"
-            primaryLabel="Nous contacter"
+            primaryLabel="Démarrer la conversation"
             secondaryHref="/demo"
             secondaryLabel="Réserver une démo"
           />
