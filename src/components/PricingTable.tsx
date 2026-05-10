@@ -74,11 +74,16 @@ const OFFERS: Offer[] = [
   {
     icon: Wrench,
     product: 'Sur mesure',
-    badge: 'Devis projet',
-    price: 'À partir de',
-    priceDetail: '8 000 000 GNF',
+    badge: 'Sur devis',
+    // Pas de chiffre affiché : un prix planché ferait fuir certains
+    // prospects (« trop cher »), une absence pure ferait hésiter les
+    // autres. On répond par une accroche qui qualifie le ticket d'entrée
+    // sans le chiffrer — premier échange gratuit, devis aligné sur le
+    // périmètre réel.
+    price: 'Parlons-en',
+    priceDetail: 'Premier échange gratuit · 30 min',
     tagline:
-      'Logiciels métiers spécifiques, intégrations, applications mobiles. Premier échange gratuit.',
+      'Logiciels métiers spécifiques, intégrations, applications mobiles. Devis aligné sur votre périmètre — du POC au déploiement industriel.',
     features: [
       'Audit des besoins métier',
       'Architecture technique adaptée',
