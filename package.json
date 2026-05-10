@@ -10,7 +10,9 @@
     "lint": "next lint",
     "audit:security": "pnpm audit --prod --audit-level=moderate",
     "audit:full": "pnpm audit --audit-level=low",
-    "ci:check": "pnpm typecheck && pnpm lint && pnpm audit:security"
+    "ci:check": "pnpm typecheck && pnpm lint && pnpm audit:security",
+    "reset": "powershell -NoProfile -Command \"Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force; if (Test-Path .next) { Remove-Item -Recurse -Force .next }; if (Test-Path node_modules/.cache) { Remove-Item -Recurse -Force node_modules/.cache }; 'Reset done. Run pnpm dev.'\"",
+    "fresh": "pnpm reset && pnpm dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
