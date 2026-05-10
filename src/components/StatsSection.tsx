@@ -2,7 +2,28 @@
 
 import { motion, useInView } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
-import { Boxes, Bird, Globe2, Coins } from 'lucide-react';
+import { AppWindow, CircleDollarSign, MapPinned } from 'lucide-react';
+
+/**
+ * Inline SVG of the African continent silhouette. Lucide doesn't ship
+ * a "continent" icon, so we draw a simplified shape that's
+ * unmistakably Africa and color it via `currentColor` so it inherits
+ * the tone color like any other Lucide icon.
+ */
+function AfricaIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      stroke="none"
+      aria-hidden="true"
+    >
+      <path d="M14.6 2.2c-1.4-.5-3.5-.4-4.6.4-1 .7-2 .8-3 1.1-.9.3-1.7 1.1-1.8 2.1-.1.8.4 1.6 1 2.1.5.5.7 1.3.4 2-.4 1-.6 2-.4 3 .2.9.7 1.6 1 2.5.4.9.4 2 0 2.9-.3.7-.8 1.3-.9 2-.1.7.4 1.6 1.2 1.7.6.1 1.2-.3 1.7-.7.5-.5.9-1 1.5-1.4.7-.4 1.6-.5 2.4-.7.8-.2 1.6-.7 2-1.4.5-1 .2-2.1-.1-3.1-.3-1-.5-2.1-.2-3.1.4-1.3 1.3-2.4 1.6-3.7.3-1.1.1-2.4-.5-3.4-.4-.6-.9-1.1-1.3-1.7-.3-.4-.6-.9-.5-1.4.1-.5.7-.9 1.1-.5 0 0-.4-.4-1.1-.7Z" />
+      <path d="M19.4 6.2c.4-.3.5-.9.2-1.3-.2-.4-.7-.6-1.1-.4-.4.2-.6.7-.4 1.1.2.4.5.7 1 .7.1 0 .2 0 .3-.1Z" opacity="0.85" />
+    </svg>
+  );
+}
 
 type Stat = {
   icon: React.ElementType;
@@ -13,10 +34,10 @@ type Stat = {
 };
 
 const STATS: Stat[] = [
-  { icon: Boxes, value: 2, label: 'Produits SaaS B2B en production', tone: 'cyan' },
-  { icon: Globe2, value: 17, label: 'Pays OHADA couverts', tone: 'violet' },
-  { icon: Coins, value: 50, suffix: '+', label: 'Devises supportées', tone: 'amber' },
-  { icon: Bird, value: 100, suffix: '%', label: "Conçu pour l'Afrique", tone: 'emerald' },
+  { icon: AppWindow, value: 2, label: 'Produits SaaS B2B en production', tone: 'cyan' },
+  { icon: MapPinned, value: 17, label: 'Pays OHADA couverts', tone: 'violet' },
+  { icon: CircleDollarSign, value: 50, suffix: '+', label: 'Devises supportées', tone: 'amber' },
+  { icon: AfricaIcon, value: 100, suffix: '%', label: "Conçu pour l'Afrique", tone: 'emerald' },
 ];
 
 const TONE_STYLES: Record<Stat['tone'], { bg: string; ring: string; text: string }> = {
