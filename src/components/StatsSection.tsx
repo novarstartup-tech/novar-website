@@ -2,70 +2,50 @@
 
 import { motion, useInView } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
-import { AppWindow, CircleDollarSign, MapPinned } from 'lucide-react';
+import { AppWindow, CircleDollarSign, Globe, MapPinned } from 'lucide-react';
 
 /**
- * Inline SVG of the African continent silhouette. Lucide doesn't ship
- * a "continent" icon. The path below traces a recognizable Africa :
+ * Real cartographic Africa SVG, served from `public/icons/africa.svg`.
  *
- * - Wide top  : Maghreb + Sahara horn extending east toward Egypt /
- *               Sinai (peak around x≈17 / y≈3.5).
- * - Bulge SW  : West-Africa coast (Senegal -> Gulf of Guinea), the
- *               iconic widening.
- * - Sharp E.  : Horn of Africa pinched between Ethiopia and Somalia
- *               (point near x≈18 / y≈10).
- * - Pointed S : Cape of Good Hope tapering to a single vertex
- *               (x≈12.5 / y≈21.5).
- * - Madagascar: tiny island offset SE (separate sub-path).
+ * Why an asset and not an inline path :
+ *   - Hand-drawn paths look childish ; a real geographic outline (from
+ *     Wikipedia Commons / simplemaps) reads as professional at a glance.
+ *   - The asset can be swapped without touching React / TS code.
  *
- * Drawn at viewBox 24×24 to match the lucide grid, fills via
- * `currentColor` so it tints with the parent's text color.
+ * Dropped-in expected path :
+ *   public/icons/africa.svg
+ *
+ * Recommended source (license-clear, vector, ~10 KB) :
+ *   https://commons.wikimedia.org/wiki/File:Africa_(orthographic_projection).svg
+ *   or https://commons.wikimedia.org/wiki/File:Africa_(continent).svg
+ *   or any "outline only" Africa SVG from simplemaps.com.
+ *
+ * The file should use `currentColor` for fill (or no `fill` attribute
+ * at all) so the emerald tint of the stat card carries through.
+ * If the file is missing at runtime, the `onError` falls back to a
+ * Lucide `Globe` so we never ship a broken image icon.
  */
 function AfricaIcon({ className }: { className?: string }) {
+  const [errored, setErrored] = useState(false);
+  if (errored) {
+    // Fallback if /icons/africa.svg is not in place yet
+    return <Globe className={className} />;
+  }
   return (
-    <svg
+    <img
+      src="/icons/africa.svg"
+      alt="Afrique"
+      width={20}
+      height={20}
       className={className}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      stroke="none"
-      aria-hidden="true"
-    >
-      {/* Mainland Africa */}
-      <path
-        d="M9 2.6
-           C10.6 2.4 12.4 2.5 14 2.9
-           L15.7 3.4
-           L17.2 4.5
-           L17.7 6
-           L16.9 7.4
-           L16.2 8.6
-           L17.1 9.4
-           L17.6 10.6
-           C 17.7 11.3 17.4 11.9 16.8 12.2
-           L 16.0 12.6
-           L 15.6 13.8
-           L 15.1 15.1
-           L 14.5 16.5
-           L 13.9 18
-           L 13.2 19.6
-           L 12.5 21.4
-           L 11.7 20.4
-           L 10.9 19
-           L 10.2 17.4
-           L 9.6 15.8
-           L 9.1 14.2
-           L 8.5 12.5
-           L 7.9 10.9
-           L 7.3 9.3
-           L 6.7 7.7
-           L 6.5 6.3
-           L 7.1 5
-           L 8 4
-           Z"
-      />
-      {/* Madagascar */}
-      <ellipse cx="19.6" cy="14.8" rx="0.7" ry="1.7" opacity="0.85" />
-    </svg>
+      style={{
+        // The downloaded SVGs ship with their own fill ; if the file is
+        // single-color and uses currentColor we recolor via CSS filter
+        // (safer than depending on the SVG honoring currentColor).
+        filter: 'brightness(0) saturate(100%) invert(45%) sepia(60%) saturate(580%) hue-rotate(110deg) brightness(95%) contrast(85%)',
+      }}
+      onError={() => setErrored(true)}
+    />
   );
 }
 
