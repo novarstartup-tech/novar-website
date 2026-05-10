@@ -1,202 +1,204 @@
-'use client';
-import { useState } from 'react';
 import Link from 'next/link';
-import { Check } from 'lucide-react';
-import { formatPriceGNF, cn } from '@/lib/utils';
+import { Check, Download, Sparkles, Wrench } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-type Plan = {
-  name: string;
+/**
+ * PricingTable — Sprint 19 freeware refresh.
+ *
+ * NOVAR n'est plus un SaaS payant à plans. La grille tarifaire reflète
+ * désormais les trois lignes de l'activité telle qu'elle est :
+ *
+ * 1. BIRDY  — logiciel propriétaire **distribué gratuitement** (freeware)
+ *             sous EULA. Tu installes, tu utilises, tu ne paies rien.
+ * 2. FEEDORA — SaaS B2B AgriTech, en construction, accès sur demande.
+ * 3. Sur mesure — développement custom, devis sur projet.
+ *
+ * Aucune notion de plan / abonnement / utilisateur facturé. Si demain
+ * on réintroduit un plan payant (cloud-hosted, support prioritaire,
+ * etc.) on ajoutera une carte ici sans toucher à la première.
+ */
+
+type Offer = {
+  icon: typeof Check;
+  product: string;
+  badge: string;
+  price: string;
+  priceDetail: string;
   tagline: string;
-  monthly: number;
   features: string[];
-  highlight?: boolean;
   cta: { label: string; href: string };
+  highlight?: boolean;
 };
 
-const PLANS: Plan[] = [
+const OFFERS: Offer[] = [
   {
-    name: 'Solo',
-    tagline: 'Pour les indépendants et petites boutiques',
-    monthly: 50_000,
+    icon: Download,
+    product: 'BIRDY',
+    badge: 'Gratuit',
+    price: '0 GNF',
+    priceDetail: 'Pour toujours',
+    tagline:
+      'ERP & comptabilité OHADA complet. Logiciel propriétaire distribué gratuitement.',
     features: [
-      '1 utilisateur',
-      'POS complet (ventes, retours)',
-      'Gestion des articles & stock',
-      'Caisse & arrêté de caisse',
-      '1 dépôt / point de vente',
-      'Sauvegardes locales',
-      'Support email',
+      'Installation locale Windows / macOS / Linux',
+      'Utilisateurs illimités, dépôts illimités',
+      'Comptabilité SYSCOHADA révisée + liasse fiscale',
+      'Multi-devises (GNF, XOF, USD, EUR…)',
+      'RH & Paie Guinée (IRPP, CNSS)',
+      'POS, achats, stock, caisse, banque',
+      'Mises à jour à vie',
+      'Aucune télémétrie, aucun cloud obligatoire',
     ],
-    cta: { label: 'Commencer', href: '/demo' },
-  },
-  {
-    name: 'Pro',
-    tagline: 'Pour les PME en croissance',
-    monthly: 150_000,
+    cta: { label: 'Télécharger BIRDY', href: '/telechargements' },
     highlight: true,
-    features: [
-      'Jusqu’à 5 utilisateurs',
-      'Tout Solo +',
-      'Comptabilité OHADA SYSCOHADA',
-      'Plan comptable complet & lettrage',
-      'Liasse fiscale & TAFIRE',
-      'Export FEC',
-      'Multi-devises (GNF · USD · EUR)',
-      'Tableaux de bord temps réel',
-      'Support prioritaire',
-    ],
-    cta: { label: 'Essayer 30 jours', href: '/demo' },
   },
   {
-    name: 'Enterprise',
-    tagline: 'Pour les groupes multi-sites',
-    monthly: 400_000,
+    icon: Sparkles,
+    product: 'FEEDORA',
+    badge: 'Bientôt',
+    price: 'Sur demande',
+    priceDetail: 'SaaS B2B AgriTech',
+    tagline:
+      'Plateforme de formulation alimentaire pour fermes avicoles OHADA. Accès anticipé sur invitation.',
     features: [
-      'Utilisateurs illimités',
-      'Tout Pro +',
-      'RH & Paie (IRPP, CNSS Guinée)',
-      'Multi-dépôts & multi-sociétés',
-      'API REST documentée',
-      'SSO Google / Microsoft',
-      'Audit log & MFA',
-      'Formation sur site',
-      'Account manager dédié',
+      'Formulation optimisée par algorithme',
+      "Catalogue d'ingrédients régional",
+      'Calcul des coûts de production',
+      'Multi-fermes, multi-formules',
+      'Tableau de bord nutritionnel',
+      'Export PDF des formulations',
+      'Premières installations en pilote',
     ],
-    cta: { label: 'Nous contacter', href: '/contact' },
+    cta: { label: 'Demander une démo', href: '/contact?produit=feedora' },
+  },
+  {
+    icon: Wrench,
+    product: 'Sur mesure',
+    badge: 'Devis projet',
+    price: 'À partir de',
+    priceDetail: '8 000 000 GNF',
+    tagline:
+      'Logiciels métiers spécifiques, intégrations, applications mobiles. Premier échange gratuit.',
+    features: [
+      'Audit des besoins métier',
+      'Architecture technique adaptée',
+      'Développement Tauri / Web / Mobile',
+      'Intégration aux outils existants',
+      'Formation des équipes incluse',
+      'Code source + propriété transférable',
+      'Support 6 mois après livraison',
+    ],
+    cta: { label: 'Démarrer la conversation', href: '/contact?produit=sur-mesure' },
   },
 ];
 
 export function PricingTable() {
-  const [annual, setAnnual] = useState(false);
   return (
-    <div>
-      {/* Switch mensuel/annuel */}
-      <div className="flex items-center justify-center gap-3 mb-12">
-        <span
-          className={cn(
-            'text-sm font-medium transition-colors',
-            !annual ? 'text-novar-ink' : 'text-novar-muted'
-          )}
-        >
-          Mensuel
-        </span>
-        <button
-          onClick={() => setAnnual(!annual)}
-          className={cn(
-            'relative inline-flex h-6 w-11 items-center rounded-full transition-colors',
-            annual ? 'bg-novar-ink' : 'bg-novar-line'
-          )}
-          role="switch"
-          aria-checked={annual}
-          type="button"
-        >
-          <span
+    <div className="grid gap-6 md:grid-cols-3">
+      {OFFERS.map((o) => {
+        const Icon = o.icon;
+        return (
+          <div
+            key={o.product}
             className={cn(
-              'inline-block h-4 w-4 transform rounded-full bg-white shadow-soft transition-transform',
-              annual ? 'translate-x-6' : 'translate-x-1'
+              'relative rounded-2xl border p-8 flex flex-col transition-all',
+              o.highlight
+                ? 'border-novar-ink bg-novar-ink text-white shadow-lifted'
+                : 'border-novar-line bg-white hover:border-novar-ink/20 hover:shadow-lifted',
             )}
-          />
-        </button>
-        <span
-          className={cn(
-            'text-sm font-medium transition-colors',
-            annual ? 'text-novar-ink' : 'text-novar-muted'
-          )}
-        >
-          Annuel{' '}
-          <span className="ml-1 rounded-full bg-novar-accent-soft px-2 py-0.5 text-xs font-semibold text-novar-accent">
-            −17%
-          </span>
-        </span>
-      </div>
+          >
+            {o.highlight && (
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-cyan-500 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-slate-950">
+                {o.badge}
+              </span>
+            )}
+            {!o.highlight && (
+              <span className="self-start rounded-full bg-novar-surface-2 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-novar-muted">
+                {o.badge}
+              </span>
+            )}
 
-      <div className="grid gap-6 md:grid-cols-3">
-        {PLANS.map((plan) => {
-          const price = annual ? Math.round(plan.monthly * 12 * 0.83) : plan.monthly;
-          const period = annual ? '/an' : '/mois';
-          return (
             <div
-              key={plan.name}
               className={cn(
-                'relative rounded-2xl border p-8 flex flex-col transition-all',
-                plan.highlight
-                  ? 'border-novar-ink bg-novar-ink text-white shadow-lifted'
-                  : 'border-novar-line bg-white hover:border-novar-ink/20 hover:shadow-lifted'
+                'mt-6 inline-flex h-12 w-12 items-center justify-center rounded-xl ring-1',
+                o.highlight
+                  ? 'bg-cyan-500/15 ring-cyan-400/40 text-cyan-300'
+                  : 'bg-novar-surface-2 ring-novar-line text-novar-ink',
               )}
             >
-              {plan.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-novar-accent px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
-                  Le plus populaire
-                </span>
+              <Icon className="h-5 w-5" />
+            </div>
+
+            <h3
+              className={cn(
+                'mt-4 font-display text-xl font-bold',
+                o.highlight ? 'text-white' : 'text-novar-ink',
               )}
-              <h3
+            >
+              {o.product}
+            </h3>
+            <p
+              className={cn(
+                'mt-1 text-sm',
+                o.highlight ? 'text-slate-300' : 'text-novar-muted',
+              )}
+            >
+              {o.tagline}
+            </p>
+
+            <div className="mt-6">
+              <span
                 className={cn(
-                  'font-display text-xl font-bold',
-                  plan.highlight ? 'text-white' : 'text-novar-ink'
+                  'font-display text-3xl font-bold',
+                  o.highlight ? 'text-white' : 'text-novar-ink',
                 )}
               >
-                {plan.name}
-              </h3>
-              <p
+                {o.price}
+              </span>
+              <div
                 className={cn(
                   'mt-1 text-sm',
-                  plan.highlight ? 'text-slate-300' : 'text-novar-muted'
+                  o.highlight ? 'text-slate-400' : 'text-novar-muted',
                 )}
               >
-                {plan.tagline}
-              </p>
-              <div className="mt-6">
-                <span
-                  className={cn(
-                    'font-display text-3xl font-bold',
-                    plan.highlight ? 'text-white' : 'text-novar-ink'
-                  )}
-                >
-                  {formatPriceGNF(price)}
-                </span>
-                <span
-                  className={cn(
-                    'text-sm ml-1',
-                    plan.highlight ? 'text-slate-400' : 'text-novar-muted'
-                  )}
-                >
-                  {period}
-                </span>
+                {o.priceDetail}
               </div>
-              <ul className="mt-7 space-y-2.5 flex-1">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm">
-                    <Check
-                      className={cn(
-                        'h-4 w-4 flex-shrink-0 mt-0.5',
-                        plan.highlight ? 'text-novar-accent' : 'text-novar-accent'
-                      )}
-                    />
-                    <span
-                      className={cn(
-                        plan.highlight ? 'text-slate-200' : 'text-novar-ink-soft'
-                      )}
-                    >
-                      {f}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href={plan.cta.href}
-                className={cn(
-                  'mt-8 block rounded-lg py-2.5 text-center text-sm font-semibold transition-colors',
-                  plan.highlight
-                    ? 'bg-white text-novar-ink hover:bg-novar-surface-2'
-                    : 'bg-novar-ink text-white hover:bg-[#060B16]'
-                )}
-              >
-                {plan.cta.label}
-              </Link>
             </div>
-          );
-        })}
-      </div>
+
+            <ul className="mt-7 space-y-2.5 flex-1">
+              {o.features.map((f) => (
+                <li key={f} className="flex items-start gap-2 text-sm">
+                  <Check
+                    className={cn(
+                      'h-4 w-4 flex-shrink-0 mt-0.5',
+                      o.highlight ? 'text-cyan-400' : 'text-cyan-700',
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      o.highlight ? 'text-slate-200' : 'text-novar-ink-soft',
+                    )}
+                  >
+                    {f}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              href={o.cta.href}
+              className={cn(
+                'mt-8 block rounded-lg py-2.5 text-center text-sm font-semibold transition-colors',
+                o.highlight
+                  ? 'bg-cyan-500 text-slate-950 hover:bg-cyan-400'
+                  : 'bg-novar-ink text-white hover:bg-[#060B16]',
+              )}
+            >
+              {o.cta.label}
+            </Link>
+          </div>
+        );
+      })}
     </div>
   );
 }

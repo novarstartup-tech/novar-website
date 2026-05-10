@@ -66,50 +66,66 @@ const MODULES = [
 export default function BirdyErpPage() {
   return (
     <>
-      {/* Hero — palette cyan navy (confiance, expertise comptable) */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-cyan-50/60 via-white to-white border-b border-novar-line">
-        <div className="absolute inset-0 bg-dots opacity-40" aria-hidden />
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+      {/* Hero — palette cyan navy (confiance, expertise comptable).
+          Photo backdrop au fond + voile sombre dégradé gauche pour la
+          lisibilité du texte (style Stripe / Linear hero). */}
+      <section className="relative overflow-hidden border-b border-slate-800/40 bg-slate-950">
+        {/* Photo en fond (BIRDY ERP) */}
+        <div className="absolute inset-0" aria-hidden>
           <ProductBackdrop variant="birdy" />
         </div>
+        {/* Voile gauche -> droite : opaque sur la moitié texte, transparent
+            sur la photo. Garantit la lisibilité sans étouffer l'image. */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(8,15,30,0.92) 0%, rgba(8,15,30,0.80) 35%, rgba(8,15,30,0.30) 70%, rgba(8,15,30,0.00) 100%)',
+          }}
+        />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
           <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">
-              Produit NOVAR · ERP OHADA
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+              Produit NOVAR · ERP OHADA · Gratuit
             </span>
-            <h1 className="mt-4 font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-novar-ink leading-[1.05]">
+            <h1 className="mt-4 font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.05]">
               BIRDY
             </h1>
-            <p className="mt-4 text-xl sm:text-2xl font-medium text-cyan-700">
+            <p className="mt-4 text-xl sm:text-2xl font-medium text-cyan-300">
               L&apos;ERP et la gestion comptable OHADA, sans douleur.
             </p>
-            <p className="mt-6 max-w-2xl text-lg text-novar-muted leading-relaxed">
+            <p className="mt-6 max-w-2xl text-lg text-slate-300 leading-relaxed">
               BIRDY est un logiciel de gestion comptable OHADA complet pour
               les PME africaines. Facturation, comptabilité, paie, stocks —
               tout est centralisé dans un outil moderne, en français, qui
-              s&apos;installe en quelques minutes.
+              s&apos;installe en quelques minutes.{' '}
+              <strong className="text-white">100&nbsp;% gratuit, à vie.</strong>
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
-              <Link href="/demo" className="btn-primary">
-                Réserver une démo <ArrowRight className="h-4 w-4" />
+              <Link
+                href="/telechargements"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-cyan-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-all hover:bg-cyan-400 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(34,211,238,0.35)]"
+              >
+                Télécharger BIRDY <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/telechargements" className="btn-ghost">
-                Télécharger
-              </Link>
-              <Link href="/tarifs" className="btn-ghost">
-                Voir les tarifs
+              <Link
+                href="/demo"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-900/40 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-slate-800/60"
+              >
+                Réserver une démo
               </Link>
             </div>
-            <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-wider text-novar-muted">
+            <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-wider text-slate-400">
               <span className="inline-flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-600" />
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
                 En production
               </span>
-              <span className="text-novar-line">·</span>
+              <span className="text-slate-700">·</span>
               <span>Windows · macOS · Linux</span>
-              <span className="text-novar-line">·</span>
+              <span className="text-slate-700">·</span>
               <span>SYSCOHADA révisé</span>
-              <span className="text-novar-line">·</span>
+              <span className="text-slate-700">·</span>
               <span>Multi-utilisateurs</span>
             </div>
           </div>
@@ -225,12 +241,12 @@ export default function BirdyErpPage() {
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 md:pb-32">
           <CtaBanner
-            title="Prêt à essayer BIRDY ?"
-            description="30 jours gratuits, sans carte bancaire. Installation guidée en moins de 30 minutes."
-            primaryHref="/demo"
-            primaryLabel="Démarrer l'essai gratuit"
-            secondaryHref="/tarifs"
-            secondaryLabel="Voir les tarifs"
+            title="Prêt à installer BIRDY ?"
+            description="100 % gratuit, sans abonnement, sans carte bancaire. Installation guidée en moins de 30 minutes."
+            primaryHref="/telechargements"
+            primaryLabel="Télécharger BIRDY"
+            secondaryHref="/demo"
+            secondaryLabel="Réserver une démo"
           />
         </div>
       </section>
