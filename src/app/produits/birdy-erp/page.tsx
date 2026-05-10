@@ -122,7 +122,7 @@ export default function BirdyErpPage() {
                 En production
               </span>
               <span className="text-slate-700">·</span>
-              <span>Windows · macOS · Linux</span>
+              <span>Windows · macOS &amp; Linux à venir</span>
               <span className="text-slate-700">·</span>
               <span>SYSCOHADA révisé</span>
               <span className="text-slate-700">·</span>

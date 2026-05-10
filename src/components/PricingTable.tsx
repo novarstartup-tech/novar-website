@@ -40,7 +40,7 @@ const OFFERS: Offer[] = [
     tagline:
       'ERP & comptabilité OHADA complet. Logiciel propriétaire distribué gratuitement.',
     features: [
-      'Installation locale Windows / macOS / Linux',
+      'Installation locale Windows (macOS / Linux à venir)',
       'Utilisateurs illimités, dépôts illimités',
       'Comptabilité SYSCOHADA révisée + liasse fiscale',
       'Multi-devises (GNF, XOF, USD, EUR…)',
@@ -55,11 +55,11 @@ const OFFERS: Offer[] = [
   {
     icon: Sparkles,
     product: 'FEEDORA',
-    badge: 'Bientôt',
-    price: 'Sur demande',
+    badge: 'Gratuit',
+    price: '0 GNF',
     priceDetail: 'SaaS B2B AgriTech',
     tagline:
-      'Plateforme de formulation alimentaire pour fermes avicoles OHADA. Accès anticipé sur invitation.',
+      "Plateforme web de formulation alimentaire pour fermes avicoles OHADA. Accès gratuit, ouvert à tous les éleveurs.",
     features: [
       'Formulation optimisée par algorithme',
       "Catalogue d'ingrédients régional",
@@ -67,9 +67,9 @@ const OFFERS: Offer[] = [
       'Multi-fermes, multi-formules',
       'Tableau de bord nutritionnel',
       'Export PDF des formulations',
-      'Premières installations en pilote',
+      "Aucune limite d'usage",
     ],
-    cta: { label: 'Demander une démo', href: '/contact?produit=feedora' },
+    cta: { label: 'Accéder à FEEDORA', href: 'https://feedora-cyan.vercel.app/' },
   },
   {
     icon: Wrench,

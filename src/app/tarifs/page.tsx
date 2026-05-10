@@ -15,8 +15,8 @@ export default function TarifsPage() {
       <PageHero
         tone="cyan"
         eyebrow="Tarifs"
-        title="BIRDY est gratuit."
-        description="Pas d'abonnement, pas de carte bancaire, pas de modules payants à empiler. Téléchargez BIRDY et installez-le sur autant de postes que vous voulez. Pour FEEDORA (SaaS AgriTech) et les développements sur mesure, voir les offres ci-dessous."
+        title="Nos produits sont gratuits."
+        description="BIRDY (ERP desktop OHADA) et FEEDORA (SaaS AgriTech) sont distribués gratuitement, sans abonnement ni carte bancaire. NOVAR finance ses produits via les développements logiciels sur mesure pour les entreprises."
         centered
       />
 
