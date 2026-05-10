@@ -54,10 +54,10 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="mx-auto mt-7 max-w-2xl text-lg sm:text-xl text-novar-muted leading-relaxed"
           >
-            ERP OHADA, AgriTech avicole, automatisations sur mesure. NOVAR
-            conçoit des outils gratuits pour les PME et des solutions
-            logicielles taillées pour les organisations qui veulent gagner en
-            vitesse, en précision et en marge — partout en Afrique.
+            ERP OHADA, AgriTech avicole, développements sur mesure. NOVAR
+            édite trois propositions complémentaires pour que chaque
+            organisation africaine — du commerçant à l&apos;exploitation
+            agro-industrielle — trouve l&apos;outil qui lui correspond.
           </motion.p>
 
           <motion.div
@@ -65,8 +65,8 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3"
           >
-            <Link href="/telechargements" className="btn-primary group">
-              Télécharger BIRDY gratuitement{' '}
+            <Link href="/produits" className="btn-primary group">
+              Découvrir nos produits{' '}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link href="/services/sur-mesure" className="btn-ghost">
@@ -80,7 +80,7 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="mt-14 grid grid-cols-3 gap-6 max-w-2xl mx-auto"
           >
-            <Stat value="2" label="Produits B2B gratuits" />
+            <Stat value="3" label="Offres complémentaires" />
             <Stat value="OHADA" label="Conformité native" />
             <Stat value="100%" label="Conçu en Afrique" />
           </motion.div>

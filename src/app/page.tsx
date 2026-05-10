@@ -16,46 +16,55 @@ export default function HomePage() {
       {/* === Stats animées (counter Motion) ============================ */}
       <StatsSection />
 
-      {/* === Notre modèle ============================================== */}
+      {/* === Notre modèle — trois propositions, même pied d'égalité ==== */}
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
-          <div className="grid gap-16 lg:grid-cols-12 lg:items-start">
-            <div className="lg:col-span-5">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-                Notre modèle
-              </span>
-              <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-novar-ink leading-tight">
-                Studio logiciel à double moteur.
-              </h2>
-              <p className="mt-6 text-lg text-novar-muted leading-relaxed">
-                Nous éditons des produits B2B accessibles à toute
-                l&apos;Afrique, distribués gratuitement, et nous concevons
-                des solutions logicielles sur mesure pour les entreprises qui
-                veulent gagner en vitesse, en précision et en marge. Un seul
-                partenaire technologique, deux leviers de transformation.
-              </p>
-            </div>
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
+              Notre modèle
+            </span>
+            <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-novar-ink leading-tight">
+              Studio logiciel,
+              <br />trois propositions complémentaires.
+            </h2>
+            <p className="mt-6 text-lg text-novar-muted leading-relaxed">
+              Trois portes d&apos;entrée selon votre besoin : un ERP OHADA
+              pour vos opérations, un SaaS AgriTech pour vos formulations
+              avicoles, ou un développement sur mesure quand votre métier
+              demande une réponse unique. Aucune offre ne vaut plus que
+              l&apos;autre — elles s&apos;adressent à des contextes
+              différents.
+            </p>
+          </div>
 
-            <div className="lg:col-span-7 grid gap-6 sm:grid-cols-2">
-              <ApproachCard
-                icon="layers"
-                title="Produits B2B gratuits"
-                description="Des plateformes prêtes à l'emploi pour des secteurs entiers — ERP OHADA, AgriTech avicole. Vous téléchargez, vous installez, vous démarrez en quelques minutes. Aucun abonnement, aucune carte bancaire, mises à jour à vie."
-                href="/produits"
-                cta="Découvrir nos produits"
-                index={0}
-                tone="cyan"
-              />
-              <ApproachCard
-                icon="wrench"
-                title="Développement sur mesure"
-                description="Votre besoin métier ne rentre dans aucune case ? Nous concevons, développons et déployons la solution taillée pour vous — du cadrage stratégique à la mise en production, code source livré."
-                href="/services/sur-mesure"
-                cta="Lancer un projet"
-                index={1}
-                tone="amber"
-              />
-            </div>
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
+            <ApproachCard
+              icon="layers"
+              title="BIRDY — ERP OHADA"
+              description="Plateforme desktop complète pour PME africaines : facturation, comptabilité OHADA, paie, stocks, caisse. Installation en moins de 30 minutes. Gratuit, sans abonnement, mises à jour à vie."
+              href="/produits/birdy-erp"
+              cta="Découvrir BIRDY"
+              index={0}
+              tone="cyan"
+            />
+            <ApproachCard
+              icon="layers"
+              title="FEEDORA — AgriTech"
+              description="SaaS de formulation alimentaire pour fermes avicoles. Optimisation par algorithme, multi-pays, multi-devises. Accessible immédiatement depuis le web. Gratuit, sans limite d'usage."
+              href="/produits/feedora"
+              cta="Accéder à FEEDORA"
+              index={1}
+              tone="emerald"
+            />
+            <ApproachCard
+              icon="wrench"
+              title="Développement sur mesure"
+              description="Logiciel métier, intégration complexe, application mobile. Nous concevons, développons et déployons la solution taillée pour votre périmètre — du cadrage à la mise en production, code source livré."
+              href="/services/sur-mesure"
+              cta="Lancer un projet"
+              index={2}
+              tone="amber"
+            />
           </div>
         </div>
       </section>
@@ -82,7 +91,7 @@ export default function HomePage() {
               logoVariant="birdy"
               name="BIRDY"
               tagline="ERP & gestion comptable OHADA — gratuit"
-              description="L'ERP que les PME africaines attendaient : facturation, comptabilité OHADA, paie, stocks, caisse. En français, hors ligne, multi-devises. Installation en moins de 30 minutes."
+              description="Plateforme desktop complète pour PME africaines : facturation, comptabilité OHADA, paie, stocks, caisse. En français, hors ligne, multi-devises. Installation en moins de 30 minutes."
               bullets={[
                 'Facturation conforme',
                 'Comptabilité OHADA · FEC',
@@ -92,8 +101,8 @@ export default function HomePage() {
                 'Fonctionne hors ligne',
               ]}
               actions={[
-                { label: 'Télécharger gratuitement', href: '/telechargements', primary: true },
-                { label: 'Découvrir BIRDY', href: '/produits/birdy-erp' },
+                { label: 'Découvrir BIRDY', href: '/produits/birdy-erp', primary: true },
+                { label: 'Télécharger', href: '/telechargements' },
               ]}
               index={0}
             />
@@ -101,7 +110,7 @@ export default function HomePage() {
               logoVariant="feedora"
               name="FEEDORA"
               tagline="Formulation avicole — gratuit"
-              description="Le SaaS AgriTech qui aide éleveurs et nutritionnistes à formuler des rations équilibrées, économiques et performantes. Multi-pays, multi-devises, accessible partout."
+              description="SaaS AgriTech B2B pour aider éleveurs et nutritionnistes à formuler des rations équilibrées, économiques et performantes. Multi-pays, multi-devises, accessible immédiatement depuis le web."
               bullets={[
                 'Formulation intelligente',
                 'Coût/kg & coût/tonne',
@@ -111,8 +120,8 @@ export default function HomePage() {
                 'Rapports PDF pro',
               ]}
               actions={[
-                { label: 'Accéder à FEEDORA', href: 'https://feedora-cyan.vercel.app/', primary: true, external: true },
-                { label: 'En savoir plus', href: '/produits/feedora' },
+                { label: 'Découvrir FEEDORA', href: '/produits/feedora', primary: true },
+                { label: 'Accéder maintenant', href: 'https://feedora-cyan.vercel.app/', external: true },
               ]}
               index={1}
             />
