@@ -1,18 +1,17 @@
-import OgImage, { alt as ogAlt } from './opengraph-image';
-import { SITE } from '@/lib/site';
+import OgImage from './opengraph-image';
 
 /**
- * Twitter card image — réutilise le même rendu 1200×630 qu'Open Graph.
+ * Twitter card image — same 1200×630 visual as Open Graph.
  *
- * Next.js 15 fait du static analysis sur les `export const runtime/size/
- * contentType` au build-time : ces valeurs DOIVENT être des littéraux
- * dans le fichier source. On ne peut donc pas les ré-exporter depuis
- * `./opengraph-image` — il faut les redéclarer ici en dur.
+ * Next.js 15 static analysis requires runtime/size/contentType to be
+ * inline literals in this file. Re-importing them from another metadata
+ * route confuses the page data collector. So we hard-code everything
+ * and only re-export the OgImage component itself.
  */
 
 export const runtime = 'edge';
 export const contentType = 'image/png';
 export const size = { width: 1200, height: 630 };
-export const alt = ogAlt ?? `${SITE.name} — ${SITE.baseline}`;
+export const alt = 'NOVAR — Le logiciel qui propulse les entreprises africaines';
 
 export default OgImage;
