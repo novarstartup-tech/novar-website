@@ -8,18 +8,73 @@ type Variant = 'birdy' | 'feedora';
  * ProductBackdrop — visuel decoratif contextuel place en arriere-plan
  * d'une section ou card.
  *
- * - feedora : silhouettes de poule + grain de mais (vert emerald, sobre)
- * - birdy   : graphique en barres + courbe (cyan, sobre)
+ * - feedora : silhouettes de poule + grain de mais (vert emerald, sobre).
+ *             Si `/products/feedora-bg.jpg` existe, il prime sur le SVG
+ *             et fait office de photo de fond avec un voile vert sombre.
+ * - birdy   : graphique en barres + courbe (cyan, sobre).
  *
- * Tout est SVG inline, opacity faible pour ne pas voler la vedette au contenu.
- * Animations subtiles : le grain pulse doucement, la courbe trace au hover.
+ * Tout est SVG inline (sauf si l'image .jpg est posee), opacity faible
+ * pour ne pas voler la vedette au contenu.
+ *
+ * Pour utiliser une PHOTO de fond pour FEEDORA :
+ *   1. Achete / telecharge une image libre de droit (Unsplash : "poultry farm").
+ *   2. Place-la dans `public/products/feedora-bg.jpg` (ou .webp).
+ *   3. Recharge la page : <FeedoraBackdrop /> bascule auto en mode photo.
+ *
+ * Si le fichier n'existe pas, Next.js renvoie un 404 -> l'<img> reste
+ * cassee mais cachee par le voile, l'animation SVG continue de tourner.
  */
 export function ProductBackdrop({ variant }: { variant: Variant }) {
   if (variant === 'feedora') return <FeedoraBackdrop />;
   return <BirdyBackdrop />;
 }
 
+/**
+ * Set this to `true` once `public/products/feedora-bg.jpg` is in place.
+ * It's a build-time toggle (not a runtime check) so we don't ship an
+ * extra HTTP probe on every page render.
+ */
+const USE_FEEDORA_PHOTO = true;
+const FEEDORA_PHOTO_PATH = '/products/feedora-bg.jpg';
+
 function FeedoraBackdrop() {
+  return (
+    <div className="absolute inset-0 h-full w-full overflow-hidden">
+      {USE_FEEDORA_PHOTO && (
+        <>
+          {/* Photo layer — covers the full backdrop, kept dim so the
+              foreground content stays readable on every screen size.
+              `object-cover` + `object-center` so portrait + landscape
+              crops both look acceptable. */}
+          <img
+            src={FEEDORA_PHOTO_PATH}
+            alt=""
+            aria-hidden
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-25"
+            onError={(e) => {
+              // Fallback : if the photo file isn't deployed, hide the
+              // <img> entirely so the SVG underneath shows up cleanly.
+              (e.currentTarget as HTMLImageElement).style.display = 'none';
+            }}
+          />
+          {/* Emerald veil + soft vignette for legibility. */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(135deg, rgba(5,46,22,0.55) 0%, rgba(6,78,59,0.35) 50%, rgba(0,0,0,0.55) 100%)',
+            }}
+          />
+        </>
+      )}
+      <FeedoraSvgDecor />
+    </div>
+  );
+}
+
+function FeedoraSvgDecor() {
   return (
     <svg
       viewBox="0 0 600 400"
