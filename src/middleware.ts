@@ -44,6 +44,14 @@ import { NextResponse, type NextRequest } from 'next/server';
  * (eval, websocket dev server) — sinon Next.js ne se recharge pas.
  */
 export function middleware(request: NextRequest) {
+  // En développement (next dev), le CSP cause plus de problèmes qu'il
+  // n'en résout : HMR, react-refresh, devtools, source maps font tous
+  // des inline-eval et fetch dynamiques qu'on ne maîtrise pas. Skip
+  // complet en dev — le CSP est strictement utile en production.
+  if (process.env.NODE_ENV !== 'production') {
+    return NextResponse.next();
+  }
+
   // Skip the static asset paths — pas de CSP nécessaire et ça évite des
   // headers inutiles sur des centaines de requêtes par page
   const pathname = request.nextUrl.pathname;
@@ -63,24 +71,18 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const isDev = process.env.NODE_ENV !== 'production';
-
   // Nonce 16 bytes -> base64 (~24 chars)
   const nonceBytes = new Uint8Array(16);
   crypto.getRandomValues(nonceBytes);
   const nonce = btoa(String.fromCharCode(...nonceBytes));
 
-  const scriptSrc = isDev
-    ? `'self' 'nonce-${nonce}' 'unsafe-eval' 'unsafe-inline'`
-    : `'self' 'nonce-${nonce}' 'strict-dynamic'`;
-
   const csp = [
     `default-src 'self'`,
-    `script-src ${scriptSrc}`,
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
     `style-src 'self' 'unsafe-inline'`,
     `img-src 'self' data: blob: https:`,
     `font-src 'self' data:`,
-    `connect-src 'self'${isDev ? ' ws: wss:' : ''}`,
+    `connect-src 'self'`,
     `frame-ancestors 'none'`,
     `base-uri 'self'`,
     `form-action 'self'`,
