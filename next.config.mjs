@@ -32,6 +32,22 @@ const securityHeaders = [
   { key: 'X-DNS-Prefetch-Control', value: 'on' },
 ];
 
+const isDev = process.env.NODE_ENV !== 'production';
+
+/**
+ * Force aucun cache HTTP en mode dev — empêche Edge / Chrome de
+ * servir un vieux HTML après un redéploiement local. C'est ce qui
+ * causait les hydration mismatches récurrents : le navigateur gardait
+ * l'ancien Header en cache disque tandis que le bundle JS hydratait
+ * la nouvelle version.
+ */
+const devNoCacheHeaders = [
+  { key: 'Cache-Control', value: 'no-store, no-cache, must-revalidate, proxy-revalidate' },
+  { key: 'Pragma', value: 'no-cache' },
+  { key: 'Expires', value: '0' },
+  { key: 'Surrogate-Control', value: 'no-store' },
+];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
@@ -41,6 +57,16 @@ const nextConfig = {
   // is better than guessed.
   trailingSlash: false,
   async headers() {
+    if (isDev) {
+      // Dev : zéro cache navigateur sur tout. Évite les hydration
+      // mismatches après un nuke .next ou un changement de composant.
+      return [
+        {
+          source: '/:path*',
+          headers: [...securityHeaders, ...devNoCacheHeaders],
+        },
+      ];
+    }
     return [
       {
         source: '/:path*',
