@@ -54,19 +54,20 @@ function FeedoraBackdrop() {
             aria-hidden
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-center opacity-25"
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-80"
             onError={(e) => {
               // Fallback : if the photo file isn't deployed, hide the
               // <img> entirely so the SVG underneath shows up cleanly.
               (e.currentTarget as HTMLImageElement).style.display = 'none';
             }}
           />
-          {/* Emerald veil + soft vignette for legibility. */}
+          {/* Light emerald tint + soft bottom vignette for legibility
+              of the foreground text — the photo stays clearly visible. */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                'linear-gradient(135deg, rgba(5,46,22,0.55) 0%, rgba(6,78,59,0.35) 50%, rgba(0,0,0,0.55) 100%)',
+                'linear-gradient(180deg, rgba(5,46,22,0.10) 0%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.35) 100%)',
             }}
           />
         </>
@@ -156,17 +157,18 @@ function BirdyBackdrop() {
             aria-hidden
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-center opacity-25"
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-80"
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).style.display = 'none';
             }}
           />
-          {/* Cyan / navy veil — tints the photo into BIRDY brand colors. */}
+          {/* Light cyan/navy tint + soft bottom vignette — the photo
+              stays clearly visible. */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                'linear-gradient(135deg, rgba(8,47,73,0.55) 0%, rgba(8,145,178,0.30) 50%, rgba(0,0,0,0.55) 100%)',
+                'linear-gradient(180deg, rgba(8,47,73,0.10) 0%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.35) 100%)',
             }}
           />
         </>
