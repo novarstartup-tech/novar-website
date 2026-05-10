@@ -27,23 +27,20 @@ import { AppWindow, CircleDollarSign, Globe, MapPinned } from 'lucide-react';
  */
 function AfricaIcon({ className }: { className?: string }) {
   const [errored, setErrored] = useState(false);
-  if (errored) {
-    // Fallback if /icons/africa.svg is not in place yet
-    return <Globe className={className} />;
-  }
+  if (errored) return <Globe className={className} />;
   return (
     <img
-      src="/icons/africa.svg"
+      src="/icons/africa.png"
       alt="Afrique"
       width={20}
       height={20}
       className={className}
-      style={{
-        // The downloaded SVGs ship with their own fill ; if the file is
-        // single-color and uses currentColor we recolor via CSS filter
-        // (safer than depending on the SVG honoring currentColor).
-        filter: 'brightness(0) saturate(100%) invert(45%) sepia(60%) saturate(580%) hue-rotate(110deg) brightness(95%) contrast(85%)',
-      }}
+      // Image source is a license-cleared map photo whose black
+      // background was stripped to transparent + downscaled to 512px
+      // by `scripts/process-africa.mjs`. We display it at native
+      // colors (no recoloring) so the geographic detail stays
+      // recognizable.
+      style={{ objectFit: 'contain' }}
       onError={() => setErrored(true)}
     />
   );
