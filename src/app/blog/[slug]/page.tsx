@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { BLOG_POSTS } from '@/lib/blog';
+import { BlogPostingJsonLd, BreadcrumbJsonLd } from '@/components/JsonLd';
+import { SITE } from '@/lib/site';
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
@@ -10,7 +12,28 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
-  return { title: post?.title ?? 'Article' };
+  if (!post) return { title: 'Article' };
+  return {
+    title: post.title,
+    description: post.description,
+    keywords: post.tags,
+    authors: [{ name: post.author }],
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author],
+      tags: post.tags,
+      url: `${SITE.url}/blog/${post.slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+    },
+    alternates: { canonical: `/blog/${post.slug}` },
+  };
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
@@ -26,8 +49,26 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     notFound();
   }
 
+  const postUrl = `${SITE.url}/blog/${post.slug}`;
+
   return (
     <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
+      <BlogPostingJsonLd
+        headline={post.title}
+        description={post.description}
+        url={postUrl}
+        datePublished={post.date}
+        author={post.author}
+        articleSection={post.tags?.[0]}
+        keywords={post.tags}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Accueil', url: SITE.url },
+          { name: 'Blog', url: `${SITE.url}/blog` },
+          { name: post.title, url: postUrl },
+        ]}
+      />
       <Link
         href="/blog"
         className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white mb-8"

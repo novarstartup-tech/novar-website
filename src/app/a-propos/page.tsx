@@ -67,7 +67,7 @@ const TEAM: TeamMember[] = [
   {
     role: 'Lead Developer',
     shortRole: 'Architecture & Backend',
-    name: 'DIALLO M. Bobo',
+    name: 'BAH Mamadou Bobo',
     photo: '/team/2.jpg',
     bio: "Un code solide aujourd'hui, c'est un produit qui tient dans dix ans — la robustesse n'est pas négociable.",
     accent: 'violet',

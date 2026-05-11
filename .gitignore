@@ -5,3 +5,9 @@ out
 dist
 *.log
 .DS_Store
+
+# TypeScript build cache
+tsconfig.tsbuildinfo
+
+# Vercel
+.vercel

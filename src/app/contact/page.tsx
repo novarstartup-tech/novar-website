@@ -1,6 +1,7 @@
 import { Mail, MapPin, Facebook, Linkedin, Phone, MessageCircle, Clock } from 'lucide-react';
 import { ContactForm } from '@/components/ContactForm';
 import { PageHero } from '@/components/PageHero';
+import { LocalBusinessJsonLd } from '@/components/JsonLd';
 import { SITE } from '@/lib/site';
 
 export const metadata = {
@@ -11,6 +12,7 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <>
+      <LocalBusinessJsonLd />
       <PageHero
         tone="cyan"
         eyebrow="Parlons de votre projet"

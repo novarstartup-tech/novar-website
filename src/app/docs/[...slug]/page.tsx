@@ -6,6 +6,8 @@ import { ArrowLeft, ArrowRight, Github } from 'lucide-react';
 import { DocsBreadcrumbs } from '@/components/DocsBreadcrumbs';
 import { DocsTOC } from '@/components/DocsTOC';
 import { DOCS_TREE, flattenDocs } from '@/lib/docs';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
+import { SITE } from '@/lib/site';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'src', 'content', 'docs');
 
@@ -18,7 +20,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const flat = flattenDocs();
   const doc = flat.find((d) => d.slug === slug.join('/'));
-  return { title: doc ? doc.title : 'Documentation' };
+  if (!doc) return { title: 'Documentation' };
+  const url = `${SITE.url}/docs/${doc.slug}`;
+  return {
+    title: doc.title,
+    description: `Documentation ${doc.title} — guide officiel NOVAR pour BIRDY ERP OHADA et FEEDORA formulation alimentaire avicole.`,
+    alternates: { canonical: `/docs/${doc.slug}` },
+    openGraph: {
+      title: `${doc.title} — Documentation NOVAR`,
+      url,
+      type: 'article',
+    },
+  };
 }
 
 async function loadDoc(slug: string[]) {
@@ -50,8 +63,17 @@ export default async function DocsSlugPage({ params }: { params: Promise<{ slug:
     c.pages.some((p) => (c.slug ? `${c.slug}/${p.slug}` : p.slug) === slugStr)
   );
 
+  const docUrl = `${SITE.url}/docs/${doc.slug}`;
+  const breadcrumbItems = [
+    { name: 'Accueil', url: SITE.url },
+    { name: 'Documentation', url: `${SITE.url}/docs` },
+    ...(category ? [{ name: category.title, url: `${SITE.url}/docs` }] : []),
+    { name: doc.title, url: docUrl },
+  ];
+
   return (
     <div className="flex">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
       <article className="flex-1 px-6 lg:px-12 py-10 max-w-3xl min-w-0">
         <DocsBreadcrumbs
           trail={[

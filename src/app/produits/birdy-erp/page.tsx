@@ -13,6 +13,8 @@ import {
 } from 'lucide-react';
 import { CtaBanner } from '@/components/CtaBanner';
 import { ProductBackdrop } from '@/components/ProductBackdrop';
+import { SoftwareApplicationJsonLd } from '@/components/JsonLd';
+import { SITE } from '@/lib/site';
 
 export const metadata = {
   title: 'BIRDY — ERP & gestion comptable OHADA',
@@ -66,6 +68,14 @@ const MODULES = [
 export default function BirdyErpPage() {
   return (
     <>
+      <SoftwareApplicationJsonLd
+        name="BIRDY ERP"
+        description="BIRDY est un ERP et logiciel de gestion comptable OHADA complet pour PME africaines. Facturation, comptabilité SYSCOHADA, paie IRPP/CNSS, stocks, caisse, multi-devises GNF/XOF/EUR/USD. Freeware propriétaire."
+        url={`${SITE.url}/produits/birdy-erp`}
+        applicationCategory="BusinessApplication"
+        operatingSystem="Windows 10, Windows 11"
+        offers={{ price: '0', priceCurrency: 'XOF' }}
+      />
       {/* Hero — palette cyan navy (confiance, expertise comptable).
           Photo backdrop au fond + voile sombre dégradé gauche pour la
           lisibilité du texte (style Stripe / Linear hero). */}

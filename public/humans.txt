@@ -1,0 +1,19 @@
+# humanstxt.org — The humans responsible & technology colophon
+
+/* TEAM */
+  Fondateur & CEO: DIALLO Djerno M.
+  Lead Developer: BAH Mamadou Bobo
+  Agritech Lead:  DIABY Abdoulaye
+  UX/UI & Growth: KABA L. Yériba
+  Location:       Conakry, Guinée
+
+/* THANKS */
+  Communauté OHADA · PME africaines · early adopters BIRDY & FEEDORA
+
+/* SITE */
+  Last update:    2026-05-11
+  Language:       Français
+  Doctype:        HTML5
+  Standards:      WCAG 2.1, OpenGraph, JSON-LD schema.org
+  Components:     Next.js 15 · React 19 · TypeScript · Tailwind CSS 4
+  Software:       BIRDY ERP (Tauri 2 + Rust + SeaORM) · FEEDORA (SaaS web)

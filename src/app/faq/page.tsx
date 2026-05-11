@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
+import { FAQPageJsonLd } from '@/components/JsonLd';
 
 export const metadata = {
   title: 'Foire aux questions',
@@ -56,6 +57,7 @@ const FAQS: FAQ[] = [
 export default function FaqPage() {
   return (
     <>
+      <FAQPageJsonLd items={FAQS.map(({ q, a }) => ({ q, a }))} />
       <PageHero
         tone="emerald"
         eyebrow="Foire aux questions"

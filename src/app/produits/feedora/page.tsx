@@ -12,6 +12,8 @@ import {
 } from 'lucide-react';
 import { CtaBanner } from '@/components/CtaBanner';
 import { ProductBackdrop } from '@/components/ProductBackdrop';
+import { ProductJsonLd } from '@/components/JsonLd';
+import { SITE } from '@/lib/site';
 
 export const metadata = {
   title: "FEEDORA — Formulation alimentaire pour fermes avicoles",
@@ -55,6 +57,12 @@ const FEATURES = [
 export default function FeedoraPage() {
   return (
     <>
+      <ProductJsonLd
+        name="FEEDORA"
+        description="FEEDORA est une application SaaS B2B AgriTech pour la formulation alimentaire en aviculture. Création de formules pour poulet de chair, pondeuse, dinde — calcul du coût en temps réel, alertes nutritionnelles (énergie, protéines, lysine, calcium), multi-devises, rapports PDF. Conçue pour éleveurs, nutritionnistes et coopératives en Guinée et Afrique de l'Ouest."
+        url={`${SITE.url}/produits/feedora`}
+        category="AgriTech SaaS — Alimentation animale & formulation avicole"
+      />
       {/* Hero — palette emeraude (AgriTech vivant), photo backdrop +
           voile sombre gauche pour la lisibilité du texte. */}
       <section className="relative overflow-hidden border-b border-slate-800/40 bg-slate-950">
