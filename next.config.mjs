@@ -56,6 +56,18 @@ const nextConfig = {
   // page when the homepage uses absolute canonical tags, but consistent
   // is better than guessed.
   trailingSlash: false,
+  // The team section moved from its own `/equipe` page to a section
+  // inside `/a-propos`. Permanent redirect (308) so old bookmarks +
+  // backlinks land on the anchor instead of a 404.
+  async redirects() {
+    return [
+      {
+        source: '/equipe',
+        destination: '/a-propos#equipe',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     if (isDev) {
       // Dev : zéro cache navigateur sur tout. Évite les hydration

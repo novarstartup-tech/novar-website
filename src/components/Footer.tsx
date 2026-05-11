@@ -15,7 +15,7 @@ const COLS = [
   ]},
   { title: 'Entreprise', accent: 'violet', links: [
     { label: 'À propos', href: '/a-propos' },
-    { label: 'Équipe', href: '/equipe' },
+    { label: 'Équipe', href: '/a-propos#equipe' },
     { label: 'Blog', href: '/blog' },
   ]},
   { title: 'Ressources', accent: 'emerald', links: [

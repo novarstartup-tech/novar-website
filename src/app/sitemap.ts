@@ -19,7 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/compte',
     '/compte/login',
     '/a-propos',
-    '/equipe',
     '/contact',
     '/demo',
     '/faq',
