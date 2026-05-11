@@ -15,8 +15,8 @@ export default function DemoPage() {
       />
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
-          <div className="grid gap-16 lg:grid-cols-2">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
+          <div className="grid gap-10 md:gap-12 lg:gap-16 lg:grid-cols-2">
             <div>
               <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-novar-ink mb-8">
                 Comment ça se passe

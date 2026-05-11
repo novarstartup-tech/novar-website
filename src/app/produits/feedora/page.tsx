@@ -128,7 +128,7 @@ export default function FeedoraPage() {
 
       {/* Features */}
       <section className="surface-alt">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="max-w-2xl">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
               Fonctionnalités
@@ -148,7 +148,7 @@ export default function FeedoraPage() {
               return (
                 <div
                   key={f.title}
-                  className="rounded-2xl border border-novar-line bg-white p-7 transition-all hover:shadow-lifted hover:border-novar-ink/20"
+                  className="rounded-2xl border border-novar-line bg-white p-5 sm:p-7 transition-all hover:shadow-lifted hover:border-novar-ink/20"
                 >
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-novar-surface-2 text-novar-ink ring-1 ring-novar-line">
                     <Icon className="h-5 w-5" />
@@ -168,8 +168,8 @@ export default function FeedoraPage() {
 
       {/* Bénéfices utilisateurs */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
+          <div className="grid gap-10 md:gap-12 lg:gap-16 lg:grid-cols-2 lg:items-center">
             <div>
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
                 Pour qui
@@ -236,7 +236,7 @@ export default function FeedoraPage() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 md:pb-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24 lg:pb-32">
           <CtaBanner
             title="Vous gérez une exploitation avicole ?"
             description="Démarrez avec FEEDORA dès aujourd'hui ou demandez une démo guidée par notre équipe."

@@ -144,7 +144,7 @@ export default function BirdyErpPage() {
 
       {/* Modules */}
       <section className="surface-alt">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">
               Modules
@@ -163,7 +163,7 @@ export default function BirdyErpPage() {
             {MODULES.map((m) => {
               const Icon = m.icon;
               return (
-                <div key={m.title} className="bg-white p-7 transition-all hover:bg-novar-surface-2">
+                <div key={m.title} className="bg-white p-5 sm:p-7 transition-all hover:bg-novar-surface-2">
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-novar-surface-2 text-novar-ink ring-1 ring-novar-line">
                     <Icon className="h-5 w-5" />
                   </div>
@@ -182,8 +182,8 @@ export default function BirdyErpPage() {
 
       {/* Comptabilité OHADA — focus */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
+          <div className="grid gap-10 md:gap-12 lg:gap-16 lg:grid-cols-2 lg:items-center">
             <div>
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">
                 Conformité OHADA native
@@ -249,7 +249,7 @@ export default function BirdyErpPage() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 md:pb-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24 lg:pb-32">
           <CtaBanner
             title="Prêt à installer BIRDY ?"
             description="100 % gratuit, sans abonnement, sans carte bancaire. Installation guidée en moins de 30 minutes."

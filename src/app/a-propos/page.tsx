@@ -155,7 +155,7 @@ export default function AProposPage() {
 
       {/* === MISSION ============================================ */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
               Notre mission
@@ -184,7 +184,7 @@ export default function AProposPage() {
 
       {/* === VALEURS ============================================ */}
       <section className="surface-alt">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
               Nos valeurs
@@ -220,7 +220,7 @@ export default function AProposPage() {
 
       {/* === ÉQUIPE — anchor #equipe ============================ */}
       <section id="equipe" className="bg-white scroll-mt-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
               L&apos;équipe
@@ -324,7 +324,7 @@ export default function AProposPage() {
 
       {/* === RECRUTEMENT OUVERT ================================= */}
       <section className="surface-alt">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="flex items-center gap-3">
             <Briefcase className="h-5 w-5 text-novar-accent" />
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
@@ -385,7 +385,7 @@ export default function AProposPage() {
 
       {/* === VISION ============================================= */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
@@ -443,7 +443,7 @@ export default function AProposPage() {
 
       {/* === CTA ================================================ */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 md:pb-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24 lg:pb-32">
           <CtaBanner
             title="Travaillons ensemble."
             description="Que vous soyez une PME, une startup ou une organisation, nous serions ravis d'échanger sur vos enjeux."

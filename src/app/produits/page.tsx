@@ -20,9 +20,9 @@ export default function ProduitsPage() {
       />
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-16 md:pt-24">
-          <div className="rounded-3xl border border-novar-line bg-novar-surface-2 p-8 sm:p-12 md:p-16">
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 md:pt-24">
+          <div className="rounded-3xl border border-novar-line bg-novar-surface-2 p-6 sm:p-8 md:p-12 lg:p-16">
+            <div className="grid gap-8 md:gap-12 lg:grid-cols-2 lg:items-center">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-novar-line bg-white px-3 py-1 text-xs font-medium text-novar-muted">
                   <span className="h-1.5 w-1.5 rounded-full bg-novar-accent" />
@@ -80,9 +80,9 @@ export default function ProduitsPage() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-12 md:pt-16">
-          <div className="rounded-3xl border border-novar-line bg-novar-surface-2 p-8 sm:p-12 md:p-16">
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 md:pt-16">
+          <div className="rounded-3xl border border-novar-line bg-novar-surface-2 p-6 sm:p-8 md:p-12 lg:p-16">
+            <div className="grid gap-8 md:gap-12 lg:grid-cols-2 lg:items-center">
               <div className="lg:order-2">
                 <div className="inline-flex items-center gap-2 rounded-full border border-novar-line bg-white px-3 py-1 text-xs font-medium text-novar-muted">
                   <span className="h-1.5 w-1.5 rounded-full bg-novar-accent" />
@@ -145,8 +145,8 @@ export default function ProduitsPage() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-12 md:pt-16 pb-24 md:pb-32">
-          <div className="rounded-3xl border-2 border-dashed border-novar-line p-8 sm:p-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 md:pt-16 pb-24 md:pb-32">
+          <div className="rounded-3xl border-2 border-dashed border-novar-line p-6 sm:p-8 md:p-12">
             <div className="max-w-3xl">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-muted">
                 Au-delà de nos produits
@@ -174,7 +174,7 @@ export default function ProduitsPage() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 md:pb-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24 md:pb-32">
           <CtaBanner
             title="Une idée à concrétiser ?"
             description="Premier échange gratuit. Nous vous orientons vers le bon produit ou un projet sur mesure, en toute transparence."

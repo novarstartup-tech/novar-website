@@ -57,7 +57,7 @@ const TONE_STYLES = {
 export function UseCases() {
   return (
     <section className="surface-alt">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
             Cas d'usage
@@ -84,7 +84,7 @@ export function UseCases() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <Link href={c.productHref} className="group block h-full">
-                  <div className={`relative h-full overflow-hidden rounded-2xl border border-novar-line bg-white p-7 transition-all duration-300 ${t.border} group-hover:shadow-lifted`}>
+                  <div className={`relative h-full overflow-hidden rounded-2xl border border-novar-line bg-white p-5 sm:p-7 transition-all duration-300 ${t.border} group-hover:shadow-lifted`}>
                     <div className={`absolute inset-0 -z-10 bg-gradient-to-br ${t.wash} via-white to-white opacity-0 transition-opacity duration-300 group-hover:opacity-100`} aria-hidden />
 
                     <div className="flex items-start justify-between gap-3">

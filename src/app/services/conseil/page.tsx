@@ -18,8 +18,8 @@ export default function ConseilPage() {
         description="Vous avez un projet technologique mais vous ne savez pas par où commencer ? Nous vous aidons à clarifier vos besoins, choisir les bonnes briques et former vos équipes."
       />
 
-      <section className="bg-white py-20 md:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="bg-white py-14 sm:py-16 md:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 md:grid-cols-2">
             <FeatureCard
               icon={ClipboardCheck}
@@ -45,8 +45,8 @@ export default function ConseilPage() {
         </div>
       </section>
 
-      <section className="bg-white pb-24 md:pb-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="bg-white pb-16 sm:pb-20 md:pb-24 lg:pb-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <CtaBanner
             title="Discutons de vos enjeux."
             description="Premier échange gratuit pour comprendre votre situation et voir si nous pouvons vous aider."

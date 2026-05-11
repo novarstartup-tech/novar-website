@@ -96,7 +96,7 @@ function AnimatedNumber({ value }: { value: number }) {
 export function StatsSection() {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16 md:py-20 lg:py-24">
         <div className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4">
           {STATS.map((s, i) => {
             const t = TONE_STYLES[s.tone];

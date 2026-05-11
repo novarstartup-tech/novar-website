@@ -29,7 +29,7 @@ export default function SurMesurePage() {
       />
 
       <section className="surface-alt">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="max-w-3xl mb-14">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
               Notre méthode
@@ -47,7 +47,7 @@ export default function SurMesurePage() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
               Stack technique
@@ -86,7 +86,7 @@ export default function SurMesurePage() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24">
           <div className="rounded-3xl border border-novar-line bg-novar-surface-2 p-8 sm:p-12">
             <h2 className="font-display text-3xl font-bold tracking-tight text-novar-ink mb-4">
               Tarifs
@@ -105,7 +105,7 @@ export default function SurMesurePage() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 md:pb-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24 lg:pb-32">
           <CtaBanner
             title="Parlons de votre projet."
             description="30 minutes pour comprendre vos besoins. Sans engagement."

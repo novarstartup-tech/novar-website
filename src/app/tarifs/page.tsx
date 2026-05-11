@@ -21,13 +21,13 @@ export default function TarifsPage() {
       />
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
           <PricingTable />
         </div>
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8 py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-novar-ink mb-8 text-center">
             Questions fréquentes
           </h2>
@@ -61,8 +61,8 @@ export default function TarifsPage() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 md:pb-32">
-          <div className="rounded-3xl border border-novar-line bg-novar-surface-2 p-8 sm:p-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24 lg:pb-32">
+          <div className="rounded-3xl border border-novar-line bg-novar-surface-2 p-6 sm:p-8 md:p-12">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
               Sur mesure
             </span>

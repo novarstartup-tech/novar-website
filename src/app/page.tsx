@@ -18,7 +18,7 @@ export default function HomePage() {
 
       {/* === Notre modèle — trois propositions, même pied d'égalité ==== */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="mx-auto max-w-3xl text-center">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
               Notre modèle
@@ -71,7 +71,7 @@ export default function HomePage() {
 
       {/* === Nos produits — BIRDY + FEEDORA cote a cote interactifs */}
       <section id="produits" className="surface-alt">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
               Nos produits
@@ -134,7 +134,7 @@ export default function HomePage() {
 
       {/* === Services sur mesure ======================================= */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="mx-auto max-w-3xl text-center">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
               Développement sur mesure
@@ -190,7 +190,7 @@ export default function HomePage() {
 
       {/* === Contact / CTA final ====================================== */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 md:pb-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24 lg:pb-32">
           <CtaBanner
             title="Parlons de votre projet."
             description="Un premier échange de 30 minutes, sans engagement. Vous repartez avec une recommandation claire et exploitable — choix produit, périmètre sur mesure, ou simple orientation si ce n'est pas le bon moment."
