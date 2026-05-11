@@ -99,7 +99,7 @@ export function PageHero({
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-28">
         <motion.div
           className={centered ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'}
           initial="hidden"
@@ -129,7 +129,7 @@ export function PageHero({
               show: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 0.5 }}
-            className="mt-4 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink leading-[1.1]"
+            className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-novar-ink leading-[1.1] break-words"
           >
             {title}
           </motion.h1>
@@ -141,7 +141,7 @@ export function PageHero({
                 show: { opacity: 1, y: 0 },
               }}
               transition={{ duration: 0.5 }}
-              className="mt-6 text-lg sm:text-xl text-novar-muted leading-relaxed"
+              className="mt-5 text-base sm:text-lg md:text-xl text-novar-muted leading-relaxed"
             >
               {description}
             </motion.p>

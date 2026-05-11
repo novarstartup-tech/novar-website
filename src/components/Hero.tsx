@@ -15,7 +15,7 @@ export function Hero() {
     <section className="relative overflow-hidden bg-white">
       <HeroBackdrop />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-28 pb-24 md:pt-36 md:pb-32 lg:pt-40 lg:pb-36">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-24 md:pt-36 md:pb-32 lg:pt-40 lg:pb-36">
         <motion.div
           className="mx-auto max-w-3xl text-center"
           initial="hidden"
@@ -42,7 +42,7 @@ export function Hero() {
           <motion.h1
             variants={fadeUp}
             transition={{ duration: 0.6 }}
-            className="mt-7 font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-novar-ink leading-[1.05]"
+            className="mt-7 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-novar-ink leading-[1.05]"
           >
             Le logiciel qui propulse
             <br />
@@ -52,7 +52,7 @@ export function Hero() {
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="mx-auto mt-7 max-w-2xl text-lg sm:text-xl text-novar-muted leading-relaxed"
+            className="mx-auto mt-6 max-w-2xl text-base sm:text-lg md:text-xl text-novar-muted leading-relaxed"
           >
             ERP OHADA, AgriTech avicole, développements sur mesure. NOVAR
             édite trois propositions complémentaires pour que chaque
@@ -63,13 +63,13 @@ export function Hero() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3"
+            className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3"
           >
-            <Link href="/produits" className="btn-primary group">
+            <Link href="/produits" className="btn-primary group w-full sm:w-auto">
               Découvrir nos produits{' '}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
-            <Link href="/services/sur-mesure" className="btn-ghost">
+            <Link href="/services/sur-mesure" className="btn-ghost w-full sm:w-auto">
               Lancer un projet sur mesure
             </Link>
           </motion.div>
@@ -78,7 +78,7 @@ export function Hero() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="mt-14 grid grid-cols-3 gap-6 max-w-2xl mx-auto"
+            className="mt-12 sm:mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto"
           >
             <Stat value="3" label="Offres complémentaires" />
             <Stat value="OHADA" label="Conformité native" />

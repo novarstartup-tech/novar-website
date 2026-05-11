@@ -77,18 +77,18 @@ export default function FeedoraPage() {
               'linear-gradient(90deg, rgba(8,15,30,0.92) 0%, rgba(8,15,30,0.80) 35%, rgba(8,15,30,0.30) 70%, rgba(8,15,30,0.00) 100%)',
           }}
         />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 md:py-28">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-28">
           <div className="max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">
               Produit NOVAR · AgriTech B2B
             </span>
-            <h1 className="mt-4 font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.05]">
+            <h1 className="mt-4 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.05]">
               FEEDORA
             </h1>
-            <p className="mt-4 text-xl sm:text-2xl font-medium text-emerald-300">
+            <p className="mt-4 text-lg sm:text-xl md:text-2xl font-medium text-emerald-300">
               Formulation alimentaire pour fermes avicoles.
             </p>
-            <p className="mt-6 max-w-2xl text-lg text-slate-300 leading-relaxed">
+            <p className="mt-6 max-w-2xl text-base sm:text-lg text-slate-300 leading-relaxed">
               Application professionnelle B2B AgriTech, conçue pour aider les
               éleveurs et nutritionnistes à formuler des aliments pour
               volailles équilibrés, économiques et performants. En production
@@ -99,13 +99,13 @@ export default function FeedoraPage() {
                 href="https://feedora-cyan.vercel.app/"
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-all hover:bg-emerald-400 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(52,211,153,0.35)]"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-all hover:bg-emerald-400 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(52,211,153,0.35)]"
               >
                 Accéder à FEEDORA <ExternalLink className="h-4 w-4" />
               </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-900/40 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-slate-800/60"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-900/40 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-slate-800/60"
               >
                 Demander une démo <ArrowRight className="h-4 w-4" />
               </Link>
