@@ -42,6 +42,18 @@ type TeamMember = {
 };
 
 const TEAM: TeamMember[] = [
+  // Ordre voulu (cf. screenshot) : AgriTech → CEO → Lead Dev → UX/UI.
+  // Le CEO est placé en position 2 plutôt qu'en tête : ça crée un trio
+  // exécution (AgriTech, CEO, Lead Dev) qui se lit comme un cœur produit
+  // suivi de l'interface utilisateur, plutôt qu'une hiérarchie classique.
+  {
+    role: 'AgriTech Lead',
+    shortRole: 'FEEDORA & Agronomie',
+    name: 'DIABY Abdoulaye',
+    photo: '/team/3.jpg',
+    bio: "L'éleveur connaît son terrain mieux que personne — nous lui donnons les chiffres pour décider sans hésiter.",
+    accent: 'emerald',
+  },
   {
     role: 'CEO',
     shortRole: 'Direction & Vision',
@@ -59,14 +71,6 @@ const TEAM: TeamMember[] = [
     photo: '/team/2.jpg',
     bio: "Un code solide aujourd'hui, c'est un produit qui tient dans dix ans — la robustesse n'est pas négociable.",
     accent: 'violet',
-  },
-  {
-    role: 'AgriTech Lead',
-    shortRole: 'FEEDORA & Agronomie',
-    name: 'DIABY Abdoulaye',
-    photo: '/team/3.jpg',
-    bio: "L'éleveur connaît son terrain mieux que personne — nous lui donnons les chiffres pour décider sans hésiter.",
-    accent: 'emerald',
   },
   {
     role: 'UX/UI & Growth Lead',
