@@ -18,7 +18,7 @@ export default function PrivacyPage() {
         description="Dernière mise à jour : 9 mai 2026 · Version 1.1"
       />
 
-      <article className="mx-auto max-w-3xl px-6 lg:px-8 pb-20">
+      <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
         <div className="prose prose-slate max-w-none prose-headings:font-display prose-headings:tracking-tight prose-h2:text-novar-ink prose-h2:mt-10 prose-h2:text-2xl prose-p:text-novar-ink-soft prose-p:leading-relaxed prose-li:text-novar-ink-soft prose-strong:text-novar-ink prose-a:text-novar-accent">
           <p>
             NOVAR attache une grande importance à la protection des données

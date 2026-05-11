@@ -15,14 +15,14 @@ export default function BlogIndex() {
       <section className="relative overflow-hidden bg-white">
         <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-novar-surface-2 to-white" aria-hidden />
         <div className="absolute inset-0 bg-dots opacity-50" aria-hidden />
-        <div className="relative mx-auto max-w-5xl px-6 lg:px-8 pt-24 pb-16 md:pt-28 md:pb-20">
+        <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-16 pb-12 sm:pt-24 sm:pb-16 md:pt-28 md:pb-20">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
             Le Blog
           </span>
-          <h1 className="mt-5 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-novar-ink">
+          <h1 className="mt-5 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-novar-ink">
             Idées, méthodes et retours terrain.
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-novar-muted leading-relaxed">
+          <p className="mt-5 max-w-2xl text-base sm:text-lg text-novar-muted leading-relaxed">
             Articles de fond sur l&apos;OHADA, la transformation numérique des
             PME africaines, et la vision NOVAR SaaS Studio.
           </p>
@@ -31,13 +31,13 @@ export default function BlogIndex() {
 
       {/* LISTE */}
       <section className="bg-white pb-20">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-5">
             {BLOG_POSTS.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group block rounded-2xl border border-novar-line bg-white p-7 transition-all hover:border-novar-ink/20 hover:shadow-lifted"
+                className="group block rounded-2xl border border-novar-line bg-white p-5 sm:p-7 transition-all hover:border-novar-ink/20 hover:shadow-lifted"
               >
                 <div className="flex flex-wrap items-center gap-3 text-xs text-novar-muted mb-3">
                   <span className="inline-flex items-center gap-1">

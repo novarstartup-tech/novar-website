@@ -1,10 +1,20 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Bricolage_Grotesque, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/JsonLd';
 import { SITE } from '@/lib/site';
+
+// Viewport explicite — pas de zoom bloqué, échelle initiale 1 pour
+// éviter le "double-tap zoom" iOS sur les boutons et garantir un
+// rendu identique sur Android/iOS/Safari mobile.
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#0B1220',
+};
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const bricolage = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-bricolage', display: 'swap' });
@@ -120,7 +130,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${inter.variable} ${bricolage.variable} ${jetbrains.variable}`}>
-      <body className="font-sans">
+      <body className="font-sans overflow-x-hidden">
         {/* JSON-LD structured data: Organization + WebSite (SearchAction) */}
         <OrganizationJsonLd />
         <WebSiteJsonLd />

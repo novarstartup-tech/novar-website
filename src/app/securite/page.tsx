@@ -20,7 +20,7 @@ export default function SecuritePage() {
       />
 
       <section className="bg-white">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8 py-20">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16 md:py-20">
           <div className="grid gap-6 sm:grid-cols-2">
             <Card
               icon={ShieldCheck}
@@ -57,7 +57,7 @@ export default function SecuritePage() {
       </section>
 
       <section className="surface-alt">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8 py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16 md:py-20">
           <h2 className="font-display text-3xl font-bold tracking-tight text-novar-ink">
             Signaler une vulnérabilité
           </h2>

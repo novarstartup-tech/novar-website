@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { NovarLogo } from './NovarLogo';
 import { NAV } from '@/lib/site';
@@ -19,6 +20,21 @@ import { cn } from '@/lib/utils';
 export function Header() {
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+
+  // Close drawer on Escape key + lock body scroll when open.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-800/60 bg-slate-950/95 backdrop-blur-xl">
@@ -88,66 +104,76 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Burger mobile */}
+        {/* Burger mobile — 44x44 px target zone (Apple HIG) */}
         <button
-          className="lg:hidden p-2 text-slate-200"
+          className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-md text-slate-200 hover:bg-slate-800/60 transition-colors"
           onClick={() => setOpen(!open)}
           aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-expanded={open}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      {/* Drawer mobile */}
-      {open && (
-        <nav className="lg:hidden border-t border-slate-800/60 bg-slate-950 px-4 py-4">
-          <div className="flex flex-col gap-1">
-            {NAV.map((item) => (
-              <div key={item.label}>
+      {/* Drawer mobile — animated slide-down with Motion */}
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            key="mobile-drawer"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="lg:hidden border-t border-slate-800/60 bg-slate-950 px-4 py-4 max-h-[calc(100vh-4rem)] overflow-y-auto"
+          >
+            <div className="flex flex-col gap-1">
+              {NAV.map((item) => (
+                <div key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="block rounded-md px-3 py-2.5 text-base font-semibold text-white hover:bg-slate-900 transition-colors"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                  {'children' in item && item.children && (
+                    <div className="ml-3 mt-1 mb-1 space-y-1 border-l border-slate-800 pl-3">
+                      {item.children.map((c) => (
+                        <Link
+                          key={c.href}
+                          href={c.href}
+                          className="block rounded-md px-3 py-2 text-sm text-slate-400 hover:bg-slate-900 hover:text-white transition-colors"
+                          onClick={() => setOpen(false)}
+                        >
+                          {c.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <div className="mt-3 flex flex-col gap-2 border-t border-slate-800/60 pt-4">
                 <Link
-                  href={item.href}
-                  className="block rounded-md px-3 py-2 text-sm font-semibold text-white hover:bg-slate-900 transition-colors"
+                  href="/compte/login"
+                  className={cn(
+                    'rounded-md px-3 py-2.5 text-sm font-medium text-slate-300 hover:bg-slate-900 hover:text-white transition-colors'
+                  )}
                   onClick={() => setOpen(false)}
                 >
-                  {item.label}
+                  Connexion
                 </Link>
-                {'children' in item && item.children && (
-                  <div className="ml-3 mt-1 mb-1 space-y-1 border-l border-slate-800 pl-3">
-                    {item.children.map((c) => (
-                      <Link
-                        key={c.href}
-                        href={c.href}
-                        className="block rounded-md px-3 py-1.5 text-sm text-slate-400 hover:bg-slate-900 hover:text-white transition-colors"
-                        onClick={() => setOpen(false)}
-                      >
-                        {c.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                <Link
+                  href="/telechargements"
+                  className="inline-flex items-center justify-center rounded-lg bg-cyan-500 px-4 py-3 text-sm font-semibold text-slate-950 transition-all hover:bg-cyan-400"
+                  onClick={() => setOpen(false)}
+                >
+                  Télécharger BIRDY
+                </Link>
               </div>
-            ))}
-            <div className="mt-3 flex flex-col gap-2 border-t border-slate-800/60 pt-4">
-              <Link
-                href="/compte/login"
-                className={cn(
-                  'rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-900 hover:text-white transition-colors'
-                )}
-                onClick={() => setOpen(false)}
-              >
-                Connexion
-              </Link>
-              <Link
-                href="/telechargements"
-                className="inline-flex items-center justify-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 transition-all hover:bg-cyan-400"
-                onClick={() => setOpen(false)}
-              >
-                Télécharger BIRDY
-              </Link>
             </div>
-          </div>
-        </nav>
-      )}
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

@@ -21,9 +21,9 @@ export default function ContactPage() {
       />
 
       {/* FORM + INFOS — grille 2 cols */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-5">
+      <section className="bg-white py-12 sm:py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 lg:gap-10 lg:grid-cols-5">
             {/* Form (cols 1-3) */}
             <div className="lg:col-span-3">
               <div className="rounded-2xl border border-novar-line bg-white p-6 sm:p-8 shadow-soft">

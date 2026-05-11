@@ -52,7 +52,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const postUrl = `${SITE.url}/blog/${post.slug}`;
 
   return (
-    <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
+    <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <BlogPostingJsonLd
         headline={post.title}
         description={post.description}

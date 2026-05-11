@@ -6,7 +6,7 @@ export const metadata = { title: 'Mon compte' };
 export default function ComptePage() {
   return (
     <section className="bg-white py-20">
-      <div className="mx-auto max-w-3xl px-6 lg:px-8">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 rounded-2xl border border-amber-200 bg-amber-50 p-5">
           <div className="flex items-start gap-3">
             <Construction className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />

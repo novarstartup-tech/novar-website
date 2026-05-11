@@ -90,16 +90,16 @@ export default function DocsIndex() {
       <section className="relative overflow-hidden bg-white">
         <div className="absolute inset-x-0 top-0 h-[360px] bg-gradient-to-b from-novar-surface-2 to-white" aria-hidden />
         <div className="absolute inset-0 bg-dots opacity-50" aria-hidden />
-        <div className="relative px-6 lg:px-12 pt-16 pb-12 max-w-5xl">
+        <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-12 pt-12 pb-10 sm:pt-16 sm:pb-12">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
             Documentation
           </span>
-          <h1 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-novar-ink">
+          <h1 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-novar-ink">
             Tout ce qu&apos;il faut pour
             <br />
             maîtriser BIRDY.
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-novar-muted leading-relaxed">
+          <p className="mt-5 max-w-2xl text-base sm:text-lg text-novar-muted leading-relaxed">
             Guides pas à pas, références techniques et bonnes pratiques —
             organisés par thème pour aller droit au but.
           </p>
@@ -107,15 +107,15 @@ export default function DocsIndex() {
       </section>
 
       {/* SECTIONS — grille 3 colonnes (responsive) */}
-      <section className="bg-white py-12 lg:py-16">
-        <div className="px-6 lg:px-12 max-w-7xl">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <section className="bg-white py-10 sm:py-12 lg:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SECTIONS.map((section) => {
               const Icon = section.icon;
               return (
                 <article
                   key={section.title}
-                  className="flex flex-col rounded-2xl border border-novar-line bg-white p-7 hover:border-novar-ink/20 hover:shadow-lifted transition-all"
+                  className="flex flex-col rounded-2xl border border-novar-line bg-white p-5 sm:p-7 hover:border-novar-ink/20 hover:shadow-lifted transition-all"
                 >
                   <div className="flex items-center gap-3">
                     <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-novar-surface-2 text-novar-ink ring-1 ring-novar-line">

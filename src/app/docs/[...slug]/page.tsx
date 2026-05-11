@@ -74,7 +74,7 @@ export default async function DocsSlugPage({ params }: { params: Promise<{ slug:
   return (
     <div className="flex">
       <BreadcrumbJsonLd items={breadcrumbItems} />
-      <article className="flex-1 px-6 lg:px-12 py-10 max-w-3xl min-w-0">
+      <article className="flex-1 px-4 sm:px-6 lg:px-12 py-8 sm:py-10 max-w-3xl min-w-0">
         <DocsBreadcrumbs
           trail={[
             { label: 'Documentation', href: '/docs' },

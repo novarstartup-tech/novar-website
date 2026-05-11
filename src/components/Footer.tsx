@@ -59,9 +59,9 @@ export function Footer() {
       <div className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-cyan-500/10 blur-3xl" aria-hidden />
       <div className="pointer-events-none absolute -bottom-32 -right-32 h-80 w-80 rounded-full bg-emerald-500/10 blur-3xl" aria-hidden />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
-          <div className="col-span-2 md:col-span-1">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+        <div className="grid grid-cols-2 gap-8 sm:gap-10 sm:grid-cols-3 md:grid-cols-6">
+          <div className="col-span-2 sm:col-span-3 md:col-span-1">
             <Link href="/" className="inline-block group">
               <NovarLogo
                 variant="on-dark"
@@ -105,7 +105,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label="WhatsApp"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-300 transition-all hover:border-emerald-400/60 hover:bg-emerald-500/10 hover:text-emerald-300 hover:-translate-y-0.5"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-300 transition-all hover:border-emerald-400/60 hover:bg-emerald-500/10 hover:text-emerald-300 hover:-translate-y-0.5"
                 >
                   <MessageCircle className="h-4 w-4" />
                 </a>
@@ -114,7 +114,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label="Facebook"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-300 transition-all hover:border-cyan-400/60 hover:bg-cyan-500/10 hover:text-cyan-300 hover:-translate-y-0.5"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-300 transition-all hover:border-cyan-400/60 hover:bg-cyan-500/10 hover:text-cyan-300 hover:-translate-y-0.5"
                 >
                   <Facebook className="h-4 w-4" />
                 </a>
@@ -123,7 +123,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label="LinkedIn"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-300 transition-all hover:border-cyan-400/60 hover:bg-cyan-500/10 hover:text-cyan-300 hover:-translate-y-0.5"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-300 transition-all hover:border-cyan-400/60 hover:bg-cyan-500/10 hover:text-cyan-300 hover:-translate-y-0.5"
                 >
                   <Linkedin className="h-4 w-4" />
                 </a>

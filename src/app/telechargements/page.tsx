@@ -88,7 +88,7 @@ export default function TelechargementsPage() {
 
       {/* === Bloc principal — Windows officiel ====================== */}
       <section className="bg-white">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8 pt-12 pb-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-12 pb-16">
           <div className="rounded-3xl border border-novar-ink bg-novar-ink p-8 sm:p-12 text-white shadow-lifted">
             <div className="flex flex-col lg:flex-row lg:items-center gap-8">
               <div className="flex-1">
@@ -150,7 +150,7 @@ export default function TelechargementsPage() {
 
       {/* === Linux — accès anticipé ================================== */}
       <section className="surface-alt">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8 py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-center gap-3 mb-4">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">
               Autres systèmes
@@ -211,7 +211,7 @@ export default function TelechargementsPage() {
 
       {/* === Mises à jour — bandeau de confiance ==================== */}
       <section className="bg-white">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8 py-12">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12">
           <div className="rounded-2xl border border-novar-line bg-novar-surface-2 p-6 sm:p-8 flex flex-col sm:flex-row gap-5 items-start">
             <ShieldCheck className="h-6 w-6 text-cyan-700 flex-shrink-0 mt-0.5" />
             <div>
@@ -233,7 +233,7 @@ export default function TelechargementsPage() {
 
       {/* === Historique versions ================================== */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
           <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-novar-ink mb-8">
             Historique des versions
           </h2>
@@ -266,7 +266,7 @@ export default function TelechargementsPage() {
 
       {/* === Configuration requise ============================== */}
       <section className="surface-alt">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8 py-20">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-20">
           <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-novar-ink mb-10">
             Configuration requise
           </h2>
@@ -297,7 +297,7 @@ export default function TelechargementsPage() {
 
       {/* === CTA final ============================================== */}
       <section className="bg-white">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8 pb-24">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-24">
           <div className="rounded-3xl border border-novar-line bg-novar-surface-2 p-8 sm:p-12 text-center">
             <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-novar-ink">
               Besoin d&apos;un accompagnement ?

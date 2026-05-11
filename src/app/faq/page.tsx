@@ -67,20 +67,20 @@ export default function FaqPage() {
 
       {/* QUESTIONS */}
       <section className="bg-white pb-20">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-3">
             {FAQS.map((item, i) => (
               <details
                 key={i}
                 className="group rounded-2xl border border-novar-line bg-white open:border-novar-ink/20 open:shadow-soft transition-all"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-left">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5 text-left">
                   <span className="font-display font-semibold text-novar-ink">
                     {item.q}
                   </span>
                   <ChevronDown className="h-4 w-4 flex-shrink-0 text-novar-muted transition-transform group-open:rotate-180" />
                 </summary>
-                <div className="px-6 pb-5 text-sm text-novar-ink-soft leading-relaxed">
+                <div className="px-5 pb-4 sm:px-6 sm:pb-5 text-sm text-novar-ink-soft leading-relaxed">
                   {item.a}
                 </div>
               </details>
