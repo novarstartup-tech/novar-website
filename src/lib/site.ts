@@ -1,3 +1,27 @@
+/**
+ * Site URL resolution order:
+ *   1. NEXT_PUBLIC_SITE_URL — explicit override (e.g. when a custom
+ *      domain like novar.gn is configured later, set this in Vercel
+ *      Settings → Environment Variables).
+ *   2. VERCEL_PROJECT_PRODUCTION_URL — Vercel's auto-assigned
+ *      production sub-domain (`novar-website-xxx.vercel.app`).
+ *   3. Hardcoded fallback for local development.
+ *
+ * The `https://` prefix is added when missing — Vercel exposes the
+ * bare hostname without scheme.
+ */
+function resolveSiteUrl(): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+  if (explicit) {
+    return explicit.startsWith('http') ? explicit : `https://${explicit}`;
+  }
+  const vercelProd = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (vercelProd) {
+    return `https://${vercelProd}`;
+  }
+  return 'http://localhost:3000';
+}
+
 export const SITE = {
   name: 'NOVAR',
   legalName: 'NOVAR',
@@ -17,7 +41,7 @@ export const SITE = {
   whatsappHref: 'https://wa.me/224629559515',
   facebook: 'https://www.facebook.com/profile.php?id=61587571164695',
   linkedin: 'https://www.linkedin.com/company/111847101/',
-  url: 'https://novar.gn',
+  url: resolveSiteUrl(),
   founder: 'Djerno',
 } as const;
 
