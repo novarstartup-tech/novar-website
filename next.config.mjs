@@ -12,10 +12,11 @@ const withMDX = createMDX({ extension: /\.mdx?$/ });
  *   on cross-origin navigation.
  * - Permissions-Policy : disables camera / mic / geo by default.
  * - X-DNS-Prefetch-Control on : speeds up outbound link clicks.
- *
- * CSP (Content-Security-Policy) is intentionally NOT set here — it
- * needs per-route nonces (Server Components + inline scripts), which
- * is a separate concern. Add it in middleware.ts when ready.
+ * - Content-Security-Policy : posée en prod uniquement (cf. plus bas).
+ *   On utilise 'self' + 'unsafe-inline' au lieu de nonce + strict-dynamic
+ *   parce que les pages sont 100 % statiques (SSG) — Next.js ne peut
+ *   pas injecter un nonce dynamique sur du HTML pré-rendu, ce qui
+ *   ferait bloquer tous les chunks _next/static au runtime.
  */
 const securityHeaders = [
   {
@@ -30,6 +31,25 @@ const securityHeaders = [
     value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
   },
   { key: 'X-DNS-Prefetch-Control', value: 'on' },
+];
+
+const csp = [
+  `default-src 'self'`,
+  `script-src 'self' 'unsafe-inline'`,
+  `style-src 'self' 'unsafe-inline'`,
+  `img-src 'self' data: blob: https:`,
+  `font-src 'self' data:`,
+  `connect-src 'self'`,
+  `frame-ancestors 'none'`,
+  `base-uri 'self'`,
+  `form-action 'self'`,
+  `object-src 'none'`,
+  `upgrade-insecure-requests`,
+].join('; ');
+
+const prodSecurityHeaders = [
+  ...securityHeaders,
+  { key: 'Content-Security-Policy', value: csp },
 ];
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -82,7 +102,7 @@ const nextConfig = {
     return [
       {
         source: '/:path*',
-        headers: securityHeaders,
+        headers: prodSecurityHeaders,
       },
       {
         // Long-cache static assets — they have content-hashed names.
