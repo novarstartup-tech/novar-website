@@ -86,53 +86,98 @@ export default function TelechargementsPage() {
         centered
       />
 
-      {/* === Bloc principal — Windows officiel ====================== */}
+      {/* === Téléchargements Directs ====================== */}
       <section className="bg-white">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-12 pb-16">
-          <div className="rounded-3xl border border-novar-ink bg-novar-ink p-8 sm:p-12 text-white shadow-lifted">
-            <div className="flex flex-col lg:flex-row lg:items-center gap-8">
-              <div className="flex-1">
-                <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-300 ring-1 ring-cyan-400/40">
-                  <Monitor className="h-3.5 w-3.5" />
-                  Windows · Recommandé
-                </div>
-                <h2 className="mt-5 font-display text-3xl sm:text-4xl font-bold tracking-tight">
-                  BIRDY pour Windows 10 & 11
-                </h2>
-                <p className="mt-4 text-slate-300 leading-relaxed">
-                  Build officiel signé numériquement. Mises à jour
-                  automatiques vérifiées par signature Ed25519. Compatible
-                  Windows 10 (Build 19041+) et Windows 11.
-                </p>
-                <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-wider text-slate-400">
-                  <span>Version 1.4.2</span>
-                  <span className="text-slate-700">·</span>
-                  <span>142 MB</span>
-                  <span className="text-slate-700">·</span>
-                  <span>x64</span>
-                  <span className="text-slate-700">·</span>
-                  <span>Installer .msi</span>
-                </div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-16">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-novar-ink text-center mb-10">
+            Choisissez votre système d&apos;exploitation
+          </h2>
+          
+          <div className="grid gap-8 lg:grid-cols-3">
+            {/* Windows */}
+            <div className="rounded-3xl border border-novar-ink bg-novar-ink p-8 text-white shadow-lifted flex flex-col">
+              <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/15 w-max px-3 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-300 ring-1 ring-cyan-400/40">
+                <Monitor className="h-3.5 w-3.5" />
+                Windows
               </div>
-              <div className="flex flex-col gap-3 lg:w-auto w-full">
+              <h3 className="mt-5 font-display text-2xl font-bold">Windows 10 & 11</h3>
+              <p className="mt-3 text-sm text-slate-300 leading-relaxed flex-1">
+                L&apos;expérience officielle, optimisée et signée. Installation simple et mises à jour automatiques.
+              </p>
+              <div className="mt-4 mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs uppercase tracking-wider text-slate-400">
+                <span>x64</span>
+                <span className="text-slate-600">·</span>
+                <span>.msi</span>
+              </div>
+              <a
+                href="https://github.com/novarstartup-tech/birdy/releases/latest/download/BIRDY_ERP_x64.msi"
+                className="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-cyan-500 px-6 py-4 text-sm font-semibold text-slate-950 shadow-xl shadow-cyan-500/30 hover:bg-cyan-400 transition-colors"
+              >
+                <Download className="h-4 w-4" />
+                Télécharger (.msi)
+              </a>
+            </div>
+
+            {/* macOS */}
+            <div className="rounded-3xl border border-novar-line bg-white p-8 flex flex-col hover:border-novar-ink transition-colors">
+              <div className="inline-flex items-center gap-2 rounded-full bg-slate-100 w-max px-3 py-1 text-xs font-semibold uppercase tracking-wider text-slate-600 ring-1 ring-slate-200">
+                <Apple className="h-3.5 w-3.5" />
+                macOS
+              </div>
+              <h3 className="mt-5 font-display text-2xl font-bold text-novar-ink">Apple Silicon & Intel</h3>
+              <p className="mt-3 text-sm text-novar-muted leading-relaxed flex-1">
+                Application native rapide et fluide pour tous les Mac récents. Glissez-déposez pour installer.
+              </p>
+              <div className="mt-4 mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs uppercase tracking-wider text-slate-400">
+                <span>Universel</span>
+                <span className="text-slate-300">·</span>
+                <span>.dmg</span>
+              </div>
+              <a
+                href="https://github.com/novarstartup-tech/birdy/releases/latest/download/BIRDY_ERP_universal.dmg"
+                className="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-slate-900 px-6 py-4 text-sm font-semibold text-white shadow-xl hover:bg-slate-800 transition-colors"
+              >
+                <Download className="h-4 w-4" />
+                Télécharger (.dmg)
+              </a>
+            </div>
+
+            {/* Linux */}
+            <div className="rounded-3xl border border-novar-line bg-white p-8 flex flex-col hover:border-novar-ink transition-colors">
+              <div className="inline-flex items-center gap-2 rounded-full bg-slate-100 w-max px-3 py-1 text-xs font-semibold uppercase tracking-wider text-slate-600 ring-1 ring-slate-200">
+                <Terminal className="h-3.5 w-3.5" />
+                Linux
+              </div>
+              <h3 className="mt-5 font-display text-2xl font-bold text-novar-ink">Ubuntu, Debian & plus</h3>
+              <p className="mt-3 text-sm text-novar-muted leading-relaxed flex-1">
+                Idéal pour les serveurs locaux ou les développeurs. Distribution au format AppImage portable ou paquet Debian.
+              </p>
+              <div className="mt-4 mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs uppercase tracking-wider text-slate-400">
+                <span>amd64</span>
+                <span className="text-slate-300">·</span>
+                <span>.deb / .AppImage</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
                 <a
-                  href="https://github.com/novarstartup-tech/birdy/releases/latest"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 rounded-xl bg-cyan-500 px-8 py-4 text-base font-semibold text-slate-950 shadow-xl shadow-cyan-500/30 hover:bg-cyan-400 transition-colors"
+                  href="https://github.com/novarstartup-tech/birdy/releases/latest/download/BIRDY_ERP_amd64.deb"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-4 text-sm font-semibold text-slate-900 hover:bg-slate-200 transition-colors"
                 >
-                  <Download className="h-5 w-5" />
-                  Télécharger pour Windows
+                  <Download className="h-4 w-4" />
+                  .deb
                 </a>
-                <span className="text-xs text-slate-400 text-center">
-                  Téléchargement direct · Aucune inscription requise
-                </span>
+                <a
+                  href="https://github.com/novarstartup-tech/birdy/releases/latest/download/BIRDY_ERP_amd64.AppImage"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-4 text-sm font-semibold text-slate-900 hover:bg-slate-200 transition-colors"
+                >
+                  <Download className="h-4 w-4" />
+                  .AppImage
+                </a>
               </div>
             </div>
           </div>
 
           {/* Trust strip */}
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-3">
             <TrustItem
               title="0 GNF"
               subtitle="Gratuit, à vie. Aucun abonnement, aucune limite."
@@ -144,67 +189,6 @@ export default function TelechargementsPage() {
             <TrustItem
               title="Hors ligne"
               subtitle="Fonctionne sans Internet. Vos données restent chez vous."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* === Linux — accès anticipé ================================== */}
-      <section className="surface-alt">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">
-              Autres systèmes
-            </span>
-          </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-novar-ink">
-            Linux & macOS
-          </h2>
-          <p className="mt-4 text-novar-muted leading-relaxed max-w-2xl">
-            BIRDY est conçu nativement multi-plateformes. Voici l&apos;état
-            de chaque canal — nous préférons l&apos;honnêteté à un
-            roadmap marketing.
-          </p>
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {/* Linux .deb */}
-            <PlatformCard
-              icon={Terminal}
-              title="Linux (.deb)"
-              subtitle="Ubuntu 22.04+, Debian 12+"
-              status="Accès anticipé"
-              statusTone="cyan"
-              description="Build natif Tauri pour distributions Debian. Validé sur Ubuntu et Debian récents. Autres distributions à tester."
-              cta={{
-                label: 'Demander le build',
-                href: '/contact?topic=support&from=linux-deb',
-              }}
-            />
-            {/* Linux .AppImage */}
-            <PlatformCard
-              icon={Terminal}
-              title="Linux (.AppImage)"
-              subtitle="Universel — toutes distros"
-              status="Accès anticipé"
-              statusTone="cyan"
-              description="Format portable, fonctionne sur la plupart des distributions Linux 64-bit. Idéal pour Fedora, Arch, openSUSE."
-              cta={{
-                label: 'Demander le build',
-                href: '/contact?topic=support&from=linux-appimage',
-              }}
-            />
-            {/* macOS */}
-            <PlatformCard
-              icon={Apple}
-              title="macOS"
-              subtitle="Apple Silicon & Intel"
-              status="À venir"
-              statusTone="amber"
-              description="La build Tauri pour macOS est techniquement prête mais nous n'avons pas encore signé via le programme Apple Developer ($99/an). Build non signé disponible sur demande pour les développeurs avancés."
-              cta={{
-                label: 'Demander un accès',
-                href: '/contact?topic=support&from=macos',
-              }}
             />
           </div>
         </div>
