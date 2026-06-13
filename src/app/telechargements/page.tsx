@@ -110,7 +110,7 @@ export default function TelechargementsPage() {
                 <span>.msi</span>
               </div>
               <a
-                href="https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_26.0.5_x64_en-US.msi"
+                href="https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_26.0.5_x64-setup.exe"
                 className="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-cyan-500 px-6 py-4 text-sm font-semibold text-slate-950 shadow-xl shadow-cyan-500/30 hover:bg-cyan-400 transition-colors"
               >
                 <Download className="h-4 w-4" />
@@ -134,7 +134,7 @@ export default function TelechargementsPage() {
                 <span>.dmg</span>
               </div>
               <a
-                href="https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_ERP_universal.dmg"
+                href="https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_26.0.5_aarch64.dmg"
                 className="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-slate-900 px-6 py-4 text-sm font-semibold text-white shadow-xl hover:bg-slate-800 transition-colors"
               >
                 <Download className="h-4 w-4" />
@@ -159,14 +159,14 @@ export default function TelechargementsPage() {
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <a
-                  href="https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_ERP_amd64.deb"
+                  href="https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_26.0.5_amd64.deb"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-4 text-sm font-semibold text-slate-900 hover:bg-slate-200 transition-colors"
                 >
                   <Download className="h-4 w-4" />
                   .deb
                 </a>
                 <a
-                  href="https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_ERP_amd64.AppImage"
+                  href="https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_26.0.5_amd64.AppImage"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-4 text-sm font-semibold text-slate-900 hover:bg-slate-200 transition-colors"
                 >
                   <Download className="h-4 w-4" />
