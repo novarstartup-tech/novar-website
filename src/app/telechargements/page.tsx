@@ -116,8 +116,9 @@ export default function TelechargementsPage() {
               </div>
               <div className="flex flex-col gap-3 lg:w-auto w-full">
                 <a
-                  href="#"
-                  aria-disabled
+                  href="https://github.com/novarstartup-tech/birdy/releases/latest"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-3 rounded-xl bg-cyan-500 px-8 py-4 text-base font-semibold text-slate-950 shadow-xl shadow-cyan-500/30 hover:bg-cyan-400 transition-colors"
                 >
                   <Download className="h-5 w-5" />
