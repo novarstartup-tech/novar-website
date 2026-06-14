@@ -144,16 +144,11 @@ export const SERVICES = {
   },
 } as const;
 
+// Les liens de téléchargement BIRDY ne sont plus codés en dur ici : ils
+// sont résolus automatiquement au build vers la dernière release GitHub
+// (cf. src/lib/releases.ts). Seul FEEDORA reste un lien d'accès direct.
 export const VERIFIED_LINKS = {
   feedora: PRODUCTS.feedora.accessHref,
-  birdyWindows:
-    'https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_26.0.5_x64-setup.exe',
-  birdyMac:
-    'https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_26.0.5_aarch64.dmg',
-  birdyDeb:
-    'https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_26.0.5_amd64.deb',
-  birdyAppImage:
-    'https://github.com/novarstartup-tech/birdy-releases/releases/latest/download/BIRDY_26.0.5_amd64.AppImage',
 } as const;
 
 export function localizeHref(href: string, locale: Locale): string {
