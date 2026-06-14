@@ -1,40 +1,46 @@
 import type { MetadataRoute } from 'next';
-import { flattenDocs } from '@/lib/docs';
 import { BLOG_POSTS } from '@/lib/blog';
+import { flattenDocs } from '@/lib/docs';
 import { SITE } from '@/lib/site';
 
+const LOCALIZED_ROUTES = [
+  ['', '/en'],
+  ['/produits', '/en/solutions'],
+  ['/produits/birdy-erp', '/en/products/birdy'],
+  ['/produits/feedora', '/en/products/feedora'],
+  ['/services/sur-mesure', '/en/services/custom-software'],
+  ['/services/conseil', '/en/services/advisory'],
+  ['/a-propos', '/en/about'],
+  ['/contact', '/en/contact'],
+  ['/telechargements', '/en/downloads'],
+  ['/tutoriels', '/en/guides'],
+  ['/securite', '/en/security'],
+  ['/legal/privacy', '/en/legal/privacy'],
+  ['/legal/cgv', '/en/legal/terms'],
+] as const;
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = SITE.url;
-  const staticRoutes = [
-    '',
-    '/produits',
-    '/produits/birdy-erp',
-    '/produits/feedora',
-    '/services/sur-mesure',
-    '/services/conseil',
-    '/securite',
-    '/tarifs',
-    '/telechargements',
-    '/tutoriels',
+  const localized = LOCALIZED_ROUTES.flatMap(([fr, en]) => {
+    const languages = { 'fr-GN': `${SITE.url}${fr}`, en: `${SITE.url}${en}` };
+    return [fr, en].map((path) => ({
+      url: `${SITE.url}${path}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: path === '' || path === '/en' ? 1 : 0.8,
+      alternates: { languages },
+    }));
+  });
+  const frenchOnly = [
     '/docs',
     '/blog',
-    '/compte',
-    '/compte/login',
-    '/a-propos',
-    '/contact',
-    '/demo',
     '/faq',
-    '/legal/cgv',
-    '/legal/privacy',
-  ];
-
-  const docRoutes = flattenDocs().map((d) => `/docs/${d.slug}`);
-  const blogRoutes = BLOG_POSTS.map((p) => `/blog/${p.slug}`);
-
-  return [...staticRoutes, ...docRoutes, ...blogRoutes].map((path) => ({
-    url: `${base}${path}`,
+    ...flattenDocs().map((doc) => `/docs/${doc.slug}`),
+    ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
+  ].map((path) => ({
+    url: `${SITE.url}${path}`,
     lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: path === '' ? 1 : 0.7,
+    changeFrequency: 'weekly' as const,
+    priority: 0.6,
   }));
+  return [...localized, ...frenchOnly];
 }

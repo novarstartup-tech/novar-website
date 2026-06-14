@@ -86,6 +86,31 @@ const nextConfig = {
         destination: '/a-propos#equipe',
         permanent: true,
       },
+      {
+        source: '/compte/:path*',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/compte',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/tarifs',
+        destination: '/produits',
+        permanent: true,
+      },
+      {
+        source: '/demo',
+        destination: '/contact?topic=demo',
+        permanent: true,
+      },
+      {
+        source: '/docs/api/:path*',
+        destination: '/docs',
+        permanent: true,
+      },
     ];
   },
   async headers() {

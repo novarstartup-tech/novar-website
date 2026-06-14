@@ -9,9 +9,9 @@ export const DOCS_TREE: DocCategory[] = [
     slug: 'demarrage',
     title: 'Démarrage',
     pages: [
-      { slug: 'installation', title: 'Installation', description: 'Installer BIRDY sur Windows' },
+      { slug: 'installation', title: 'Installation', description: 'Installer BIRDY' },
       { slug: 'premiere-utilisation', title: 'Première utilisation', description: 'Créer votre société' },
-      { slug: 'onboarding', title: 'Parcours d’onboarding', description: 'Les 7 premières étapes' },
+      { slug: 'onboarding', title: 'Parcours d’onboarding', description: 'Les premières étapes' },
       { slug: 'interface', title: 'Tour de l’interface', description: 'Comprendre les écrans clés' },
     ],
   },
@@ -19,12 +19,12 @@ export const DOCS_TREE: DocCategory[] = [
     slug: 'modules',
     title: 'Modules métier',
     pages: [
-      { slug: 'articles', title: 'Articles & catégories' },
-      { slug: 'pos', title: 'POS / Ventes' },
+      { slug: 'articles', title: 'Articles et catégories' },
+      { slug: 'pos', title: 'POS et ventes' },
       { slug: 'stock', title: 'Gestion du stock' },
-      { slug: 'caisse', title: 'Caisse & encaissements' },
-      { slug: 'tiers', title: 'Tiers (clients & fournisseurs)' },
-      { slug: 'achats', title: 'Achats & approvisionnement' },
+      { slug: 'caisse', title: 'Caisse et encaissements' },
+      { slug: 'tiers', title: 'Clients et fournisseurs' },
+      { slug: 'achats', title: 'Achats et approvisionnement' },
     ],
   },
   {
@@ -42,13 +42,13 @@ export const DOCS_TREE: DocCategory[] = [
   },
   {
     slug: 'rh-paie',
-    title: 'RH & Paie',
+    title: 'RH et paie',
     pages: [
       { slug: 'employes', title: 'Gestion des employés' },
-      { slug: 'contrats', title: 'Contrats & avenants' },
+      { slug: 'contrats', title: 'Contrats et avenants' },
       { slug: 'paie-mensuelle', title: 'Paie mensuelle' },
-      { slug: 'irpp-cnss', title: 'IRPP & CNSS Guinée' },
-      { slug: 'conges', title: 'Congés & absences' },
+      { slug: 'irpp-cnss', title: 'IRPP et CNSS Guinée' },
+      { slug: 'conges', title: 'Congés et absences' },
     ],
   },
   {
@@ -62,14 +62,6 @@ export const DOCS_TREE: DocCategory[] = [
     ],
   },
   {
-    slug: 'api',
-    title: 'API',
-    pages: [
-      { slug: 'overview', title: 'Vue d’ensemble' },
-      { slug: 'authentification', title: 'Authentification' },
-    ],
-  },
-  {
     slug: '',
     title: 'Aide',
     pages: [{ slug: 'faq', title: 'FAQ' }],
@@ -77,12 +69,11 @@ export const DOCS_TREE: DocCategory[] = [
 ];
 
 export function flattenDocs(): { slug: string; title: string; category: string }[] {
-  const out: { slug: string; title: string; category: string }[] = [];
-  for (const cat of DOCS_TREE) {
-    for (const p of cat.pages) {
-      const slug = cat.slug ? `${cat.slug}/${p.slug}` : p.slug;
-      out.push({ slug, title: p.title, category: cat.title });
-    }
-  }
-  return out;
+  return DOCS_TREE.flatMap((category) =>
+    category.pages.map((page) => ({
+      slug: category.slug ? `${category.slug}/${page.slug}` : page.slug,
+      title: page.title,
+      category: category.title,
+    })),
+  );
 }

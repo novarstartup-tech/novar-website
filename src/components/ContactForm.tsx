@@ -1,220 +1,255 @@
 'use client';
 
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useState, useRef, useEffect } from 'react';
-import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { AlertCircle, CheckCircle2, Send } from 'lucide-react';
+import { CONTACT_TOPICS, type ContactTopic, type Locale } from '@/lib/content';
 
-/**
- * ContactForm — formulaire B2B avec garde-fous anti-spam Tier 1.
- *
- * 1. Honeypot `website` (champ caché aux humains, visible aux bots) :
- *    si rempli, on simule un succès côté UI mais on ne POST jamais.
- *    99 % des bots remplissent tous les champs sans regarder le CSS.
- * 2. Timing trap : on enregistre `mountedAt`. Un humain met >2 secondes
- *    pour remplir le formulaire ; un bot remplit en <500ms. Si la durée
- *    est suspecte, même traitement que le honeypot.
- * 3. Validation Zod côté client + serveur (double rideau).
- * 4. Le serveur applique un rate limit IP-based supplémentaire.
- */
+const COPY = {
+  fr: {
+    name: 'Nom complet',
+    namePlaceholder: 'Votre nom',
+    email: 'E-mail professionnel',
+    company: 'Entreprise ou organisation',
+    companyPlaceholder: 'Nom de votre structure',
+    topic: 'Sujet',
+    message: 'Votre message',
+    messagePlaceholder: 'Décrivez votre contexte, votre objectif et le résultat attendu.',
+    required: 'Champ obligatoire',
+    nameError: 'Veuillez saisir au moins 2 caractères.',
+    emailError: 'Saisissez une adresse e-mail valide.',
+    messageError: 'Décrivez votre demande en au moins 10 caractères.',
+    submit: 'Envoyer le message',
+    sending: 'Envoi en cours…',
+    success: 'Message bien reçu. Notre équipe vous répondra dans les meilleurs délais.',
+    genericError: 'Le message n’a pas pu être envoyé. Écrivez-nous directement à novar.startup@gmail.com.',
+    rateLimited: 'Trop de demandes ont été envoyées. Réessayez dans quelques minutes.',
+    invalid: 'Certains champs sont invalides. Vérifiez le formulaire.',
+    topics: {
+      birdy: 'BIRDY',
+      feedora: 'FEEDORA',
+      demo: 'Demander une démonstration',
+      'sur-mesure': 'Projet logiciel sur mesure',
+      conseil: 'Conseil et accompagnement',
+      support: 'Support produit',
+      autre: 'Autre demande',
+    },
+  },
+  en: {
+    name: 'Full name',
+    namePlaceholder: 'Your name',
+    email: 'Work email',
+    company: 'Company or organization',
+    companyPlaceholder: 'Organization name',
+    topic: 'Topic',
+    message: 'Your message',
+    messagePlaceholder: 'Describe your context, objective and expected outcome.',
+    required: 'Required field',
+    nameError: 'Enter at least 2 characters.',
+    emailError: 'Enter a valid email address.',
+    messageError: 'Describe your request in at least 10 characters.',
+    submit: 'Send message',
+    sending: 'Sending…',
+    success: 'Message received. Our team will get back to you as soon as possible.',
+    genericError: 'The message could not be sent. Email us directly at novar.startup@gmail.com.',
+    rateLimited: 'Too many requests were sent. Please try again in a few minutes.',
+    invalid: 'Some fields are invalid. Please review the form.',
+    topics: {
+      birdy: 'BIRDY',
+      feedora: 'FEEDORA',
+      demo: 'Request a demonstration',
+      'sur-mesure': 'Tailored software project',
+      conseil: 'Advisory and enablement',
+      support: 'Product support',
+      autre: 'Other request',
+    },
+  },
+} as const;
+
 const schema = z.object({
-  name: z.string().min(2, 'Veuillez saisir votre nom'),
-  email: z.string().email('Adresse e-mail invalide'),
-  company: z.string().optional(),
-  topic: z.enum(['birdy', 'feedora', 'sur-mesure', 'conseil', 'support', 'autre']),
-  message: z.string().min(10, 'Décrivez votre demande en quelques mots'),
-  // Honeypot : champ caché. S'il est rempli côté client, c'est un bot.
-  website: z.string().max(0, '').optional(),
+  name: z.string().trim().min(2).max(100),
+  email: z.string().trim().email().max(200),
+  company: z.string().trim().max(150).optional(),
+  topic: z.enum(CONTACT_TOPICS),
+  message: z.string().trim().min(10).max(5000),
+  website: z.string().max(200).optional(),
 });
+
 type FormValues = z.infer<typeof schema>;
+type ApiErrorCode = 'RATE_LIMITED' | 'INVALID_JSON' | 'INVALID_DATA' | 'SEND_FAILED';
 
 const inputClass =
-  'w-full rounded-lg border border-novar-line bg-white px-3.5 py-2.5 text-sm text-novar-ink placeholder:text-novar-muted focus:border-novar-accent focus:outline-none focus:ring-2 focus:ring-novar-accent/20 transition-colors';
+  'w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 placeholder:text-slate-400 transition-colors focus:border-cyan-600 focus:outline-none focus:ring-4 focus:ring-cyan-100 aria-[invalid=true]:border-red-500 aria-[invalid=true]:focus:ring-red-100';
 
-const labelClass =
-  'block text-xs font-semibold uppercase tracking-wider text-novar-muted mb-1.5';
-
-export function ContactForm() {
+export function ContactForm({
+  locale = 'fr',
+  defaultTopic = 'autre',
+}: {
+  locale?: Locale;
+  defaultTopic?: ContactTopic;
+}) {
+  const c = COPY[locale];
+  const [status, setStatus] = useState<'idle' | 'ok' | 'error'>('idle');
+  const [apiError, setApiError] = useState<ApiErrorCode | null>(null);
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
     reset,
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { topic: 'birdy', website: '' },
+    defaultValues: { topic: defaultTopic, website: '' },
   });
-  const [status, setStatus] = useState<'idle' | 'ok' | 'error'>('idle');
-  const mountedAt = useRef<number>(Date.now());
-
-  useEffect(() => {
-    mountedAt.current = Date.now();
-  }, []);
 
   async function onSubmit(values: FormValues) {
     setStatus('idle');
+    setApiError(null);
 
-    // Garde-fou 1 — honeypot rempli : on fake un succès, on ne POST jamais.
-    if (values.website && values.website.length > 0) {
+    if (values.website) {
       setStatus('ok');
-      reset();
-      return;
-    }
-
-    // Garde-fou 2 — soumission anormalement rapide (<2s) : très probablement
-    // un bot. Même traitement silencieux qu'un honeypot trip.
-    const elapsed = Date.now() - mountedAt.current;
-    if (elapsed < 2000) {
-      setStatus('ok');
-      reset();
+      reset({ topic: defaultTopic, website: '' });
       return;
     }
 
     try {
-      const res = await fetch('/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...values, _elapsed: elapsed }),
+        body: JSON.stringify(values),
       });
-      if (!res.ok) throw new Error('Erreur serveur');
+      const payload = (await response.json()) as { ok?: boolean; code?: ApiErrorCode };
+      if (!response.ok || !payload.ok) {
+        setApiError(payload.code ?? 'SEND_FAILED');
+        setStatus('error');
+        return;
+      }
       setStatus('ok');
-      reset();
+      reset({ topic: defaultTopic, website: '' });
     } catch {
+      setApiError('SEND_FAILED');
       setStatus('error');
     }
   }
 
+  const errorMessage =
+    apiError === 'RATE_LIMITED' ? c.rateLimited : apiError === 'INVALID_DATA' ? c.invalid : c.genericError;
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label htmlFor="name" className={labelClass}>
-            Nom complet *
-          </label>
+        <Field label={c.name} required error={errors.name ? c.nameError : undefined} id="name">
           <input
             id="name"
-            placeholder="Votre nom"
-            {...register('name')}
+            autoComplete="name"
+            placeholder={c.namePlaceholder}
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? 'name-error' : undefined}
             className={inputClass}
+            {...register('name')}
           />
-          {errors.name && (
-            <p className="mt-1 text-xs text-red-600">{errors.name.message}</p>
-          )}
-        </div>
-        <div>
-          <label htmlFor="email" className={labelClass}>
-            E-mail *
-          </label>
+        </Field>
+        <Field label={c.email} required error={errors.email ? c.emailError : undefined} id="email">
           <input
             id="email"
             type="email"
-            placeholder="vous@entreprise.com"
-            {...register('email')}
+            autoComplete="email"
+            placeholder="you@company.com"
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? 'email-error' : undefined}
             className={inputClass}
+            {...register('email')}
           />
-          {errors.email && (
-            <p className="mt-1 text-xs text-red-600">{errors.email.message}</p>
-          )}
-        </div>
+        </Field>
       </div>
 
-      <div>
-        <label htmlFor="company" className={labelClass}>
-          Entreprise
-        </label>
+      <Field label={c.company} id="company">
         <input
           id="company"
-          placeholder="Nom de votre société"
-          {...register('company')}
+          autoComplete="organization"
+          placeholder={c.companyPlaceholder}
           className={inputClass}
+          {...register('company')}
         />
+      </Field>
+
+      <div className="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input id="website" tabIndex={-1} autoComplete="off" {...register('website')} />
       </div>
 
-      {/*
-        Honeypot — champ caché aux humains via aria-hidden + tabIndex=-1 +
-        position absolute hors viewport. Les bots qui parsent le HTML brut
-        rempliront tous les champs sans regarder le CSS et déclencheront
-        notre garde-fou côté handler.
-
-        Pas de display:none — certains bots détectent et skipent les champs
-        cachés. La technique "off-screen positioning" est plus efficace.
-      */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          left: '-10000px',
-          top: 'auto',
-          width: '1px',
-          height: '1px',
-          overflow: 'hidden',
-        }}
-      >
-        <label htmlFor="website">
-          Site web (ne pas remplir — réservé aux robots)
-        </label>
-        <input
-          id="website"
-          type="text"
-          tabIndex={-1}
-          autoComplete="off"
-          {...register('website')}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="topic" className={labelClass}>
-          Sujet *
-        </label>
-        <select id="topic" {...register('topic')} className={inputClass}>
-          <option value="birdy">Renseignement BIRDY (ERP OHADA)</option>
-          <option value="feedora">Renseignement FEEDORA (formulation avicole)</option>
-          <option value="sur-mesure">Projet sur mesure</option>
-          <option value="conseil">Conseil &amp; accompagnement</option>
-          <option value="support">Support technique</option>
-          <option value="autre">Autre</option>
+      <Field label={c.topic} required id="topic">
+        <select id="topic" className={inputClass} {...register('topic')}>
+          {CONTACT_TOPICS.map((topic) => (
+            <option key={topic} value={topic}>
+              {c.topics[topic]}
+            </option>
+          ))}
         </select>
-      </div>
+      </Field>
 
-      <div>
-        <label htmlFor="message" className={labelClass}>
-          Votre message *
-        </label>
+      <Field label={c.message} required error={errors.message ? c.messageError : undefined} id="message">
         <textarea
           id="message"
-          rows={5}
-          placeholder="Décrivez votre contexte, vos objectifs, et ce que nous pouvons faire pour vous."
-          {...register('message')}
+          rows={6}
+          placeholder={c.messagePlaceholder}
+          aria-invalid={Boolean(errors.message)}
+          aria-describedby={errors.message ? 'message-error' : undefined}
           className={inputClass}
+          {...register('message')}
         />
-        {errors.message && (
-          <p className="mt-1 text-xs text-red-600">{errors.message.message}</p>
+      </Field>
+
+      <div aria-live="polite" aria-atomic="true">
+        {status === 'ok' && (
+          <div role="status" className="flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900">
+            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+            <span>{c.success}</span>
+          </div>
+        )}
+        {status === 'error' && (
+          <div role="alert" className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+            <span>{errorMessage}</span>
+          </div>
         )}
       </div>
 
-      {status === 'ok' && (
-        <div className="flex items-start gap-2 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
-          <CheckCircle2 className="h-4 w-4 mt-0.5 flex-shrink-0" />
-          <span>Message bien reçu. Nous vous répondons sous 24 h ouvrées.</span>
-        </div>
-      )}
-      {status === 'error' && (
-        <div className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
-          <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
-          <span>
-            Une erreur est survenue. Vous pouvez nous écrire directement à
-            novar.startup@gmail.com.
-          </span>
-        </div>
-      )}
-
-      <div className="pt-2">
-        <button type="submit" disabled={isSubmitting} className="btn-primary disabled:opacity-50">
-          <Send className="h-4 w-4" />
-          {isSubmitting ? 'Envoi en cours…' : 'Envoyer le message'}
-        </button>
-      </div>
+      <button type="submit" disabled={isSubmitting} className="btn-primary disabled:cursor-not-allowed disabled:opacity-60">
+        <Send className="h-4 w-4" aria-hidden />
+        {isSubmitting ? c.sending : c.submit}
+      </button>
+      <p className="text-xs text-slate-500">* {c.required}</p>
     </form>
+  );
+}
+
+function Field({
+  id,
+  label,
+  required,
+  error,
+  children,
+}: {
+  id: string;
+  label: string;
+  required?: boolean;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="mb-2 block text-sm font-semibold text-slate-800">
+        {label}
+        {required ? <span aria-hidden="true"> *</span> : null}
+      </label>
+      {children}
+      {error ? (
+        <p id={`${id}-error`} className="mt-2 text-xs font-medium text-red-700">
+          {error}
+        </p>
+      ) : null}
+    </div>
   );
 }

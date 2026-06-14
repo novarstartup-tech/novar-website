@@ -62,7 +62,6 @@ export const NAV = [
       { label: 'Conseil & accompagnement', href: '/services/conseil', desc: 'Stratégie technologique et formation' },
     ],
   },
-  { label: 'Tarifs', href: '/tarifs' },
   { label: 'Documentation', href: '/docs' },
   { label: 'Blog', href: '/blog' },
   { label: 'À propos', href: '/a-propos' },

@@ -1,19 +1,16 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Bricolage_Grotesque, JetBrains_Mono } from 'next/font/google';
+import { Bricolage_Grotesque, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { Header } from '@/components/Header';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/JsonLd';
 import { SITE } from '@/lib/site';
 
-// Viewport explicite — pas de zoom bloqué, échelle initiale 1 pour
-// éviter le "double-tap zoom" iOS sur les boutons et garantir un
-// rendu identique sur Android/iOS/Safari mobile.
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#0B1220',
+  themeColor: '#ffffff',
 };
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
@@ -21,75 +18,30 @@ const bricolage = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-br
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains', display: 'swap' });
 
 export const metadata: Metadata = {
-  title: { default: `${SITE.name} — ${SITE.baseline}`, template: `%s — ${SITE.name}` },
-  description: SITE.description,
+  title: { default: 'NOVAR — SaaS Studio', template: `%s — ${SITE.name}` },
+  description: 'NOVAR édite BIRDY et FEEDORA et conçoit des logiciels sur mesure pour les PME et organisations.',
   metadataBase: new URL(SITE.url),
-  alternates: { canonical: '/' },
+  alternates: {
+    canonical: '/',
+    languages: { 'fr-GN': '/', en: '/en' },
+  },
   keywords: [
-    // Identité
     'NOVAR',
-    'NOVAR Startup',
-    'NOVAR SaaS Studio',
-    'Djerno',
-    // BIRDY (ERP)
+    'SaaS Studio',
     'BIRDY',
-    'BIRDY ERP',
-    'ERP Guinée',
-    'ERP OHADA',
-    'logiciel comptabilité OHADA',
-    'logiciel gestion de stock',
-    'logiciel facturation Guinée',
-    'logiciel caisse Guinée',
-    'logiciel paie Guinée',
-    'SYSCOHADA',
-    'SYSCOHADA révisé',
-    'liasse fiscale OHADA',
-    'TAFIRE',
-    'FEC OHADA',
-    'IRPP Guinée',
-    'CNSS Guinée',
-    'plan comptable OHADA',
-    'PME Afrique',
-    'comptabilité Conakry',
-    // FEEDORA (AgriTech)
     'FEEDORA',
-    'formulation alimentaire',
-    'formule alimentaire',
-    'aliment volaille',
-    'aliment poulet',
-    'alimentation animale',
-    'aviculture',
-    'nutrition animale',
-    'élevage Guinée',
-    'élevage Afrique',
-    'ferme avicole',
-    'poulet de chair',
-    'pondeuse',
-    'nutritionniste élevage',
-    'coopérative avicole',
-    'AgriTech Afrique',
-    // Services
     'logiciel sur mesure',
-    'automatisation entreprise',
-    'développement logiciel Conakry',
-    'conseil technologique Afrique',
-    // Géo & métier
-    'OHADA',
+    'ERP OHADA',
+    'PME Afrique',
     'Guinée',
-    'Conakry',
-    "Afrique de l'Ouest",
-    'startup Guinée',
-    'SaaS B2B Afrique',
-    'logiciel africain',
   ],
   authors: [{ name: SITE.founder }],
   creator: SITE.name,
   publisher: SITE.legalName,
   applicationName: SITE.name,
-  generator: 'Next.js',
   openGraph: {
-    title: `${SITE.name} — ${SITE.baseline}`,
-    description: SITE.description,
+    title: 'NOVAR — SaaS Studio',
+    description: 'Produits SaaS utiles et solutions logicielles sur mesure pour les PME et organisations.',
     url: SITE.url,
     siteName: SITE.name,
     locale: 'fr_GN',
@@ -97,9 +49,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE.name} — ${SITE.baseline}`,
-    description: SITE.description,
-    creator: '@novar_startup',
+    title: 'NOVAR — SaaS Studio',
+    description: 'Produits SaaS utiles et solutions logicielles sur mesure.',
   },
   robots: {
     index: true,
@@ -113,30 +64,30 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: '/logos/novar.png', sizes: '512x512', type: 'image/png' },
-    ],
+    icon: [{ url: '/logos/novar.png', sizes: '512x512', type: 'image/png' }],
     apple: [{ url: '/logos/novar.png' }],
   },
   category: 'technology',
   formatDetection: { email: false, telephone: false, address: false },
-  verification: {
-    // À remplir quand Djerno aura récupéré les codes :
-    // google: 'XXXXXXXXXXXXXXXXXX',
-    // other: { 'msvalidate.01': 'XXXXXXXX' },
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${inter.variable} ${bricolage.variable} ${jetbrains.variable}`}>
-      <body className="font-sans overflow-x-hidden">
-        {/* JSON-LD structured data: Organization + WebSite (SearchAction) */}
+      <body className="overflow-x-hidden font-sans">
         <OrganizationJsonLd />
         <WebSiteJsonLd />
+        <a
+          href="#main-content"
+          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition-transform focus:translate-y-0"
+        >
+          Aller au contenu / Skip to content
+        </a>
         <div className="flex min-h-screen flex-col">
           <Header />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
           <Footer />
         </div>
       </body>
