@@ -1,7 +1,15 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import { FAQPageJsonLd } from '@/components/JsonLd';
 import { PageHero } from '@/components/PageHero';
+
+export const metadata: Metadata = {
+  title: 'FAQ — BIRDY & NOVAR : gratuit, OHADA, hors-ligne, mobile money',
+  description:
+    'Questions fréquentes sur BIRDY et NOVAR : les produits sont-ils gratuits ? comment accéder à BIRDY (Windows, macOS, Linux) et à FEEDORA ? comment démarrer un projet sur mesure ?',
+  alternates: { canonical: '/faq' },
+};
 
 const FAQS = [
   { q: 'NOVAR est-il un seul logiciel ?', a: 'Non. NOVAR est un SaaS Studio. Nous éditons actuellement BIRDY et FEEDORA, et nous concevons aussi des solutions personnalisées pour les PME et organisations.' },

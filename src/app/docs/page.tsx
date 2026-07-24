@@ -13,6 +13,7 @@ export const metadata = {
   title: 'Documentation',
   description:
     'Documentation complète : démarrage rapide, modules BIRDY (POS, articles, stock, achats, caisse), comptabilité OHADA, RH & paie, sécurité.',
+  alternates: { canonical: '/docs' },
 };
 
 type Section = {

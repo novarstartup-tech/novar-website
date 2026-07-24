@@ -6,6 +6,7 @@ export const metadata = {
   title: 'Blog',
   description:
     "Articles de fond sur l'OHADA, la transformation numérique des PME africaines, et la vision NOVAR SaaS Studio.",
+  alternates: { canonical: '/blog' },
 };
 
 export default function BlogIndex() {
