@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StudioView } from '@/components/MarketingPages';
+import { LocalBusinessJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Le studio',
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  return <StudioView locale="fr" />;
+  return (
+    <>
+      <LocalBusinessJsonLd />
+      <StudioView locale="fr" />
+    </>
+  );
 }
