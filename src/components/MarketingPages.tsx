@@ -400,6 +400,42 @@ export async function DownloadsView({ locale }: { locale: Locale }) {
           ))}
         </div>
       </section>
+      <section className="section-shell pt-0">
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-7">
+          <div className="flex items-start gap-3">
+            <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" aria-hidden />
+            <div>
+              <h2 className="font-display text-xl font-bold text-slate-950">
+                {isFr
+                  ? 'À l’installation, un avertissement peut s’afficher — c’est normal'
+                  : 'A warning may appear during install — this is normal'}
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                {isFr
+                  ? 'BIRDY est édité par un jeune studio et n’est pas encore signé par un certificat payant. Windows (SmartScreen) affiche donc un message « éditeur inconnu » : il signale seulement que l’application est récente et peu téléchargée, pas qu’elle est dangereuse.'
+                  : 'BIRDY is published by a young studio and is not yet signed with a paid certificate. Windows (SmartScreen) therefore shows an “unknown publisher” message: it only means the app is new and rarely downloaded, not that it is unsafe.'}
+              </p>
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-xl border border-amber-200 bg-white p-4">
+                  <h3 className="font-display text-sm font-bold text-slate-950">Windows</h3>
+                  <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm leading-relaxed text-slate-700">
+                    <li>{isFr ? 'Au téléchargement, cliquez « Conserver ».' : 'When downloading, click “Keep”.'}</li>
+                    <li>{isFr ? 'Ouvrez le fichier, puis cliquez « Informations complémentaires ».' : 'Open the file, then click “More info”.'}</li>
+                    <li>{isFr ? 'Cliquez « Exécuter quand même ».' : 'Click “Run anyway”.'}</li>
+                  </ol>
+                </div>
+                <div className="rounded-xl border border-amber-200 bg-white p-4">
+                  <h3 className="font-display text-sm font-bold text-slate-950">macOS</h3>
+                  <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm leading-relaxed text-slate-700">
+                    <li>{isFr ? 'Faites un clic droit sur l’application, puis « Ouvrir ».' : 'Right-click the app, then “Open”.'}</li>
+                    <li>{isFr ? 'Confirmez « Ouvrir » dans la fenêtre qui apparaît.' : 'Confirm “Open” in the dialog that appears.'}</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
