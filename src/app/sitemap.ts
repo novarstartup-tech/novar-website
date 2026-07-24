@@ -21,7 +21,12 @@ const LOCALIZED_ROUTES = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const localized = LOCALIZED_ROUTES.flatMap(([fr, en]) => {
-    const languages = { 'fr-GN': `${SITE.url}${fr}`, en: `${SITE.url}${en}` };
+    const languages = {
+      fr: `${SITE.url}${fr}`,
+      'fr-GN': `${SITE.url}${fr}`,
+      en: `${SITE.url}${en}`,
+      'x-default': `${SITE.url}${fr}`,
+    };
     return [fr, en].map((path) => ({
       url: `${SITE.url}${path}`,
       lastModified: new Date(),

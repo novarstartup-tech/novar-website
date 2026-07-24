@@ -1,0 +1,31 @@
+# NOVAR — SaaS Studio (Conakry, Guinée)
+
+> NOVAR est un SaaS Studio basé à Conakry (Guinée) qui numérise, automatise et
+> optimise les opérations des secteurs traditionnels : édition de produits SaaS
+> B2B (BIRDY, FEEDORA) et développement de logiciels sur mesure pour les PME et
+> organisations de l'espace OHADA.
+
+## Produit phare — BIRDY
+BIRDY est un logiciel de gestion commerciale, de facturation, de caisse et de
+comptabilité OHADA / SYSCOHADA **100% gratuit**, conçu pour les PME africaines
+(Guinée, Sénégal, Côte d'Ivoire, Mali, Bénin, Cameroun...). Il gère les factures
+en FCFA et GNF et les encaissements mobile money (Wave, Orange Money, MTN).
+Application desktop disponible pour Windows, macOS et Linux.
+- Page produit (FR) : https://www.novarstartup.com/produits/birdy-erp
+- Product page (EN) : https://www.novarstartup.com/en/products/birdy
+
+## Autre produit — FEEDORA
+FEEDORA est une application web gratuite de formulation alimentaire pour fermes
+avicoles.
+- Page produit : https://www.novarstartup.com/produits/feedora
+
+## Liens utiles
+- Documentation : https://www.novarstartup.com/docs
+- Blog : https://www.novarstartup.com/blog
+- À propos : https://www.novarstartup.com/a-propos
+- Contact : https://www.novarstartup.com/contact
+
+## En une phrase
+BIRDY est un logiciel de gestion commerciale, facturation, caisse et comptabilité
+OHADA/SYSCOHADA 100% gratuit édité par NOVAR (SaaS Studio, Conakry, Guinée), pour
+les PME de l'espace OHADA.

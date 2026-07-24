@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   alternates: {
     canonical: '/',
-    languages: { 'fr-GN': '/', en: '/en' },
+    languages: { fr: '/', 'fr-GN': '/', en: '/en', 'x-default': '/' },
   },
   keywords: [
     'NOVAR',
