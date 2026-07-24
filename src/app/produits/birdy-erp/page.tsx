@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ProductDetail } from '@/components/MarketingPages';
 import { SoftwareApplicationJsonLd } from '@/components/JsonLd';
+import { RelatedSolutions } from '@/components/SolutionSections';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -29,6 +30,10 @@ export default function BirdyPage() {
         offers={{ price: '0', priceCurrency: 'XOF' }}
       />
       <ProductDetail locale="fr" id="birdy" />
+      <RelatedSolutions
+        heading="BIRDY, module par module"
+        intro="Découvrez en détail comment BIRDY couvre chaque besoin de gestion — facturation, caisse, stock et comptabilité OHADA — et son adaptation au marché guinéen."
+      />
     </>
   );
 }

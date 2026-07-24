@@ -35,6 +35,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: { languages },
     }));
   });
+  // Pages solutions FR (SEO longue traîne : fonctionnalités + pays).
+  // FR uniquement pour ce premier lot ; les équivalents EN restent à décliner.
+  const solutionPages = [
+    '/logiciels/facturation-ohada',
+    '/logiciels/caisse',
+    '/logiciels/gestion-de-stock',
+    '/logiciels/comptabilite-ohada',
+    '/logiciels/guinee',
+  ].map((path) => ({
+    url: `${SITE.url}${path}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
   const frenchOnly = [
     '/docs',
     '/blog',
@@ -47,5 +61,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'weekly' as const,
     priority: 0.6,
   }));
-  return [...localized, ...frenchOnly];
+  return [...localized, ...solutionPages, ...frenchOnly];
 }
