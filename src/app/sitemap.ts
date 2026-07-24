@@ -43,6 +43,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/logiciels/gestion-de-stock',
     '/logiciels/comptabilite-ohada',
     '/logiciels/guinee',
+    '/logiciels/senegal',
+    '/logiciels/cote-d-ivoire',
+    '/logiciels/mali',
+    '/logiciels/benin',
+    '/logiciels/cameroun',
   ].map((path) => ({
     url: `${SITE.url}${path}`,
     lastModified: new Date(),
