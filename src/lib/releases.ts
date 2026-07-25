@@ -60,8 +60,14 @@ function pickAsset(assets: GithubAsset[], os: BirdyOs): string | null {
 /**
  * Récupère les liens de la dernière release. Toujours résolu : en cas
  * d'échec ou d'asset manquant, on renvoie la page releases/latest.
+ *
+ * `revalidate` (secondes) : durée de cache de la réponse GitHub. Utilisé
+ * par l'endpoint /api/download/[os] pour rester frais sans marteler
+ * l'API. Non fourni → `force-cache` (résolution figée au build).
  */
-export async function getBirdyDownloads(): Promise<BirdyDownloads> {
+export async function getBirdyDownloads(
+  opts: { revalidate?: number } = {},
+): Promise<BirdyDownloads> {
   const fallback: BirdyDownloads = {
     windows: RELEASES_PAGE,
     mac: RELEASES_PAGE,
@@ -80,8 +86,13 @@ export async function getBirdyDownloads(): Promise<BirdyDownloads> {
       headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
     }
 
-    // force-cache : figé au build, la page reste statique.
-    const res = await fetch(LATEST_API, { headers, cache: 'force-cache' });
+    // Avec revalidate : cache ISR rafraîchi périodiquement (endpoint
+    // runtime). Sans : force-cache, figé au build.
+    const cacheInit =
+      opts.revalidate != null
+        ? { next: { revalidate: opts.revalidate } }
+        : { cache: 'force-cache' as const };
+    const res = await fetch(LATEST_API, { headers, ...cacheInit });
     if (!res.ok) return fallback;
 
     const release = (await res.json()) as GithubRelease;

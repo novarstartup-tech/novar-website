@@ -23,7 +23,6 @@ import {
 import { ContactForm } from '@/components/ContactForm';
 import { PageHero } from '@/components/PageHero';
 import { PRODUCTS, SERVICES, SITE_COPY, VERIFIED_LINKS, type ContactTopic, type Locale, type ProductId, type ServiceId } from '@/lib/content';
-import { getBirdyDownloads } from '@/lib/releases';
 import { SITE } from '@/lib/site';
 
 const TEXT = {
@@ -374,16 +373,15 @@ export function ResourcesView({ locale, mode = 'resources' }: { locale: Locale; 
   );
 }
 
-export async function DownloadsView({ locale }: { locale: Locale }) {
+export function DownloadsView({ locale }: { locale: Locale }) {
   const isFr = locale === 'fr';
-  // Liens résolus au build vers la dernière release BIRDY publiée
-  // sur GitHub (cf. src/lib/releases.ts).
-  const downloads = await getBirdyDownloads();
+  // Liens internes stables : l'endpoint /api/download/<os> résout la
+  // dernière release BIRDY au clic (cf. src/app/api/download/[os]).
   const platforms = [
-    ['Windows', '.exe', downloads.windows],
-    ['macOS', '.dmg', downloads.mac],
-    ['Linux Debian', '.deb', downloads.deb],
-    ['Linux AppImage', '.AppImage', downloads.appimage],
+    ['Windows', '.exe', '/api/download/windows'],
+    ['macOS', '.dmg', '/api/download/mac'],
+    ['Linux Debian', '.deb', '/api/download/deb'],
+    ['Linux AppImage', '.AppImage', '/api/download/appimage'],
   ];
   return (
     <>
