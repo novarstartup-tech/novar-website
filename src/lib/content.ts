@@ -72,12 +72,12 @@ export const PRODUCTS = {
       fr: {
         category: 'ERP & comptabilité OHADA — 100 % gratuit',
         summary:
-          'Sortez du cahier et d’Excel. BIRDY réunit vos ventes, votre caisse, vos stocks et votre comptabilité OHADA dans un seul logiciel installé sur votre ordinateur — et qui fonctionne même sans connexion internet stable.',
+          'Sortez du cahier et d’Excel. Commerce, industrie ou service : BIRDY s’adapte à votre métier et réunit ventes, caisse, stock ou prestations, et comptabilité OHADA dans un seul logiciel — installé sur votre ordinateur, même sans connexion internet stable.',
       },
       en: {
         category: 'OHADA ERP & accounting — 100% free',
         summary:
-          'Leave paper books and spreadsheets behind. BIRDY brings your sales, cash, inventory and OHADA accounting together in a single desktop app that works even without a stable internet connection.',
+          'Leave paper books and spreadsheets behind. Retail, manufacturing or services: BIRDY adapts to your trade and brings sales, cash, inventory or services, and OHADA accounting into a single desktop app that works even without a stable internet connection.',
       },
     },
   },

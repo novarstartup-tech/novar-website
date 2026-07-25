@@ -226,6 +226,40 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
         </div>
       </section>
       {isBirdy && (
+        <section className="section-shell border-t border-slate-200 bg-slate-50">
+          <div className="max-w-3xl">
+            <span className="eyebrow text-cyan-800">{locale === 'fr' ? 'Un logiciel, trois métiers' : 'One app, three trades'}</span>
+            <h2 className="section-heading mt-4">{locale === 'fr' ? 'BIRDY s’adapte à votre activité.' : 'BIRDY adapts to your business.'}</h2>
+            <p className="mt-5 text-lg leading-relaxed text-slate-600">
+              {locale === 'fr'
+                ? 'À l’installation, vous choisissez votre type d’activité : l’interface s’ajuste à votre métier.'
+                : 'At setup, you pick your type of business: the interface adjusts to your trade.'}
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {(locale === 'fr'
+              ? [
+                  ['Commerce', 'Acheter pour revendre', 'Stock, achats, ventes et marge réelle (coût de revient CMUP).', 'Boutique, pharmacie, quincaillerie, grossiste, supérette.'],
+                  ['Industrie', 'Fabriquer des produits', 'Nomenclatures (recettes), ordres de fabrication et coût de revient fabriqué.', 'Boulangerie, atelier de couture, menuiserie, savonnerie, agro-transformation.'],
+                  ['Service', 'Vendre des prestations', 'Catalogue de services, devis et factures — sans gestion de stock.', 'Coiffure, réparation, conseil, transport, prestation informatique.'],
+                ]
+              : [
+                  ['Retail', 'Buy and resell', 'Inventory, purchasing, sales and real margin (weighted-average cost).', 'Shop, pharmacy, hardware store, wholesaler, minimarket.'],
+                  ['Manufacturing', 'Make products', 'Bills of materials (recipes), production orders and manufactured cost.', 'Bakery, sewing workshop, carpentry, soap making, agri-processing.'],
+                  ['Services', 'Sell services', 'Service catalog, quotes and invoices — no inventory management.', 'Hair salon, repairs, consulting, transport, IT services.'],
+                ]
+            ).map(([title, tagline, body, example]) => (
+              <div key={title} className="editorial-card">
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">{tagline}</p>
+                <h3 className="mt-2 font-display text-xl font-bold text-slate-950">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{body}</p>
+                <p className="mt-3 text-xs italic leading-relaxed text-slate-500">{example}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+      {isBirdy && (
         <section className="section-shell border-t border-slate-200">
           <div className="rounded-3xl border border-cyan-200 bg-cyan-50 p-7 sm:p-10 lg:p-12">
             <span className="eyebrow text-cyan-800">{locale === 'fr' ? 'Pourquoi c’est gratuit' : 'Why it’s free'}</span>
