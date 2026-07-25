@@ -12,6 +12,11 @@
 
 ---
 
+## Référence de style (fournie par Djerno)
+
+- **YouTube Short** : https://www.youtube.com/shorts/5jly-UeJcDw — à passer en
+  `style_reference_url` dans Motion `create_video` pour caler le style/montage.
+
 ## Principes communs (skill `visual-ads-video-production`)
 
 - **Hook < 3 s** : ouvrir sur la douleur, pas sur le logo.
