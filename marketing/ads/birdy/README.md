@@ -8,16 +8,20 @@
 Angle : **BIRDY, l'ERP OHADA 100 % gratuit** — sortir du cahier/Excel.
 Positionnement aligné avec la refonte de la landing (`src/components/MarketingPages.tsx`).
 
-> ⚠️ **BIRDY couvre 3 modèles d'affaires : Commerce, Industrie, Service.**
-> Cette bannière (mention « stock ») est la **variante Commerce**. Prévoir des variantes :
-> **Industrie** (coût de revient fabriqué / recettes) et **Service** (devis & prestations,
-> **sans** « stock »). Voir `marketing/MARKETING-PLAN-BIRDY.md` §3 et §7.
+> ✅ **BIRDY couvre 3 modèles d'affaires : Commerce, Industrie, Service** — les 3
+> variantes de bannière existent (voir tableau ci-dessous). Voir aussi
+> `marketing/MARKETING-PLAN-BIRDY.md` §3 et §7.
 
-| Fichier | Rôle |
-|---------|------|
-| `birdy-sortez-du-cahier-1x1.png` | Bannière finale 1024×1024 (feed Instagram / LinkedIn / Facebook) |
-| `birdy-sortez-du-cahier-bg.png` | Fond nu (photo générée par IA), réutilisable pour d'autres accroches |
-| `birdy-sortez-du-cahier.html` | Source éditable (texte + overlay), référence le fond en relatif |
+Série **1 accroche unifiée (« Sortez du cahier »), 3 variantes par modèle d'affaires** :
+
+| Modèle | Bannière finale (1024×1024) | Fond nu | Source HTML |
+|--------|-----------------------------|---------|-------------|
+| **Commerce** | `birdy-sortez-du-cahier-1x1.png` | `birdy-sortez-du-cahier-bg.png` | `birdy-sortez-du-cahier.html` |
+| **Industrie** | `birdy-sortez-du-cahier-industrie-1x1.png` | `birdy-sortez-du-cahier-industrie-bg.png` | `birdy-sortez-du-cahier-industrie.html` |
+| **Service** | `birdy-sortez-du-cahier-service-1x1.png` | `birdy-sortez-du-cahier-service-bg.png` | `birdy-sortez-du-cahier-service.html` |
+
+Sous-titres par modèle : Commerce = ventes/caisse/stock/compta ; Industrie = recettes/ordres
+de fabrication/coût de revient ; Service = devis/factures/prestations sans stock.
 
 ### Textes
 - Badge : « 100 % Gratuit »
