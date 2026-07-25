@@ -70,14 +70,14 @@ export const PRODUCTS = {
     status: 'available',
     copy: {
       fr: {
-        category: 'ERP & gestion comptable OHADA',
+        category: 'ERP & comptabilité OHADA — 100 % gratuit',
         summary:
-          'Un ERP desktop complet pour facturer, gérer la comptabilité OHADA, les stocks, les achats, la caisse, la paie et les équipes.',
+          'Sortez du cahier et d’Excel. BIRDY réunit vos ventes, votre caisse, vos stocks et votre comptabilité OHADA dans un seul logiciel installé sur votre ordinateur — et qui fonctionne même sans connexion internet stable.',
       },
       en: {
-        category: 'OHADA ERP & accounting',
+        category: 'OHADA ERP & accounting — 100% free',
         summary:
-          'A complete desktop ERP for invoicing, OHADA accounting, inventory, purchasing, cash management, payroll and teams.',
+          'Leave paper books and spreadsheets behind. BIRDY brings your sales, cash, inventory and OHADA accounting together in a single desktop app that works even without a stable internet connection.',
       },
     },
   },
