@@ -11,8 +11,14 @@
 ## 1. Résumé exécutif
 
 BIRDY est un **ERP OHADA de bureau, 100 % gratuit**, édité par **NOVAR** (studio
-logiciel basé à Conakry). Cible : **commerçants et PME de l'espace OHADA**
-(Guinée d'abord, puis Sénégal, Côte d'Ivoire, Mali, Bénin, Cameroun).
+logiciel basé à Conakry). Il sert **3 modèles d'affaires** (choisis à l'installation,
+l'interface s'adapte au métier) — **et non les seuls commerçants** :
+- **Commerce** — acheter pour revendre (boutique, pharmacie, quincaillerie, grossiste…).
+- **Industrie** — fabriquer des produits (boulangerie, couture, menuiserie, agro-transformation…).
+- **Service** — vendre des prestations sans stock (coiffure, réparation, conseil, transport…).
+
+Cible : **TPE/PME de l'espace OHADA**, ces 3 profils, Guinée d'abord puis Sénégal,
+Côte d'Ivoire, Mali, Bénin, Cameroun.
 
 Comme le produit est gratuit, **le prix n'est pas le levier** — c'est **la
 confiance et l'adoption**. La question à laquelle tout le marketing doit répondre :
@@ -51,15 +57,21 @@ utilisateurs). La crédibilité en OHADA est fragile.
 **Marché** : espace OHADA. Priorité géographique **Guinée (Conakry)** → puis UEMOA
 (XOF) → Cameroun (CEMAC, XAF, TVA 19,25 %).
 
-1. **Le commerçant-boutiquier** (persona #1)
-   - Gère au cahier ou sur Excel. Mobile-first. Se méfie du « trop beau pour être gratuit ».
-   - Douleurs : stock qui fuit, pas de vue sur les marges, stress fiscal, factures manuelles.
-   - Déclencheur : un pair qui lui montre que « ça marche et c'est gratuit ».
-2. **Le comptable / cabinet** (persona #2)
-   - Sert plusieurs PME. Veut standardiser, gagner du temps, rester conforme SYSCOHADA.
-   - Peut devenir **prescripteur** (recommande BIRDY à ses clients) → levier de croissance.
-3. **La PME structurée** (persona #3, secondaire)
-   - A déjà un embryon de gestion, cherche mieux sans payer d'abonnement en devise forte.
+Les personas sont organisés par **modèle d'affaires** (les 3 que BIRDY couvre) —
+voir la matrice des douleurs par métier.
+
+1. **Le commerçant (modèle Commerce)** — boutique, pharmacie, quincaillerie, grossiste.
+   - Gère au cahier/Excel. Douleurs : stock qui fuit, marges invisibles, factures manuelles, stress fiscal.
+2. **Le fabricant / transformateur (modèle Industrie)** — boulangerie, atelier de couture, menuiserie, savonnerie, agro-transformation.
+   - Douleurs : ne connaît pas son **coût de revient fabriqué**, gère ses recettes de tête, pas de suivi matières → produits finis.
+3. **Le prestataire de services (modèle Service)** — coiffure, réparation, conseil, transport, informatique.
+   - Douleurs : devis/factures faits à la main, pas de catalogue de prestations, pas de suivi de la conformité OHADA. **Pas de stock** → messaging différent (ne pas parler de « stock »).
+4. **Le comptable / cabinet** (persona transversal — **prescripteur clé**)
+   - Sert plusieurs PME des 3 types. Veut standardiser, rester conforme SYSCOHADA. Recommande BIRDY à ses clients → fort levier de croissance.
+
+> **Règle de messaging** : segmenter par modèle. Un même angle (« sortez du cahier »)
+> se décline en 3 versions (stock/marge pour le Commerce, coût de revient pour
+> l'Industrie, devis/prestations pour le Service).
 
 ---
 
@@ -115,7 +127,8 @@ depuis sa boutique, même sans connexion stable.
 - **LinkedIn** (NOVAR) : build-in-public, coulisses studio, éducation compta OHADA,
   cas d'usage. Cible prescripteurs (comptables) + écosystème tech africain.
 - **TikTok / Reels / Shorts** : format vertical, hook < 3 s, démos « avant/après »,
-  un commerçant réel. Le canal le plus fort pour toucher les boutiquiers.
+  un·e entrepreneur·e réel·le. Alterner les 3 modèles (une boutique, une boulangerie,
+  un salon de coiffure) pour parler à chaque profil.
 - **Facebook / WhatsApp** : dominants en Guinée. Groupes de commerçants, statuts WhatsApp,
   partage direct. **WhatsApp = canal de bouche-à-oreille #1 localement.**
 - **Rythme cible** : 3 posts/semaine soutenables > 1 gros coup ponctuel.
@@ -146,7 +159,10 @@ L'agent growth peut **produire réellement**, pas seulement conseiller :
 - **Web** : landing pages, pages SEO (repo Next.js).
 
 **Cadence créative cible** : 1 lot de visuels/semaine + 1 vidéo courte/2 semaines.
-**Backlog immédiat** : logo réel à intégrer · déclinaisons 9:16 & 16:9 · série de 3-4 bannières (angles §4).
+**Backlog immédiat** : logo réel à intégrer · déclinaisons 9:16 & 16:9 · série de
+bannières **par modèle d'affaires** (1 Commerce, 1 Industrie, 1 Service) + angles §4.
+⚠️ La 1re bannière (« Sortez du cahier ») parle surtout au Commerce (mention « stock »)
+→ prévoir une variante Service (devis/prestations, sans « stock ») et Industrie (coût de revient).
 
 ---
 

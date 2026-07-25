@@ -5,8 +5,13 @@
 
 ## Campagne « Sortez du cahier »
 
-Angle : **BIRDY, l'ERP OHADA 100 % gratuit** — sortir les commerçants du cahier/Excel.
+Angle : **BIRDY, l'ERP OHADA 100 % gratuit** — sortir du cahier/Excel.
 Positionnement aligné avec la refonte de la landing (`src/components/MarketingPages.tsx`).
+
+> ⚠️ **BIRDY couvre 3 modèles d'affaires : Commerce, Industrie, Service.**
+> Cette bannière (mention « stock ») est la **variante Commerce**. Prévoir des variantes :
+> **Industrie** (coût de revient fabriqué / recettes) et **Service** (devis & prestations,
+> **sans** « stock »). Voir `marketing/MARKETING-PLAN-BIRDY.md` §3 et §7.
 
 | Fichier | Rôle |
 |---------|------|
