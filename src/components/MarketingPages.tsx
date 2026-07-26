@@ -137,16 +137,16 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
   const features = isBirdy
     ? locale === 'fr'
       ? [
-          ['Pilotage centralisé', 'Ventes, achats, stocks, caisse, comptabilité et équipes réunis dans un même environnement.'],
-          ['Pensé pour l’OHADA', 'Une gestion conçue autour des besoins comptables et opérationnels des PME de l’espace OHADA.'],
-          ['Application desktop', 'Des versions sont distribuées pour Windows, macOS et Linux depuis la page de téléchargement.'],
-          ['Gratuit', 'BIRDY est accessible gratuitement, sans abonnement sur ce site.'],
+          ['Tout au même endroit', 'Ventes, caisse, achats, stocks, comptabilité OHADA, paie et équipes dans un seul logiciel — fini les fichiers Excel éparpillés.'],
+          ['Conforme OHADA/SYSCOHADA', 'Une comptabilité pensée pour les règles de l’espace OHADA, pour tenir vos comptes sans être comptable.'],
+          ['Fonctionne sur votre ordinateur', 'Windows, macOS et Linux. Vos données restent chez vous et l’application marche même sans connexion internet stable.'],
+          ['Gratuit, sans abonnement', 'BIRDY est 100 % gratuit : aucune carte bancaire, aucun abonnement, aucun frais caché.'],
         ]
       : [
-          ['Centralized operations', 'Sales, purchasing, inventory, cash, accounting and teams in one environment.'],
-          ['Built for OHADA', 'Management workflows designed around the accounting and operational needs of OHADA SMEs.'],
-          ['Desktop application', 'Builds for Windows, macOS and Linux are available from the download page.'],
-          ['Free', 'BIRDY is available free of charge, with no subscription on this website.'],
+          ['Everything in one place', 'Sales, cash, purchasing, inventory, OHADA accounting, payroll and teams in a single app — no more scattered spreadsheets.'],
+          ['OHADA/SYSCOHADA compliant', 'Accounting designed around OHADA rules, so you can keep your books without being an accountant.'],
+          ['Runs on your computer', 'Windows, macOS and Linux. Your data stays with you and the app works even without a stable internet connection.'],
+          ['Free, no subscription', 'BIRDY is 100% free: no credit card, no subscription, no hidden fees.'],
         ]
     : locale === 'fr'
       ? [
@@ -184,6 +184,11 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
               )}
               <Link href={locale === 'fr' ? '/contact?topic=demo' : '/en/contact?topic=demo'} className="btn-ghost">{c.discuss}</Link>
             </div>
+            {isBirdy && (
+              <p className="mt-4 text-sm font-medium text-slate-500">
+                {locale === 'fr' ? 'Gratuit · Sans abonnement · Sans carte bancaire · Windows, macOS, Linux' : 'Free · No subscription · No credit card · Windows, macOS, Linux'}
+              </p>
+            )}
           </div>
           {isBirdy ? (
             <div className="product-showcase">
@@ -207,7 +212,7 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
       <section className="section-shell">
         <div className="max-w-3xl">
           <span className={`eyebrow ${isBirdy ? 'text-cyan-800' : 'text-emerald-800'}`}>{locale === 'fr' ? 'Ce que le produit apporte' : 'What the product brings'}</span>
-          <h2 className="section-heading mt-4">{locale === 'fr' ? 'Un outil spécialisé, sans promesse vague.' : 'A specialized tool, without vague promises.'}</h2>
+          <h2 className="section-heading mt-4">{locale === 'fr' ? `Ce que ${product.name} change dans votre gestion.` : `What ${product.name} changes in how you operate.`}</h2>
         </div>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {features.map(([title, body]) => (
@@ -219,6 +224,53 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
           ))}
         </div>
       </section>
+      {isBirdy && (
+        <section className="section-shell border-t border-slate-200 bg-slate-50">
+          <div className="max-w-3xl">
+            <span className="eyebrow text-cyan-800">{locale === 'fr' ? 'Un logiciel, trois métiers' : 'One app, three trades'}</span>
+            <h2 className="section-heading mt-4">{locale === 'fr' ? 'BIRDY s’adapte à votre activité.' : 'BIRDY adapts to your business.'}</h2>
+            <p className="mt-5 text-lg leading-relaxed text-slate-600">
+              {locale === 'fr'
+                ? 'À l’installation, vous choisissez votre type d’activité : l’interface s’ajuste à votre métier.'
+                : 'At setup, you pick your type of business: the interface adjusts to your trade.'}
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {(locale === 'fr'
+              ? [
+                  ['Commerce', 'Acheter pour revendre', 'Stock, achats, ventes et marge réelle (coût de revient CMUP).', 'Boutique, pharmacie, quincaillerie, grossiste, supérette.'],
+                  ['Industrie', 'Fabriquer des produits', 'Nomenclatures (recettes), ordres de fabrication et coût de revient fabriqué.', 'Boulangerie, atelier de couture, menuiserie, savonnerie, agro-transformation.'],
+                  ['Service', 'Vendre des prestations', 'Catalogue de services, devis et factures — sans gestion de stock.', 'Coiffure, réparation, conseil, transport, prestation informatique.'],
+                ]
+              : [
+                  ['Retail', 'Buy and resell', 'Inventory, purchasing, sales and real margin (weighted-average cost).', 'Shop, pharmacy, hardware store, wholesaler, minimarket.'],
+                  ['Manufacturing', 'Make products', 'Bills of materials (recipes), production orders and manufactured cost.', 'Bakery, sewing workshop, carpentry, soap making, agri-processing.'],
+                  ['Services', 'Sell services', 'Service catalog, quotes and invoices — no inventory management.', 'Hair salon, repairs, consulting, transport, IT services.'],
+                ]
+            ).map(([title, tagline, body, example]) => (
+              <div key={title} className="editorial-card">
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">{tagline}</p>
+                <h3 className="mt-2 font-display text-xl font-bold text-slate-950">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{body}</p>
+                <p className="mt-3 text-xs italic leading-relaxed text-slate-500">{example}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+      {isBirdy && (
+        <section className="section-shell border-t border-slate-200">
+          <div className="rounded-3xl border border-cyan-200 bg-cyan-50 p-7 sm:p-10 lg:p-12">
+            <span className="eyebrow text-cyan-800">{locale === 'fr' ? 'Pourquoi c’est gratuit' : 'Why it’s free'}</span>
+            <h2 className="section-heading mt-4 max-w-3xl">{locale === 'fr' ? 'Gratuit — et voici pourquoi.' : 'Free — and here’s why.'}</h2>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
+              {locale === 'fr'
+                ? 'BIRDY est édité par NOVAR, un studio logiciel basé à Conakry. Nous finançons nos produits gratuits grâce à nos missions sur mesure et de conseil. Notre objectif : équiper le plus de PME africaines possible d’une gestion sérieuse, sans barrière de prix. BIRDY reste gratuit.'
+                : 'BIRDY is built by NOVAR, a software studio based in Conakry. We fund our free products through our tailored and advisory work. Our goal: give as many African SMEs as possible access to serious management tools, with no price barrier. BIRDY stays free.'}
+            </p>
+          </div>
+        </section>
+      )}
       {isBirdy && (
         <section className="section-shell border-t border-slate-200 bg-slate-50">
           <div>
