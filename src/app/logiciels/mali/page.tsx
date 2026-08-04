@@ -31,7 +31,7 @@ const LOCAL: [typeof Banknote, string, string][] = [
   [
     WifiOff,
     'Conçu pour tenir sans réseau',
-    'Installé sur votre poste, BIRDY fonctionne intégralement hors ligne. Coupure d’électricité ou de connexion : la vente et la caisse continuent, et tout se synchronise au retour du réseau.',
+    'Installé sur votre poste, BIRDY fonctionne intégralement hors ligne. Coupure d’électricité ou de connexion : la vente et la caisse continuent, et rien n’est perdu.',
   ],
   [
     Banknote,
@@ -53,7 +53,7 @@ const LOCAL: [typeof Banknote, string, string][] = [
 const FAQS = [
   {
     q: 'BIRDY fonctionne-t-il malgré les coupures fréquentes au Mali ?',
-    a: 'Oui — c’est un point central. Une fois installé, BIRDY fonctionne intégralement hors ligne : les ventes et opérations sont enregistrées localement et se synchronisent dès que le réseau ou l’électricité reviennent. La caisse ne s’arrête pas.',
+    a: 'Oui — c’est un point central. Une fois installé, BIRDY fonctionne intégralement hors ligne : les ventes et opérations sont enregistrées sur votre poste et y restent, dès que le réseau ou l’électricité reviennent. La caisse ne s’arrête pas.',
   },
   {
     q: 'BIRDY est-il adapté à une entreprise malienne ?',
@@ -102,7 +102,7 @@ export default function MaliPage() {
             Au Mali, un logiciel de gestion 100% en ligne devient inutilisable à la première coupure.
             BIRDY prend le problème à l&apos;envers : il s&apos;installe sur votre poste et travaille
             hors ligne par défaut. Vos ventes, votre stock et votre comptabilité SYSCOHADA restent
-            accessibles en permanence, en FCFA, et se synchronisent dès que la connexion revient.
+            accessibles en permanence, en FCFA, sans dépendre d’une connexion.
           </p>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-2">

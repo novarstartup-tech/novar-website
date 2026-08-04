@@ -46,7 +46,7 @@ const LOCAL: [typeof Banknote, string, string][] = [
   [
     WifiOff,
     'Pensé pour les coupures',
-    'Installé sur votre poste, BIRDY fonctionne hors ligne : une coupure de réseau ou d’électricité n’arrête ni la vente ni la caisse. La synchronisation reprend au retour de la connexion.',
+    'Installé sur votre poste, BIRDY fonctionne hors ligne : une coupure de réseau ou d’électricité n’arrête ni la vente ni la caisse. Vos données restent sur votre poste : aucune connexion n’est jamais requise.',
   ],
 ];
 

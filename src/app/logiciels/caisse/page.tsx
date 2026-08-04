@@ -39,7 +39,7 @@ const FEATURES: [typeof Barcode, string, string][] = [
   [
     WifiOff,
     'Fonctionne hors ligne',
-    'Si le réseau tombe, la caisse continue : les ventes sont stockées localement dans une base chiffrée puis synchronisées au retour de la connexion.',
+    'Si le réseau tombe, la caisse continue : les ventes sont enregistrées sur place dans une base locale chiffrée, immédiatement et définitivement.',
   ],
   [
     ScrollText,
@@ -61,7 +61,7 @@ const FEATURES: [typeof Barcode, string, string][] = [
 const FAQS = [
   {
     q: 'BIRDY fonctionne-t-il comme une caisse enregistreuse hors ligne ?',
-    a: 'Oui. Une fois installé, le point de vente de BIRDY fonctionne intégralement hors ligne. Les ventes sont enregistrées dans une base locale chiffrée et se synchronisent automatiquement dès que la connexion revient — utile face aux coupures de réseau ou d’électricité.',
+    a: 'Oui. Une fois installé, le point de vente de BIRDY fonctionne intégralement hors ligne. Les ventes sont enregistrées dans une base locale chiffrée, sur votre poste, sans qu’aucune connexion ne soit nécessaire — utile face aux coupures de réseau ou d’électricité.',
   },
   {
     q: 'Le logiciel de caisse est-il gratuit ?',
@@ -105,7 +105,7 @@ export default function CaissePage() {
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
             Dans une boutique, une superette ou une quincaillerie, la caisse doit encaisser vite et
             rester fiable même sans Internet. BIRDY est une application installée sur votre poste :
-            elle fonctionne en local, garde chaque vente en sécurité et se synchronise dès que le
+            elle fonctionne entièrement en local et garde chaque vente en sécurité sur votre poste, même quand le
             réseau revient. Aucune interruption de vente, aucune perte de ticket.
           </p>
         </div>

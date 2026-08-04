@@ -46,7 +46,7 @@ const LOCAL: [typeof Banknote, string, string][] = [
   [
     WifiOff,
     'Pensé pour les coupures',
-    'Installé sur votre poste, BIRDY fonctionne hors ligne : une coupure de réseau ou d’électricité n’arrête ni la vente ni la caisse. La synchronisation reprend au retour de la connexion.',
+    'Installé sur votre poste, BIRDY fonctionne hors ligne : une coupure de réseau ou d’électricité n’arrête ni la vente ni la caisse. Vos données restent sur votre poste : aucune connexion n’est jamais requise.',
   ],
 ];
 
@@ -61,7 +61,7 @@ const FAQS = [
   },
   {
     q: 'Fonctionne-t-il sans connexion Internet stable ?',
-    a: 'Oui. Une fois installé, BIRDY fonctionne intégralement hors ligne. Les ventes et opérations sont enregistrées localement et se synchronisent dès que la connexion revient.',
+    a: 'Oui. Une fois installé, BIRDY fonctionne intégralement hors ligne. Les ventes et opérations sont enregistrées sur votre poste et y restent disponibles en permanence, sans aucune connexion.',
   },
   {
     q: 'À qui s’adresse BIRDY en Côte d’Ivoire ?',
