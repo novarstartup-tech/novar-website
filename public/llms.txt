@@ -53,41 +53,41 @@ Signature : Engineering African Innovation.
   multi-dépôts · achats et fournisseurs · caisse et point de vente · paie et RH
   (CNSS, IRPP) · rapports et liasse fiscale · export FEC · TAFIRE
 - Fonctionne hors ligne · données stockées localement · sauvegarde locale automatique
-- Page produit (FR) : https://www.novarstartup.com/produits/birdy-erp
-- Product page (EN) : https://www.novarstartup.com/en/products/birdy
-- Téléchargement : https://www.novarstartup.com/telechargements
+- [Page produit BIRDY (FR)](https://www.novarstartup.com/produits/birdy-erp)
+- [BIRDY product page (EN)](https://www.novarstartup.com/en/products/birdy)
+- [Téléchargement](https://www.novarstartup.com/telechargements)
 
 ### FEEDORA — Formulation alimentaire avicole (gratuit)
 - Type : application web
 - Usage : formuler et comparer des rations pour poulet de chair, pondeuse, dinde
-- Page produit : https://www.novarstartup.com/produits/feedora
+- [Page produit FEEDORA](https://www.novarstartup.com/produits/feedora)
 
 ## Services
-- Développement sur mesure : https://www.novarstartup.com/services/sur-mesure
-- Conseil et accompagnement : https://www.novarstartup.com/services/conseil
+- [Développement sur mesure](https://www.novarstartup.com/services/sur-mesure)
+- [Conseil et accompagnement](https://www.novarstartup.com/services/conseil)
 
 ## Pages par pays
-- Guinée : https://www.novarstartup.com/logiciels/guinee
-- Sénégal : https://www.novarstartup.com/logiciels/senegal
-- Côte d'Ivoire : https://www.novarstartup.com/logiciels/cote-d-ivoire
-- Mali : https://www.novarstartup.com/logiciels/mali
-- Bénin : https://www.novarstartup.com/logiciels/benin
-- Cameroun : https://www.novarstartup.com/logiciels/cameroun
+- [Guinée](https://www.novarstartup.com/logiciels/guinee)
+- [Sénégal](https://www.novarstartup.com/logiciels/senegal)
+- [Côte d'Ivoire](https://www.novarstartup.com/logiciels/cote-d-ivoire)
+- [Mali](https://www.novarstartup.com/logiciels/mali)
+- [Bénin](https://www.novarstartup.com/logiciels/benin)
+- [Cameroun](https://www.novarstartup.com/logiciels/cameroun)
 
 ## Pages par besoin
-- Facturation OHADA : https://www.novarstartup.com/logiciels/facturation-ohada
-- Logiciel de caisse : https://www.novarstartup.com/logiciels/caisse
-- Gestion de stock : https://www.novarstartup.com/logiciels/gestion-de-stock
-- Comptabilité OHADA : https://www.novarstartup.com/logiciels/comptabilite-ohada
+- [Facturation OHADA](https://www.novarstartup.com/logiciels/facturation-ohada)
+- [Logiciel de caisse](https://www.novarstartup.com/logiciels/caisse)
+- [Gestion de stock](https://www.novarstartup.com/logiciels/gestion-de-stock)
+- [Comptabilité OHADA](https://www.novarstartup.com/logiciels/comptabilite-ohada)
 
 ## Ressources
-- Documentation : https://www.novarstartup.com/docs
-- Tutoriels : https://www.novarstartup.com/tutoriels
-- Blog : https://www.novarstartup.com/blog
-- FAQ : https://www.novarstartup.com/faq
-- Sécurité : https://www.novarstartup.com/securite
-- À propos : https://www.novarstartup.com/a-propos
-- Contact : https://www.novarstartup.com/contact
+- [Documentation](https://www.novarstartup.com/docs)
+- [Tutoriels](https://www.novarstartup.com/tutoriels)
+- [Blog / Analyses](https://www.novarstartup.com/blog)
+- [FAQ](https://www.novarstartup.com/faq)
+- [Sécurité](https://www.novarstartup.com/securite)
+- [À propos](https://www.novarstartup.com/a-propos)
+- [Contact](https://www.novarstartup.com/contact)
 
 ## Entité
 - Nom : NOVAR
