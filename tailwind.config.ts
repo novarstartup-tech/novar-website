@@ -59,7 +59,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
-        display: ['var(--font-bricolage)', ...defaultTheme.fontFamily.sans],
+        display: ['var(--font-space-grotesk)', ...defaultTheme.fontFamily.sans],
         mono: ['var(--font-jetbrains)', ...defaultTheme.fontFamily.mono],
       },
       boxShadow: {

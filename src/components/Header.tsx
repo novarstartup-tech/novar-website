@@ -71,7 +71,7 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#141b29]/95 text-white backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0D1B2A]/95 text-white backdrop-blur-xl">
       <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href={locale === 'en' ? '/en' : '/'} aria-label="NOVAR" className="flex shrink-0 items-center">
           <NovarLogo variant="on-dark" className="h-9 w-auto" />
@@ -105,7 +105,7 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="max-h-[calc(100vh-76px)] overflow-y-auto border-t border-white/10 bg-[#141b29] px-4 py-5 lg:hidden" aria-label="Navigation mobile">
+        <nav className="max-h-[calc(100vh-76px)] overflow-y-auto border-t border-white/10 bg-[#0D1B2A] px-4 py-5 lg:hidden" aria-label="Navigation mobile">
           <div className="mx-auto max-w-7xl space-y-5">
             {nav.map((item) => <div key={item.label}><Link href={item.href} onClick={() => setOpen(false)} className="block py-2 text-base font-bold text-white">{item.label}</Link>{'children' in item && <div className="mt-1 grid gap-1 border-l border-white/15 pl-4">{item.children?.map((child) => <Link key={child.href} href={child.href} onClick={() => setOpen(false)} className="py-2 text-sm font-medium text-slate-300">{child.label}</Link>)}</div>}</div>)}
             <div className="grid gap-3 border-t border-white/10 pt-4 sm:grid-cols-2">
