@@ -4,7 +4,6 @@ import {
   ArrowRight,
   BookOpen,
   Boxes,
-  CheckCircle2,
   Download,
   ExternalLink,
   FileText,
@@ -132,107 +131,122 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
   const product = PRODUCTS[id];
   const copy = product.copy[locale];
   const c = TEXT[locale];
+  const fr = locale === 'fr';
   const isBirdy = id === 'birdy';
-  const tone = isBirdy ? 'cyan' : 'emerald';
-  const features = isBirdy
-    ? locale === 'fr'
+
+  const meta = isBirdy
+    ? ['Windows · macOS · Linux', 'SYSCOHADA', 'GNF · XOF · EUR · USD']
+    : fr
+      ? ['Application web', 'Aviculture', 'Sans abonnement']
+      : ['Web app', 'Poultry farming', 'No subscription'];
+
+  const itemsEyebrow = isBirdy ? 'Modules' : fr ? 'Apports' : 'Highlights';
+  const itemsTitle = isBirdy
+    ? fr
+      ? 'Des opérations reliées, dans un même environnement.'
+      : 'Connected operations in one environment.'
+    : fr
+      ? 'Un outil de formulation clair et gratuit.'
+      : 'A clear, free formulation tool.';
+
+  const items: readonly (readonly [string, string, string])[] = isBirdy
+    ? fr
       ? [
-          ['Pilotage centralisé', 'Ventes, achats, stocks, caisse, comptabilité et équipes réunis dans un même environnement.'],
-          ['Pensé pour l’OHADA', 'Une gestion conçue autour des besoins comptables et opérationnels des PME de l’espace OHADA.'],
-          ['Application desktop', 'Des versions sont distribuées pour Windows, macOS et Linux depuis la page de téléchargement.'],
-          ['Gratuit', 'BIRDY est accessible gratuitement, sans abonnement sur ce site.'],
+          ['01', 'Facturation', 'Devis, factures et avoirs avec les mentions légales attendues.'],
+          ['02', 'Comptabilité OHADA', 'Plan SYSCOHADA, lettrage, FEC, liasse fiscale et TAFIRE.'],
+          ['03', 'Stocks', 'Multi-dépôts, mouvements, inventaires et valorisation.'],
+          ['04', 'Achats', 'Commandes, réceptions et suivi des fournisseurs.'],
+          ['05', 'Caisse', 'Encaissements, sessions de caisse et point de vente.'],
+          ['06', 'Paie & RH', 'Contrats, congés, paie mensuelle, CNSS et IRPP.'],
         ]
       : [
-          ['Centralized operations', 'Sales, purchasing, inventory, cash, accounting and teams in one environment.'],
-          ['Built for OHADA', 'Management workflows designed around the accounting and operational needs of OHADA SMEs.'],
-          ['Desktop application', 'Builds for Windows, macOS and Linux are available from the download page.'],
-          ['Free', 'BIRDY is available free of charge, with no subscription on this website.'],
+          ['01', 'Invoicing', 'Quotes, invoices and credit notes with the expected legal mentions.'],
+          ['02', 'OHADA accounting', 'SYSCOHADA chart, reconciliation, FEC, tax bundle and TAFIRE.'],
+          ['03', 'Inventory', 'Multi-location stock, movements, counts and valuation.'],
+          ['04', 'Purchasing', 'Orders, receipts and supplier tracking.'],
+          ['05', 'Cash', 'Payments, cash sessions and point of sale.'],
+          ['06', 'Payroll & HR', 'Contracts, leave, monthly payroll, CNSS and IRPP.'],
         ]
-    : locale === 'fr'
+    : fr
       ? [
-          ['Construire des formules', 'Composer des formules alimentaires à partir des ingrédients et contraintes disponibles.'],
-          ['Comparer les options', 'Observer la composition et le coût afin d’éclairer les arbitrages.'],
-          ['Conserver son travail', 'Retrouver et faire évoluer les formules utiles à l’exploitation.'],
-          ['Gratuit et accessible en ligne', 'FEEDORA est utilisable depuis le web sans abonnement sur ce site.'],
+          ['01', 'Construire des formules', 'Composer des formules alimentaires à partir des ingrédients et contraintes disponibles.'],
+          ['02', 'Comparer les options', 'Observer la composition et le coût afin d’éclairer les arbitrages.'],
+          ['03', 'Conserver son travail', 'Retrouver et faire évoluer les formules utiles à l’exploitation.'],
+          ['04', 'Gratuit et en ligne', 'FEEDORA est utilisable depuis le web, sans abonnement.'],
         ]
       : [
-          ['Build formulas', 'Create feed formulas from available ingredients and constraints.'],
-          ['Compare options', 'Review composition and cost to support better trade-offs.'],
-          ['Keep your work', 'Find and improve the formulas used by the operation.'],
-          ['Free and web-based', 'FEEDORA is available online with no subscription on this website.'],
+          ['01', 'Build formulas', 'Create feed formulas from available ingredients and constraints.'],
+          ['02', 'Compare options', 'Review composition and cost to support better trade-offs.'],
+          ['03', 'Keep your work', 'Find and improve the formulas the operation relies on.'],
+          ['04', 'Free and web-based', 'FEEDORA runs from the web, with no subscription.'],
         ];
+
+  const gallery: readonly (readonly [string, string])[] = isBirdy
+    ? [
+        ['/products/birdy-sales.png', fr ? 'Ventes et facturation' : 'Sales and invoicing'],
+        ['/products/birdy-stock.png', fr ? 'Stocks multi-dépôts' : 'Multi-location inventory'],
+        ['/products/birdy-dashboard-studio.png', fr ? 'Pilotage et rapports OHADA' : 'OHADA dashboards and reports'],
+      ]
+    : [];
 
   return (
     <>
-      <section className={`relative overflow-hidden border-b ${isBirdy ? 'border-cyan-200 bg-cyan-50' : 'border-emerald-200 bg-emerald-50'}`}>
-        <div className="absolute inset-0 bg-hero-grid opacity-50" aria-hidden />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-24">
+      {/* Héros navy à horizon courbe (charte v1.0) */}
+      <section className="novar-hero">
+        <div className="novar-hero-bg" />
+        <div className="novar-hero-glow" />
+        <div className="novar-hero-horizon" />
+        <div className="relative mx-auto grid max-w-[1200px] items-center gap-[68px] px-[clamp(20px,4vw,32px)] pb-[clamp(140px,20vw,210px)] pt-[clamp(56px,7vw,92px)] lg:grid-cols-2">
           <div>
-            <span className={`eyebrow ${isBirdy ? 'text-cyan-800' : 'text-emerald-800'}`}>{c.product} · {c.free}</span>
-            <h1 className="mt-5 font-display text-5xl font-bold tracking-tight text-slate-950 sm:text-6xl">{product.name}</h1>
-            <p className={`mt-3 text-xl font-semibold ${isBirdy ? 'text-cyan-800' : 'text-emerald-800'}`}>{copy.category}</p>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-650">{copy.summary}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <span className="inline-flex items-center rounded-full border border-[#38B6FF]/30 bg-[#38B6FF]/15 px-[14px] py-1.5 font-display text-[10.5px] font-medium uppercase tracking-[0.12em] text-[#9AD6FF]">{c.product} · {c.free}</span>
+            <h1 className="mt-7 text-[clamp(56px,7vw,92px)] font-bold leading-[0.9] tracking-[-0.055em] text-white">{product.name}</h1>
+            <p className="mt-4 text-[20px] font-semibold text-[#9AD6FF]">{copy.category}</p>
+            <p className="mt-5 max-w-[32em] text-[16.5px] leading-[1.7] text-[#B4C9DE]">{copy.summary}</p>
+            <div className="mt-9 flex flex-wrap gap-3">
               {isBirdy ? (
-                <Link href={locale === 'fr' ? '/telechargements' : '/en/downloads'} className="btn-primary">
-                  <Download className="h-4 w-4" aria-hidden /> {c.download}
-                </Link>
+                <Link href={fr ? '/telechargements' : '/en/downloads'} className="inline-flex items-center gap-2 rounded-[14px] bg-[#38B6FF] px-6 py-[15px] text-[14.5px] font-bold text-[#0D1B2A] shadow-[0_12px_34px_rgba(56,182,255,0.32)] transition-colors hover:bg-[#62C6FF]"><Download className="h-4 w-4" aria-hidden />{c.download}</Link>
               ) : (
-                <a href={VERIFIED_LINKS.feedora} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                  {c.access} <ExternalLink className="h-4 w-4" aria-hidden />
-                </a>
+                <a href={VERIFIED_LINKS.feedora} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-[14px] bg-[#38B6FF] px-6 py-[15px] text-[14.5px] font-bold text-[#0D1B2A] shadow-[0_12px_34px_rgba(56,182,255,0.32)] transition-colors hover:bg-[#62C6FF]">{c.access}<ExternalLink className="h-4 w-4" aria-hidden /></a>
               )}
-              <Link href={locale === 'fr' ? '/contact?topic=demo' : '/en/contact?topic=demo'} className="btn-ghost">{c.discuss}</Link>
+              <Link href={fr ? '/contact' : '/en/contact'} className="inline-flex items-center rounded-[14px] border border-white/[0.18] bg-white/[0.06] px-6 py-[15px] text-[14.5px] font-semibold text-white backdrop-blur-[14px] transition-colors hover:bg-white/[0.12]">{c.discuss}</Link>
+            </div>
+            <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/[0.12] pt-6 font-display text-[11.5px] text-[#8FAAC6]">
+              {meta.map((m) => (
+                <span key={m} className="whitespace-nowrap">{m}</span>
+              ))}
             </div>
           </div>
-          {isBirdy ? (
-            <div className="product-showcase">
-              <Image src="/products/birdy-dashboard-studio.png" alt={locale === 'fr' ? 'Tableau de bord BIRDY' : 'BIRDY dashboard'} width={1280} height={800} className="h-auto w-full" priority />
-            </div>
-          ) : (
-            <div className="product-showcase product-showcase-emerald">
-              <Image src="/products/feedora-formulation.png" alt={locale === 'fr' ? 'Interface de formulation FEEDORA' : 'FEEDORA formulation interface'} width={1424} height={900} className="h-auto w-full" priority />
-              <div className="hidden">
-                {['Maïs', 'Soja', 'Calcium', locale === 'fr' ? 'Coût total' : 'Total cost'].map((item, index) => (
-                  <div key={item} className="rounded-2xl border border-emerald-100 bg-emerald-50 p-5">
-                    <div className="text-xs font-bold uppercase tracking-[0.15em] text-emerald-800">{item}</div>
-                    <div className="mt-5 h-2 rounded-full bg-emerald-100"><div className="h-2 rounded-full bg-emerald-500" style={{ width: `${85 - index * 13}%` }} /></div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          <div className="overflow-hidden rounded-[20px] border border-white/[0.16] bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_50px_110px_rgba(0,0,0,0.55)] backdrop-blur-[18px]">
+            <Image src={isBirdy ? '/products/birdy-dashboard-studio.png' : '/products/feedora-formulation.png'} alt={product.name} width={1280} height={800} priority className="block aspect-[16/10] w-full object-cover object-top" />
+          </div>
         </div>
       </section>
-      <section className="section-shell">
-        <div className="max-w-3xl">
-          <span className={`eyebrow ${isBirdy ? 'text-cyan-800' : 'text-emerald-800'}`}>{locale === 'fr' ? 'Ce que le produit apporte' : 'What the product brings'}</span>
-          <h2 className="section-heading mt-4">{locale === 'fr' ? 'Un outil spécialisé, sans promesse vague.' : 'A specialized tool, without vague promises.'}</h2>
-        </div>
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {features.map(([title, body]) => (
-            <div key={title} className="editorial-card">
-              <CheckCircle2 className={`h-5 w-5 ${isBirdy ? 'text-cyan-700' : 'text-emerald-700'}`} aria-hidden />
-              <h3 className="mt-4 font-display text-lg font-bold text-slate-950">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{body}</p>
+
+      {/* Modules / apports */}
+      <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] py-[clamp(64px,8vw,96px)]">
+        <div className="font-display text-[11px] font-medium uppercase tracking-[0.14em] text-[#6B7C93]">{itemsEyebrow}</div>
+        <h2 className="mt-3.5 max-w-[24em] text-[clamp(24px,3.8vw,30px)] font-bold leading-[1.15] tracking-[-0.025em] text-[#0D1B2A]">{itemsTitle}</h2>
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map(([num, title, body]) => (
+            <div key={num} className="novar-glass rounded-[18px] p-7">
+              <span className="font-display text-[11px] text-[#5B6E86]">{num}</span>
+              <h3 className="mt-3 text-[17px] font-bold text-[#0D1B2A]">{title}</h3>
+              <p className="mt-2 text-[14px] leading-[1.65] text-[#44546B]">{body}</p>
             </div>
           ))}
         </div>
       </section>
-      {isBirdy && (
-        <section className="section-shell border-t border-slate-200 bg-slate-50">
-          <div>
-            <span className="eyebrow">{locale === 'fr' ? 'BIRDY en situation' : 'BIRDY in action'}</span>
-            <h2 className="section-title max-w-4xl">{locale === 'fr' ? 'Des opérations reliées, dans un même environnement.' : 'Connected operations in one environment.'}</h2>
-            <div className="product-gallery">
-              {[
-                ['/products/birdy-sales.png', locale === 'fr' ? 'Ventes et facturation' : 'Sales and invoicing'],
-                ['/products/birdy-stock.png', locale === 'fr' ? 'Stocks multi-dépôts' : 'Multi-location inventory'],
-                ['/products/birdy-partners.png', locale === 'fr' ? 'Clients et fournisseurs' : 'Customers and suppliers'],
-              ].map(([src, label]) => (
-                <figure key={src}>
-                  <Image src={src} alt={label} width={1440} height={900} className="w-full" />
-                  <figcaption>{label}</figcaption>
+
+      {/* Galerie produit (BIRDY en situation) */}
+      {gallery.length > 0 && (
+        <section className="relative z-[1] bg-gradient-to-b from-white/0 via-white/50 to-white/[0.78] backdrop-blur-[20px]">
+          <div className="mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] py-[clamp(64px,8vw,96px)]">
+            <div className="font-display text-[11px] uppercase tracking-[0.14em] text-[#6B7C93]">{fr ? 'BIRDY en situation' : 'BIRDY in action'}</div>
+            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {gallery.map(([src, label]) => (
+                <figure key={src} className="novar-glass novar-lift m-0 overflow-hidden rounded-[18px]">
+                  <Image src={src} alt={label} width={1280} height={800} className="block aspect-[16/10] w-full object-cover object-top" />
+                  <figcaption className="border-t border-[#0D1B2A]/[0.08] px-3.5 py-3 text-[13px] font-semibold text-[#44546B]">{label}</figcaption>
                 </figure>
               ))}
             </div>
@@ -242,6 +256,7 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
     </>
   );
 }
+
 
 export function ServiceDetail({ locale, id }: { locale: Locale; id: ServiceId }) {
   const service = SERVICES[id];
