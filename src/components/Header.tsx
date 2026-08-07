@@ -3,13 +3,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ChevronDown, Languages, Menu, X } from 'lucide-react';
+import { ArrowRight, ChevronDown, Languages, Menu, X } from 'lucide-react';
 import { NovarLogo } from './NovarLogo';
 import type { Locale } from '@/lib/content';
 
 const COPY = {
-  fr: { solutions: 'Solutions', resources: 'Ressources', studio: 'Le studio', contact: 'Contact', custom: 'Solutions sur mesure', docs: 'Documentation', guides: 'Guides', blog: 'Analyses', about: 'À propos', advisory: 'Conseil', cta: 'Parler à NOVAR', menu: 'Ouvrir le menu', close: 'Fermer le menu' },
-  en: { solutions: 'Solutions', resources: 'Resources', studio: 'The studio', contact: 'Contact', custom: 'Tailored software', docs: 'Documentation', guides: 'Guides', blog: 'Insights', about: 'About', advisory: 'Advisory', cta: 'Talk to NOVAR', menu: 'Open menu', close: 'Close menu' },
+  fr: { solutions: 'Solutions', resources: 'Ressources', studio: 'Le studio', contact: 'Contact', custom: 'Solutions sur mesure', docs: 'Documentation', guides: 'Guides', blog: 'Analyses', about: 'À propos', advisory: 'Conseil', cta: 'Parler à NOVAR', menu: 'Ouvrir le menu', close: 'Fermer le menu', version: 'Dernière version', download: 'Télécharger', versionNote: 'BIRDY pour Windows, macOS et Linux — gratuit, sans compte.' },
+  en: { solutions: 'Solutions', resources: 'Resources', studio: 'The studio', contact: 'Contact', custom: 'Tailored software', docs: 'Documentation', guides: 'Guides', blog: 'Insights', about: 'About', advisory: 'Advisory', cta: 'Talk to NOVAR', menu: 'Open menu', close: 'Close menu', version: 'Latest version', download: 'Download', versionNote: 'BIRDY for Windows, macOS and Linux — free, no account.' },
 } as const;
 
 const LANGUAGE_PAIRS: Record<string, string> = {
@@ -37,7 +37,7 @@ export function Header() {
   const locale = getLocale(pathname);
   const c = COPY[locale];
   const [open, setOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [mega, setMega] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -69,32 +69,30 @@ export function Header() {
     },
     { label: c.contact, href: localized(locale, '/contact', '/en/contact') },
   ];
+  const families = nav.filter((item) => 'children' in item);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/[0.78] text-[#0D1B2A] backdrop-blur-[22px] backdrop-saturate-[1.8]">
+    <header className="sticky top-0 z-50 bg-white/[0.78] text-[#0D1B2A] backdrop-blur-[22px] backdrop-saturate-[1.8]" onMouseLeave={() => setMega(false)}>
       <div className="mx-auto flex min-h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href={locale === 'en' ? '/en' : '/'} aria-label="NOVAR" className="flex shrink-0 items-center">
+        <Link href={locale === 'en' ? '/en' : '/'} aria-label="NOVAR" onMouseEnter={() => setMega(false)} className="flex shrink-0 items-center">
           <NovarLogo variant="on-light" className="h-[30px] w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label={locale === 'fr' ? 'Navigation principale' : 'Main navigation'}>
           {nav.map((item) => (
-            <div className="relative" key={item.label} onMouseEnter={() => 'children' in item && setOpenMenu(item.label)} onMouseLeave={() => setOpenMenu(null)}>
-              <Link href={item.href} onClick={() => setOpenMenu(null)} className="inline-flex min-h-11 items-center gap-1 rounded-lg px-3 text-sm font-semibold text-[#0D1B2A]/75 transition-colors hover:bg-[#0D1B2A]/[0.06] hover:text-[#0D1B2A]">
-                {item.label}{'children' in item && <ChevronDown className="h-3.5 w-3.5 text-[#0D1B2A]/45" aria-hidden />}
-              </Link>
-              {'children' in item && openMenu === item.label && (
-                <div className="absolute left-0 top-full pt-2">
-                  <div className="w-80 overflow-hidden rounded-2xl border border-[#0D1B2A]/10 bg-white p-2 text-[#0D1B2A] shadow-[0_34px_80px_rgba(13,27,42,0.20)]">
-                    {item.children?.map((child) => <Link key={child.href} href={child.href} className="block rounded-xl px-4 py-3 transition-colors hover:bg-[#0D1B2A]/[0.04]"><div className="text-sm font-semibold">{child.label}</div><div className="mt-1 text-xs leading-relaxed text-[#5B6E86]">{child.desc}</div></Link>)}
-                  </div>
-                </div>
-              )}
-            </div>
+            <Link
+              key={item.label}
+              href={item.href}
+              onMouseEnter={() => setMega('children' in item)}
+              onClick={() => setMega(false)}
+              className="inline-flex min-h-11 items-center gap-1 rounded-lg px-3 text-sm font-semibold text-[#0D1B2A]/75 transition-colors hover:bg-[#0D1B2A]/[0.06] hover:text-[#0D1B2A]"
+            >
+              {item.label}{'children' in item && <ChevronDown className="h-3.5 w-3.5 text-[#0D1B2A]/45" aria-hidden />}
+            </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden items-center gap-2 lg:flex" onMouseEnter={() => setMega(false)}>
           <Link href={languageHref(pathname, locale)} className="inline-flex min-h-11 items-center gap-2 px-3 text-sm font-semibold text-[#44546B] transition-colors hover:text-[#0D1B2A]" aria-label={locale === 'fr' ? 'Switch to English' : 'Passer en français'}><Languages className="h-4 w-4" aria-hidden />{locale === 'fr' ? 'EN' : 'FR'}</Link>
           <Link href={localized(locale, '/contact', '/en/contact')} className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#1E3A8A] px-5 text-sm font-semibold text-white transition-colors hover:bg-[#0D1B2A]">{c.cta}</Link>
         </div>
@@ -103,6 +101,42 @@ export function Header() {
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
+
+      {/* Méga-menu pleine largeur — 3 familles + tuile dernière version */}
+      {mega && (
+        <div
+          className="absolute left-0 right-0 top-full hidden overflow-hidden border-t border-[#0D1B2A]/10 bg-white shadow-[0_34px_80px_rgba(13,27,42,0.20)] lg:block"
+          style={{ animation: 'novarRise 260ms cubic-bezier(0.22, 1, 0.36, 1) both' }}
+        >
+          <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(70% 120% at 92% 0%, rgba(56,182,255,0.10), transparent 62%), radial-gradient(50% 100% at 4% 100%, rgba(30,58,138,0.07), transparent 64%)' }} />
+          <div className="relative mx-auto grid max-w-7xl gap-9 px-4 py-8 sm:px-6 lg:grid-cols-4 lg:px-8">
+            {families.map((item) => (
+              <div key={item.label}>
+                <div className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1E3A8A]">{item.label}</div>
+                <ul className="mt-5 grid gap-1">
+                  {item.children?.map((child) => (
+                    <li key={child.href}>
+                      <Link href={child.href} onClick={() => setMega(false)} className="block rounded-xl px-3 py-2.5 transition-colors hover:bg-[#1E3A8A]/[0.07]">
+                        <div className="text-sm font-semibold text-[#0D1B2A]">{child.label}</div>
+                        <div className="mt-0.5 text-xs leading-relaxed text-[#6B7C93]">{child.desc}</div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <Link href={localized(locale, '/telechargements', '/en/downloads')} onClick={() => setMega(false)} className="relative block overflow-hidden rounded-[20px] bg-[#0D1B2A] p-6 text-white">
+              <span className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(80% 100% at 90% 0%, rgba(56,182,255,0.34), transparent 70%)' }} />
+              <span className="relative block">
+                <span className="block font-display text-[10.5px] uppercase tracking-[0.14em] text-[#9AD6FF]">{c.version}</span>
+                <span className="mt-3 block font-display text-[28px] font-bold tracking-[-0.03em]">26.0.5</span>
+                <span className="mt-2.5 block text-[13px] leading-[1.6] text-[#B4C9DE]">{c.versionNote}</span>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-[13.5px] font-bold text-[#38B6FF]">{c.download}<ArrowRight className="h-3.5 w-3.5" aria-hidden /></span>
+              </span>
+            </Link>
+          </div>
+        </div>
+      )}
 
       {open && (
         <nav className="max-h-[78vh] overflow-y-auto border-t border-[#0D1B2A]/10 bg-white px-4 py-5 text-[#0D1B2A] lg:hidden" aria-label="Navigation mobile">
