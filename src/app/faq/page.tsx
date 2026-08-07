@@ -42,6 +42,20 @@ const FAQS = [
   { q: 'BIRDY fonctionne-t-il avec le mobile money (Wave, Orange Money, MTN) ?', a: 'BIRDY enregistre vos encaissements quel que soit le moyen de paiement — espèces, mobile money ou banque — et les rattache automatiquement à la comptabilité.' },
   { q: 'Dans quels pays BIRDY est-il utilisable ?', a: 'BIRDY est conçu pour l’espace OHADA : Guinée, Sénégal, Côte d’Ivoire, Mali, Bénin, Burkina Faso, Togo, Niger, Cameroun, Gabon et les autres pays de la zone.' },
 
+  // — BIRDY : profils d'entreprise, achats & trésorerie —
+  { q: 'BIRDY convient-il à un commerce (boutique, grossiste, distribution) ?', a: 'Oui. BIRDY gère les articles, les ventes, les stocks multi-dépôts, la caisse et la comptabilité — un cœur de métier idéal pour les commerces, grossistes et distributeurs.' },
+  { q: 'BIRDY convient-il à une entreprise de service ?', a: 'Oui. Une entreprise de service facture ses prestations, suit ses clients et sa trésorerie et tient sa comptabilité OHADA dans BIRDY, sans avoir besoin de gérer du stock physique.' },
+  { q: 'BIRDY convient-il à une activité industrielle ou de transformation ?', a: 'Oui. BIRDY suit les matières et les articles, les stocks multi-dépôts, les achats et les ventes jusqu’à la comptabilité — adapté aux activités de transformation et de production de valeur, en plus du commerce et du service.' },
+  { q: 'BIRDY gère-t-il les bons de commande d’achat ?', a: 'Oui. BIRDY gère les commandes fournisseurs et leur suivi, jusqu’à la réception et la facture fournisseur.' },
+  { q: 'BIRDY gère-t-il les bons de réception ?', a: 'Oui. À la réception d’une commande, BIRDY met à jour le stock et permet le rapprochement avec la facture du fournisseur.' },
+  { q: 'BIRDY gère-t-il la trésorerie ?', a: 'Oui. BIRDY suit la trésorerie — caisse et banque, encaissements et décaissements — et produit un état de trésorerie.' },
+  { q: 'BIRDY fait-il le rapprochement bancaire ?', a: 'Oui. BIRDY importe les relevés bancaires (OFX, CSV) et les rapproche des écritures comptables.' },
+  { q: 'BIRDY gère-t-il la TVA ?', a: 'Oui. Le taux de TVA est paramétrable par pays (par exemple 18 % en zone UEMOA, 19,25 % au Cameroun).' },
+  { q: 'BIRDY produit-il le FEC, la liasse fiscale et le TAFIRE ?', a: 'Oui. BIRDY génère l’export FEC, la liasse fiscale et le TAFIRE selon le SYSCOHADA révisé. Ces états restent à faire valider par votre expert-comptable.' },
+  { q: 'BIRDY gère-t-il les immobilisations et les amortissements ?', a: 'Oui. BIRDY gère les immobilisations et calcule les amortissements, en linéaire ou en dégressif, selon l’article 45 de l’Acte uniforme OHADA.' },
+  { q: 'BIRDY gère-t-il plusieurs dépôts ou points de vente ?', a: 'Oui. BIRDY gère des stocks multi-dépôts et plusieurs points de vente dans un même environnement.' },
+  { q: 'BIRDY gère-t-il la clôture d’exercice comptable ?', a: 'Oui. BIRDY permet de clôturer puis de verrouiller un exercice comptable.' },
+
   // — Sécurité & données —
   { q: 'Mes données comptables sont-elles en sécurité ?', a: 'Oui. Les données de BIRDY restent stockées localement sur votre poste et ne sont jamais envoyées à NOVAR. Une sauvegarde locale automatique protège votre travail.' },
   { q: 'Le site NOVAR possède-t-il un espace client ?', a: 'Non. Ce site est une vitrine et un point d’accès aux produits. Il ne propose ni compte utilisateur, ni abonnement, ni connexion.' },
@@ -55,10 +69,20 @@ const FAQS = [
   { q: 'FEEDORA calcule-t-il le coût des formules ?', a: 'Oui. FEEDORA calcule et compare le coût de chaque formule, au kilo et à la tonne, pour éclairer vos arbitrages.' },
   { q: 'FEEDORA propose-t-il une analyse nutritionnelle ?', a: 'Oui. FEEDORA affiche la composition nutritionnelle de la formule à partir des ingrédients et des contraintes que vous définissez.' },
   { q: 'Peut-on enregistrer ses formules dans FEEDORA ?', a: 'Oui. Vous pouvez conserver, retrouver et faire évoluer les formules utiles à votre exploitation.' },
+  { q: 'FEEDORA aide-t-il à réduire le coût de l’aliment ?', a: 'Oui. FEEDORA calcule le coût de chaque formule au kilo et à la tonne et permet de comparer les options, pour choisir la formule la plus économique selon les ingrédients dont vous disposez.' },
+  { q: 'Puis-je utiliser mes propres ingrédients locaux dans FEEDORA ?', a: 'Oui. Vous composez vos formules à partir des ingrédients et des contraintes que vous renseignez, adaptés à votre marché et à votre région.' },
+  { q: 'FEEDORA convient-il à un aviculteur ou à une provenderie ?', a: 'Oui. FEEDORA s’adresse aux éleveurs avicoles comme aux fabricants d’aliment (provendiers) qui veulent formuler des rations équilibrées au meilleur coût.' },
 
   // — Sur mesure & contact —
   { q: 'NOVAR fait-il du logiciel sur mesure ?', a: 'Oui. Pour les opérations qui ne rentrent dans aucun produit standard, NOVAR conçoit des applications métier adaptées à vos équipes, vos données et vos décisions réelles.' },
   { q: 'Comment démarrer un projet sur mesure ?', a: 'Présentez votre contexte depuis la page Contact. NOVAR clarifie ensuite le besoin, le périmètre et les contraintes, puis propose un devis adapté.' },
+  { q: 'J’ai un besoin qui ne rentre dans aucun logiciel existant, que faire ?', a: 'Contactez NOVAR. Quand aucun produit standard ne convient, le studio conçoit sur mesure l’application, la plateforme ou l’automatisation adaptée à vos opérations réelles.' },
+  { q: 'Je cherche un développeur ou une entreprise pour créer une application en Afrique, NOVAR peut-il m’aider ?', a: 'Oui. NOVAR est un studio logiciel africain (Conakry, Guinée) qui développe des applications métier sur mesure — web et desktop — pour les PME et organisations de l’espace OHADA.' },
+  { q: 'NOVAR crée-t-il des sites web et des plateformes ?', a: 'Oui. En plus des applications métier, NOVAR réalise des sites web, des portails et des plateformes sur mesure.' },
+  { q: 'Je veux digitaliser ou automatiser mon entreprise, par où commencer ?', a: 'Décrivez votre activité et votre problème depuis la page Contact de NOVAR. Le studio automatise les tâches répétitives et remplace les saisies manuelles par des outils fiables et connectés, puis vous accompagne.' },
+  { q: 'Je veux un logiciel, une application ou un site web pour mon activité, à qui m’adresser ?', a: 'À NOVAR. Décrivez votre besoin depuis la page Contact : le studio clarifie l’objectif, propose une démarche et un devis, puis construit la solution — logiciel, application ou site web.' },
+  { q: 'NOVAR travaille-t-il avec des entreprises hors de Guinée ?', a: 'Oui. NOVAR accompagne des PME et organisations dans tout l’espace OHADA : Sénégal, Côte d’Ivoire, Mali, Bénin, Burkina Faso, Togo, Niger, Cameroun, Gabon et au-delà.' },
+  { q: 'Combien coûte un projet sur mesure avec NOVAR ?', a: 'Les projets sur mesure sont proposés sur devis, après un cadrage du besoin, du périmètre et des contraintes. Le devis est établi avant tout engagement.' },
   { q: 'Comment contacter NOVAR ?', a: 'Vous pouvez écrire à NOVAR par e-mail ou WhatsApp, ou remplir le formulaire de la page Contact. Le studio est basé à Conakry, en Guinée.' },
 ];
 

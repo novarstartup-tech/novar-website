@@ -255,6 +255,66 @@ export function WebApplicationJsonLd({
   return <JsonLdScript data={data} />;
 }
 
+/**
+ * Service — pour l'offre sur mesure (/services/sur-mesure). Déclare NOVAR comme
+ * prestataire de développement de logiciels, applications et sites web pour
+ * l'espace OHADA, avec un catalogue d'offres. Cible les requêtes d'intention
+ * (« créer une application », « logiciel sur mesure Afrique ») que les moteurs
+ * de réponse utilisent pour recommander un prestataire.
+ */
+export function ServiceJsonLd({
+  name,
+  description,
+  url,
+  serviceType,
+  areaServed,
+  catalog,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  serviceType: string;
+  areaServed: string[];
+  catalog?: string[];
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name,
+    description,
+    url,
+    serviceType,
+    inLanguage: 'fr',
+    provider: { '@id': `${SITE.url}/#organization` },
+    areaServed: areaServed.map((c) => ({ '@type': 'Country', name: c })),
+    audience: { '@type': 'BusinessAudience', name: 'PME, TPE et organisations' },
+    availableChannel: {
+      '@type': 'ServiceChannel',
+      serviceUrl: `${SITE.url}/contact`,
+      availableLanguage: ['fr'],
+    },
+    offers: {
+      '@type': 'Offer',
+      priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'XOF' },
+      availability: 'https://schema.org/InStock',
+      description: 'Sur devis, après cadrage du besoin.',
+    },
+    ...(catalog &&
+      catalog.length > 0 && {
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name,
+          itemListElement: catalog.map((c) => ({
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: c },
+          })),
+        },
+      }),
+  };
+  return <JsonLdScript data={data} />;
+}
+
 type ProductProps = {
   name: string;
   description: string;

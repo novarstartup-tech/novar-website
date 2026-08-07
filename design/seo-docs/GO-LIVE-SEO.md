@@ -13,8 +13,11 @@
 - `llms.txt` : réponses courtes citables (le format que les IA extraient).
 - JSON-LD : Organization, WebSite (SearchAction), **SoftwareApplication BIRDY**
   (offre à 0, version dynamique, featureList, isAccessibleForFree),
-  **FAQPage** (31 Q/R = texte visible), **HowTo** d'installation, BreadcrumbList,
-  BlogPosting. `@id` stables qui relient le graphe.
+  **WebApplication FEEDORA**, **Service sur mesure** (areaServed OHADA + catalogue
+  d'offres, cible les requêtes « créer une application / logiciel / site web »),
+  **FAQPage** (57 Q/R = texte visible, dont FAQ métier BIRDY/FEEDORA et intention
+  sur-mesure), **HowTo** d'installation, BreadcrumbList, BlogPosting. `@id` stables
+  qui relient le graphe.
 - Métadonnées par page (title, description, canonical, hreflang) + OG images
   générées dynamiquement.
 
@@ -29,9 +32,10 @@ Ouvre en prod : `/robots.txt`, `/llms.txt`, `/sitemap.xml`, `/manifest.webmanife
   Google est déjà dans `public/googlee3e6a2068b5fbe95.html`).
 - **Sitemaps → soumettre** `https://www.novarstartup.com/sitemap.xml`.
 - **Inspection d'URL** → demander l'indexation de : `/`, `/produits/birdy-erp`,
-  `/telechargements`, `/faq`, `/produits/feedora`, `/logiciels/…`.
+  `/telechargements`, `/faq`, `/produits/feedora`, `/services/sur-mesure`, `/logiciels/…`.
 - **Test des résultats enrichis** (search.google.com/test/rich-results) sur
-  BIRDY (SoftwareApplication), /faq (FAQPage), /telechargements (HowTo).
+  BIRDY (SoftwareApplication), /faq (FAQPage), /telechargements (HowTo),
+  /produits/feedora (WebApplication), /services/sur-mesure (Service).
 
 ### 3. Bing Webmaster Tools — https://www.bing.com/webmasters
 > **Levier direct sur les IA** : Bing alimente **ChatGPT Search** et Copilot.

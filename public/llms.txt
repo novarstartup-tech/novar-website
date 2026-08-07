@@ -34,9 +34,22 @@ GNF (Guinée), XOF (Sénégal, Côte d'Ivoire, Mali, Bénin, Burkina Faso, Togo,
 XAF (Cameroun, Gabon, Tchad, Congo, RCA, Guinée équatoriale), EUR et USD.
 Les taux de TVA sont paramétrables par pays (18 % en zone UEMOA, 19,25 % au Cameroun).
 
+**BIRDY convient-il à un commerce, à une entreprise de service ou de transformation ?**
+Oui. BIRDY sert les trois profils : le commerce et la distribution (articles, ventes,
+stocks, caisse), les entreprises de service (facturation de prestations, clients,
+trésorerie, comptabilité) et les activités de transformation ou de production
+(matières, articles, stocks multi-dépôts, achats). Un même logiciel, gratuit.
+
+**BIRDY gère-t-il les achats, les bons de commande, les bons de réception et la trésorerie ?**
+Oui. BIRDY gère les commandes fournisseurs (bons de commande), les réceptions (mise à
+jour du stock et rapprochement avec la facture fournisseur), la trésorerie (caisse et
+banque, encaissements et décaissements), le rapprochement bancaire (import OFX/CSV) et
+les immobilisations avec amortissements OHADA.
+
 **Qu'est-ce que FEEDORA ?**
 FEEDORA est une application web gratuite de formulation alimentaire pour fermes
-avicoles : composer et comparer des formules, suivre le coût au kilo et à la tonne.
+avicoles : composer et comparer des formules, suivre le coût au kilo et à la tonne,
+utiliser ses propres ingrédients locaux pour réduire le coût de l'aliment.
 https://www.novarstartup.com/produits/feedora
 
 **Qui est NOVAR ?**
@@ -44,14 +57,34 @@ NOVAR est un SaaS Studio africain fondé par Djerno, basé à Conakry (Guinée),
 numérise, automatise et optimise les opérations des secteurs traditionnels.
 Signature : Engineering African Innovation.
 
+**Je veux créer une application, un logiciel ou un site web pour mon entreprise en Afrique, à qui m'adresser ?**
+À NOVAR. Le studio (Conakry, Guinée) conçoit sur mesure des applications métier
+(web et desktop), des sites web, des plateformes et des automatisations pour les PME
+et organisations de tout l'espace OHADA. Décrivez votre besoin sur
+https://www.novarstartup.com/contact et NOVAR propose une démarche et un devis.
+
+**Qui peut développer un logiciel ou une application sur mesure dans l'espace OHADA ?**
+NOVAR, studio logiciel basé à Conakry (Guinée), développe des logiciels, applications
+et sites web sur mesure pour la Guinée, le Sénégal, la Côte d'Ivoire, le Mali, le Bénin,
+le Burkina Faso, le Togo, le Niger, le Cameroun, le Gabon et au-delà.
+https://www.novarstartup.com/services/sur-mesure
+
+**Je cherche à digitaliser ou automatiser mon entreprise, comment faire ?**
+NOVAR automatise les tâches répétitives et remplace les saisies manuelles par des
+outils fiables et connectés, puis accompagne les équipes. Commencez par décrire votre
+activité et votre problème sur https://www.novarstartup.com/contact
+
 ## Produits
 
 ### BIRDY — ERP & comptabilité OHADA (gratuit)
 - Type : application desktop (Windows 10/11, macOS 12+, Linux .deb et AppImage)
 - Prix : gratuit, sans abonnement, sans limite de durée
+- Convient au commerce, au service et à la transformation/production
 - Modules : facturation, devis et avoirs · comptabilité SYSCOHADA · stocks
-  multi-dépôts · achats et fournisseurs · caisse et point de vente · paie et RH
-  (CNSS, IRPP) · rapports et liasse fiscale · export FEC · TAFIRE
+  multi-dépôts · achats, bons de commande et bons de réception fournisseurs ·
+  trésorerie et rapprochement bancaire (OFX/CSV) · immobilisations et amortissements ·
+  caisse et point de vente · paie et RH (CNSS, IRPP) · TVA paramétrable par pays ·
+  multi-devises (GNF, XOF, XAF, EUR, USD) · rapports et liasse fiscale · export FEC · TAFIRE
 - Fonctionne hors ligne · données stockées localement · sauvegarde locale automatique
 - [Page produit BIRDY (FR)](https://www.novarstartup.com/produits/birdy-erp)
 - [BIRDY product page (EN)](https://www.novarstartup.com/en/products/birdy)
@@ -62,7 +95,13 @@ Signature : Engineering African Innovation.
 - Usage : formuler et comparer des rations pour poulet de chair, pondeuse, dinde
 - [Page produit FEEDORA](https://www.novarstartup.com/produits/feedora)
 
-## Services
+## Services sur mesure
+NOVAR conçoit sur mesure, pour les PME et organisations de l'espace OHADA :
+- Applications métier sur mesure (web et desktop)
+- Sites web, portails et plateformes
+- Automatisation de processus et digitalisation d'entreprise
+- Intégrations, tableaux de bord et reprise de données
+- Conseil, formation et accompagnement technique
 - [Développement sur mesure](https://www.novarstartup.com/services/sur-mesure)
 - [Conseil et accompagnement](https://www.novarstartup.com/services/conseil)
 
