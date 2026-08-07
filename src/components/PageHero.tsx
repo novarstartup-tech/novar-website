@@ -1,44 +1,35 @@
-type Tone = 'cyan' | 'amber' | 'violet' | 'emerald' | 'slate';
-
-const TONES: Record<Tone, { wash: string; text: string; dot: string }> = {
-  cyan: { wash: 'from-cyan-50 via-white to-white', text: 'text-cyan-800', dot: 'bg-cyan-500' },
-  amber: { wash: 'from-amber-50 via-white to-white', text: 'text-amber-800', dot: 'bg-amber-500' },
-  violet: { wash: 'from-violet-50 via-white to-white', text: 'text-violet-800', dot: 'bg-violet-500' },
-  emerald: { wash: 'from-emerald-50 via-white to-white', text: 'text-emerald-800', dot: 'bg-emerald-500' },
-  slate: { wash: 'from-slate-100 via-white to-white', text: 'text-slate-700', dot: 'bg-slate-500' },
-};
-
+/**
+ * Héros des pages secondaires — charte NOVAR v1.0.
+ * Transparent (laisse voir le fond liquide), titre navy, eyebrow bleu
+ * corporate + point ciel. Le prop `tone` est conservé pour compatibilité
+ * des appelants mais n'altère plus la palette (charte unifiée).
+ */
 export function PageHero({
-  tone = 'cyan',
   eyebrow,
   title,
   description,
   centered = false,
   children,
 }: {
-  tone?: Tone;
+  tone?: string;
   eyebrow?: string;
   title: string;
   description?: string;
   centered?: boolean;
   children?: React.ReactNode;
 }) {
-  const colors = TONES[tone];
   return (
-    <section className={`relative overflow-hidden border-b border-slate-200 bg-gradient-to-b ${colors.wash}`}>
-      <div className="absolute inset-0 bg-hero-grid opacity-50" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <section className="relative overflow-hidden">
+      <div className="relative mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] pb-[clamp(32px,5vw,56px)] pt-[clamp(48px,7vw,88px)]">
         <div className={centered ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'}>
           {eyebrow ? (
-            <div className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] ${colors.text}`}>
-              <span className={`h-2 w-2 rounded-full ${colors.dot}`} aria-hidden />
+            <div className={`inline-flex items-center gap-2 font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1E3A8A] ${centered ? 'justify-center' : ''}`}>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#38B6FF] shadow-[0_0_10px_rgba(56,182,255,0.7)]" aria-hidden />
               {eyebrow}
             </div>
           ) : null}
-          <h1 className="mt-5 font-display text-4xl font-bold leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-            {title}
-          </h1>
-          {description ? <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">{description}</p> : null}
+          <h1 className="mt-5 text-[clamp(30px,5.2vw,44px)] font-bold leading-[1.05] tracking-[-0.035em] text-[#0D1B2A]">{title}</h1>
+          {description ? <p className="mt-5 max-w-2xl text-[17px] leading-[1.7] text-[#44546B]">{description}</p> : null}
           {children ? <div className="mt-8">{children}</div> : null}
         </div>
       </div>

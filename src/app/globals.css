@@ -260,6 +260,9 @@ body {
    NOVAR — charte v1.0 (port fidèle de design/refonte.html)
    ============================================================ */
 body { background: #F1F5FB; }
+/* Charte : tous les titres en Space Grotesk (comme la maquette, qui applique
+   la police globalement — le site ne la posait qu'via la classe font-display). */
+h1, h2, h3, h4, summary { font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif; }
 
 @keyframes novarDrift {
   0%   { transform: translate3d(0,0,0) scale(1); }
