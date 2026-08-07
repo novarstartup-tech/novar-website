@@ -141,3 +141,37 @@ export async function getLatestReleaseMeta(): Promise<BirdyReleaseMeta> {
     return RELEASE_META_FALLBACK;
   }
 }
+
+/** URL publique de toutes les releases BIRDY. */
+export const RELEASES_ALL_URL = `https://github.com/${RELEASES_REPO}/releases`;
+
+/**
+ * Historique des dernières versions BIRDY (dédupliqué par numéro de version),
+ * relu sur GitHub au build. Les notes de release GitHub étant génériques, on
+ * n'expose que version + date. Retourne [] si l'API est injoignable.
+ */
+export async function getReleaseHistory(limit = 4): Promise<BirdyReleaseMeta[]> {
+  try {
+    const headers: Record<string, string> = {
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'novar-website',
+      'X-GitHub-Api-Version': '2022-11-28',
+    };
+    if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+    const res = await fetch(`https://api.github.com/repos/${RELEASES_REPO}/releases?per_page=40`, { headers, cache: 'force-cache' });
+    if (!res.ok) return [];
+    const all = (await res.json()) as { tag_name?: string; published_at?: string }[];
+    const seen = new Set<string>();
+    const out: BirdyReleaseMeta[] = [];
+    for (const r of all) {
+      const version = r.tag_name?.match(VERSION_RE)?.[1];
+      if (!version || seen.has(version)) continue;
+      seen.add(version);
+      out.push({ version, datePublished: r.published_at ? r.published_at.slice(0, 10) : '' });
+    }
+    out.sort((a, b) => b.version.localeCompare(a.version, undefined, { numeric: true }));
+    return out.slice(0, limit);
+  } catch {
+    return [];
+  }
+}

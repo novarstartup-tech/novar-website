@@ -23,6 +23,7 @@ import { ContactForm } from '@/components/ContactForm';
 import { PageHero } from '@/components/PageHero';
 import { PRODUCTS, SERVICES, SITE_COPY, VERIFIED_LINKS, type ContactTopic, type Locale, type ProductId, type ServiceId } from '@/lib/content';
 import { SITE } from '@/lib/site';
+import { getLatestReleaseMeta, getReleaseHistory, RELEASES_ALL_URL } from '@/lib/releases';
 
 const TEXT = {
   fr: {
@@ -403,8 +404,12 @@ export function ResourcesView({ locale, mode = 'resources' }: { locale: Locale; 
   );
 }
 
-export function DownloadsView({ locale }: { locale: Locale }) {
+export async function DownloadsView({ locale }: { locale: Locale }) {
   const isFr = locale === 'fr';
+  const { version, datePublished } = await getLatestReleaseMeta();
+  const history = await getReleaseHistory(4);
+  const dateLabel = new Date(datePublished).toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+
   // Liens internes stables : l'endpoint /api/download/<os> résout la
   // dernière release BIRDY au clic (cf. src/app/api/download/[os]).
   const platforms = [
@@ -413,10 +418,46 @@ export function DownloadsView({ locale }: { locale: Locale }) {
     ['Linux Debian', '.deb', '/api/download/deb'],
     ['Linux AppImage', '.AppImage', '/api/download/appimage'],
   ];
+
+  const infoCards: [string, string][] = [
+    [isFr ? 'Version' : 'Version', version],
+    [isFr ? 'Publiée le' : 'Published' , dateLabel],
+    [isFr ? 'Licence' : 'License', isFr ? 'Gratuite, sans abonnement' : 'Free, no subscription'],
+    [isFr ? 'Fonctionnement' : 'Runs', isFr ? 'Hors ligne, données locales' : 'Offline, local data'],
+  ];
+
+  const config: [string, string][] = [
+    [isFr ? 'Système' : 'System', 'Windows 10 · macOS 12 · Ubuntu 22.04'],
+    [isFr ? 'Processeur' : 'Processor', isFr ? '64 bits, 2 cœurs' : '64-bit, 2 cores'],
+    [isFr ? 'Mémoire' : 'Memory', isFr ? '4 Go (8 Go recommandés)' : '4 GB (8 GB recommended)'],
+    [isFr ? 'Espace disque' : 'Disk space', '500 Mo'],
+    [isFr ? 'Connexion' : 'Connection', isFr ? 'Aucune requise' : 'None required'],
+  ];
+
   return (
     <>
-      <PageHero tone="cyan" eyebrow="BIRDY" title={isFr ? 'Télécharger BIRDY gratuitement.' : 'Download BIRDY for free.'} description={isFr ? 'Choisissez le paquet adapté à votre système. Les liens pointent vers la dernière version publiée par NOVAR.' : 'Choose the package for your system. Links point to the latest release published by NOVAR.'} />
-      <section className="section-shell">
+      {/* Héros navy + cartes info (version/date dynamiques depuis GitHub) */}
+      <section className="novar-hero">
+        <div className="novar-hero-bg" />
+        <div className="novar-hero-glow" />
+        <div className="novar-hero-horizon" />
+        <div className="relative mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] pb-[clamp(120px,16vw,180px)] pt-[clamp(56px,7vw,92px)]">
+          <div className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9AD6FF]">BIRDY / {isFr ? 'Téléchargements' : 'Downloads'}</div>
+          <h1 className="mt-4 text-[clamp(38px,6.5vw,72px)] font-bold leading-[0.98] tracking-[-0.045em] text-white [overflow-wrap:anywhere]">{isFr ? 'Télécharger BIRDY' : 'Download BIRDY'}</h1>
+          <p className="mt-5 max-w-[42em] text-[16px] leading-[1.7] text-[#B4C9DE]">{isFr ? 'Choisissez le paquet adapté à votre système. Chaque lien pointe vers la dernière version publiée par NOVAR — aucun compte, aucun abonnement.' : 'Choose the package for your system. Each link points to the latest release published by NOVAR — no account, no subscription.'}</p>
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+            {infoCards.map(([label, value]) => (
+              <div key={label} className="rounded-[16px] border border-white/[0.12] bg-white/[0.05] p-5 backdrop-blur-[10px]">
+                <div className="font-display text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#8FAAC6]">{label}</div>
+                <div className="mt-2.5 text-[17px] font-bold text-white">{value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cartes de téléchargement par plateforme */}
+      <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] py-[clamp(56px,7vw,88px)]">
         <div className="grid gap-5 sm:grid-cols-2">
           {platforms.map(([name, format, href]) => (
             <a key={name} href={href} className="novar-glass novar-lift block rounded-[18px] p-6">
@@ -428,33 +469,33 @@ export function DownloadsView({ locale }: { locale: Locale }) {
           ))}
         </div>
       </section>
-      <section className="section-shell pt-0">
+
+      {/* Avant d'installer */}
+      <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] pb-[clamp(56px,7vw,88px)]">
         <div className="novar-glass rounded-[22px] p-7">
           <div className="flex items-start gap-3">
             <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" aria-hidden />
             <div>
-              <h2 className="font-display text-xl font-bold text-slate-950">
-                {isFr
-                  ? 'À l’installation, un avertissement peut s’afficher — c’est normal'
-                  : 'A warning may appear during install — this is normal'}
+              <h2 className="text-xl font-bold text-[#0D1B2A]">
+                {isFr ? 'À l’installation, un avertissement peut s’afficher — c’est normal' : 'A warning may appear during install — this is normal'}
               </h2>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              <p className="mt-2 text-sm leading-relaxed text-[#44546B]">
                 {isFr
                   ? 'BIRDY est édité par un jeune studio et n’est pas encore signé par un certificat payant. Windows (SmartScreen) affiche donc un message « éditeur inconnu » : il signale seulement que l’application est récente et peu téléchargée, pas qu’elle est dangereuse.'
                   : 'BIRDY is published by a young studio and is not yet signed with a paid certificate. Windows (SmartScreen) therefore shows an “unknown publisher” message: it only means the app is new and rarely downloaded, not that it is unsafe.'}
               </p>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-xl border border-[#0D1B2A]/10 bg-white p-4">
-                  <h3 className="font-display text-sm font-bold text-slate-950">Windows</h3>
-                  <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm leading-relaxed text-slate-700">
+                  <h3 className="text-sm font-bold text-[#0D1B2A]">Windows — SmartScreen</h3>
+                  <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm leading-relaxed text-[#44546B]">
                     <li>{isFr ? 'Au téléchargement, cliquez « Conserver ».' : 'When downloading, click “Keep”.'}</li>
                     <li>{isFr ? 'Ouvrez le fichier, puis cliquez « Informations complémentaires ».' : 'Open the file, then click “More info”.'}</li>
                     <li>{isFr ? 'Cliquez « Exécuter quand même ».' : 'Click “Run anyway”.'}</li>
                   </ol>
                 </div>
                 <div className="rounded-xl border border-[#0D1B2A]/10 bg-white p-4">
-                  <h3 className="font-display text-sm font-bold text-slate-950">macOS</h3>
-                  <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm leading-relaxed text-slate-700">
+                  <h3 className="text-sm font-bold text-[#0D1B2A]">macOS — Gatekeeper</h3>
+                  <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm leading-relaxed text-[#44546B]">
                     <li>{isFr ? 'Faites un clic droit sur l’application, puis « Ouvrir ».' : 'Right-click the app, then “Open”.'}</li>
                     <li>{isFr ? 'Confirmez « Ouvrir » dans la fenêtre qui apparaît.' : 'Confirm “Open” in the dialog that appears.'}</li>
                   </ol>
@@ -464,9 +505,50 @@ export function DownloadsView({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+
+      {/* Configuration requise */}
+      <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] pb-[clamp(56px,7vw,88px)]">
+        <div className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6B7C93]">{isFr ? 'Configuration requise' : 'System requirements'}</div>
+        <h2 className="mt-3 text-[clamp(24px,3.8vw,30px)] font-bold tracking-[-0.025em] text-[#0D1B2A]">{isFr ? 'Ce qu’il faut sur le poste.' : 'What you need on the machine.'}</h2>
+        <div className="novar-glass mt-6 overflow-hidden rounded-[18px]">
+          <dl className="divide-y divide-[#0D1B2A]/8">
+            {config.map(([label, value]) => (
+              <div key={label} className="grid grid-cols-1 gap-1 px-6 py-4 sm:grid-cols-[220px_1fr] sm:gap-4">
+                <dt className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#5B6E86]">{label}</dt>
+                <dd className="text-[15px] font-medium text-[#0D1B2A]">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* Historique des versions (réel, depuis GitHub) */}
+      {history.length > 0 && (
+        <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] pb-[clamp(64px,8vw,96px)]">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <div className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6B7C93]">{isFr ? 'Historique' : 'History'}</div>
+              <h2 className="mt-3 text-[clamp(24px,3.8vw,30px)] font-bold tracking-[-0.025em] text-[#0D1B2A]">{isFr ? 'Versions publiées.' : 'Published releases.'}</h2>
+            </div>
+            <a href={RELEASES_ALL_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-bold text-[#1E3A8A] transition-colors hover:text-[#0D1B2A]">{isFr ? 'Voir toutes les releases' : 'See all releases'}<ArrowRight className="h-3.5 w-3.5" aria-hidden /></a>
+          </div>
+          <div className="novar-glass mt-6 overflow-hidden rounded-[18px]">
+            <ul className="divide-y divide-[#0D1B2A]/8">
+              {history.map((r, i) => (
+                <li key={r.version} className="grid grid-cols-[auto_1fr] items-center gap-4 px-6 py-4 sm:grid-cols-[120px_160px_1fr]">
+                  <span className="font-display text-[16px] font-bold text-[#0D1B2A]">{r.version}</span>
+                  <span className="font-display text-[13px] text-[#6B7C93]">{r.datePublished ? new Date(r.datePublished).toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'short', year: 'numeric' }) : ''}</span>
+                  <span className="hidden text-[14px] text-[#44546B] sm:block">{i === 0 ? (isFr ? 'Dernière version publiée.' : 'Latest published release.') : (isFr ? 'Correctifs et améliorations.' : 'Fixes and improvements.')}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
     </>
   );
 }
+
 
 export function SecurityView({ locale }: { locale: Locale }) {
   const isFr = locale === 'fr';
