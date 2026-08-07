@@ -262,44 +262,59 @@ export function ServiceDetail({ locale, id }: { locale: Locale; id: ServiceId })
   const service = SERVICES[id];
   const copy = service.copy[locale];
   const isCustom = id === 'custom';
-  const c = TEXT[locale];
+  const fr = locale === 'fr';
+
+  const items: readonly (readonly [string, string, string])[] = isCustom
+    ? fr
+      ? [
+          ['01', 'Comprendre', 'Observer les opérations, les contraintes et les décisions à améliorer.'],
+          ['02', 'Concevoir', 'Définir une solution claire, utile et simple à faire évoluer.'],
+          ['03', 'Construire', 'Livrer par étapes, vérifier avec les utilisateurs et documenter.'],
+          ['04', 'Accompagner', 'Former les équipes et faire progresser la solution dans le temps.'],
+        ]
+      : [
+          ['01', 'Understand', 'Observe operations, constraints and the decisions to improve.'],
+          ['02', 'Design', 'Define a clear, useful solution that is simple to evolve.'],
+          ['03', 'Build', 'Deliver in stages, validate with users and document.'],
+          ['04', 'Support', 'Train teams and improve the solution over time.'],
+        ]
+    : fr
+      ? [
+          ['01', 'Audit technique', 'État des lieux des outils, des données et des risques opérationnels.'],
+          ['02', 'Architecture', 'Choix techniques, intégrations et trajectoire de mise en œuvre.'],
+          ['03', 'Formation', 'Prise en main des outils par les équipes, en français.'],
+          ['04', 'DSI externalisée', 'Un interlocuteur technique durable pour les organisations sans DSI.'],
+        ]
+      : [
+          ['01', 'Technical audit', 'Assessment of tools, data and operational risks.'],
+          ['02', 'Architecture', 'Technical choices, integrations and implementation path.'],
+          ['03', 'Training', 'Team onboarding to the tools, in French.'],
+          ['04', 'Outsourced IT', 'A durable technical partner for organizations without an in-house IT team.'],
+        ];
+
   return (
     <>
-      <PageHero
-        tone={isCustom ? 'amber' : 'violet'}
-        eyebrow={locale === 'fr' ? 'Services NOVAR' : 'NOVAR services'}
-        title={copy.name}
-        description={copy.summary}
-      />
-      <section className="section-shell">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {c.approachItems.map(([title, body], index) => {
-            const Icon = [Search, PenTool, Wrench, Sparkles][index];
-            return (
-              <div key={title} className="rounded-2xl border border-slate-200 bg-white p-6">
-                <Icon className={`h-5 w-5 ${isCustom ? 'text-amber-700' : 'text-violet-700'}`} aria-hidden />
-                <div className="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-slate-400">0{index + 1}</div>
-                <h2 className="mt-2 font-display text-lg font-bold text-slate-950">{title}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{body}</p>
-              </div>
-            );
-          })}
+      <PageHero eyebrow={fr ? 'Services NOVAR' : 'NOVAR services'} title={copy.name} description={copy.summary} />
+      <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] pb-[clamp(48px,7vw,80px)]">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map(([num, title, body]) => (
+            <div key={num} className="novar-glass rounded-[18px] p-7">
+              <span className="font-display text-[11px] text-[#5B6E86]">{num}</span>
+              <h2 className="mt-3 text-[17px] font-bold text-[#0D1B2A]">{title}</h2>
+              <p className="mt-2 text-[14px] leading-[1.65] text-[#44546B]">{body}</p>
+            </div>
+          ))}
         </div>
-        <div className={`mt-10 rounded-3xl border p-8 sm:p-10 ${isCustom ? 'border-amber-200 bg-amber-50' : 'border-violet-200 bg-violet-50'}`}>
-          <h2 className="section-heading">{locale === 'fr' ? 'Chaque mission commence par un échange clair.' : 'Every engagement starts with a clear conversation.'}</h2>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
-            {locale === 'fr'
-              ? 'Les prestations personnalisées sont proposées sur devis, après compréhension du besoin, du périmètre et des contraintes.'
-              : 'Tailored engagements are quoted after we understand the need, scope and constraints.'}
-          </p>
-          <Link href={locale === 'fr' ? '/contact?topic=sur-mesure' : '/en/contact?topic=sur-mesure'} className="btn-primary mt-7">
-            {locale === 'fr' ? 'Présenter votre besoin' : 'Tell us about your need'} <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
+        <div className="novar-glass mt-8 rounded-[22px] p-8 sm:p-10">
+          <h2 className="text-[clamp(22px,3.4vw,28px)] font-bold tracking-[-0.02em] text-[#0D1B2A]">{fr ? 'Chaque mission commence par un échange clair.' : 'Every engagement starts with a clear conversation.'}</h2>
+          <p className="mt-4 max-w-2xl text-[15px] leading-[1.7] text-[#44546B]">{fr ? 'Les prestations personnalisées sont proposées sur devis, après compréhension du besoin, du périmètre et des contraintes.' : 'Tailored engagements are quoted after we understand the need, scope and constraints.'}</p>
+          <Link href={fr ? '/contact?topic=sur-mesure' : '/en/contact?topic=sur-mesure'} className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#0D1B2A] px-5 py-[13px] text-[14px] font-semibold text-white transition-colors hover:bg-[#16304A]">{fr ? 'Présenter votre besoin' : 'Tell us about your need'}<ArrowRight className="h-4 w-4" aria-hidden /></Link>
         </div>
       </section>
     </>
   );
 }
+
 
 export function ContactView({ locale, defaultTopic = 'autre' }: { locale: Locale; defaultTopic?: ContactTopic }) {
   const isFr = locale === 'fr';
