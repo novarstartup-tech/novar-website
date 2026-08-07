@@ -419,19 +419,19 @@ export function DownloadsView({ locale }: { locale: Locale }) {
       <section className="section-shell">
         <div className="grid gap-5 sm:grid-cols-2">
           {platforms.map(([name, format, href]) => (
-            <a key={name} href={href} className="rounded-2xl border border-cyan-200 bg-cyan-50 p-6 transition hover:-translate-y-1 hover:shadow-lg">
-              <MonitorSmartphone className="h-5 w-5 text-cyan-800" aria-hidden />
-              <h2 className="mt-5 font-display text-xl font-bold text-slate-950">{name}</h2>
-              <p className="mt-2 text-sm text-slate-600">{format} · {isFr ? 'Dernière version publiée' : 'Latest published release'}</p>
-              <span className="btn-primary mt-6"><Download className="h-4 w-4" aria-hidden />{isFr ? 'Télécharger' : 'Download'}</span>
+            <a key={name} href={href} className="novar-glass novar-lift block rounded-[18px] p-6">
+              <MonitorSmartphone className="h-5 w-5 text-[#1E3A8A]" aria-hidden />
+              <h2 className="mt-5 text-xl font-bold text-[#0D1B2A]">{name}</h2>
+              <p className="mt-2 text-sm text-[#44546B]">{format} · {isFr ? 'Dernière version publiée' : 'Latest published release'}</p>
+              <span className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#38B6FF] px-5 py-3 text-sm font-bold text-[#0D1B2A]"><Download className="h-4 w-4" aria-hidden />{isFr ? 'Télécharger' : 'Download'}</span>
             </a>
           ))}
         </div>
       </section>
       <section className="section-shell pt-0">
-        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-7">
+        <div className="novar-glass rounded-[22px] p-7">
           <div className="flex items-start gap-3">
-            <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" aria-hidden />
+            <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" aria-hidden />
             <div>
               <h2 className="font-display text-xl font-bold text-slate-950">
                 {isFr
@@ -444,7 +444,7 @@ export function DownloadsView({ locale }: { locale: Locale }) {
                   : 'BIRDY is published by a young studio and is not yet signed with a paid certificate. Windows (SmartScreen) therefore shows an “unknown publisher” message: it only means the app is new and rarely downloaded, not that it is unsafe.'}
               </p>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-xl border border-amber-200 bg-white p-4">
+                <div className="rounded-xl border border-[#0D1B2A]/10 bg-white p-4">
                   <h3 className="font-display text-sm font-bold text-slate-950">Windows</h3>
                   <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm leading-relaxed text-slate-700">
                     <li>{isFr ? 'Au téléchargement, cliquez « Conserver ».' : 'When downloading, click “Keep”.'}</li>
@@ -452,7 +452,7 @@ export function DownloadsView({ locale }: { locale: Locale }) {
                     <li>{isFr ? 'Cliquez « Exécuter quand même ».' : 'Click “Run anyway”.'}</li>
                   </ol>
                 </div>
-                <div className="rounded-xl border border-amber-200 bg-white p-4">
+                <div className="rounded-xl border border-[#0D1B2A]/10 bg-white p-4">
                   <h3 className="font-display text-sm font-bold text-slate-950">macOS</h3>
                   <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm leading-relaxed text-slate-700">
                     <li>{isFr ? 'Faites un clic droit sur l’application, puis « Ouvrir ».' : 'Right-click the app, then “Open”.'}</li>
@@ -481,7 +481,7 @@ export function SecurityView({ locale }: { locale: Locale }) {
             [Mail, isFr ? 'Signalement responsable' : 'Responsible disclosure', isFr ? `Signalez un problème à ${SITE.email}.` : `Report an issue to ${SITE.email}.`],
           ].map(([Icon, title, body]) => {
             const CardIcon = Icon as typeof ShieldCheck;
-            return <div key={title as string} className="rounded-2xl border border-slate-200 bg-white p-7"><CardIcon className="h-5 w-5 text-cyan-700" aria-hidden /><h2 className="mt-5 font-display text-xl font-bold text-slate-950">{title as string}</h2><p className="mt-2 text-sm leading-relaxed text-slate-600">{body as string}</p></div>;
+            return <div key={title as string} className="novar-glass rounded-[18px] p-7"><CardIcon className="h-5 w-5 text-[#1E3A8A]" aria-hidden /><h2 className="mt-5 text-xl font-bold text-[#0D1B2A]">{title as string}</h2><p className="mt-2 text-sm leading-relaxed text-[#44546B]">{body as string}</p></div>;
           })}
         </div>
       </section>
