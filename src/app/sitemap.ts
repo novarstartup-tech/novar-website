@@ -21,7 +21,7 @@ import { SITE } from '@/lib/site';
  */
 
 /** Date de publication de la release BIRDY en ligne. */
-const BIRDY_RELEASE = new Date('2026-07-12');
+const BIRDY_RELEASE = new Date('2026-08-04');
 /** Dernière révision éditoriale des pages statiques. */
 const CONTENT_REVISION = new Date('2026-08-07');
 
