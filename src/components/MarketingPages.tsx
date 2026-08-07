@@ -11,7 +11,6 @@ import {
   Mail,
   MapPin,
   MessageCircle,
-  MonitorSmartphone,
   PackageCheck,
   PenTool,
   Search,
@@ -21,6 +20,7 @@ import {
 } from 'lucide-react';
 import { ContactForm } from '@/components/ContactForm';
 import { PageHero } from '@/components/PageHero';
+import { DownloadPicker } from '@/components/DownloadPicker';
 import { PRODUCTS, SERVICES, SITE_COPY, VERIFIED_LINKS, type ContactTopic, type Locale, type ProductId, type ServiceId } from '@/lib/content';
 import { SITE } from '@/lib/site';
 import { getLatestReleaseMeta, getReleaseHistory, RELEASES_ALL_URL } from '@/lib/releases';
@@ -412,11 +412,11 @@ export async function DownloadsView({ locale }: { locale: Locale }) {
 
   // Liens internes stables : l'endpoint /api/download/<os> résout la
   // dernière release BIRDY au clic (cf. src/app/api/download/[os]).
-  const platforms = [
-    ['Windows', '.exe', '/api/download/windows'],
-    ['macOS', '.dmg', '/api/download/mac'],
-    ['Linux Debian', '.deb', '/api/download/deb'],
-    ['Linux AppImage', '.AppImage', '/api/download/appimage'],
+  const pickerPlatforms = [
+    { os: 'windows' as const, name: 'Windows 10 & 11', file: isFr ? "Programme d'installation (.exe)" : 'Installer (.exe)', href: '/api/download/windows' },
+    { os: 'mac' as const, name: 'macOS', file: '.dmg · Apple Silicon & Intel', href: '/api/download/mac' },
+    { os: 'linux' as const, name: 'Linux — Debian / Ubuntu', file: '.deb · amd64', href: '/api/download/deb' },
+    { os: 'linux' as const, name: 'Linux — AppImage', file: '.AppImage · amd64', href: '/api/download/appimage' },
   ];
 
   const infoCards: [string, string][] = [
@@ -456,18 +456,9 @@ export async function DownloadsView({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      {/* Cartes de téléchargement par plateforme */}
+      {/* Choix de la plateforme — systeme detecte automatiquement */}
       <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] py-[clamp(56px,7vw,88px)]">
-        <div className="grid gap-5 sm:grid-cols-2">
-          {platforms.map(([name, format, href]) => (
-            <a key={name} href={href} className="novar-glass novar-lift block rounded-[18px] p-6">
-              <MonitorSmartphone className="h-5 w-5 text-[#1E3A8A]" aria-hidden />
-              <h2 className="mt-5 text-xl font-bold text-[#0D1B2A]">{name}</h2>
-              <p className="mt-2 text-sm text-[#44546B]">{format} · {isFr ? 'Dernière version publiée' : 'Latest published release'}</p>
-              <span className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#38B6FF] px-5 py-3 text-sm font-bold text-[#0D1B2A]"><Download className="h-4 w-4" aria-hidden />{isFr ? 'Télécharger' : 'Download'}</span>
-            </a>
-          ))}
-        </div>
+        <DownloadPicker platforms={pickerPlatforms} labels={{ recommended: isFr ? 'Recommandé pour vous' : 'Recommended for you', others: isFr ? 'Autres systèmes' : 'Other systems', download: isFr ? 'Télécharger' : 'Download' }} />
       </section>
 
       {/* Avant d'installer */}
