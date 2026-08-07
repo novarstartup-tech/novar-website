@@ -1,162 +1,170 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Check, Compass, Layers3, ShieldCheck, Workflow } from 'lucide-react';
-import { Hero } from '@/components/Hero';
-import { BirdyLogo, FeedoraLogo } from '@/components/ProductLogo';
-import { PRODUCTS, type Locale } from '@/lib/content';
+import { ArrowRight, Download } from 'lucide-react';
+import type { Locale } from '@/lib/content';
 
 const COPY = {
   fr: {
+    heroEyebrow: 'SaaS Studio · Conakry',
+    heroTitle: 'Votre moteur logiciel',
+    heroBody: "NOVAR édite ses propres produits — BIRDY et FEEDORA — et conçoit des solutions sur mesure pour les PME et organisations de l'espace OHADA.",
+    heroPrimary: 'Explorer nos solutions',
+    heroSecondary: 'Parler à NOVAR',
+    tagline: 'Engineering African Innovation',
+    dashboard: 'Tableau de bord',
     productsEyebrow: 'Produits édités par NOVAR',
-    productsTitle: 'Deux produits spécialisés. Une même exigence produit.',
-    productsBody: 'BIRDY et FEEDORA répondent à des métiers différents, mais partagent la même ambition : rendre les opérations plus claires, plus fiables et plus simples à piloter.',
-    birdyFeatures: ['Ventes, achats et stocks', 'Comptabilité adaptée à l’OHADA', 'Caisse, tiers, paie et reporting'],
-    feedoraFeatures: ['Formulation alimentaire avicole', 'Analyse nutritionnelle détaillée', 'Comparaison des coûts et besoins'],
-    discover: 'Découvrir le produit',
+    productsTitle: 'Deux produits spécialisés, une même exigence.',
     free: 'Gratuit',
+    birdyTitle: 'ERP & gestion comptable OHADA',
+    birdyBody: "Facturer, tenir la comptabilité SYSCOHADA, suivre les stocks, la caisse, les achats et la paie — dans une seule application desktop qui fonctionne hors ligne.",
+    discoverBirdy: 'Découvrir BIRDY',
+    download: 'Télécharger',
+    feedoraTitle: 'Formulation alimentaire avicole',
+    feedoraBody: 'Composer et comparer des formules, suivre le coût au kilo et à la tonne.',
+    discoverFeedora: 'Découvrir FEEDORA',
+    customBadge: 'Sur mesure',
+    customCardTitle: 'Le logiciel qui vous manque',
+    customCardBody: 'Pour les opérations qui ne rentrent dans aucun produit standard.',
     customEyebrow: 'Solutions sur mesure',
-    customTitle: 'Nous construisons aussi le logiciel qui manque à votre entreprise.',
-    customBody: 'Pour les PME et organisations dont les opérations ne rentrent pas dans un produit standard, NOVAR conçoit des applications métier adaptées aux équipes, aux données et aux décisions réelles.',
-    customSteps: [
+    customTitle: 'Nous construisons aussi le logiciel qui vous manque.',
+    customBody: "Pour les organisations dont les opérations ne rentrent pas dans un produit standard.",
+    customCta: 'Présenter votre besoin',
+    steps: [
       ['01', 'Comprendre', 'Observer les opérations et définir le problème utile à résoudre.'],
       ['02', 'Concevoir', 'Transformer les besoins en parcours simples et en architecture durable.'],
       ['03', 'Déployer', 'Livrer, former les équipes et améliorer le produit dans le temps.'],
     ],
-    customCta: 'Présenter votre besoin',
-    principlesEyebrow: 'Le studio',
-    principlesTitle: 'Une équipe produit, pas seulement un prestataire technique.',
-    principles: [
-      ['Ancrage métier', 'Chaque décision part du travail réel des utilisateurs.', Compass],
-      ['Construction durable', 'Des produits maintenables, documentés et prêts à évoluer.', Layers3],
-      ['Exigence et fiabilité', 'Clarté, sécurité et qualité guident chaque livraison.', ShieldCheck],
-    ],
-    finalTitle: 'Un produit NOVAR ou une solution pensée pour vous.',
-    finalBody: 'Parlons de vos opérations, de vos contraintes et du prochain progrès utile.',
-    finalPrimary: 'Parler à NOVAR',
-    finalSecondary: 'Explorer les solutions',
   },
   en: {
+    heroEyebrow: 'SaaS Studio · Conakry',
+    heroTitle: 'Your software engine',
+    heroBody: 'NOVAR builds its own products — BIRDY and FEEDORA — and designs tailored software for SMEs and organizations across the OHADA region.',
+    heroPrimary: 'Explore our solutions',
+    heroSecondary: 'Talk to NOVAR',
+    tagline: 'Engineering African Innovation',
+    dashboard: 'Dashboard',
     productsEyebrow: 'Products built by NOVAR',
-    productsTitle: 'Two specialized products. One product standard.',
-    productsBody: 'BIRDY and FEEDORA serve different industries, but share the same ambition: making operations clearer, more reliable and easier to manage.',
-    birdyFeatures: ['Sales, purchasing and inventory', 'Accounting designed for OHADA', 'Cash, partners, payroll and reporting'],
-    feedoraFeatures: ['Poultry feed formulation', 'Detailed nutritional analysis', 'Cost and requirement comparison'],
-    discover: 'Explore the product',
+    productsTitle: 'Two specialized products, one standard.',
     free: 'Free',
+    birdyTitle: 'OHADA ERP & accounting',
+    birdyBody: 'Invoicing, SYSCOHADA accounting, inventory, cash, purchasing and payroll — in a single desktop app that works offline.',
+    discoverBirdy: 'Explore BIRDY',
+    download: 'Download',
+    feedoraTitle: 'Poultry feed formulation',
+    feedoraBody: 'Build and compare formulas, track cost per kilo and per tonne.',
+    discoverFeedora: 'Explore FEEDORA',
+    customBadge: 'Tailored',
+    customCardTitle: 'The software you are missing',
+    customCardBody: 'For operations that fit no standard product.',
     customEyebrow: 'Tailored software',
-    customTitle: 'We also build the software your organization is missing.',
-    customBody: 'For SMEs and organizations whose operations do not fit a standard product, NOVAR designs business applications around real teams, data and decisions.',
-    customSteps: [
+    customTitle: 'We also build the software you are missing.',
+    customBody: 'For organizations whose operations do not fit a standard product.',
+    customCta: 'Tell us about your need',
+    steps: [
       ['01', 'Understand', 'Observe operations and define the useful problem to solve.'],
       ['02', 'Design', 'Turn needs into simple journeys and a durable architecture.'],
       ['03', 'Deploy', 'Deliver, train teams and improve the product over time.'],
     ],
-    customCta: 'Tell us about your need',
-    principlesEyebrow: 'The studio',
-    principlesTitle: 'A product team, not only a technical provider.',
-    principles: [
-      ['Business first', 'Every decision starts from the work users actually do.', Compass],
-      ['Built to last', 'Maintainable, documented products that are ready to evolve.', Layers3],
-      ['Quality and trust', 'Clarity, security and quality guide every delivery.', ShieldCheck],
-    ],
-    finalTitle: 'A NOVAR product or a solution designed for you.',
-    finalBody: 'Let’s discuss your operations, constraints and the next useful improvement.',
-    finalPrimary: 'Talk to NOVAR',
-    finalSecondary: 'Explore solutions',
   },
 } as const;
 
 export function StudioHome({ locale }: { locale: Locale }) {
   const c = COPY[locale];
-  const route = (fr: string, en: string) => locale === 'fr' ? fr : en;
+  const route = (fr: string, en: string) => (locale === 'fr' ? fr : en);
 
   return (
     <>
-      <Hero locale={locale} />
-
-      <section className="home-section bg-white">
-        <div className="home-container">
-          <div className="max-w-4xl">
-            <span className="eyebrow">{c.productsEyebrow}</span>
-            <h2 className="home-heading">{c.productsTitle}</h2>
-            <p className="home-lead">{c.productsBody}</p>
+      {/* Héros navy à horizon courbe */}
+      <section className="novar-hero">
+        <div className="novar-hero-bg" />
+        <div className="novar-hero-glow" />
+        <div className="novar-hero-horizon" />
+        <div className="relative mx-auto grid max-w-[1200px] items-center gap-12 px-[clamp(20px,4vw,32px)] pb-[clamp(140px,20vw,210px)] pt-[clamp(56px,7vw,92px)] lg:grid-cols-2 lg:gap-[72px]">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.16] bg-white/[0.07] px-[15px] py-[7px] font-display text-[11px] font-medium uppercase tracking-[0.14em] text-[#C8DDF2] backdrop-blur-[14px]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#38B6FF] shadow-[0_0_12px_rgba(56,182,255,0.9)]" />
+              {c.heroEyebrow}
+            </span>
+            <h1 className="mt-7 text-[clamp(42px,6vw,64px)] font-bold leading-[0.98] tracking-[-0.045em] text-white [text-wrap:balance]">{c.heroTitle}</h1>
+            <p className="mt-6 max-w-[34em] text-[15px] leading-[1.7] text-[#B4C9DE]">{c.heroBody}</p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link href={route('/produits', '/en/solutions')} className="inline-flex items-center gap-2 rounded-xl bg-[#38B6FF] px-6 py-[15px] text-[14.5px] font-bold text-[#0D1B2A] shadow-[0_12px_34px_rgba(56,182,255,0.32)] transition-colors hover:bg-[#62C6FF]">{c.heroPrimary}<ArrowRight className="h-4 w-4" aria-hidden /></Link>
+              <Link href={route('/contact', '/en/contact')} className="inline-flex items-center rounded-xl border border-white/[0.18] bg-white/[0.06] px-6 py-[15px] text-[14.5px] font-semibold text-white backdrop-blur-[14px] transition-colors hover:bg-white/[0.12]">{c.heroSecondary}</Link>
+            </div>
+            <div className="mt-10 border-t border-white/[0.12] pt-6 font-display text-[12px] uppercase tracking-[0.18em] text-[#7E97B4]">{c.tagline}</div>
           </div>
-
-          <article className="product-editorial product-editorial-birdy">
-            <div className="product-editorial-visual">
-              <Image src="/products/birdy-dashboard-studio.png" alt={locale === 'fr' ? 'Tableau de bord réel de BIRDY' : 'Real BIRDY dashboard'} width={1440} height={900} className="w-full" />
+          <div className="overflow-hidden rounded-[20px] border border-white/[0.16] bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_50px_110px_rgba(0,0,0,0.55)] backdrop-blur-[18px]">
+            <div className="flex items-center justify-between border-b border-white/[0.12] px-[18px] py-[14px]">
+              <strong className="text-[13px] tracking-[0.04em] text-white">BIRDY</strong>
+              <span className="font-display text-[11px] text-[#9FB6CE]">{c.dashboard}</span>
             </div>
-            <div className="product-editorial-copy">
-              <div className="flex items-center gap-4">
-                <BirdyLogo size={48} className="rounded-xl" />
-                <div><div className="product-kicker">BIRDY · {c.free}</div><h3>BIRDY</h3></div>
-              </div>
-              <p className="product-category">{PRODUCTS.birdy.copy[locale].category}</p>
-              <p className="product-description">{PRODUCTS.birdy.copy[locale].summary}</p>
-              <FeatureList items={c.birdyFeatures} />
-              <Link href={route('/produits/birdy-erp', '/en/products/birdy')} className="text-link">{c.discover}<ArrowRight className="h-4 w-4" aria-hidden /></Link>
-            </div>
-          </article>
-
-          <article className="product-editorial product-editorial-feedora">
-            <div className="product-editorial-copy">
-              <div className="flex items-center gap-4">
-                <FeedoraLogo size={52} className="rounded-lg" />
-                <div><div className="product-kicker product-kicker-emerald">FEEDORA · {c.free}</div><h3>FEEDORA</h3></div>
-              </div>
-              <p className="product-category text-emerald-800">{PRODUCTS.feedora.copy[locale].category}</p>
-              <p className="product-description">{PRODUCTS.feedora.copy[locale].summary}</p>
-              <FeatureList items={c.feedoraFeatures} tone="emerald" />
-              <Link href={route('/produits/feedora', '/en/products/feedora')} className="text-link text-link-emerald">{c.discover}<ArrowRight className="h-4 w-4" aria-hidden /></Link>
-            </div>
-            <div className="product-editorial-visual">
-              <Image src="/products/feedora-formulation.png" alt={locale === 'fr' ? 'Interface réelle de formulation FEEDORA' : 'Real FEEDORA formulation interface'} width={1424} height={900} className="w-full" />
-            </div>
-          </article>
+            <Image src="/products/birdy-dashboard-studio.png" alt="BIRDY" width={1280} height={800} priority className="block aspect-[16/10] w-full object-cover object-top" />
+          </div>
         </div>
       </section>
 
-      <section className="home-section bg-amber-50/70">
-        <div className="home-container grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div className="lg:sticky lg:top-28">
-            <span className="eyebrow eyebrow-amber">{c.customEyebrow}</span>
-            <h2 className="home-heading">{c.customTitle}</h2>
-            <p className="home-lead">{c.customBody}</p>
-            <Link href={route('/contact?topic=sur-mesure', '/en/contact?topic=sur-mesure')} className="btn-primary mt-8">{c.customCta}<ArrowRight className="h-4 w-4" aria-hidden /></Link>
+      {/* Produits — bento verre */}
+      <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] py-[clamp(64px,8vw,96px)]">
+        <div className="font-display text-[11px] font-medium uppercase tracking-[0.14em] text-[#6B7C93]">{c.productsEyebrow}</div>
+        <h2 className="mt-4 max-w-[20em] text-[clamp(28px,3.4vw,42px)] font-bold leading-[1.08] tracking-[-0.035em] text-[#0D1B2A]">{c.productsTitle}</h2>
+        <div className="mt-11 grid grid-cols-1 gap-[18px] lg:grid-cols-3">
+          <article className="novar-glass novar-lift overflow-hidden rounded-[22px] lg:col-span-2">
+            <Image src="/products/birdy-sales.png" alt={route('Ventes et facturation dans BIRDY', 'Sales and invoicing in BIRDY')} width={1280} height={720} className="block aspect-[16/9] w-full object-cover object-top" />
+            <div className="px-8 pb-[34px] pt-[30px]">
+              <div className="font-display text-[11px] uppercase tracking-[0.12em] text-[#1E3A8A]">BIRDY · {c.free}</div>
+              <h3 className="mt-3.5 text-[clamp(23px,3.6vw,28px)] font-bold tracking-[-0.03em] text-[#0D1B2A]">{c.birdyTitle}</h3>
+              <p className="mt-3.5 max-w-[40em] text-[15.5px] leading-[1.7] text-[#44546B]">{c.birdyBody}</p>
+              <div className="mt-6 flex flex-wrap gap-2.5">
+                <Link href={route('/produits/birdy-erp', '/en/products/birdy')} className="inline-flex items-center rounded-xl bg-[#0D1B2A] px-5 py-[13px] text-[14px] font-semibold text-white transition-colors hover:bg-[#16304A]">{c.discoverBirdy}</Link>
+                <Link href={route('/telechargements', '/en/downloads')} className="inline-flex items-center gap-2 rounded-xl border border-[#0D1B2A]/[0.16] bg-white px-5 py-[13px] text-[14px] font-semibold text-[#0D1B2A] transition-colors hover:bg-[#F4F7FB]"><Download className="h-4 w-4" aria-hidden />{c.download}</Link>
+              </div>
+            </div>
+          </article>
+
+          <div className="grid gap-[18px]">
+            <article className="novar-glass novar-lift overflow-hidden rounded-[22px]">
+              <Image src="/products/feedora-formulation.png" alt={route('Formulation FEEDORA', 'FEEDORA formulation')} width={1280} height={800} className="block aspect-[16/10] w-full object-cover object-top" />
+              <div className="px-[26px] pb-7 pt-6">
+                <div className="font-display text-[11px] uppercase tracking-[0.12em] text-[#6B7C93]">FEEDORA · {c.free}</div>
+                <h3 className="mt-3 text-[22px] font-bold tracking-[-0.025em] text-[#0D1B2A]">{c.feedoraTitle}</h3>
+                <p className="mt-2.5 text-[14.5px] leading-[1.65] text-[#44546B]">{c.feedoraBody}</p>
+                <Link href={route('/produits/feedora', '/en/products/feedora')} className="mt-[18px] inline-flex items-center gap-1.5 text-[14px] font-bold text-[#1E3A8A] transition-colors hover:text-[#0D1B2A]">{c.discoverFeedora}<ArrowRight className="h-3.5 w-3.5" aria-hidden /></Link>
+              </div>
+            </article>
+            <Link href={route('/services/sur-mesure', '/en/services/custom-software')} className="novar-lift relative block overflow-hidden rounded-[22px] bg-[#0D1B2A] p-7 text-white">
+              <span className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(70% 90% at 90% 10%, rgba(56,182,255,0.30), transparent 70%)' }} />
+              <span className="relative block">
+                <span className="block font-display text-[11px] uppercase tracking-[0.12em] text-[#7FC7F5]">{c.customBadge}</span>
+                <span className="mt-3 block text-[22px] font-bold tracking-[-0.025em]">{c.customCardTitle}</span>
+                <span className="mt-2.5 block text-[14.5px] leading-[1.65] text-[#B4C9DE]">{c.customCardBody}</span>
+              </span>
+            </Link>
           </div>
-          <ol className="process-list">
-            {c.customSteps.map(([number, title, body]) => <li key={number}><span>{number}</span><div><h3>{title}</h3><p>{body}</p></div></li>)}
+        </div>
+      </section>
+
+      {/* Solutions sur mesure — démarche */}
+      <section className="relative z-[1] bg-gradient-to-b from-white/0 via-white/50 to-white/[0.78] backdrop-blur-[20px]">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-start gap-14 px-[clamp(20px,4vw,32px)] py-[clamp(64px,8vw,96px)] lg:grid-cols-2">
+          <div>
+            <div className="font-display text-[11px] uppercase tracking-[0.14em] text-[#6B7C93]">{c.customEyebrow}</div>
+            <h2 className="mt-3.5 text-[clamp(24px,3.8vw,30px)] font-bold leading-[1.15] tracking-[-0.025em] text-[#0D1B2A]">{c.customTitle}</h2>
+            <p className="mt-4 text-[15px] leading-[1.7] text-[#44546B]">{c.customBody}</p>
+            <Link href={route('/services/sur-mesure', '/en/services/custom-software')} className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#0D1B2A] px-5 py-[13px] text-[14px] font-semibold text-white transition-colors hover:bg-[#16304A]">{c.customCta}<ArrowRight className="h-4 w-4" aria-hidden /></Link>
+          </div>
+          <ol className="m-0 list-none border-t border-[#0D1B2A]/[0.12] p-0">
+            {c.steps.map(([number, title, body]) => (
+              <li key={number} className="grid grid-cols-[64px_1fr] gap-5 border-b border-[#0D1B2A]/[0.12] py-[26px]">
+                <span className="font-display text-[13px] font-semibold text-[#5B6E86]">{number}</span>
+                <div>
+                  <h3 className="text-[19px] font-bold text-[#0D1B2A]">{title}</h3>
+                  <p className="mt-1.5 text-[14.5px] leading-[1.7] text-[#44546B]">{body}</p>
+                </div>
+              </li>
+            ))}
           </ol>
-        </div>
-      </section>
-
-      <section className="home-section bg-white">
-        <div className="home-container">
-          <span className="eyebrow eyebrow-violet">{c.principlesEyebrow}</span>
-          <h2 className="home-heading max-w-4xl">{c.principlesTitle}</h2>
-          <div className="principles-grid">
-            {c.principles.map(([title, body, Icon]) => <article key={title}><Icon className="h-6 w-6 text-violet-700" aria-hidden /><h3>{title}</h3><p>{body}</p></article>)}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-950">
-        <div className="home-container flex flex-col gap-8 py-16 sm:py-20 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-cyan-300"><Workflow className="h-4 w-4" aria-hidden />NOVAR SaaS Studio</div>
-            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">{c.finalTitle}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-300">{c.finalBody}</p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Link href={route('/contact', '/en/contact')} className="btn-primary btn-cyan">{c.finalPrimary}<ArrowRight className="h-4 w-4" /></Link>
-            <Link href={route('/produits', '/en/solutions')} className="btn-dark-ghost">{c.finalSecondary}</Link>
-          </div>
         </div>
       </section>
     </>
   );
-}
-
-function FeatureList({ items, tone = 'cyan' }: { items: readonly string[]; tone?: 'cyan' | 'emerald' }) {
-  return <ul className="product-feature-list">{items.map((item) => <li key={item}><Check className={`h-4 w-4 ${tone === 'emerald' ? 'text-emerald-700' : 'text-cyan-700'}`} aria-hidden />{item}</li>)}</ul>;
 }
