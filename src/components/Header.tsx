@@ -74,7 +74,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#141b29]/95 text-white backdrop-blur-xl">
       <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href={locale === 'en' ? '/en' : '/'} aria-label="NOVAR" className="flex shrink-0 items-center">
-          <NovarLogo className="h-9 w-auto" />
+          <NovarLogo variant="on-dark" className="h-9 w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label={locale === 'fr' ? 'Navigation principale' : 'Main navigation'}>

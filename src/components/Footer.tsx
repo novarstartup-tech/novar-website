@@ -21,7 +21,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.35fr_2fr]">
           <div>
-            <Link href={en ? '/en' : '/'} className="inline-flex"><NovarLogo className="h-10 w-auto" /></Link>
+            <Link href={en ? '/en' : '/'} className="inline-flex"><NovarLogo variant="on-dark" className="h-10 w-auto" /></Link>
             <p className="mt-5 max-w-sm text-sm leading-7 text-slate-300">{en ? 'NOVAR is an African SaaS Studio. We build useful products and tailored software for SMEs and organizations.' : 'NOVAR est un SaaS Studio africain. Nous éditons des produits utiles et concevons des solutions sur mesure pour les PME et organisations.'}</p>
             <div className="mt-6 grid gap-2 text-sm text-slate-300">
               <a href={`mailto:${SITE.email}`} className="footer-contact"><Mail className="h-4 w-4" />{SITE.email}</a>
