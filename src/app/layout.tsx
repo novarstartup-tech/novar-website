@@ -66,8 +66,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: '/logos/novar.png', sizes: '512x512', type: 'image/png' }],
-    apple: [{ url: '/logos/novar.png' }],
+    icon: [{ url: '/logos/novar-icon.png', sizes: '512x512', type: 'image/png' }],
+    apple: [{ url: '/logos/novar-icon.png' }],
   },
   category: 'technology',
   formatDetection: { email: false, telephone: false, address: false },

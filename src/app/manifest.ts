@@ -23,13 +23,13 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: 'fr-GN',
     icons: [
       {
-        src: '/logos/novar.png',
+        src: '/logos/novar-icon.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any',
       },
       {
-        src: '/logos/novar.png',
+        src: '/logos/novar-icon.png',
         sizes: '192x192',
         type: 'image/png',
         purpose: 'maskable',
