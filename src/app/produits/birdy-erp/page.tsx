@@ -3,6 +3,7 @@ import { ProductDetail } from '@/components/MarketingPages';
 import { SoftwareApplicationJsonLd } from '@/components/JsonLd';
 import { RelatedSolutions } from '@/components/SolutionSections';
 import { SITE } from '@/lib/site';
+import { getLatestReleaseMeta } from '@/lib/releases';
 
 export const metadata: Metadata = {
   title: 'BIRDY — ERP & gestion commerciale OHADA gratuit',
@@ -18,7 +19,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BirdyPage() {
+export default async function BirdyPage() {
+  const { version, datePublished } = await getLatestReleaseMeta();
   return (
     <>
       <SoftwareApplicationJsonLd
@@ -26,8 +28,24 @@ export default function BirdyPage() {
         description="ERP et logiciel de gestion commerciale, facturation, caisse et comptabilité OHADA/SYSCOHADA gratuit pour les PME africaines, édité par NOVAR."
         url={`${SITE.url}/produits/birdy-erp`}
         applicationCategory="BusinessApplication"
-        operatingSystem="Windows, macOS, Linux"
+        operatingSystem="Windows 10, Windows 11, macOS 12+, Linux"
         offers={{ price: '0', priceCurrency: 'XOF' }}
+        softwareVersion={version}
+        datePublished={datePublished}
+        downloadUrl={`${SITE.url}/telechargements`}
+        isAccessibleForFree
+        featureList={[
+          'Facturation et devis conformes OHADA',
+          'Comptabilité SYSCOHADA révisé',
+          'Export FEC et liasse fiscale',
+          'TAFIRE',
+          'Gestion de stock multi-dépôts',
+          'Achats et fournisseurs',
+          'Caisse et point de vente',
+          'Paie, CNSS et IRPP',
+          'Multi-devises GNF, XOF, XAF, EUR, USD',
+          'Fonctionnement hors ligne',
+        ]}
       />
       <ProductDetail locale="fr" id="birdy" />
       <RelatedSolutions

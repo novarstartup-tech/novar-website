@@ -121,6 +121,11 @@ type SoftwareAppProps = {
   offers?: { price: string; priceCurrency: string };
   image?: string;
   aggregateRating?: { ratingValue: string; reviewCount: string };
+  softwareVersion?: string;
+  datePublished?: string;
+  downloadUrl?: string;
+  featureList?: string[];
+  isAccessibleForFree?: boolean;
 };
 
 /**
@@ -131,28 +136,70 @@ export function SoftwareApplicationJsonLd({
   description,
   url,
   applicationCategory = 'BusinessApplication',
-  operatingSystem = 'Windows 10, Windows 11',
+  operatingSystem = 'Windows 10, Windows 11, macOS 12+, Linux',
   offers,
   image,
+  softwareVersion,
+  datePublished,
+  downloadUrl,
+  featureList,
+  isAccessibleForFree,
 }: SoftwareAppProps) {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
+    '@id': `${url}#software`,
     name,
     description,
     url,
     applicationCategory,
+    applicationSubCategory: 'Accounting & ERP software',
     operatingSystem,
+    inLanguage: 'fr',
     image: image ?? `${SITE.url}/logos/novar.png`,
     publisher: { '@id': `${SITE.url}/#organization` },
+    author: { '@id': `${SITE.url}/#organization` },
+    ...(softwareVersion && { softwareVersion }),
+    ...(datePublished && { datePublished, dateModified: datePublished }),
+    ...(downloadUrl && { downloadUrl, installUrl: downloadUrl }),
+    ...(featureList && featureList.length > 0 && { featureList }),
+    ...(isAccessibleForFree != null && { isAccessibleForFree }),
     ...(offers && {
       offers: {
         '@type': 'Offer',
         price: offers.price,
         priceCurrency: offers.priceCurrency,
         availability: 'https://schema.org/InStock',
+        ...(offers.price === '0' && { category: 'free' }),
       },
     }),
+  };
+  return <JsonLdScript data={data} />;
+}
+
+/**
+ * HowTo — étapes d'installation (page Téléchargements). Utile aux moteurs
+ * de réponse (« comment installer BIRDY ») et aux résultats enrichis Google.
+ */
+export function HowToJsonLd({
+  name,
+  description,
+  steps,
+  totalTime = 'PT5M',
+}: {
+  name: string;
+  description?: string;
+  steps: { name: string; text: string }[];
+  totalTime?: string;
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name,
+    ...(description && { description }),
+    totalTime,
+    estimatedCost: { '@type': 'MonetaryAmount', currency: 'XOF', value: '0' },
+    step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.name, text: s.text })),
   };
   return <JsonLdScript data={data} />;
 }
