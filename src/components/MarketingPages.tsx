@@ -78,7 +78,7 @@ export function ProductsOverview({ locale, embedded = false }: { locale: Locale;
   return (
     <>
       {embedded ? (
-        <section className="section-shell bg-cyan-50">
+        <section className="section-shell">
           <span className="eyebrow">{c.productsEyebrow}</span>
           <h2 className="section-heading mt-4 max-w-4xl">{c.productsTitle}</h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">{c.productsIntro}</p>
@@ -94,13 +94,16 @@ export function ProductsOverview({ locale, embedded = false }: { locale: Locale;
         </div>
       </section>
       <section className="section-shell pt-0">
-        <div className="rounded-3xl border border-amber-200 bg-amber-50 p-7 sm:p-10 lg:p-12">
-          <span className="eyebrow text-amber-800">{locale === 'fr' ? 'Solutions sur mesure' : 'Tailored software'}</span>
-          <h2 className="section-heading mt-4 max-w-3xl">{c.customTitle}</h2>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">{c.customBody}</p>
-          <Link href={locale === 'fr' ? SERVICES.custom.href : SERVICES.custom.englishHref} className="btn-primary mt-7">
-            {custom.name} <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
+        <div className="relative overflow-hidden rounded-3xl bg-[#0D1B2A] p-8 text-white sm:p-10 lg:p-12">
+          <span className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(70% 90% at 90% 10%, rgba(56,182,255,0.28), transparent 70%)' }} aria-hidden />
+          <div className="relative">
+            <span className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-[#7FC7F5]">{locale === 'fr' ? 'Solutions sur mesure' : 'Tailored software'}</span>
+            <h2 className="mt-4 max-w-3xl font-display text-[clamp(24px,3.8vw,32px)] font-bold tracking-[-0.025em]">{c.customTitle}</h2>
+            <p className="mt-5 max-w-2xl text-[16px] leading-[1.7] text-[#B4C9DE]">{c.customBody}</p>
+            <Link href={locale === 'fr' ? SERVICES.custom.href : SERVICES.custom.englishHref} className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#38B6FF] px-6 py-3.5 text-[15px] font-bold text-[#0D1B2A] transition-colors hover:bg-[#62C6FF]">
+              {custom.name} <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
+          </div>
         </div>
       </section>
     </>
