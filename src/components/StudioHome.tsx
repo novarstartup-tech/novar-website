@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download, Boxes } from 'lucide-react';
 import type { Locale } from '@/lib/content';
 
 const COPY = {
@@ -13,8 +13,6 @@ const COPY = {
     tagline: 'Engineering African Innovation',
     dashboard: 'Tableau de bord',
     heroBirdyCaption: 'Gestion, comptabilité et pilotage',
-    heroAlsoEyebrow: 'Et aussi',
-    heroAlsoLabel: 'des solutions sur mesure',
     productsEyebrow: 'Produits édités par NOVAR',
     productsTitle: 'Deux produits spécialisés, une même exigence.',
     free: 'Gratuit',
@@ -47,8 +45,6 @@ const COPY = {
     tagline: 'Engineering African Innovation',
     dashboard: 'Dashboard',
     heroBirdyCaption: 'Management, accounting & control',
-    heroAlsoEyebrow: 'And also',
-    heroAlsoLabel: 'custom software',
     productsEyebrow: 'Products built by NOVAR',
     productsTitle: 'Two specialized products, one standard.',
     free: 'Free',
@@ -99,34 +95,51 @@ export function StudioHome({ locale }: { locale: Locale }) {
             </div>
             <div className="mt-10 border-t border-white/[0.12] pt-6 font-display text-[12px] uppercase tracking-[0.18em] text-[#7E97B4]">{c.tagline}</div>
           </div>
-          {/* Composition produits : BIRDY + FEEDORA en cascade décalée + encart sur-mesure */}
-          <div className="relative mx-auto w-full min-w-0 max-w-[560px] pb-[clamp(48px,10vw,84px)] lg:mx-0">
-            {/* Carte BIRDY (principale, haut-gauche) — inclinée vers la gauche */}
-            <div style={{ transform: 'perspective(1500px) rotateY(-18deg) rotateX(6deg)' }} className="w-[74%] overflow-hidden rounded-[18px] border border-white/70 bg-white shadow-[0_40px_90px_rgba(0,0,0,0.5)]">
+          {/* Composition produits : 3 cartes cliquables (BIRDY · FEEDORA · sur-mesure), relief 3D */}
+          <div className="relative mx-auto w-full min-w-0 max-w-[560px] pb-[clamp(44px,9vw,80px)] lg:mx-0">
+            {/* BIRDY — carte principale, inclinée vers la gauche */}
+            <Link
+              href={route('/produits/birdy-erp', '/en/products/birdy')}
+              aria-label={route('Découvrir BIRDY', 'Explore BIRDY')}
+              style={{ transform: 'perspective(1500px) rotateY(-18deg) rotateX(6deg)' }}
+              className="block w-[74%] overflow-hidden rounded-[18px] border border-white/70 bg-white shadow-[0_40px_90px_rgba(0,0,0,0.5)] transition-[filter,box-shadow] duration-300 hover:brightness-[1.03] hover:shadow-[0_46px_100px_rgba(56,182,255,0.28)]"
+            >
               <div className="flex items-center justify-between border-b border-[#0D1B2A]/10 px-[16px] py-[12px]">
                 <strong className="text-[13px] font-bold tracking-[0.02em] text-[#0D1B2A]">BIRDY</strong>
                 <span className="hidden font-display text-[10.5px] text-[#6B7C93] sm:inline">{c.heroBirdyCaption}</span>
               </div>
               <Image src="/products/birdy-dashboard-studio.png" alt="Tableau de bord BIRDY" width={1280} height={800} priority className="block aspect-[16/10] w-full object-cover object-top" />
-            </div>
+            </Link>
 
-            {/* Carte FEEDORA (décalée bas-droite, inclinée vers la droite) */}
-            <div style={{ transform: 'perspective(1500px) rotateY(18deg) rotateX(6deg)' }} className="absolute right-0 top-[36%] w-[50%] overflow-hidden rounded-[15px] border-2 border-white bg-white shadow-[0_28px_64px_rgba(0,0,0,0.58)]">
+            {/* FEEDORA — décalée bas-droite, inclinée vers la droite */}
+            <Link
+              href={route('/produits/feedora', '/en/products/feedora')}
+              aria-label={route('Découvrir FEEDORA', 'Explore FEEDORA')}
+              style={{ transform: 'perspective(1500px) rotateY(18deg) rotateX(6deg)' }}
+              className="absolute right-0 top-[34%] block w-[50%] overflow-hidden rounded-[15px] border-2 border-white bg-white shadow-[0_28px_64px_rgba(0,0,0,0.58)] transition-[filter,box-shadow] duration-300 hover:brightness-[1.03] hover:shadow-[0_34px_74px_rgba(56,182,255,0.30)]"
+            >
               <div className="flex items-center justify-between gap-2 border-b border-[#0D1B2A]/10 px-[13px] py-[9px]">
                 <strong className="text-[11.5px] font-bold tracking-[0.02em] text-[#0D1B2A]">FEEDORA</strong>
                 <span className="hidden truncate font-display text-[9.5px] text-[#6B7C93] lg:inline">{c.feedoraTitle}</span>
               </div>
               <Image src="/products/feedora-formulation.png" alt="Formulation FEEDORA" width={1280} height={800} className="block aspect-[16/11] w-full object-cover object-top" />
-            </div>
+            </Link>
 
-            {/* Encart sur-mesure — navy on-brand (bas-gauche) */}
-            <div className="absolute bottom-0 left-0 translate-y-[30%] overflow-hidden rounded-xl border border-white/[0.14] bg-[#0D1B2A] px-[16px] py-[12px] shadow-[0_18px_44px_rgba(0,0,0,0.55)]">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(72%_90%_at_88%_12%,rgba(56,182,255,0.30),transparent_70%)]" />
-              <div className="relative">
-                <div className="font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-[#7FC7F5]">{c.heroAlsoEyebrow}</div>
-                <div className="mt-0.5 text-[13px] font-bold leading-tight text-white">{c.heroAlsoLabel}</div>
+            {/* Sur-mesure — 3e carte de la même famille, navy, inclinée vers la gauche */}
+            <Link
+              href={route('/services/sur-mesure', '/en/services/custom-software')}
+              aria-label={route('Découvrir les solutions sur mesure', 'Explore custom software')}
+              style={{ transform: 'perspective(1500px) rotateY(-15deg) rotateX(6deg)' }}
+              className="group absolute left-0 top-[58%] block w-[47%] overflow-hidden rounded-[15px] border border-white/[0.14] bg-[#0D1B2A] shadow-[0_28px_64px_rgba(0,0,0,0.6)] transition-[box-shadow] duration-300 hover:shadow-[0_34px_74px_rgba(56,182,255,0.34)]"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_100%_at_86%_10%,rgba(56,182,255,0.30),transparent_70%)]" />
+              <div className="relative p-[15px]">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#38B6FF]/[0.16] text-[#7FC7F5]"><Boxes className="h-4 w-4" aria-hidden /></span>
+                <div className="mt-3 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-[#7FC7F5]">{c.customBadge}</div>
+                <div className="mt-1 text-[13.5px] font-bold leading-snug text-white">{c.customCardTitle}</div>
+                <span className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#8FC4EC] transition-transform group-hover:translate-x-0.5">{route('Découvrir', 'Explore')}<ArrowRight className="h-3.5 w-3.5" aria-hidden /></span>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
