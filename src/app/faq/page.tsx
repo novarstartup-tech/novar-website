@@ -50,6 +50,11 @@ const FAQS = [
   { q: 'Qu’est-ce que FEEDORA ?', a: 'FEEDORA est une application web gratuite de formulation alimentaire pour fermes avicoles : composer et comparer des formules, suivre le coût au kilo et à la tonne.' },
   { q: 'Comment accéder à FEEDORA ?', a: 'FEEDORA s’utilise directement en ligne, depuis un navigateur, via sa page produit. Aucune installation n’est nécessaire.' },
   { q: 'FEEDORA gère-t-il quels types d’élevage ?', a: 'FEEDORA permet de formuler et comparer des rations pour poulet de chair, pondeuse et dinde.' },
+  { q: 'FEEDORA est-il gratuit ?', a: 'Oui. FEEDORA est une application web entièrement gratuite, sans abonnement.' },
+  { q: 'Faut-il installer FEEDORA ?', a: 'Non. FEEDORA s’utilise directement dans le navigateur, sans installation ni téléchargement.' },
+  { q: 'FEEDORA calcule-t-il le coût des formules ?', a: 'Oui. FEEDORA calcule et compare le coût de chaque formule, au kilo et à la tonne, pour éclairer vos arbitrages.' },
+  { q: 'FEEDORA propose-t-il une analyse nutritionnelle ?', a: 'Oui. FEEDORA affiche la composition nutritionnelle de la formule à partir des ingrédients et des contraintes que vous définissez.' },
+  { q: 'Peut-on enregistrer ses formules dans FEEDORA ?', a: 'Oui. Vous pouvez conserver, retrouver et faire évoluer les formules utiles à votre exploitation.' },
 
   // — Sur mesure & contact —
   { q: 'NOVAR fait-il du logiciel sur mesure ?', a: 'Oui. Pour les opérations qui ne rentrent dans aucun produit standard, NOVAR conçoit des applications métier adaptées à vos équipes, vos données et vos décisions réelles.' },

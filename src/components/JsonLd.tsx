@@ -204,6 +204,57 @@ export function HowToJsonLd({
   return <JsonLdScript data={data} />;
 }
 
+/**
+ * WebApplication — pour FEEDORA (app web gratuite). Même richesse que la
+ * SoftwareApplication de BIRDY : offre à 0, featureList, isAccessibleForFree.
+ */
+export function WebApplicationJsonLd({
+  name,
+  description,
+  url,
+  browserRequirements = 'Navigateur web moderne',
+  featureList,
+  offers,
+  isAccessibleForFree,
+  image,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  browserRequirements?: string;
+  featureList?: string[];
+  offers?: { price: string; priceCurrency: string };
+  isAccessibleForFree?: boolean;
+  image?: string;
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    '@id': `${url}#software`,
+    name,
+    description,
+    url,
+    applicationCategory: 'BusinessApplication',
+    browserRequirements,
+    inLanguage: 'fr',
+    image: image ?? `${SITE.url}/logos/novar.png`,
+    publisher: { '@id': `${SITE.url}/#organization` },
+    author: { '@id': `${SITE.url}/#organization` },
+    ...(featureList && featureList.length > 0 && { featureList }),
+    ...(isAccessibleForFree != null && { isAccessibleForFree }),
+    ...(offers && {
+      offers: {
+        '@type': 'Offer',
+        price: offers.price,
+        priceCurrency: offers.priceCurrency,
+        availability: 'https://schema.org/InStock',
+        ...(offers.price === '0' && { category: 'free' }),
+      },
+    }),
+  };
+  return <JsonLdScript data={data} />;
+}
+
 type ProductProps = {
   name: string;
   description: string;
