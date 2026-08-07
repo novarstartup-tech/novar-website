@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
+<style>
+body { margin: 0; background: #F1F5FB; }
+a { color: #1E3A8A; text-decoration: none; }
+a:hover { color: #0D1B2A; }
+h1, h2, h3 { font-family: 'Space Grotesk', system-ui, sans-serif; }
+*, *::before, *::after { box-sizing: border-box; }
+</style>
+</helmet>
+
+<div style="font-family: 'Inter', system-ui, sans-serif; color: #0D1B2A; padding: 48px; display: grid; gap: 56px; justify-items: start;">
+
+  <div style="max-width: 62em;">
+    <div style="font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6B7C93;">Images Open Graph · 1200 × 630</div>
+    <h1 style="margin: 14px 0 0; font-size: 34px; letter-spacing: -0.03em; font-weight: 700;">Les vignettes que les autres sites affichent à ta place.</h1>
+    <p style="margin: 14px 0 0; font-size: 16px; line-height: 1.7; color: #44546B;">Chaque carte ci-dessous est une page du site. Elles sont exportées en PNG dans <strong>seo/og/</strong> et se déposent dans <strong>public/og/</strong> du dépôt.</p>
+  </div>
+
+  <sc-for list="{{ cards }}" as="c" hint-placeholder-count="6">
+    <div>
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 12px; color: #6B7C93;">
+        <span style="font-weight: 600; color: #0D1B2A;">{{ c.file }}</span><span>{{ c.route }}</span>
+      </div>
+      <div id="{{ c.id }}" style="position: relative; overflow: hidden; width: 1200px; height: 630px; background: #0D1B2A; color: #FFFFFF; display: flex; flex-direction: column; justify-content: space-between; padding: 76px 84px;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(58% 70% at 88% 2%, rgba(56,182,255,0.34), transparent 66%), radial-gradient(52% 62% at 4% 96%, rgba(30,58,138,0.62), transparent 70%); pointer-events: none;"></div>
+        <div style="position: absolute; right: -140px; bottom: -180px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, rgba(56,182,255,0.22), transparent 66%); filter: blur(40px); pointer-events: none;"></div>
+
+        <div style="position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+          <img src="assets/novar-logo-white.png" alt="NOVAR" style="height: 46px; width: auto; display: block;" />
+          <span style="display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 999px; background: rgba(56,182,255,0.16); border: 1px solid rgba(56,182,255,0.36); font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #9AD6FF;">{{ c.badge }}</span>
+        </div>
+
+        <div style="position: relative;">
+          <h2 style="margin: 0; max-width: 15em; font-size: 66px; line-height: 1.02; letter-spacing: -0.045em; font-weight: 700; text-wrap: balance;">{{ c.title }}</h2>
+          <p style="margin: 26px 0 0; max-width: 30em; font-size: 27px; line-height: 1.45; color: #B4C9DE;">{{ c.sub }}</p>
+        </div>
+
+        <div style="position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.16);">
+          <span style="font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 19px; letter-spacing: 0.16em; text-transform: uppercase; color: #7E97B4;">novarstartup.com</span>
+          <span style="font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 19px; font-weight: 600; color: #38B6FF;">{{ c.tag }}</span>
+        </div>
+      </div>
+    </div>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      cards: [
+        { id: 'og-accueil', file: 'accueil.png', route: '/', badge: 'SaaS Studio · Conakry',
+          title: 'Nous créons les logiciels qui font avancer les entreprises.',
+          sub: 'NOVAR édite BIRDY et FEEDORA, et conçoit des solutions sur mesure pour les PME de l’espace OHADA.',
+          tag: 'Engineering African Innovation' },
+        { id: 'og-birdy', file: 'birdy.png', route: '/produits/birdy-erp', badge: 'Gratuit · Sans abonnement',
+          title: 'BIRDY — ERP & comptabilité OHADA',
+          sub: 'Facturation, caisse, stock, paie et comptabilité SYSCOHADA. Fonctionne hors ligne.',
+          tag: 'Windows · macOS · Linux' },
+        { id: 'og-telechargements', file: 'telechargements.png', route: '/telechargements', badge: 'Version 26.0.12',
+          title: 'Télécharger BIRDY',
+          sub: 'Aucun compte, aucun abonnement. Installation en moins de cinq minutes.',
+          tag: 'Gratuit' },
+        { id: 'og-feedora', file: 'feedora.png', route: '/produits/feedora', badge: 'Gratuit · Application web',
+          title: 'FEEDORA — Formulation alimentaire avicole',
+          sub: 'Composer et comparer vos formules, suivre le coût au kilo et à la tonne.',
+          tag: 'AgriTech' },
+        { id: 'og-faq', file: 'faq.png', route: '/faq', badge: 'Questions fréquentes',
+          title: 'BIRDY est-il vraiment gratuit ?',
+          sub: 'Oui. Gratuité, conformité SYSCOHADA, hors ligne, devises et support : les réponses.',
+          tag: 'FAQ' },
+        { id: 'og-pays', file: 'logiciels-senegal.png', route: '/logiciels/senegal', badge: 'Sénégal · XOF · TVA 18 %',
+          title: 'Logiciel de gestion commerciale gratuit au Sénégal',
+          sub: 'Facturer, encaisser et tenir la comptabilité en FCFA, au plan SYSCOHADA.',
+          tag: 'Espace OHADA' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
