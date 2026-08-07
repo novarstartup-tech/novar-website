@@ -4,8 +4,8 @@ import { LocalBusinessJsonLd } from '@/components/JsonLd';
 import { CONTACT_TOPICS, type ContactTopic } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: 'Contact',
-  description: 'Contactez NOVAR au sujet de BIRDY, FEEDORA, d’une démonstration ou d’un projet sur mesure.',
+  title: 'Contact & devis sur mesure',
+  description: 'Contactez NOVAR (Conakry, Guinée) au sujet de BIRDY, FEEDORA, d’une démonstration ou d’un projet logiciel sur mesure : e-mail, WhatsApp ou formulaire. Devis sur demande.',
   alternates: { canonical: '/contact', languages: { 'fr-GN': '/contact', en: '/en/contact' } },
 };
 

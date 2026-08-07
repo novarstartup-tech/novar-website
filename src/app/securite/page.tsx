@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { SecurityView } from '@/components/MarketingPages';
 
 export const metadata: Metadata = {
-  title: 'Sécurité',
+  title: 'Sécurité & protection des données',
   description: 'Principes de sécurité appliqués au site public NOVAR.',
   alternates: { canonical: '/securite', languages: { 'fr-GN': '/securite', en: '/en/security' } },
 };

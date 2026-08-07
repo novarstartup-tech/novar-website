@@ -3,7 +3,7 @@ import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { BLOG_POSTS } from '@/lib/blog';
 
 export const metadata = {
-  title: 'Blog',
+  title: 'Blog & analyses — gestion et OHADA',
   description:
     "Articles de fond sur l'OHADA, la transformation numérique des PME africaines, et la vision NOVAR SaaS Studio.",
   alternates: { canonical: '/blog' },

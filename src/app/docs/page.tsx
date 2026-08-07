@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Documentation',
+  title: 'Documentation BIRDY & FEEDORA',
   description:
     'Documentation complète : démarrage rapide, modules BIRDY (POS, articles, stock, achats, caisse), comptabilité OHADA, RH & paie, sécurité.',
   alternates: { canonical: '/docs' },

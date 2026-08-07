@@ -3,8 +3,8 @@ import { StudioView } from '@/components/MarketingPages';
 import { LocalBusinessJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Le studio',
-  description: 'NOVAR est un SaaS Studio qui édite BIRDY et FEEDORA et conçoit des solutions personnalisées.',
+  title: 'Le studio — qui édite BIRDY et FEEDORA',
+  description: 'NOVAR est un SaaS studio à Conakry (Guinée) qui édite ses produits BIRDY et FEEDORA et conçoit des logiciels sur mesure pour les PME et organisations de l’espace OHADA.',
   alternates: { canonical: '/a-propos', languages: { 'fr-GN': '/a-propos', en: '/en/about' } },
 };
 
