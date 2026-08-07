@@ -80,12 +80,12 @@ export function StudioHome({ locale }: { locale: Locale }) {
         <div className="novar-hero-glow" />
         <div className="novar-hero-horizon" />
         <div className="relative mx-auto grid max-w-[1200px] items-center gap-12 px-[clamp(20px,4vw,32px)] pb-[clamp(140px,20vw,210px)] pt-[clamp(56px,7vw,92px)] lg:grid-cols-2 lg:gap-[72px]">
-          <div>
+          <div className="min-w-0">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.16] bg-white/[0.07] px-[15px] py-[7px] font-display text-[11px] font-medium uppercase tracking-[0.14em] text-[#C8DDF2] backdrop-blur-[14px]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#38B6FF] shadow-[0_0_12px_rgba(56,182,255,0.9)]" />
               {c.heroEyebrow}
             </span>
-            <h1 className="mt-7 text-[clamp(42px,6vw,64px)] font-bold leading-[0.98] tracking-[-0.045em] text-white [text-wrap:balance]">{c.heroTitle}</h1>
+            <h1 className="mt-7 text-[clamp(34px,7.5vw,64px)] font-bold leading-[1.02] tracking-[-0.04em] text-white [overflow-wrap:anywhere] [text-wrap:balance]">{c.heroTitle}</h1>
             <p className="mt-6 max-w-[34em] text-[15px] leading-[1.7] text-[#B4C9DE]">{c.heroBody}</p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link href={route('/produits', '/en/solutions')} className="inline-flex items-center gap-2 rounded-xl bg-[#38B6FF] px-6 py-[15px] text-[14.5px] font-bold text-[#0D1B2A] shadow-[0_12px_34px_rgba(56,182,255,0.32)] transition-colors hover:bg-[#62C6FF]">{c.heroPrimary}<ArrowRight className="h-4 w-4" aria-hidden /></Link>
