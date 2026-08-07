@@ -71,22 +71,22 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0D1B2A]/95 text-white backdrop-blur-xl">
-      <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 bg-white/[0.78] text-[#0D1B2A] backdrop-blur-[22px] backdrop-saturate-[1.8]">
+      <div className="mx-auto flex min-h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href={locale === 'en' ? '/en' : '/'} aria-label="NOVAR" className="flex shrink-0 items-center">
-          <NovarLogo variant="on-dark" className="h-9 w-auto" />
+          <NovarLogo variant="on-light" className="h-[30px] w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label={locale === 'fr' ? 'Navigation principale' : 'Main navigation'}>
           {nav.map((item) => (
             <div className="relative" key={item.label} onMouseEnter={() => 'children' in item && setOpenMenu(item.label)} onMouseLeave={() => setOpenMenu(null)}>
-              <Link href={item.href} onClick={() => setOpenMenu(null)} className="inline-flex min-h-11 items-center gap-1 rounded-lg px-3 text-sm font-semibold text-slate-200 transition-colors hover:bg-white/8 hover:text-white">
-                {item.label}{'children' in item && <ChevronDown className="h-3.5 w-3.5 text-slate-400" aria-hidden />}
+              <Link href={item.href} onClick={() => setOpenMenu(null)} className="inline-flex min-h-11 items-center gap-1 rounded-lg px-3 text-sm font-semibold text-[#0D1B2A]/75 transition-colors hover:bg-[#0D1B2A]/[0.06] hover:text-[#0D1B2A]">
+                {item.label}{'children' in item && <ChevronDown className="h-3.5 w-3.5 text-[#0D1B2A]/45" aria-hidden />}
               </Link>
               {'children' in item && openMenu === item.label && (
                 <div className="absolute left-0 top-full pt-2">
-                  <div className="w-80 border border-slate-200 bg-white p-2 text-slate-950 shadow-[0_24px_60px_rgba(0,0,0,0.24)]">
-                    {item.children?.map((child) => <Link key={child.href} href={child.href} className="block px-4 py-3 transition-colors hover:bg-slate-50"><div className="text-sm font-semibold">{child.label}</div><div className="mt-1 text-xs leading-relaxed text-slate-500">{child.desc}</div></Link>)}
+                  <div className="w-80 overflow-hidden rounded-2xl border border-[#0D1B2A]/10 bg-white p-2 text-[#0D1B2A] shadow-[0_34px_80px_rgba(13,27,42,0.20)]">
+                    {item.children?.map((child) => <Link key={child.href} href={child.href} className="block rounded-xl px-4 py-3 transition-colors hover:bg-[#0D1B2A]/[0.04]"><div className="text-sm font-semibold">{child.label}</div><div className="mt-1 text-xs leading-relaxed text-[#5B6E86]">{child.desc}</div></Link>)}
                   </div>
                 </div>
               )}
@@ -95,22 +95,22 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <Link href={languageHref(pathname, locale)} className="inline-flex min-h-11 items-center gap-2 px-3 text-sm font-semibold text-slate-300 transition-colors hover:text-white" aria-label={locale === 'fr' ? 'Switch to English' : 'Passer en français'}><Languages className="h-4 w-4" aria-hidden />{locale === 'fr' ? 'EN' : 'FR'}</Link>
-          <Link href={localized(locale, '/contact', '/en/contact')} className="btn-primary btn-cyan">{c.cta}</Link>
+          <Link href={languageHref(pathname, locale)} className="inline-flex min-h-11 items-center gap-2 px-3 text-sm font-semibold text-[#44546B] transition-colors hover:text-[#0D1B2A]" aria-label={locale === 'fr' ? 'Switch to English' : 'Passer en français'}><Languages className="h-4 w-4" aria-hidden />{locale === 'fr' ? 'EN' : 'FR'}</Link>
+          <Link href={localized(locale, '/contact', '/en/contact')} className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#1E3A8A] px-5 text-sm font-semibold text-white transition-colors hover:bg-[#0D1B2A]">{c.cta}</Link>
         </div>
 
-        <button type="button" className="inline-flex h-11 w-11 items-center justify-center text-white transition-colors hover:bg-white/10 lg:hidden" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label={open ? c.close : c.menu}>
+        <button type="button" className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-[#0D1B2A] transition-colors hover:bg-[#0D1B2A]/[0.06] lg:hidden" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label={open ? c.close : c.menu}>
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
       {open && (
-        <nav className="max-h-[calc(100vh-76px)] overflow-y-auto border-t border-white/10 bg-[#0D1B2A] px-4 py-5 lg:hidden" aria-label="Navigation mobile">
+        <nav className="max-h-[78vh] overflow-y-auto border-t border-[#0D1B2A]/10 bg-white px-4 py-5 text-[#0D1B2A] lg:hidden" aria-label="Navigation mobile">
           <div className="mx-auto max-w-7xl space-y-5">
-            {nav.map((item) => <div key={item.label}><Link href={item.href} onClick={() => setOpen(false)} className="block py-2 text-base font-bold text-white">{item.label}</Link>{'children' in item && <div className="mt-1 grid gap-1 border-l border-white/15 pl-4">{item.children?.map((child) => <Link key={child.href} href={child.href} onClick={() => setOpen(false)} className="py-2 text-sm font-medium text-slate-300">{child.label}</Link>)}</div>}</div>)}
-            <div className="grid gap-3 border-t border-white/10 pt-4 sm:grid-cols-2">
-              <Link href={languageHref(pathname, locale)} onClick={() => setOpen(false)} className="btn-dark-ghost"><Languages className="h-4 w-4" />{locale === 'fr' ? 'English' : 'Français'}</Link>
-              <Link href={localized(locale, '/contact', '/en/contact')} onClick={() => setOpen(false)} className="btn-primary btn-cyan">{c.cta}</Link>
+            {nav.map((item) => <div key={item.label}><Link href={item.href} onClick={() => setOpen(false)} className="block py-2 text-base font-bold text-[#0D1B2A]">{item.label}</Link>{'children' in item && <div className="mt-1 grid gap-1 border-l border-[#0D1B2A]/12 pl-4">{item.children?.map((child) => <Link key={child.href} href={child.href} onClick={() => setOpen(false)} className="py-2 text-sm font-medium text-[#44546B]">{child.label}</Link>)}</div>}</div>)}
+            <div className="grid gap-3 border-t border-[#0D1B2A]/10 pt-4 sm:grid-cols-2">
+              <Link href={languageHref(pathname, locale)} onClick={() => setOpen(false)} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#0D1B2A]/16 px-5 text-sm font-semibold text-[#0D1B2A] transition-colors hover:bg-[#0D1B2A]/[0.04]"><Languages className="h-4 w-4" />{locale === 'fr' ? 'English' : 'Français'}</Link>
+              <Link href={localized(locale, '/contact', '/en/contact')} onClick={() => setOpen(false)} className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#1E3A8A] px-5 text-sm font-semibold text-white transition-colors hover:bg-[#0D1B2A]">{c.cta}</Link>
             </div>
           </div>
         </nav>
