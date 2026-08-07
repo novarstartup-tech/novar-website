@@ -141,14 +141,14 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
       ? ['Application web', 'Aviculture', 'Sans abonnement']
       : ['Web app', 'Poultry farming', 'No subscription'];
 
-  const itemsEyebrow = isBirdy ? 'Modules' : fr ? 'Apports' : 'Highlights';
+  const itemsEyebrow = isBirdy ? 'Modules' : fr ? 'Ce que le produit apporte' : 'What the product brings';
   const itemsTitle = isBirdy
     ? fr
       ? 'Des opérations reliées, dans un même environnement.'
       : 'Connected operations in one environment.'
     : fr
-      ? 'Un outil de formulation clair et gratuit.'
-      : 'A clear, free formulation tool.';
+      ? 'Un outil spécialisé, sans promesse vague.'
+      : 'A specialized tool, without vague promises.';
 
   const items: readonly (readonly [string, string, string])[] = isBirdy
     ? fr
@@ -173,7 +173,7 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
           ['01', 'Construire des formules', 'Composer des formules alimentaires à partir des ingrédients et contraintes disponibles.'],
           ['02', 'Comparer les options', 'Observer la composition et le coût afin d’éclairer les arbitrages.'],
           ['03', 'Conserver son travail', 'Retrouver et faire évoluer les formules utiles à l’exploitation.'],
-          ['04', 'Gratuit et en ligne', 'FEEDORA est utilisable depuis le web, sans abonnement.'],
+          ['04', 'Gratuit et accessible en ligne', 'FEEDORA est utilisable depuis le web, sans abonnement.'],
         ]
       : [
           ['01', 'Build formulas', 'Create feed formulas from available ingredients and constraints.'],
