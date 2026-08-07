@@ -108,3 +108,36 @@ export async function getBirdyDownloads(
     return fallback;
   }
 }
+
+/**
+ * Métadonnées de la dernière release BIRDY (version + date), relues sur
+ * GitHub au build comme les liens de download. Fallback = dernières
+ * valeurs réelles connues, si l'API est injoignable au build.
+ */
+export interface BirdyReleaseMeta {
+  version: string;
+  datePublished: string;
+}
+
+const RELEASE_META_FALLBACK: BirdyReleaseMeta = { version: '26.0.24', datePublished: '2026-08-04' };
+const VERSION_RE = /(\d+\.\d+\.\d+)/;
+
+export async function getLatestReleaseMeta(): Promise<BirdyReleaseMeta> {
+  try {
+    const headers: Record<string, string> = {
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'novar-website',
+      'X-GitHub-Api-Version': '2022-11-28',
+    };
+    if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+    const res = await fetch(LATEST_API, { headers, cache: 'force-cache' });
+    if (!res.ok) return RELEASE_META_FALLBACK;
+    const release = (await res.json()) as { tag_name?: string; published_at?: string };
+    return {
+      version: release.tag_name?.match(VERSION_RE)?.[1] ?? RELEASE_META_FALLBACK.version,
+      datePublished: release.published_at ? release.published_at.slice(0, 10) : RELEASE_META_FALLBACK.datePublished,
+    };
+  } catch {
+    return RELEASE_META_FALLBACK;
+  }
+}

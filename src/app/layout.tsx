@@ -4,6 +4,7 @@ import './globals.css';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { NovarBackground } from '@/components/NovarBackground';
+import { getLatestReleaseMeta } from '@/lib/releases';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/JsonLd';
 import { SITE } from '@/lib/site';
 
@@ -72,7 +73,8 @@ export const metadata: Metadata = {
   formatDetection: { email: false, telephone: false, address: false },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const release = await getLatestReleaseMeta();
   return (
     <html lang="fr" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}>
       <body className="overflow-x-hidden font-sans">
@@ -86,7 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Aller au contenu / Skip to content
         </a>
         <div className="relative z-10 flex min-h-screen flex-col">
-          <Header />
+          <Header version={release.version} />
           <main id="main-content" className="flex-1">
             {children}
           </main>

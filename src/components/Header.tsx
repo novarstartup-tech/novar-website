@@ -32,7 +32,7 @@ function languageHref(pathname: string, locale: Locale) {
   return Object.entries(LANGUAGE_PAIRS).find(([, english]) => english === pathname)?.[0] ?? '/';
 }
 
-export function Header() {
+export function Header({ version }: { version?: string }) {
   const pathname = usePathname();
   const locale = getLocale(pathname);
   const c = COPY[locale];
@@ -129,7 +129,7 @@ export function Header() {
               <span className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(80% 100% at 90% 0%, rgba(56,182,255,0.34), transparent 70%)' }} />
               <span className="relative block">
                 <span className="block font-display text-[10.5px] uppercase tracking-[0.14em] text-[#9AD6FF]">{c.version}</span>
-                <span className="mt-3 block font-display text-[28px] font-bold tracking-[-0.03em]">26.0.24</span>
+                <span className="mt-3 block font-display text-[28px] font-bold tracking-[-0.03em]">{version ?? '26.0.24'}</span>
                 <span className="mt-2.5 block text-[13px] leading-[1.6] text-[#B4C9DE]">{c.versionNote}</span>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-[13.5px] font-bold text-[#38B6FF]">{c.download}<ArrowRight className="h-3.5 w-3.5" aria-hidden /></span>
               </span>
