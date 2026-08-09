@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 type Variant = 'birdy' | 'feedora';
 
 /**
- * ProductBackdrop — visuel decoratif contextuel place en arriere-plan
+ * ProductBackdrop : visuel decoratif contextuel place en arriere-plan
  * d'une section ou card.
  *
  * - feedora : silhouettes de poule + grain de mais (vert emerald, sobre).
@@ -44,7 +44,7 @@ function FeedoraBackdrop() {
     <div className="absolute inset-0 h-full w-full overflow-hidden">
       {USE_FEEDORA_PHOTO && (
         <>
-          {/* Photo layer — covers the full backdrop, kept dim so the
+          {/* Photo layer: covers the full backdrop, kept dim so the
               foreground content stays readable on every screen size.
               `object-cover` + `object-center` so portrait + landscape
               crops both look acceptable. */}
@@ -62,7 +62,7 @@ function FeedoraBackdrop() {
             }}
           />
           {/* Light emerald tint + soft bottom vignette for legibility
-              of the foreground text — the photo stays clearly visible. */}
+              of the foreground text, the photo stays clearly visible. */}
           <div
             className="absolute inset-0"
             style={{
@@ -86,7 +86,7 @@ function FeedoraSvgDecor() {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden
     >
-      {/* Silhouette de poule (stylisee, basee sur cercles) — coin haut droit */}
+      {/* Silhouette de poule (stylisee, basee sur cercles), coin haut droit */}
       <motion.g
         initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 0.18, x: 0 }}
@@ -162,7 +162,7 @@ function BirdyBackdrop() {
               (e.currentTarget as HTMLImageElement).style.display = 'none';
             }}
           />
-          {/* Light cyan/navy tint + soft bottom vignette — the photo
+          {/* Light cyan/navy tint + soft bottom vignette; the photo
               stays clearly visible. */}
           <div
             className="absolute inset-0"

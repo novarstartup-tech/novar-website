@@ -20,7 +20,7 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains', display: 'swap' });
 
 export const metadata: Metadata = {
-  title: { default: 'NOVAR — SaaS Studio', template: `%s — ${SITE.name}` },
+  title: { default: 'NOVAR : SaaS Studio', template: `%s | ${SITE.name}` },
   description: 'NOVAR édite BIRDY et FEEDORA et conçoit des logiciels sur mesure pour les PME et organisations.',
   metadataBase: new URL(SITE.url),
   alternates: {
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   publisher: SITE.legalName,
   applicationName: SITE.name,
   openGraph: {
-    title: 'NOVAR — SaaS Studio',
+    title: 'NOVAR : SaaS Studio',
     description: 'Produits SaaS utiles et solutions logicielles sur mesure pour les PME et organisations.',
     url: SITE.url,
     siteName: SITE.name,
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NOVAR — SaaS Studio',
+    title: 'NOVAR : SaaS Studio',
     description: 'Produits SaaS utiles et solutions logicielles sur mesure.',
   },
   robots: {

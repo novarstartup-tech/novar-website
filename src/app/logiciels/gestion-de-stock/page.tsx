@@ -84,7 +84,7 @@ export default function GestionStockPage() {
         tone="amber"
         eyebrow="Gestion de stock"
         title="Logiciel de gestion de stock gratuit pour commerces et PME."
-        description="BIRDY suit vos quantités en temps réel, valorise le stock en CMP ou FIFO, gère les inventaires complets et tournants et vous alerte avant la rupture — chaque mouvement passant seul en comptabilité."
+        description="BIRDY suit vos quantités en temps réel, valorise le stock en CMP ou FIFO, gère les inventaires complets et tournants et vous alerte avant la rupture, chaque mouvement passant seul en comptabilité."
       >
         <div className="flex flex-wrap gap-3">
           <Link href="/telechargements" className="btn-primary">
@@ -98,8 +98,7 @@ export default function GestionStockPage() {
 
       <section className="section-shell">
         <div className="max-w-3xl">
-          <span className="eyebrow">Savoir ce que vous avez, vraiment</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Le stock est l&apos;argent immobilisé de votre commerce.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -122,8 +121,7 @@ export default function GestionStockPage() {
 
       <section className="section-shell border-t border-slate-200 bg-slate-50">
         <div className="max-w-3xl">
-          <span className="eyebrow">Du mouvement à l&apos;écriture</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             La comptabilité du stock, sans double saisie.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">

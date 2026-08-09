@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: { default: 'NOVAR — SaaS Studio', template: '%s — NOVAR' },
+  title: { default: 'NOVAR: SaaS Studio', template: '%s | NOVAR' },
   description: 'NOVAR builds BIRDY and FEEDORA and designs tailored software for SMEs and organizations.',
   alternates: { canonical: '/en', languages: { 'fr-GN': '/', en: '/en', 'x-default': '/' } },
   openGraph: {
-    title: 'NOVAR — SaaS Studio',
+    title: 'NOVAR: SaaS Studio',
     description: 'Useful B2B SaaS products and tailored software solutions for SMEs and organizations.',
     url: `${SITE.url}/en`,
     siteName: SITE.name,

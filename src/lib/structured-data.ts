@@ -1,7 +1,7 @@
 import { SITE } from '@/lib/site';
 
 /**
- * Données structurées NOVAR — schema.org
+ * Données structurées NOVAR : schema.org
  *
  * Montage : <JsonLd data={organizationLd()} /> dans le layout racine,
  * puis la ou les entrées spécifiques dans chaque page.
@@ -73,7 +73,7 @@ export function webSiteLd() {
   };
 }
 
-/** BIRDY — application gratuite : SoftwareApplication + Offer à 0. */
+/** BIRDY, application gratuite : SoftwareApplication + Offer à 0. */
 export function birdyLd() {
   return {
     '@context': 'https://schema.org',

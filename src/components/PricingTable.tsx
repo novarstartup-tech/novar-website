@@ -3,15 +3,15 @@ import { Check, Download, Sparkles, Wrench } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * PricingTable — Sprint 19 freeware refresh.
+ * PricingTable : Sprint 19 freeware refresh.
  *
  * NOVAR n'est plus un SaaS payant à plans. La grille tarifaire reflète
  * désormais les trois lignes de l'activité telle qu'elle est :
  *
- * 1. BIRDY  — logiciel propriétaire **distribué gratuitement** (freeware)
+ * 1. BIRDY  : logiciel propriétaire **distribué gratuitement** (freeware)
  *             sous EULA. Tu installes, tu utilises, tu ne paies rien.
- * 2. FEEDORA — SaaS B2B AgriTech, en construction, accès sur demande.
- * 3. Sur mesure — développement custom, devis sur projet.
+ * 2. FEEDORA : SaaS B2B AgriTech, en construction, accès sur demande.
+ * 3. Sur mesure : développement custom, devis sur projet.
  *
  * Aucune notion de plan / abonnement / utilisateur facturé. Si demain
  * on réintroduit un plan payant (cloud-hosted, support prioritaire,
@@ -78,12 +78,12 @@ const OFFERS: Offer[] = [
     // Pas de chiffre affiché : un prix planché ferait fuir certains
     // prospects (« trop cher »), une absence pure ferait hésiter les
     // autres. On répond par une accroche qui qualifie le ticket d'entrée
-    // sans le chiffrer — premier échange gratuit, devis aligné sur le
+    // sans le chiffrer : premier échange gratuit, devis aligné sur le
     // périmètre réel.
     price: 'Parlons-en',
     priceDetail: 'Premier échange gratuit · 30 min',
     tagline:
-      'Logiciels métiers spécifiques, intégrations, applications mobiles. Devis aligné sur votre périmètre — du POC au déploiement industriel.',
+      'Logiciels métiers spécifiques, intégrations, applications mobiles. Devis aligné sur votre périmètre : du POC au déploiement industriel.',
     features: [
       'Audit des besoins métier',
       'Architecture technique adaptée',

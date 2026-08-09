@@ -79,9 +79,9 @@ export async function POST(request: Request) {
       from: 'NOVAR Website <noreply@novar.gn>',
       to: SITE.email,
       replyTo: email,
-      subject: `[NOVAR] ${TOPIC_LABELS[topic]} — ${name}`,
+      subject: `[NOVAR] ${TOPIC_LABELS[topic]} : ${name}`,
       text: `De : ${name} <${email}>
-Entreprise : ${company ?? '—'}
+Entreprise : ${company ?? 'Non renseignée'}
 Sujet : ${TOPIC_LABELS[topic]}
 
 ${message}

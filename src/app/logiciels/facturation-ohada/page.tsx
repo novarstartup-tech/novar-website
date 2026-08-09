@@ -77,7 +77,7 @@ export default function FacturationOhadaPage() {
         tone="cyan"
         eyebrow="Facturation"
         title="Logiciel de facturation OHADA, gratuit et conforme."
-        description="BIRDY édite des factures et des tickets aux mentions légales OHADA, calcule la TVA, gère les avoirs et suit les règlements de chaque client — le tout relié à votre comptabilité, en GNF comme en FCFA."
+        description="BIRDY édite des factures et des tickets aux mentions légales OHADA, calcule la TVA, gère les avoirs et suit les règlements de chaque client, le tout relié à votre comptabilité, en GNF comme en FCFA."
       >
         <div className="flex flex-wrap gap-3">
           <Link href="/telechargements" className="btn-primary">
@@ -91,8 +91,7 @@ export default function FacturationOhadaPage() {
 
       <section className="section-shell">
         <div className="max-w-3xl">
-          <span className="eyebrow">Pourquoi une facturation nativement OHADA</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Facturer sans bricoler un modèle Word ou Excel.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -116,8 +115,7 @@ export default function FacturationOhadaPage() {
 
       <section className="section-shell border-t border-slate-200 bg-slate-50">
         <div className="max-w-3xl">
-          <span className="eyebrow">De la vente au règlement</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Un flux de facturation continu.
           </h2>
         </div>

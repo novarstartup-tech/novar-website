@@ -69,7 +69,7 @@ type Props = {
 };
 
 /**
- * ApproachCard — card avec hover lift + icone coloree par contexte.
+ * ApproachCard : card avec hover lift + icone coloree par contexte.
  */
 export function ApproachCard({ icon, title, description, href, cta, index = 0, tone = 'neutral' }: Props) {
   const Icon = ICON_MAP[icon];

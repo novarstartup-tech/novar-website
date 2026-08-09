@@ -3,7 +3,7 @@ import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { BLOG_POSTS } from '@/lib/blog';
 
 export const metadata = {
-  title: 'Blog & analyses — gestion et OHADA',
+  title: 'Blog & analyses : gestion et OHADA',
   description:
     "Articles de fond sur l'OHADA, la transformation numérique des PME africaines, et la vision NOVAR SaaS Studio.",
   alternates: { canonical: '/blog' },
@@ -12,15 +12,10 @@ export const metadata = {
 export default function BlogIndex() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-white">
-        <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-novar-surface-2 to-white" aria-hidden />
-        <div className="absolute inset-0 bg-dots opacity-50" aria-hidden />
+      {/* HERO : fond liquide global (comme le reste du site) */}
+      <section className="relative">
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-16 pb-12 sm:pt-24 sm:pb-16 md:pt-28 md:pb-20">
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-novar-accent">
-            Le Blog
-          </span>
-          <h1 className="mt-5 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-novar-ink">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-novar-ink">
             Idées, méthodes et retours terrain.
           </h1>
           <p className="mt-5 max-w-2xl text-base sm:text-lg text-novar-muted leading-relaxed">
@@ -31,7 +26,7 @@ export default function BlogIndex() {
       </section>
 
       {/* LISTE */}
-      <section className="bg-white pb-20">
+      <section className="pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-5">
             {BLOG_POSTS.map((post) => (

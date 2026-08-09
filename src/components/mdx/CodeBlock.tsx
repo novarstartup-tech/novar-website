@@ -12,7 +12,7 @@ export function CodeBlock({ code, language = 'bash', filename }: { code: string;
       <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2">
         <div className="flex items-center gap-2">
           <span className="text-xs font-mono uppercase tracking-wider text-slate-400">{language}</span>
-          {filename && <span className="text-xs text-slate-500">— {filename}</span>}
+          {filename && <span className="text-xs text-slate-500">{filename}</span>}
         </div>
         <button onClick={handleCopy} className="text-slate-400 hover:text-white transition-colors" aria-label="Copier le code" type="button">
           {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}

@@ -94,8 +94,7 @@ export default function CoteDivoirePage() {
 
       <section className="section-shell">
         <div className="max-w-3xl">
-          <span className="eyebrow">Un outil aligné sur la zone FCFA</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             La comptabilité OHADA sans double saisie.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -119,8 +118,7 @@ export default function CoteDivoirePage() {
 
       <section className="section-shell border-t border-slate-200 bg-slate-50">
         <div className="max-w-3xl">
-          <span className="eyebrow">D&apos;Abidjan à l&apos;intérieur</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Du magasin d&apos;Adjamé au distributeur régional.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -137,7 +135,7 @@ export default function CoteDivoirePage() {
         intro="Une seule application gratuite pour facturer, encaisser, suivre le stock et tenir la comptabilité OHADA en FCFA. Explorez chaque besoin en détail."
       />
 
-      <SolutionFaq items={FAQS} title="Questions fréquentes — BIRDY en Côte d’Ivoire" />
+      <SolutionFaq items={FAQS} title="Questions fréquentes : BIRDY en Côte d’Ivoire" />
 
       <SolutionCta
         heading="Équipez votre commerce ivoirien, gratuitement."

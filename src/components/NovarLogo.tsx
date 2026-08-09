@@ -8,7 +8,7 @@ type Props = { variant?: 'on-light' | 'on-dark'; className?: string };
 const LOGO = { 'on-light': '/logos/novar-logo.png', 'on-dark': '/logos/novar-logo-white.png' } as const;
 const RATIO = 389 / 109;
 
-/** Logo NOVAR officiel — asset partagé avec BIRDY et FEEDORA. */
+/** Logo NOVAR officiel : asset partagé avec BIRDY et FEEDORA. */
 export function NovarLogo({ variant = 'on-light', className = 'h-7 w-auto' }: Props) {
   return (
     <Image

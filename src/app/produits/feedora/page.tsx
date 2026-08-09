@@ -4,7 +4,7 @@ import { WebApplicationJsonLd } from '@/components/JsonLd';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'FEEDORA — Formulation alimentaire avicole gratuite',
+  title: 'FEEDORA : Formulation alimentaire avicole gratuite',
   description:
     'FEEDORA : application web gratuite de formulation alimentaire pour fermes avicoles (poulet de chair, pondeuse, dinde). Composer et comparer des formules, suivre le coût au kilo et à la tonne. Éditée par NOVAR.',
   alternates: { canonical: '/produits/feedora', languages: { 'fr-GN': '/produits/feedora', en: '/en/products/feedora' } },

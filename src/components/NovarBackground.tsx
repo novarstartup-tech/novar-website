@@ -1,5 +1,5 @@
 /**
- * Fond liquide NOVAR (charte v1.0) — wash radial fixe + trois bulles
+ * Fond liquide NOVAR (charte v1.0) : wash radial fixe + trois bulles
  * dérivantes. Rendu une seule fois dans le layout, derrière tout le contenu
  * (z-index 0). Pur CSS, aucune interactivité → composant serveur.
  */

@@ -4,7 +4,7 @@
  * Les binaires vivent dans les GitHub Releases du dépôt public
  * `novarstartup-tech/birdy-releases`. Le nom de chaque asset embarque
  * le numéro de version (ex. `BIRDY_26.0.12_amd64.deb`), qui change à
- * chaque release — on ne peut donc PAS coder un lien en dur sans qu'il
+ * chaque release ; on ne peut donc PAS coder un lien en dur sans qu'il
  * périme.
  *
  * Ici on interroge l'API GitHub *au moment du build* (fetch en

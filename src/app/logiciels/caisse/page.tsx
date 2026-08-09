@@ -61,7 +61,7 @@ const FEATURES: [typeof Barcode, string, string][] = [
 const FAQS = [
   {
     q: 'BIRDY fonctionne-t-il comme une caisse enregistreuse hors ligne ?',
-    a: 'Oui. Une fois installé, le point de vente de BIRDY fonctionne intégralement hors ligne. Les ventes sont enregistrées dans une base locale chiffrée, sur votre poste, sans qu’aucune connexion ne soit nécessaire — utile face aux coupures de réseau ou d’électricité.',
+    a: 'Oui. Une fois installé, le point de vente de BIRDY fonctionne intégralement hors ligne. Les ventes sont enregistrées dans une base locale chiffrée, sur votre poste, sans qu’aucune connexion ne soit nécessaire, utile face aux coupures de réseau ou d’électricité.',
   },
   {
     q: 'Le logiciel de caisse est-il gratuit ?',
@@ -98,8 +98,7 @@ export default function CaissePage() {
 
       <section className="section-shell">
         <div className="max-w-3xl">
-          <span className="eyebrow">Pensé pour le comptoir africain</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Une caisse qui ne s&apos;arrête pas quand le réseau s&apos;arrête.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -122,8 +121,7 @@ export default function CaissePage() {
 
       <section className="section-shell border-t border-slate-200 bg-slate-50">
         <div className="max-w-3xl">
-          <span className="eyebrow">La caisse reliée au reste</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Chaque vente met à jour le stock et la comptabilité.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">

@@ -3,7 +3,7 @@ import { DownloadsView } from '@/components/MarketingPages';
 import { HowToJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Télécharger BIRDY — gratuit, Windows / macOS / Linux',
+  title: 'Télécharger BIRDY : gratuit, Windows / macOS / Linux',
   description:
     'Téléchargez gratuitement la dernière version de BIRDY, le logiciel de gestion et de comptabilité OHADA de NOVAR : Windows, macOS et Linux, sans compte ni abonnement, fonctionnement hors ligne.',
   alternates: { canonical: '/telechargements', languages: { 'fr-GN': '/telechargements', en: '/en/downloads' } },

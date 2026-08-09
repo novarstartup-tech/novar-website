@@ -2,7 +2,7 @@
  * JSON-LD structured data components (schema.org)
  *
  * Each component renders a `<script type="application/ld+json">` block
- * with a typed payload. Render server-side only — these are pure markup.
+ * with a typed payload. Render server-side only: these are pure markup.
  *
  * Reference: https://schema.org · https://developers.google.com/search/docs/appearance/structured-data
  */
@@ -20,7 +20,7 @@ function JsonLdScript({ data }: { data: Record<string, unknown> }) {
 }
 
 /**
- * Organization — mounted globally in layout.tsx.
+ * Organization: mounted globally in layout.tsx.
  * Identifies NOVAR as the publishing entity.
  */
 export function OrganizationJsonLd() {
@@ -61,7 +61,7 @@ export function OrganizationJsonLd() {
 }
 
 /**
- * WebSite — mounted globally in layout.tsx.
+ * WebSite: mounted globally in layout.tsx.
  * Declares the site identity and a SearchAction so Google can render a sitelinks searchbox.
  */
 export function WebSiteJsonLd() {
@@ -87,7 +87,7 @@ export function WebSiteJsonLd() {
 }
 
 /**
- * LocalBusiness — for /contact and /a-propos.
+ * LocalBusiness: for /contact and /a-propos.
  * Provides geographic context for local SEO.
  */
 export function LocalBusinessJsonLd() {
@@ -129,7 +129,7 @@ type SoftwareAppProps = {
 };
 
 /**
- * SoftwareApplication — for BIRDY (and any future installable software).
+ * SoftwareApplication: for BIRDY (and any future installable software).
  */
 export function SoftwareApplicationJsonLd({
   name,
@@ -178,7 +178,7 @@ export function SoftwareApplicationJsonLd({
 }
 
 /**
- * HowTo — étapes d'installation (page Téléchargements). Utile aux moteurs
+ * HowTo: étapes d'installation (page Téléchargements). Utile aux moteurs
  * de réponse (« comment installer BIRDY ») et aux résultats enrichis Google.
  */
 export function HowToJsonLd({
@@ -205,7 +205,7 @@ export function HowToJsonLd({
 }
 
 /**
- * WebApplication — pour FEEDORA (app web gratuite). Même richesse que la
+ * WebApplication: pour FEEDORA (app web gratuite). Même richesse que la
  * SoftwareApplication de BIRDY : offre à 0, featureList, isAccessibleForFree.
  */
 export function WebApplicationJsonLd({
@@ -256,7 +256,7 @@ export function WebApplicationJsonLd({
 }
 
 /**
- * Service — pour l'offre sur mesure (/services/sur-mesure). Déclare NOVAR comme
+ * Service: pour l'offre sur mesure (/services/sur-mesure). Déclare NOVAR comme
  * prestataire de développement de logiciels, applications et sites web pour
  * l'espace OHADA, avec un catalogue d'offres. Cible les requêtes d'intention
  * (« créer une application », « logiciel sur mesure Afrique ») que les moteurs
@@ -325,7 +325,7 @@ type ProductProps = {
 };
 
 /**
- * Product — for FEEDORA (web SaaS, modeled as a Product service).
+ * Product: for FEEDORA (web SaaS, modeled as a Product service).
  */
 export function ProductJsonLd({
   name,
@@ -349,7 +349,7 @@ export function ProductJsonLd({
 }
 
 /**
- * BreadcrumbList — for /docs/[...slug] and any deep nested page.
+ * BreadcrumbList: for /docs/[...slug] and any deep nested page.
  */
 export function BreadcrumbJsonLd({
   items,
@@ -370,7 +370,7 @@ export function BreadcrumbJsonLd({
 }
 
 /**
- * FAQPage — for /faq.
+ * FAQPage: for /faq.
  */
 export function FAQPageJsonLd({
   items,
@@ -401,7 +401,7 @@ type BlogPostingProps = {
 };
 
 /**
- * BlogPosting — for /blog/[slug].
+ * BlogPosting: for /blog/[slug].
  */
 export function BlogPostingJsonLd({
   headline,

@@ -98,8 +98,7 @@ export default function ComptabiliteOhadaPage() {
 
       <section className="section-shell">
         <div className="max-w-3xl">
-          <span className="eyebrow">Un outil conçu autour de l&apos;OHADA</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             La comptabilité épouse vos normes, pas l&apos;inverse.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -123,8 +122,7 @@ export default function ComptabiliteOhadaPage() {
 
       <section className="section-shell border-t border-slate-200 bg-slate-50">
         <div className="max-w-3xl">
-          <span className="eyebrow">De la saisie à la clôture</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Toute l&apos;année comptable, dans un seul logiciel.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">

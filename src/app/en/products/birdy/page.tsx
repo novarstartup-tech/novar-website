@@ -4,7 +4,7 @@ import { SoftwareApplicationJsonLd } from '@/components/JsonLd';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'BIRDY — Free OHADA business management & accounting software',
+  title: 'BIRDY: Free OHADA business management & accounting software',
   description:
     'BIRDY: 100% free business management, invoicing, POS and OHADA/SYSCOHADA accounting software for SMEs in West & Central Africa. Wave, Orange Money, MTN ready. XOF & GNF.',
   alternates: {

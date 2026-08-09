@@ -23,11 +23,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!doc) return { title: 'Documentation' };
   const url = `${SITE.url}/docs/${doc.slug}`;
   return {
-    title: `${doc.title} — Documentation BIRDY OHADA`,
+    title: `${doc.title} : Documentation BIRDY OHADA`,
     description: `Guide ${doc.title} de BIRDY, le logiciel de gestion et de comptabilité OHADA/SYSCOHADA gratuit de NOVAR. Documentation officielle, pas à pas, pour les PME de l’espace OHADA.`,
     alternates: { canonical: `/docs/${doc.slug}` },
     openGraph: {
-      title: `${doc.title} — Documentation BIRDY OHADA`,
+      title: `${doc.title} : Documentation BIRDY OHADA`,
       url,
       type: 'article',
     },

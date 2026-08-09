@@ -4,7 +4,7 @@ import { StudioHome } from '@/components/StudioHome';
 export const metadata: Metadata = {
   title: {
     absolute:
-      'BIRDY par NOVAR — Logiciel de gestion commerciale & comptabilité OHADA GRATUIT | Facturation, Caisse, Stock',
+      'BIRDY par NOVAR : Logiciel de gestion commerciale & comptabilité OHADA GRATUIT | Facturation, Caisse, Stock',
   },
   description:
     'BIRDY : logiciel de gestion commerciale, facturation, caisse et comptabilité OHADA/SYSCOHADA 100% GRATUIT pour les PME de Guinée, du Sénégal et de la zone OHADA. Compatible Wave, Orange Money, MTN. FCFA & GNF. Édité par NOVAR.',

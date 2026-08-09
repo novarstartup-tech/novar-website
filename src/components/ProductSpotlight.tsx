@@ -17,7 +17,7 @@ type Action = {
 type LogoVariant = 'birdy' | 'feedora';
 
 type Props = {
-  /** Logo variant — chooses image + color theme. */
+  /** Logo variant: chooses image + color theme. */
   logoVariant: LogoVariant;
   /** Product name (BIRDY, FEEDORA, ...) */
   name: string;
@@ -36,7 +36,7 @@ type Props = {
 };
 
 /**
- * Theme par produit — neuropsychologie contextuelle :
+ * Theme par produit, neuropsychologie contextuelle :
  * - BIRDY (compta OHADA, ERP) : navy + cyan profond → confiance, expertise, serieux financier
  * - FEEDORA (AgriTech avicole) : emeraude + lime doux → croissance, vitalite, naturel
  */
@@ -102,7 +102,7 @@ export function ProductSpotlight({
         transition={{ duration: 0.3, ease: 'easeOut' }}
         className="relative h-full overflow-hidden rounded-3xl border border-novar-line bg-white p-8 sm:p-10"
       >
-        {/* Wash de fond contextuel — couleur theme produit */}
+        {/* Wash de fond contextuel : couleur theme produit */}
         <motion.div
           className={`absolute inset-0 -z-10 bg-gradient-to-br ${theme.washFrom} via-white to-white`}
           initial={{ opacity: 0.3 }}
@@ -120,7 +120,7 @@ export function ProductSpotlight({
           <ProductBackdrop variant={logoVariant} />
         </motion.div>
 
-        {/* Header — logo + badge */}
+        {/* Header : logo + badge */}
         <div className="flex items-start justify-between gap-4">
           <motion.div
             animate={{ scale: hovered ? 1.05 : 1 }}
@@ -152,7 +152,7 @@ export function ProductSpotlight({
         {/* Description */}
         <p className="mt-5 text-novar-muted leading-relaxed">{description}</p>
 
-        {/* Bullets — fade-in stagger au hover */}
+        {/* Bullets : fade-in stagger au hover */}
         <motion.ul
           className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-sm text-novar-ink-soft"
           initial="rest"

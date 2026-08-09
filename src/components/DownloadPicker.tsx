@@ -19,7 +19,7 @@ function detectOs(): Os | null {
 }
 
 /**
- * Sélecteur de téléchargement — détecte automatiquement le système du
+ * Sélecteur de téléchargement : détecte automatiquement le système du
  * visiteur et met en avant l'installeur adapté (« Recommandé pour vous »),
  * les autres systèmes restant listés à côté. Défaut Windows au rendu serveur
  * (le plus courant), corrigé au montage côté client.

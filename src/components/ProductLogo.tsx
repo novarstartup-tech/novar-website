@@ -6,7 +6,7 @@ type Props = {
 };
 
 /**
- * Logo officiel BIRDY — icone de l'application BIRDY ERP (PNG 512x512).
+ * Logo officiel BIRDY : icone de l'application BIRDY ERP (PNG 512x512).
  * Source : src-tauri/crates/birdy-app/icons/icon.png du repo BIRDY.
  */
 export function BirdyLogo({ className = '', size = 40 }: Props) {
@@ -24,7 +24,7 @@ export function BirdyLogo({ className = '', size = 40 }: Props) {
 }
 
 /**
- * Alias hi-res — meme image source.
+ * Alias hi-res : meme image source.
  */
 export function BirdyLogoPng({ className = '', size = 64 }: Props) {
   return <BirdyLogo className={className} size={size} />;

@@ -3,14 +3,14 @@
 import { motion } from 'motion/react';
 
 /**
- * HeroBackdrop — visuel cosmique/orbital anime en arriere-plan du Hero.
+ * HeroBackdrop : visuel cosmique/orbital anime en arriere-plan du Hero.
  * Evoque le mouvement, la transformation, la modernisation des secteurs
  * traditionnels. Subtle, premium, sans flashy.
  */
 export function HeroBackdrop() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      {/* Wash dégradé principal — cyan tres doux en haut */}
+      {/* Wash dégradé principal : cyan tres doux en haut */}
       <div className="absolute inset-x-0 top-0 h-[820px] bg-gradient-to-b from-cyan-50/70 via-white to-white" />
 
       {/* Cercle orbital large derrière le titre, gauche */}
@@ -58,7 +58,7 @@ export function HeroBackdrop() {
         />
       </svg>
 
-      {/* Globe stylise droite — represente l'Afrique/le monde modernise */}
+      {/* Globe stylise droite : represente l'Afrique/le monde modernise */}
       <svg
         className="absolute -right-32 top-32 h-[500px] w-[500px] opacity-40"
         viewBox="0 0 500 500"

@@ -79,8 +79,7 @@ export function ProductsOverview({ locale, embedded = false }: { locale: Locale;
     <>
       {embedded ? (
         <section className="section-shell">
-          <span className="eyebrow">{c.productsEyebrow}</span>
-          <h2 className="section-heading mt-4 max-w-4xl">{c.productsTitle}</h2>
+          <h2 className="section-heading max-w-4xl">{c.productsTitle}</h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">{c.productsIntro}</p>
         </section>
       ) : (
@@ -97,8 +96,7 @@ export function ProductsOverview({ locale, embedded = false }: { locale: Locale;
         <div className="relative overflow-hidden rounded-3xl bg-[#0D1B2A] p-8 text-white sm:p-10 lg:p-12">
           <span className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(70% 90% at 90% 10%, rgba(56,182,255,0.28), transparent 70%)' }} aria-hidden />
           <div className="relative">
-            <span className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-[#7FC7F5]">{locale === 'fr' ? 'Solutions sur mesure' : 'Tailored software'}</span>
-            <h2 className="mt-4 max-w-3xl font-display text-[clamp(24px,3.8vw,32px)] font-bold tracking-[-0.025em]">{c.customTitle}</h2>
+            <h2 className="max-w-3xl font-display text-[clamp(24px,3.8vw,32px)] font-bold tracking-[-0.025em]">{c.customTitle}</h2>
             <p className="mt-5 max-w-2xl text-[16px] leading-[1.7] text-[#B4C9DE]">{c.customBody}</p>
             <Link href={locale === 'fr' ? SERVICES.custom.href : SERVICES.custom.englishHref} className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#38B6FF] px-6 py-3.5 text-[15px] font-bold text-[#0D1B2A] transition-colors hover:bg-[#62C6FF]">
               {custom.name} <ArrowRight className="h-4 w-4" aria-hidden />
@@ -144,7 +142,6 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
       ? ['Application web', 'Aviculture', 'Sans abonnement']
       : ['Web app', 'Poultry farming', 'No subscription'];
 
-  const itemsEyebrow = isBirdy ? 'Modules' : fr ? 'Ce que le produit apporte' : 'What the product brings';
   const itemsTitle = isBirdy
     ? fr
       ? 'Des opérations reliées, dans un même environnement.'
@@ -202,8 +199,7 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
         <div className="novar-hero-horizon" />
         <div className="relative mx-auto grid max-w-[1200px] items-center gap-[68px] px-[clamp(20px,4vw,32px)] pb-[clamp(140px,20vw,210px)] pt-[clamp(56px,7vw,92px)] lg:grid-cols-2">
           <div>
-            <span className="inline-flex items-center rounded-full border border-[#38B6FF]/30 bg-[#38B6FF]/15 px-[14px] py-1.5 font-display text-[10.5px] font-medium uppercase tracking-[0.12em] text-[#9AD6FF]">{c.product} · {c.free}</span>
-            <h1 className="mt-7 text-[clamp(56px,7vw,92px)] font-bold leading-[0.9] tracking-[-0.055em] text-white">{product.name}</h1>
+            <h1 className="text-[clamp(56px,7vw,92px)] font-bold leading-[0.9] tracking-[-0.055em] text-white">{product.name}</h1>
             <p className="mt-4 text-[20px] font-semibold text-[#9AD6FF]">{copy.category}</p>
             <p className="mt-5 max-w-[32em] text-[16.5px] leading-[1.7] text-[#B4C9DE]">{copy.summary}</p>
             <div className="mt-9 flex flex-wrap gap-3">
@@ -228,8 +224,7 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
 
       {/* Modules / apports */}
       <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] py-[clamp(64px,8vw,96px)]">
-        <div className="font-display text-[11px] font-medium uppercase tracking-[0.14em] text-[#6B7C93]">{itemsEyebrow}</div>
-        <h2 className="mt-3.5 max-w-[24em] text-[clamp(24px,3.8vw,30px)] font-bold leading-[1.15] tracking-[-0.025em] text-[#0D1B2A]">{itemsTitle}</h2>
+        <h2 className="max-w-[24em] text-[clamp(24px,3.8vw,30px)] font-bold leading-[1.15] tracking-[-0.025em] text-[#0D1B2A]">{itemsTitle}</h2>
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map(([num, title, body]) => (
             <div key={num} className="novar-glass rounded-[18px] p-7">
@@ -245,8 +240,7 @@ export function ProductDetail({ locale, id }: { locale: Locale; id: ProductId })
       {gallery.length > 0 && (
         <section className="relative z-[1] bg-gradient-to-b from-white/0 via-white/50 to-white/[0.78] backdrop-blur-[20px]">
           <div className="mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] py-[clamp(64px,8vw,96px)]">
-            <div className="font-display text-[11px] uppercase tracking-[0.14em] text-[#6B7C93]">{fr ? 'BIRDY en situation' : 'BIRDY in action'}</div>
-            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {gallery.map(([src, label]) => (
                 <figure key={src} className="novar-glass novar-lift m-0 overflow-hidden rounded-[18px]">
                   <Image src={src} alt={label} width={1280} height={800} className="block aspect-[16/10] w-full object-cover object-top" />
@@ -418,8 +412,8 @@ export async function DownloadsView({ locale }: { locale: Locale }) {
   const pickerPlatforms = [
     { os: 'windows' as const, name: 'Windows 10 & 11', file: isFr ? "Programme d'installation (.exe)" : 'Installer (.exe)', href: '/api/download/windows' },
     { os: 'mac' as const, name: 'macOS', file: '.dmg · Apple Silicon & Intel', href: '/api/download/mac' },
-    { os: 'linux' as const, name: 'Linux — Debian / Ubuntu', file: '.deb · amd64', href: '/api/download/deb' },
-    { os: 'linux' as const, name: 'Linux — AppImage', file: '.AppImage · amd64', href: '/api/download/appimage' },
+    { os: 'linux' as const, name: 'Linux (Debian / Ubuntu)', file: '.deb · amd64', href: '/api/download/deb' },
+    { os: 'linux' as const, name: 'Linux (AppImage)', file: '.AppImage · amd64', href: '/api/download/appimage' },
   ];
 
   const infoCards: [string, string][] = [
@@ -445,9 +439,8 @@ export async function DownloadsView({ locale }: { locale: Locale }) {
         <div className="novar-hero-glow" />
         <div className="novar-hero-horizon" />
         <div className="relative mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] pb-[clamp(120px,16vw,180px)] pt-[clamp(56px,7vw,92px)]">
-          <div className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9AD6FF]">BIRDY / {isFr ? 'Téléchargements' : 'Downloads'}</div>
-          <h1 className="mt-4 text-[clamp(38px,6.5vw,72px)] font-bold leading-[0.98] tracking-[-0.045em] text-white [overflow-wrap:anywhere]">{isFr ? 'Télécharger BIRDY' : 'Download BIRDY'}</h1>
-          <p className="mt-5 max-w-[42em] text-[16px] leading-[1.7] text-[#B4C9DE]">{isFr ? 'Choisissez le paquet adapté à votre système. Chaque lien pointe vers la dernière version publiée par NOVAR — aucun compte, aucun abonnement.' : 'Choose the package for your system. Each link points to the latest release published by NOVAR — no account, no subscription.'}</p>
+          <h1 className="text-[clamp(38px,6.5vw,72px)] font-bold leading-[0.98] tracking-[-0.045em] text-white [overflow-wrap:anywhere]">{isFr ? 'Télécharger BIRDY' : 'Download BIRDY'}</h1>
+          <p className="mt-5 max-w-[42em] text-[16px] leading-[1.7] text-[#B4C9DE]">{isFr ? 'Choisissez le paquet adapté à votre système. Chaque lien pointe vers la dernière version publiée par NOVAR : aucun compte, aucun abonnement.' : 'Choose the package for your system. Each link points to the latest release published by NOVAR: no account, no subscription.'}</p>
           <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {infoCards.map(([label, value]) => (
               <div key={label} className="rounded-[16px] border border-white/[0.12] bg-white/[0.05] p-5 backdrop-blur-[10px]">
@@ -459,7 +452,7 @@ export async function DownloadsView({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      {/* Choix de la plateforme — systeme detecte automatiquement */}
+      {/* Choix de la plateforme : systeme detecte automatiquement */}
       <section className="relative z-[1] mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)] py-[clamp(56px,7vw,88px)]">
         <DownloadPicker platforms={pickerPlatforms} labels={{ recommended: isFr ? 'Recommandé pour vous' : 'Recommended for you', others: isFr ? 'Autres systèmes' : 'Other systems', download: isFr ? 'Télécharger' : 'Download' }} />
       </section>
@@ -471,7 +464,7 @@ export async function DownloadsView({ locale }: { locale: Locale }) {
             <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" aria-hidden />
             <div>
               <h2 className="text-xl font-bold text-[#0D1B2A]">
-                {isFr ? 'À l’installation, un avertissement peut s’afficher — c’est normal' : 'A warning may appear during install — this is normal'}
+                {isFr ? 'À l’installation, un avertissement peut s’afficher, c’est normal' : 'A warning may appear during install, and that is normal'}
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-[#44546B]">
                 {isFr
@@ -480,7 +473,7 @@ export async function DownloadsView({ locale }: { locale: Locale }) {
               </p>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-xl border border-[#0D1B2A]/10 bg-white p-4">
-                  <h3 className="text-sm font-bold text-[#0D1B2A]">Windows — SmartScreen</h3>
+                  <h3 className="text-sm font-bold text-[#0D1B2A]">Windows SmartScreen</h3>
                   <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm leading-relaxed text-[#44546B]">
                     <li>{isFr ? 'Au téléchargement, cliquez « Conserver ».' : 'When downloading, click “Keep”.'}</li>
                     <li>{isFr ? 'Ouvrez le fichier, puis cliquez « Informations complémentaires ».' : 'Open the file, then click “More info”.'}</li>
@@ -488,7 +481,7 @@ export async function DownloadsView({ locale }: { locale: Locale }) {
                   </ol>
                 </div>
                 <div className="rounded-xl border border-[#0D1B2A]/10 bg-white p-4">
-                  <h3 className="text-sm font-bold text-[#0D1B2A]">macOS — Gatekeeper</h3>
+                  <h3 className="text-sm font-bold text-[#0D1B2A]">macOS Gatekeeper</h3>
                   <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm leading-relaxed text-[#44546B]">
                     <li>{isFr ? 'Faites un clic droit sur l’application, puis « Ouvrir ».' : 'Right-click the app, then “Open”.'}</li>
                     <li>{isFr ? 'Confirmez « Ouvrir » dans la fenêtre qui apparaît.' : 'Confirm “Open” in the dialog that appears.'}</li>

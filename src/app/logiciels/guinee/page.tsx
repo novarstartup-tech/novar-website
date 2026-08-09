@@ -59,7 +59,7 @@ const FAQS = [
   },
   {
     q: 'Fonctionne-t-il sans connexion Internet stable ?',
-    a: 'Oui. Une fois installé, BIRDY fonctionne intégralement hors ligne. Les ventes et opérations sont enregistrées sur votre poste et y restent disponibles en permanence, sans aucune connexion — un point essentiel face aux coupures fréquentes.',
+    a: 'Oui. Une fois installé, BIRDY fonctionne intégralement hors ligne. Les ventes et opérations sont enregistrées sur votre poste et y restent disponibles en permanence, sans aucune connexion, un point essentiel face aux coupures fréquentes.',
   },
   {
     q: 'À qui s’adresse BIRDY en Guinée ?',
@@ -78,7 +78,7 @@ export default function GuineePage() {
         tone="cyan"
         eyebrow="Guinée · Conakry"
         title="Logiciel de gestion commerciale gratuit en Guinée."
-        description="BIRDY est un logiciel de facturation, de caisse et de comptabilité OHADA gratuit, édité en Guinée par NOVAR. Montants en GNF, comptabilité SYSCOHADA, paie IRPP/CNSS et liasse fiscale pour la DGI — et un fonctionnement hors ligne pensé pour le terrain."
+        description="BIRDY est un logiciel de facturation, de caisse et de comptabilité OHADA gratuit, édité en Guinée par NOVAR. Montants en GNF, comptabilité SYSCOHADA, paie IRPP/CNSS et liasse fiscale pour la DGI, et un fonctionnement hors ligne pensé pour le terrain."
       >
         <div className="flex flex-wrap gap-3">
           <Link href="/telechargements" className="btn-primary">
@@ -92,8 +92,7 @@ export default function GuineePage() {
 
       <section className="section-shell">
         <div className="max-w-3xl">
-          <span className="eyebrow">Un outil guinéen, pas une adaptation</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Conçu à Conakry, pour la réalité des commerces d&apos;ici.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -117,8 +116,7 @@ export default function GuineePage() {
 
       <section className="section-shell border-t border-slate-200 bg-slate-50">
         <div className="max-w-3xl">
-          <span className="eyebrow">Au-delà de Conakry</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             De la boutique de quartier au grossiste.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -137,7 +135,7 @@ export default function GuineePage() {
         intro="Une seule application gratuite pour facturer, encaisser, suivre le stock et tenir la comptabilité OHADA. Explorez chaque besoin en détail."
       />
 
-      <SolutionFaq items={FAQS} title="Questions fréquentes — BIRDY en Guinée" />
+      <SolutionFaq items={FAQS} title="Questions fréquentes : BIRDY en Guinée" />
 
       <SolutionCta
         heading="Équipez votre commerce guinéen, gratuitement."

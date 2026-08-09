@@ -6,13 +6,13 @@ import { SITE } from '@/lib/site';
  * Next.js 15 for any page that does not provide its own og-image.
  *
  * Renders the NOVAR wordmark + baseline on the cyan→indigo brand
- * gradient. Pure inline SVG/CSS — no external font, no fetch.
+ * gradient. Pure inline SVG/CSS: no external font, no fetch.
  */
 
 export const runtime = 'edge';
 export const contentType = 'image/png';
 export const size = { width: 1200, height: 630 };
-export const alt = `${SITE.name} — ${SITE.baseline}`;
+export const alt = `${SITE.name} : ${SITE.baseline}`;
 
 export default function OgImage() {
   return new ImageResponse(

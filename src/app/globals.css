@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /* === NOVAR — palette light & premium ============================ */
+  /* === NOVAR : palette light & premium ============================ */
   --novar-ink: #0B1220;        /* CTA primaire & titres forts (navy profond) */
   --novar-ink-soft: #1F2937;   /* texte body fort */
   --novar-muted: #64748B;      /* texte secondaire (slate-500) */
@@ -13,8 +13,8 @@
   --novar-surface-3: #F1F5F9;  /* hover doux */
 
   /* Accents très peu saturés */
-  --novar-accent: #0891B2;     /* cyan-600 — élégant, pas flashy */
-  --novar-accent-soft: #ECFEFF; /* cyan-50 — wash subtil */
+  --novar-accent: #0891B2;     /* cyan-600, élégant, pas flashy */
+  --novar-accent-soft: #ECFEFF; /* cyan-50, wash subtil */
   --novar-blue: #1E40AF;       /* bleu profond pour highlights */
 
   /* Aliases legacy (pour ne pas casser les composants) */
@@ -48,7 +48,7 @@ body {
   }
 }
 
-/* Surfaces aérées — utilisées comme classes utilitaires premium */
+/* Surfaces aérées, utilisées comme classes utilitaires premium */
 .surface-quiet { @apply bg-white; }
 .surface-alt { background: var(--novar-surface-2); }
 
@@ -147,7 +147,7 @@ body {
 }
 .social-link { @apply inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-colors hover:border-cyan-300 hover:text-cyan-800; }
 
-/* Headline gradient discret — navy → accent */
+/* Headline gradient discret : navy → accent */
 .gradient-text-novar {
   background: linear-gradient(135deg, #0B1220 0%, #0891B2 120%);
   -webkit-background-clip: text;
@@ -257,11 +257,11 @@ body {
 }
 
 /* ============================================================
-   NOVAR — charte v1.0 (port fidèle de design/refonte.html)
+   NOVAR : charte v1.0 (port fidèle de design/refonte.html)
    ============================================================ */
 body { background: #F1F5FB; }
 /* Charte : tous les titres en Space Grotesk (comme la maquette, qui applique
-   la police globalement — le site ne la posait qu'via la classe font-display). */
+   la police globalement, le site ne la posait qu'via la classe font-display). */
 h1, h2, h3, h4, summary { font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif; }
 
 @keyframes novarDrift {
@@ -303,7 +303,7 @@ h1, h2, h3, h4, summary { font-family: var(--font-space-grotesk), 'Space Grotesk
   -webkit-mask-image: radial-gradient(150% 246px at 38% 100%, transparent 0%, rgba(0,0,0,0.14) 38%, rgba(0,0,0,0.58) 66%, rgba(0,0,0,0.92) 88%, #000 100%);
   mask-image: radial-gradient(150% 246px at 38% 100%, transparent 0%, rgba(0,0,0,0.14) 38%, rgba(0,0,0,0.58) 66%, rgba(0,0,0,0.92) 88%, #000 100%);
 }
-.novar-hero-bg { background: linear-gradient(180deg, #0D1B2A 0%, #0D1B2A calc(100% - 215px), #133A60 calc(100% - 158px), #2569A6 calc(100% - 104px), #4C9BDA calc(100% - 56px), #86C4F0 calc(100% - 18px), #B7DDF7 100%); }
+.novar-hero-bg { background: linear-gradient(180deg, #0D1B2A 0%, #0D1B2A calc(100% - 215px), #133A60 calc(100% - 158px), #2569A6 calc(100% - 104px), #4C9BDA calc(100% - 64px), #A7CFF0 calc(100% - 26px), rgba(241,245,251,0) 100%); }
 .novar-hero-glow { background: radial-gradient(58% 62% at 16% 16%, rgba(56,182,255,0.26), transparent 68%), radial-gradient(54% 58% at 88% 6%, rgba(30,58,138,0.62), transparent 70%), radial-gradient(46% 52% at 70% 98%, rgba(56,182,255,0.13), transparent 72%); }
 .novar-hero-horizon { position: absolute; left: -8%; right: -8%; bottom: 0; height: 340px; pointer-events: none; background: radial-gradient(46% 100% at 38% 100%, rgba(56,182,255,0.34), transparent 74%), radial-gradient(34% 90% at 78% 100%, rgba(30,58,138,0.26), transparent 76%); filter: blur(30px); animation: novarHorizon 17s ease-in-out infinite; }
 

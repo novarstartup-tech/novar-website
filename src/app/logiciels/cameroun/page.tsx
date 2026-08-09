@@ -94,8 +94,7 @@ export default function CamerounPage() {
 
       <section className="section-shell">
         <div className="max-w-3xl">
-          <span className="eyebrow">Un outil calé sur la zone CEMAC</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Le franc CFA d&apos;Afrique centrale, nativement.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -119,8 +118,7 @@ export default function CamerounPage() {
 
       <section className="section-shell border-t border-slate-200 bg-slate-50">
         <div className="max-w-3xl">
-          <span className="eyebrow">De Douala à Yaoundé</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Du comptoir de Mokolo au distributeur régional.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -137,7 +135,7 @@ export default function CamerounPage() {
         intro="Une seule application gratuite pour facturer, encaisser, suivre le stock et tenir la comptabilité OHADA en FCFA (XAF). Explorez chaque besoin en détail."
       />
 
-      <SolutionFaq items={FAQS} title="Questions fréquentes — BIRDY au Cameroun" />
+      <SolutionFaq items={FAQS} title="Questions fréquentes : BIRDY au Cameroun" />
 
       <SolutionCta
         heading="Équipez votre commerce camerounais, gratuitement."

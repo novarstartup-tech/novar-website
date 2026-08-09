@@ -8,8 +8,8 @@ import { NovarLogo } from './NovarLogo';
 import type { Locale } from '@/lib/content';
 
 const COPY = {
-  fr: { solutions: 'Solutions', resources: 'Ressources', studio: 'Le studio', contact: 'Contact', custom: 'Solutions sur mesure', docs: 'Documentation', guides: 'Guides', blog: 'Analyses', about: 'À propos', advisory: 'Conseil', cta: 'Parler à NOVAR', menu: 'Ouvrir le menu', close: 'Fermer le menu', version: 'Dernière version', download: 'Télécharger', versionNote: 'BIRDY pour Windows, macOS et Linux — gratuit, sans compte.' },
-  en: { solutions: 'Solutions', resources: 'Resources', studio: 'The studio', contact: 'Contact', custom: 'Tailored software', docs: 'Documentation', guides: 'Guides', blog: 'Insights', about: 'About', advisory: 'Advisory', cta: 'Talk to NOVAR', menu: 'Open menu', close: 'Close menu', version: 'Latest version', download: 'Download', versionNote: 'BIRDY for Windows, macOS and Linux — free, no account.' },
+  fr: { solutions: 'Solutions', resources: 'Ressources', studio: 'Le studio', contact: 'Contact', custom: 'Solutions sur mesure', docs: 'Documentation', guides: 'Guides', blog: 'Analyses', about: 'À propos', advisory: 'Conseil', cta: 'Parler à NOVAR', menu: 'Ouvrir le menu', close: 'Fermer le menu', version: 'Dernière version', download: 'Télécharger', versionNote: 'BIRDY pour Windows, macOS et Linux : gratuit, sans compte.' },
+  en: { solutions: 'Solutions', resources: 'Resources', studio: 'The studio', contact: 'Contact', custom: 'Tailored software', docs: 'Documentation', guides: 'Guides', blog: 'Insights', about: 'About', advisory: 'Advisory', cta: 'Talk to NOVAR', menu: 'Open menu', close: 'Close menu', version: 'Latest version', download: 'Download', versionNote: 'BIRDY for Windows, macOS and Linux: free, no account.' },
 } as const;
 
 const LANGUAGE_PAIRS: Record<string, string> = {
@@ -102,7 +102,7 @@ export function Header({ version }: { version?: string }) {
         </button>
       </div>
 
-      {/* Méga-menu pleine largeur — 3 familles + tuile dernière version */}
+      {/* Méga-menu pleine largeur : 3 familles + tuile dernière version */}
       {mega && (
         <div
           className="absolute left-0 right-0 top-full hidden overflow-hidden border-t border-[#0D1B2A]/10 bg-white shadow-[0_34px_80px_rgba(13,27,42,0.20)] lg:block"

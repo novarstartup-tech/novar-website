@@ -94,8 +94,7 @@ export default function BeninPage() {
 
       <section className="section-shell">
         <div className="max-w-3xl">
-          <span className="eyebrow">Un outil pour un carrefour commercial</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Suivre le négoce sans perdre le fil des comptes.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -119,8 +118,7 @@ export default function BeninPage() {
 
       <section className="section-shell border-t border-slate-200 bg-slate-50">
         <div className="max-w-3xl">
-          <span className="eyebrow">De Cotonou à l&apos;intérieur</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Du comptoir de Dantokpa au grossiste de Porto-Novo.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -137,7 +135,7 @@ export default function BeninPage() {
         intro="Une seule application gratuite pour facturer, encaisser, suivre le stock et tenir la comptabilité OHADA en FCFA. Explorez chaque besoin en détail."
       />
 
-      <SolutionFaq items={FAQS} title="Questions fréquentes — BIRDY au Bénin" />
+      <SolutionFaq items={FAQS} title="Questions fréquentes : BIRDY au Bénin" />
 
       <SolutionCta
         heading="Équipez votre commerce béninois, gratuitement."

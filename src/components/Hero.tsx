@@ -36,8 +36,7 @@ export function Hero({ locale }: { locale: Locale }) {
       <div className="hero-orbit hero-orbit-right" aria-hidden />
       <div className="home-container relative grid gap-16 py-20 sm:py-24 lg:grid-cols-[0.86fr_1.14fr] lg:items-center lg:py-28">
         <div>
-          <div className="eyebrow"><span className="status-dot" />{c.eyebrow}</div>
-          <h1 className="mt-7 max-w-3xl font-display text-5xl font-bold leading-[0.98] tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-7xl">{c.title}</h1>
+          <h1 className="max-w-3xl font-display text-5xl font-bold leading-[0.98] tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-7xl">{c.title}</h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">{c.body}</p>
           <div className="mt-9 flex flex-wrap gap-3">
             <Link href={route('/produits', '/en/solutions')} className="btn-primary group">{c.primary}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></Link>

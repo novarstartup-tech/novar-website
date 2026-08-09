@@ -94,8 +94,7 @@ export default function SenegalPage() {
 
       <section className="section-shell">
         <div className="max-w-3xl">
-          <span className="eyebrow">Un outil pensé pour la zone FCFA</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             De la devise à la déclaration, sans rien tordre.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -118,8 +117,7 @@ export default function SenegalPage() {
 
       <section className="section-shell border-t border-slate-200 bg-slate-50">
         <div className="max-w-3xl">
-          <span className="eyebrow">De Dakar aux régions</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             De la boutique de Sandaga au grossiste de l&apos;intérieur.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -136,7 +134,7 @@ export default function SenegalPage() {
         intro="Une seule application gratuite pour facturer, encaisser, suivre le stock et tenir la comptabilité OHADA en FCFA. Explorez chaque besoin en détail."
       />
 
-      <SolutionFaq items={FAQS} title="Questions fréquentes — BIRDY au Sénégal" />
+      <SolutionFaq items={FAQS} title="Questions fréquentes : BIRDY au Sénégal" />
 
       <SolutionCta
         heading="Équipez votre commerce sénégalais, gratuitement."

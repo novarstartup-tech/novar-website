@@ -4,7 +4,7 @@ import { ServiceJsonLd } from '@/components/JsonLd';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Logiciel, application & site web sur mesure — Afrique / OHADA',
+  title: 'Logiciel, application & site web sur mesure : Afrique / OHADA',
   description:
     'Vous avez besoin d’un logiciel, d’une application ou d’un site web sur mesure pour votre entreprise en Afrique ? NOVAR, studio logiciel à Conakry (Guinée), conçoit des applications métier, plateformes et automatisations pour les PME et organisations de l’espace OHADA.',
   keywords: [

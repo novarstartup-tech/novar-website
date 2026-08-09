@@ -1,13 +1,13 @@
 /**
  * Site URL resolution order:
- *   1. NEXT_PUBLIC_SITE_URL — explicit override (e.g. when a custom
+ *   1. NEXT_PUBLIC_SITE_URL: explicit override (e.g. when a custom
  *      domain like novar.gn is configured later, set this in Vercel
  *      Settings → Environment Variables).
- *   2. VERCEL_PROJECT_PRODUCTION_URL — Vercel's auto-assigned
+ *   2. VERCEL_PROJECT_PRODUCTION_URL: Vercel's auto-assigned
  *      production sub-domain (`novar-website-xxx.vercel.app`).
  *   3. Hardcoded fallback for local development.
  *
- * The `https://` prefix is added when missing — Vercel exposes the
+ * The `https://` prefix is added when missing; Vercel exposes the
  * bare hostname without scheme.
  */
 function resolveSiteUrl(): string {
@@ -25,9 +25,9 @@ function resolveSiteUrl(): string {
 export const SITE = {
   name: 'NOVAR',
   legalName: 'NOVAR',
-  baseline: "SaaS Studio — Numériser, automatiser, optimiser",
+  baseline: "SaaS Studio : Numériser, automatiser, optimiser",
   description:
-    "NOVAR est un SaaS Studio. Nous numérisons, automatisons et optimisons les opérations des secteurs traditionnels — d'une part en créant nos propres produits SaaS B2B (BIRDY, FEEDORA), d'autre part en concevant des solutions d'automatisation sur mesure pour les entreprises.",
+    "NOVAR est un SaaS Studio. Nous numérisons, automatisons et optimisons les opérations des secteurs traditionnels : d'une part en créant nos propres produits SaaS B2B (BIRDY, FEEDORA), d'autre part en concevant des solutions d'automatisation sur mesure pour les entreprises.",
   category: 'SaaS Studio',
   city: 'Conakry',
   country: 'Guinée',

@@ -94,7 +94,7 @@ export const PRODUCTS = {
       fr: {
         category: 'Formulation alimentaire avicole',
         summary:
-          'Une application web pour construire, comparer et optimiser les formules alimentaires des élevages avicoles — poulet de chair, pondeuse, dinde.',
+          'Une application web pour construire, comparer et optimiser les formules alimentaires des élevages avicoles : poulet de chair, pondeuse, dinde.',
       },
       en: {
         category: 'Poultry feed formulation',

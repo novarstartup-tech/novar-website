@@ -4,15 +4,15 @@ import { flattenDocs } from '@/lib/docs';
 import { SITE } from '@/lib/site';
 
 /**
- * Sitemap NOVAR — inventaire complet des routes.
+ * Sitemap NOVAR : inventaire complet des routes.
  *
  * Trois familles :
- *   BILINGUAL  — la route existe en FR et en EN, les deux se déclarent
+ *   BILINGUAL  : la route existe en FR et en EN, les deux se déclarent
  *                mutuellement via alternates.languages (réciprocité exigée
  *                par Google : un alternate non réciproque est ignoré).
- *   FR_ONLY    — pas encore de version EN. On n'écrit AUCUN alternate :
+ *   FR_ONLY    : pas encore de version EN. On n'écrit AUCUN alternate :
  *                annoncer un /en inexistant est pire que ne rien annoncer.
- *   DATED      — routes dont la date de modification vient d'une source
+ *   DATED      : routes dont la date de modification vient d'une source
  *                réelle (release, front-matter) et non de la date de build.
  *
  * Règle sur lastModified : ne jamais utiliser new Date() pour du contenu
@@ -90,8 +90,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // `flattenDocs()` renvoie aujourd'hui { slug, title, category } : il n'y a
   // pas encore de date par document. On retombe donc sur la révision globale.
-  // Pour dater chaque page réellement — ce qui vaut le détour, la fraîcheur
-  // par document pèse dans les citations d'IA — ajouter `updated?: string`
+  // Pour dater chaque page réellement (ce qui vaut le détour, la fraîcheur
+  // par document pèse dans les citations d'IA), ajouter `updated?: string`
   // au type de `src/lib/docs.ts`, le remplir depuis le front-matter, puis
   // remplacer la ligne ci-dessous par :
   //     lastModified: doc.updated ? new Date(doc.updated) : CONTENT_REVISION,

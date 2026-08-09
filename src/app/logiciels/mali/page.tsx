@@ -53,7 +53,7 @@ const LOCAL: [typeof Banknote, string, string][] = [
 const FAQS = [
   {
     q: 'BIRDY fonctionne-t-il malgré les coupures fréquentes au Mali ?',
-    a: 'Oui — c’est un point central. Une fois installé, BIRDY fonctionne intégralement hors ligne : les ventes et opérations sont enregistrées sur votre poste et y restent, dès que le réseau ou l’électricité reviennent. La caisse ne s’arrête pas.',
+    a: 'Oui, c’est un point central. Une fois installé, BIRDY fonctionne intégralement hors ligne : les ventes et opérations sont enregistrées sur votre poste et y restent, dès que le réseau ou l’électricité reviennent. La caisse ne s’arrête pas.',
   },
   {
     q: 'BIRDY est-il adapté à une entreprise malienne ?',
@@ -94,8 +94,7 @@ export default function MaliPage() {
 
       <section className="section-shell">
         <div className="max-w-3xl">
-          <span className="eyebrow">La continuité avant tout</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             Une caisse qui ne s&apos;arrête pas quand le réseau lâche.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -118,8 +117,7 @@ export default function MaliPage() {
 
       <section className="section-shell border-t border-slate-200 bg-slate-50">
         <div className="max-w-3xl">
-          <span className="eyebrow">De Bamako aux régions</span>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
             De l&apos;étal du Grand Marché au grossiste de quartier.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -133,10 +131,10 @@ export default function MaliPage() {
 
       <RelatedSolutions
         heading="Ce que BIRDY couvre pour une entreprise malienne"
-        intro="Une seule application gratuite pour facturer, encaisser, suivre le stock et tenir la comptabilité OHADA en FCFA — et qui tient hors ligne. Explorez chaque besoin en détail."
+        intro="Une seule application gratuite pour facturer, encaisser, suivre le stock et tenir la comptabilité OHADA en FCFA, et qui tient hors ligne. Explorez chaque besoin en détail."
       />
 
-      <SolutionFaq items={FAQS} title="Questions fréquentes — BIRDY au Mali" />
+      <SolutionFaq items={FAQS} title="Questions fréquentes : BIRDY au Mali" />
 
       <SolutionCta
         heading="Équipez votre commerce malien, gratuitement."

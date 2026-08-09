@@ -4,7 +4,7 @@ import { BLOG_POSTS } from '@/lib/blog';
 import { SITE } from '@/lib/site';
 
 /**
- * IndexNow endpoint — pings Bing / Yandex / Naver / Seznam to recrawl
+ * IndexNow endpoint: pings Bing / Yandex / Naver / Seznam to recrawl
  * the site instantly. Trigger after each deploy (Vercel webhook or
  * GitHub Action) with: GET https://novar.gn/api/indexnow
  *
@@ -13,7 +13,7 @@ import { SITE } from '@/lib/site';
  *
  * Endpoint protocol: https://www.indexnow.org/documentation
  *
- * The key file must exist at `/<KEY>.txt` at the root of the host —
+ * The key file must exist at `/<KEY>.txt` at the root of the host;
  * see `public/f8c7265ef4602de25c3aae620b6f0319.txt`.
  */
 
@@ -22,7 +22,7 @@ const KEY_LOCATION = `${SITE.url}/${INDEXNOW_KEY}.txt`;
 
 // Endpoints to notify. api.indexnow.org fan-outs to all participating
 // search engines (Bing, Yandex, Naver, Seznam, Yep), so a single call
-// is enough — listing bing.com explicitly is just belt-and-braces.
+// is enough; listing bing.com explicitly is just belt-and-braces.
 const ENDPOINTS = [
   'https://api.indexnow.org/indexnow',
   'https://www.bing.com/indexnow',

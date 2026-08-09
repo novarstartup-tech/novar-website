@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getBirdyDownloads, type BirdyOs } from '@/lib/releases';
 
 /**
- * Redirection de téléchargement BIRDY — /api/download/<os>.
+ * Redirection de téléchargement BIRDY : /api/download/<os>.
  *
  * Résout, au moment du clic, l'asset de la DERNIÈRE release publiée sur
  * GitHub et renvoie une redirection 302 vers celui-ci. Les boutons de la

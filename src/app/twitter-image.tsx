@@ -1,7 +1,7 @@
 import OgImage from './opengraph-image';
 
 /**
- * Twitter card image — same 1200×630 visual as Open Graph.
+ * Twitter card image: same 1200×630 visual as Open Graph.
  *
  * Next.js 15 static analysis requires runtime/size/contentType to be
  * inline literals in this file. Re-importing them from another metadata
@@ -12,6 +12,6 @@ import OgImage from './opengraph-image';
 export const runtime = 'edge';
 export const contentType = 'image/png';
 export const size = { width: 1200, height: 630 };
-export const alt = 'NOVAR — Le logiciel qui propulse les entreprises africaines';
+export const alt = 'NOVAR : Le logiciel qui propulse les entreprises africaines';
 
 export default OgImage;

@@ -73,8 +73,7 @@ export function RelatedSolutions({
   return (
     <section className="section-shell border-t border-slate-200 bg-slate-50">
       <div>
-        <span className="eyebrow">Explorer BIRDY par besoin</span>
-        <h2 className="mt-4 max-w-3xl font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+        <h2 className="max-w-3xl font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
           {heading}
         </h2>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">{intro}</p>
